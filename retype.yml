@@ -8,11 +8,11 @@ branding:
 markdown:
   lineBreaks: hard # or, hard
 links:
-- text: Getting Started
+- text: Marketplace
   link: https://retype.com/guides/getting-started/
 - text: Discord
   link: https://retype.com/guides/getting-started/
-- data:
-  - custom-variant: success
+- text: Trello
+  link: https://trello.com/b/pE2DJRlb/inventory-framework-plugin
 footer:
   copyright: "&copy; Copyright {{ year }}. All rights reserved."

@@ -2,7 +2,7 @@
 
 #### Last updated: 19th December, 2022
 
-# What is the Inventory Framework Plugin?
+## What is the Inventory Framework Plugin?
 
 Nearly every inventory system shares the same foundation, a container with tiles and items slot into those tiles. This Inventory Framework Plugin (IFP) attempts to be that foundation for your project, while allowing for a high level of inventory design, item customization, rapid prototyping and system integration.
 
@@ -27,6 +27,5 @@ It is advised to have some C++ knowledge or have access to someone who has C++ k
 If you have any issues or questions neither the videos or documentation answer then feel free to message me on Discord or join the discord channel.
 You can look at the FAQ for more info.
 
-<span style="color:cyan">some *blue* text</span>.
-
-Color Sheet: [!badge variant="danger" text="Functions"] - [!badge variant="primary" text="Variables"] - [!badge variant="success" text="Category"] - [!badge variant="info" text="Class"]
+## Color Sheet:
+<span style="color:brown">functions</span> - <span style="color:slateblue">Variable</span> - <span style="color:green">category</span> - <span style="color:violet">class</span>
