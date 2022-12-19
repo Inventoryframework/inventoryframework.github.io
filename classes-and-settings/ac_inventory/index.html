@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724748246743">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724807444090">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -11,6 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>AC_Inventory</title>
     <meta name="title" content="AC_Inventory">
+    <meta name="description" content="Actor Component Inventory Blueprint Child: BP_AC_Inventory" />
 
     <!-- Canonical -->
     <link rel="canonical" href="/classes-and-settings/ac_inventory/" />
@@ -19,19 +20,21 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/classes-and-settings/ac_inventory/">
     <meta property="og:title" content="AC_Inventory">
+    <meta property="og:description" content="Actor Component Inventory Blueprint Child: BP_AC_Inventory">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/classes-and-settings/ac_inventory/">
     <meta property="twitter:title" content="AC_Inventory">
+    <meta property="twitter:description" content="Actor Component Inventory Blueprint Child: BP_AC_Inventory">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.724748246743" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.724807444090" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724748246743" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724807444090" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724748246743" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724807444090" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -59,10 +62,13 @@
                     <nav class="hidden md:flex">
                         <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
                             <li class="mr-6">
-                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Marketplace</a>
                             </li>
                             <li class="mr-6">
                                 <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Discord</a>
+                            </li>
+                            <li class="mr-6">
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://trello.com/b/pE2DJRlb/inventory-framework-plugin">Trello</a>
                             </li>
         
                         </ul>
@@ -141,10 +147,13 @@
                             <nav>
                                 <ul class="flex flex-wrap justify-center items-center">
                                     <li class="mr-6">
-                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Marketplace</a>
                                     </li>
                                     <li class="mr-6">
                                         <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Discord</a>
+                                    </li>
+                                    <li class="mr-6">
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://trello.com/b/pE2DJRlb/inventory-framework-plugin">Trello</a>
                                     </li>
             
                                 </ul>
@@ -175,6 +184,20 @@
         <span>AC_Inventory</span>
     </h1>
 </doc-anchor-target>
+<p>Actor Component Inventory<br />
+Blueprint Child: BP_AC_Inventory</p>
+<hr />
+<p>This is where the vast majority of the logic is handled and starts. You have full control of when the component activates by calling the <span style="color:brown">StartComponent</span> function. When called, the component initializes the containers and the items inside or the pickup if the owning actor is a pickup. This does NOT prepare the widgets versions of the containers and the items.</p>
+<p>To create the widget version of a container and its items, call <span style="color:brown">BindContainerWithWidget</span> and hook in the container struct and the container widget. This should give you full control of when you want to construct a container.<br />
+Some examples would be when the player opens their inventory, but you don’t want to load all the items&#x27; attachment widgets. You could then load the attachment widgets when the player inspects the item. For inventory systems that can get massive with a lot of items inside of it with attachment widgets associated with it, this should massively improve performance and memory usage if used correctly.</p>
+<p>For pickups, I recommend calling <span style="color:brown">StartComponent</span> on either <span style="color:brown">BeginPlay</span> or when the player is close to the item and has line of sight of the item, as items that have a spawn chance associated with it need that spawn chance rolled.<br />
+The item might also have items attached to it and be visible, such as a sight on a gun, which also might have a spawn chance and you don’t want that sight to be visible if it failed its spawn chance.</p>
+<p>The first category is <span style="color:green">Settings</span> and most of these are instance editable, so you’ll be spending most of your time with these settings for your item actors.</p>
+<p><span style="color:slateblue">ContainerSettings</span> is where the majority of the work is done. I recommend going into <span style="color:violet">AC_Inventory.h</span> and find <span style="color:slateblue">FS_ContainerSettings</span>  and looking at the comments for everything as there are some variables that aren’t instance editable.</p>
+<p>The second category is <span style="color:green">UserSettings</span> . It’s up to your settings system to update these if you want the player to be able to change these settings during runtime.<br />
+<span style="color:slateblue">RotateKey</span> : While dragging an item, the player might want to rotate an item. When they press this key, it’ll rotate.<br />
+<span style="color:slateblue">SplitKey</span> : While dragging a stackable item, when they drop the item onto a valid tile, they can split an item into two stacks.</p>
+<p>Third category is <span style="color:Slateblue">ContainerSettings</span>  and this is where most of the colors used by the system are dictated. This is set in here so all the widgets can fetch colors easily and so designers can extend any color settings (for example color blind settings) to the user settings. If you want to add any color settings, this place is the preferred place. Item rarity colors are handled in here.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
@@ -207,7 +230,7 @@
                                         <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/bp_previewactor/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">BP Preview​Actor</span>
+                                                <span class="block mt-1">BP_​Preview​Actor</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>

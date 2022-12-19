@@ -9,32 +9,32 @@
     <meta name="generator" content="Retype 2.4.0">
 
     <!-- Primary Meta Tags -->
-    <title>Versions</title>
-    <meta name="title" content="Versions">
-    <meta name="description" content="Versions are labeled like so: MajorIteration.MinorIteration.Patches" />
+    <title>Creating custom functions</title>
+    <meta name="title" content="Creating custom functions">
+    <meta name="description" content="Once you’re comfortable enough in the system to make your own functions and/or change the current functions, here are some things to keep in mind." />
 
     <!-- Canonical -->
-    <link rel="canonical" href="/versions/" />
+    <link rel="canonical" href="/workinginthesystem/creatingcustomfunctions/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/versions/">
-    <meta property="og:title" content="Versions">
-    <meta property="og:description" content="Versions are labeled like so: MajorIteration.MinorIteration.Patches">
+    <meta property="og:url" content="/workinginthesystem/creatingcustomfunctions/">
+    <meta property="og:title" content="Creating custom functions">
+    <meta property="og:description" content="Once you’re comfortable enough in the system to make your own functions and/or change the current functions, here are some things to keep in mind.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/versions/">
-    <meta property="twitter:title" content="Versions">
-    <meta property="twitter:description" content="Versions are labeled like so: MajorIteration.MinorIteration.Patches">
+    <meta property="twitter:url" content="/workinginthesystem/creatingcustomfunctions/">
+    <meta property="twitter:title" content="Creating custom functions">
+    <meta property="twitter:description" content="Once you’re comfortable enough in the system to make your own functions and/or change the current functions, here are some things to keep in mind.">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../resources/css/retype.css?v=2.4.0.724807444090" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.724807444090" rel="stylesheet" />
 
-    <script type="text/javascript" src="../resources/js/config.js?v=2.4.0.724807444090" data-turbo-eval="false" defer></script>
-    <script type="text/javascript" src="../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.4.0.724807444090" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724807444090" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724807444090" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -49,7 +49,7 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../" class="flex items-center leading-snug text-xl">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Inventory Framework Plugin</span>
                         </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
                     </div>
@@ -178,28 +178,29 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="versions" class="break-words">
+<doc-anchor-target id="creating-custom-functions" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#versions">#</doc-anchor-trigger>
-        <span>Versions</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#creating-custom-functions">#</doc-anchor-trigger>
+        <span>Creating custom functions</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="version-system">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#version-system">#</doc-anchor-trigger>
-        <span><svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path fill-rule="evenodd" d="M5.75 21a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zM2.5 19.25a3.25 3.25 0 106.5 0 3.25 3.25 0 00-6.5 0zM5.75 6.5a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zM2.5 4.75a3.25 3.25 0 106.5 0 3.25 3.25 0 00-6.5 0zM18.25 6.5a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zM15 4.75a3.25 3.25 0 106.5 0 3.25 3.25 0 00-6.5 0z"/><path fill-rule="evenodd" d="M5.75 16.75A.75.75 0 006.5 16V8A.75.75 0 005 8v8c0 .414.336.75.75.75z"/><path fill-rule="evenodd" d="M17.5 8.75v-1H19v1a3.75 3.75 0 01-3.75 3.75h-7a1.75 1.75 0 00-1.75 1.75H5A3.25 3.25 0 018.25 11h7a2.25 2.25 0 002.25-2.25z"/></g></g></svg> Version system</span>
-    </h1>
+<p>Once you’re comfortable enough in the system to make your own functions and/or change the current functions, here are some things to keep in mind.</p>
+<p>You should always assume an item does not have a widget version of itself. If you need access to the widget of an item, you can use <span style="color:brown">GetWidgetForItem</span>. Remember to check if the widget is valid.<br />
+Widgets also can’t be transported through a network, so if multiplayer is important to you, your server functions can’t rely on data from widgets.</p>
+<doc-anchor-target id="finding-items">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#finding-items">#</doc-anchor-trigger>
+        <span>Finding Items</span>
+    </h2>
 </doc-anchor-target>
-<p>Versions are labeled like so:<br />
-MajorIteration.MinorIteration.Patches</p>
-<ul>
-<li><p>MajorIteration: New features, small or large changes to existing files. Updating from one major iteration to anotherr might break some things and downgrading might be difficult.</p>
-</li>
-<li><p>MinorIterations: Adjustments to functions, optimizations. These updates should not break anything.</p>
-</li>
-<li><p>Patches: Bug fixes, these are generally safe.</p>
-</li>
-</ul>
+<p>Finding an item is a very common scenario when you start making your own functions.</p>
+<p>The container&#x27;s <span style="color:slateblue">TileMap</span> combined with an item&#x27;s <span style="color:slateblue">UniqueID</span> is the most reliable way of finding items.</p>
+<p>The component includes a function to get an item at item at a specific index of a container GetItemAtSpecificIndex, then there is a bit more expensive way of finding an item but it’ll go through all containers, GetItemByUniqueID.</p>
+<ol>
+<li>The <span style="color:slateblue">UniqueID</span> is the most reliable method of finding a very specific item, container or item driver, other than a direct reference to the item, container or item driver, but even then a direct reference might get outdated if the player moves the item or modifies it in some way. The <span style="color:slateblue">UniqueID</span> is only updated for containers and items if they are moved to a new component.</li>
+<li><span style="color:violet">W_Tile</span> also have a reference to the item on top of them, but to reduce memory, tiles have a <span style="color:slateblue">OwningItem</span> integer which references the top left tile of the item, which holds the <span style="color:slateblue">ParentItem</span> reference variable.<br />
+So if you are inside the <span style="color:violet">W_Tile</span> and need to get the item it contains, you would use <span style="color:slateblue">ParentContainer</span> -&gt; <span style="color:slateblue">Tiles</span>[ParentTile] -&gt; <span style="color:slateblue">OwningItem</span> -&gt; <span style="color:brown">GetItemData</span>. Remember to check if <span style="color:slateblue">ParentTile</span> is -1 first, as that means this tile widget doesn’t have any item inside of it.</li>
+</ol>
 
                                 
                                 <!-- Required only on API pages -->
@@ -209,20 +210,20 @@ MajorIteration.MinorIteration.Patches</p>
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../tools/quality-assurance/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/wbp_split/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Quality Assurance</span>
+                                                <span class="block mt-1">WBP_​Split</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../versions/v1.0.0/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/draganddrop/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">1.​0.​0</span>
+                                                <span class="block mt-1">Drag and drop</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -266,6 +267,6 @@ MajorIteration.MinorIteration.Patches</p>
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Versions", level: 1, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Creating custom functions", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
