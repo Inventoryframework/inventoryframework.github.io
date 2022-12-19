@@ -1,3 +1,3 @@
 # welcome
 
-my documentation website
+my documentation website :)
