@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724742381736">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724748246743">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -11,7 +11,6 @@
     <!-- Primary Meta Tags -->
     <title>Notes about the design decisions and its architecture</title>
     <meta name="title" content="Notes about the design decisions and its architecture">
-    <meta name="description" content="This plugin was created for an open-world game that has very strict performance requirements. Because of this, some logic is handled in C" />
 
     <!-- Canonical -->
     <link rel="canonical" href="/introduction/designandarchitecture/" />
@@ -20,21 +19,19 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/introduction/designandarchitecture/">
     <meta property="og:title" content="Notes about the design decisions and its architecture">
-    <meta property="og:description" content="This plugin was created for an open-world game that has very strict performance requirements. Because of this, some logic is handled in C">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/introduction/designandarchitecture/">
     <meta property="twitter:title" content="Notes about the design decisions and its architecture">
-    <meta property="twitter:description" content="This plugin was created for an open-world game that has very strict performance requirements. Because of this, some logic is handled in C">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.724742381736" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.724748246743" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724742381736" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724748246743" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724742381736" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724748246743" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -178,24 +175,6 @@
         <span>Notes about the design decisions and its architecture</span>
     </h1>
 </doc-anchor-target>
-<ul>
-<li><p>This plugin was created for an open-world game that has very strict performance requirements. Because of this, some logic is handled in C++ as an inventory system like this does a lot of math. The design architecture is also designed to give programmers more control of when widgets and data is initialized. The architecture has also been made in mind for large-scale projects.
-This does mean though that there is a specific and strict workflow for setting up the component for items, especially sub containers. I&#x27;ve made an Editor Utility Widget which should prevent any human errors and allow people to work in the system without those strict requirements slowing down your creation process.</p>
-</li>
-<li><p>The architecture was made with designers in mind, so certain C++ functions can be overridden in Blueprints and some functions are only needed on the Blueprint level and in some cases there are both C++ and Blueprint versions of the same function. This system is not meant to be purely C++ or Blueprints, but a healthy mix of the two.
-If you can&#x27;t write in C++ or don&#x27;t have access to anyone who can write C++ code for you, the current functions should allow for you to create nearly any Blueprint logic you should need.</p>
-</li>
-<li><p>Data Assets are being used instead of Data Tables for a few reasons:</p>
-<ol>
-<li>You can create children of the item data asset to create a brand new type of item with its own unique settings and not have those settings clutter the items that aren&#x27;t relevant to those settings.</li>
-<li>You can control their loading and unloading in the Asset Manager.</li>
-<li>Easier to create Utility Widgets and automating tests.</li>
-<li>It&#x27;s easier to find out what assets are referencing which data asset, while with Data Tables, it can get messy to find out what asset is referencing a specific row.</li>
-<li>Data tables are not ideal for managing massive databases. With every row, any variable that is a hard reference will be loaded by any item that is referencing the data table. If itemA references the data table but uses RowA, it’s going to load every single row in the data table and all the hard references in there, not just RowA. This also means that every time you’d add an item, the size map and hard references would grow for every item in the game.
-This quickly spirals out of control and quickly your assets can become 100+ MB’s, whereas with data assets, they are self-contained and only load the hard references made inside of them.</li>
-</ol>
-</li>
-</ul>
 
                                 
                                 <!-- Required only on API pages -->
@@ -205,20 +184,20 @@ This quickly spirals out of control and quickly your assets can become 100+ MB�
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../introduction/namingformat/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Inventory Framework Plugin</span>
+                                                <span class="block mt-1">Naming format and versioning</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/ac_inventory/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">AC_​Inventory</span>
+                                                <span class="block mt-1">Classes and Settings</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>

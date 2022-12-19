@@ -9,32 +9,29 @@
     <meta name="generator" content="Retype 2.4.0">
 
     <!-- Primary Meta Tags -->
-    <title>Inventory Framework Plugin</title>
-    <meta name="title" content="Inventory Framework Plugin">
-    <meta name="description" content="Nearly every inventory system shares the same foundation, a container with tiles and items slot into those tiles." />
+    <title>W Container</title>
+    <meta name="title" content="W Container">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/" />
+    <link rel="canonical" href="/classes-and-settings/w_container/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/">
-    <meta property="og:title" content="Inventory Framework Plugin">
-    <meta property="og:description" content="Nearly every inventory system shares the same foundation, a container with tiles and items slot into those tiles.">
+    <meta property="og:url" content="/classes-and-settings/w_container/">
+    <meta property="og:title" content="W Container">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/">
-    <meta property="twitter:title" content="Inventory Framework Plugin">
-    <meta property="twitter:description" content="Nearly every inventory system shares the same foundation, a container with tiles and items slot into those tiles.">
+    <meta property="twitter:url" content="/classes-and-settings/w_container/">
+    <meta property="twitter:title" content="W Container">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="resources/css/retype.css?v=2.4.0.724748246743" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.724748246743" rel="stylesheet" />
 
-    <script type="text/javascript" src="resources/js/config.js?v=2.4.0.724748246743" data-turbo-eval="false" defer></script>
-    <script type="text/javascript" src="resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="resources/js/lunr.js?v=2.4.0.724748246743" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724748246743" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724748246743" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -49,7 +46,7 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="" class="flex items-center leading-snug text-xl">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Inventory Framework Plugin</span>
                         </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
                     </div>
@@ -172,51 +169,12 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="inventory-framework-plugin" class="break-words">
+<doc-anchor-target id="w-container" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#inventory-framework-plugin">#</doc-anchor-trigger>
-        <span>Inventory Framework Plugin</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#w-container">#</doc-anchor-trigger>
+        <span>W Container</span>
     </h1>
 </doc-anchor-target>
-<doc-anchor-target id="last-updated-19th-december-2022">
-    <h4>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#last-updated-19th-december-2022">#</doc-anchor-trigger>
-        <span>Last updated: 19th December, 2022</span>
-    </h4>
-</doc-anchor-target>
-<doc-anchor-target id="what-is-the-inventory-framework-plugin">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#what-is-the-inventory-framework-plugin">#</doc-anchor-trigger>
-        <span>What is the Inventory Framework Plugin?</span>
-    </h1>
-</doc-anchor-target>
-<p>Nearly every inventory system shares the same foundation, a container with tiles and items slot into those tiles. This Inventory Framework Plugin (IFP) attempts to be that foundation for your project, while allowing for a high level of inventory design, item customization, rapid prototyping and system integration.</p>
-<p>From my research, inventory systems were taking 2-6 months (depending on how advanced it was) to be designed, bug tested, network tested and to be documented. With this framework, I try to provide you the framework needed to create your perfect inventory system and bring that initial creation time down.</p>
-<p>What this provides is the C++ foundation for your programmers and a good Blueprint foundation for your designers, which includes:</p>
-<ol>
-<li>Actor component and item parents that handle all the logic for you and are abstract enough so you can implement your mechanics and systems into it.</li>
-<li>Widgets that are designer friendly (Easy to implement new logic, add animations to events, create children, etc). They also handle all the drag, drop, highlighting, splitting, combining logic and more.</li>
-<li>Data asset which only shows relevant information to your desired rules with inbuilt functions and <a href="https://inventoryframework.github.io/classes-and-settings/o_masterobject/">instanced objects</a> that can have custom  variables per data asset.</li>
-<li>A system that has no reliance on widgets to create or handle its data, meaning it is possible to use the data for any widget you create and not be dependent on the widgets that come with this system.</li>
-<li>Container system that allows for near infinite (array limit) items inside of items. This means you can make a backpack, which has several containers, then a gun inside one of those containers and then that gun can have containers which have items inside of them. It can keep going for as long as you want.</li>
-<li>Actor appearance duplication system that copies the appearance of your items allowing you to both inspect items and auto-generate icons. It works with all actors, not just item actors. No longer do you need to follow a hierarchy setup like many other inventory systems need. You can create your items however you want and the system will automatically duplicate the appearance for either generating item icons or letting you examine an item.</li>
-</ol>
-<p>It is NOT an inventory to fully replicate the mechanics of any specific game. If you want your system to behave like a specific game, you will have to implement those specific mechanics yourself. This system does try to provide you with the functions and data to replicate most inventory systems.</p>
-<p>This plugin does not provide an interaction system for you, but an interface system is integrated as that&#x27;s the foundation of nearly every interaction system I&#x27;ve seen. This is done so it�s more flexible to a project&#x27;s interaction system. Some use on-click, some use linetrace or something else, but at the heart of most of them is an interface handling the interaction. This is designed to be replaced, as most people already have an interaction system already in place.</p>
-<p>This plugin does not contain any game-ready art, only demo-ready art. This is purely an inventory system for you to integrate with your game. This is mainly done to reduce bloat and integration pains.</p>
-<p>It is advised to have some C++ knowledge or have access to someone who has C++ knowledge before buying this plugin, but it is not necessary.</p>
-<p>If you have any issues or questions neither the videos or documentation answer then feel free to message me on Discord or join the discord channel.<br />
-You can look at the FAQ for more info.</p>
-<p><span style="color:cyan">some <em>blue</em> text</span>.</p>
-<p>Color Sheet: <span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-red-600 bg-red-100 h-6 px-2 text-xs rounded-md">
-    <span>Functions</span>
-</span> - <span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-blue-600 bg-blue-100 h-6 px-2 text-xs rounded-md">
-    <span>Variables</span>
-</span> - <span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-green-700 bg-green-100 h-6 px-2 text-xs rounded-md">
-    <span>Category</span>
-</span> - <span class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 h-6 px-2 text-xs rounded-md">
-    <span>Class</span>
-</span></p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -226,13 +184,20 @@ You can look at the FAQ for more info.</p>
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/sm_masterphysicalitem/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">SM Master​Physical​Item</span>
+                                            </span>
+                                        </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l rounded-r-lg transition-colors duration-150 relative hover:z-5" href="introduction/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/w_drag/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Introduction</span>
+                                                <span class="block mt-1">W Drag</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -276,6 +241,6 @@ You can look at the FAQ for more info.</p>
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Inventory Framework Plugin", isRoot: true, level: 0, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "W Container", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
