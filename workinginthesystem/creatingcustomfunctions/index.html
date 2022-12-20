@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724846278495">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724852067028">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -21,20 +21,22 @@
     <meta property="og:url" content="/workinginthesystem/creatingcustomfunctions/">
     <meta property="og:title" content="Creating custom functions">
     <meta property="og:description" content="Once you’re comfortable enough in the system to make your own functions and/or change the current functions, here are some things to keep in mind.">
+    <meta property="og:image" content="/pictures/networkoptimization.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/workinginthesystem/creatingcustomfunctions/">
     <meta property="twitter:title" content="Creating custom functions">
     <meta property="twitter:description" content="Once you’re comfortable enough in the system to make your own functions and/or change the current functions, here are some things to keep in mind.">
+    <meta property="twitter:image" content="/pictures/networkoptimization.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.724846278495" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.724852067028" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724846278495" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724852067028" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724846278495" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724852067028" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -201,6 +203,33 @@ Widgets also can’t be transported through a network, so if multiplayer is impo
 <li><span style="color:violet">W_Tile</span> also have a reference to the item on top of them, but to reduce memory, tiles have a <span style="color:slateblue">OwningItem</span> integer which references the top left tile of the item, which holds the <span style="color:slateblue">ParentItem</span> reference variable.<br />
 So if you are inside the <span style="color:violet">W_Tile</span> and need to get the item it contains, you would use <span style="color:slateblue">ParentContainer</span> -&gt; <span style="color:slateblue">Tiles</span>[ParentTile] -&gt; <span style="color:slateblue">OwningItem</span> -&gt; <span style="color:brown">GetItemData</span>. Remember to check if <span style="color:slateblue">ParentTile</span> is -1 first, as that means this tile widget doesn’t have any item inside of it.</li>
 </ol>
+<doc-anchor-target id="network-optimizations">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#network-optimizations">#</doc-anchor-trigger>
+        <span>Network optimizations</span>
+    </h2>
+</doc-anchor-target>
+<p>It is recommended, where ever possible, to use the item or container UniqueID instead of the struct in your RPC calls, and then have your server use the UniqueID to figure out which struct to use.</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-medium leading-snug text-gray-900 border-b border-gray-200 dark:border-dark-650 dark:text-white border-r">
+        <span>Image</span>
+    </div>
+    <div class="flex items-center px-5 py-3 font-medium leading-snug text-gray-900 border-b border-gray-200 dark:border-dark-650 dark:text-white">
+        <span>Info</span>
+    </div>
+    <div class="px-5 py-3 docs-columns-content border-r border-gray-200 dark:border-dark-650">
+<p><figure class="content-center">
+    <img src="../../pictures/networkoptimization.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+    </div>
+    <div class="px-5 py-3 docs-columns-content">
+<p>Here you can see 2 sets of RPC calls. One is <span style="color:brown">ReduceItemCount</span> (indicated in red), which is passing the item struct to the server and then to the client.<br />
+The other is <span style="color:brown">IncreaseItemCount</span> (indicated in blue), which is passing the <span style="color:slateblue">UniqueID</span> to the server and the server is then using that <span style="color:slateblue">UniqueID</span> to resolve what item we are trying to modify.</p>
+<p>Switching to using the <span style="color:slateblue">UniqueID</span> method reduced the RPC size from around 74 bytes down to 13.</p>
+    </div>
+</div>
 
                                 
                                 <!-- Required only on API pages -->
