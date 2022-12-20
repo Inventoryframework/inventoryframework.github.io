@@ -6,6 +6,6 @@ The component keeps track of the players that are currently interacting with a c
 
 For functions that modifies a components data, such as moving an item or modifying an items stack count, you must remember that clients only have authority over their own component, they do not have authority over other components data.
 Because of this, most functions require you to call the function on the component the client has authority over. Even though the item you are trying to modify is not on that component.
-This is why, when you look at some of the source code, the functions are getting the component the item belongs to through its UniqueID.ParentComponent and modifying that component's data through the component the client has authority over.
+This is why, when you look at some of the source code, the functions are getting the component the item belongs to through its <span style="color:slateblue">UniqueID</span>.<span style="color:slateblue">ParentComponent</span>and modifying that component's data through the component the client has authority over.
 
 For most functions that modify data in some way, only a single version of that function is available for you to call, and that function handles the replication for you. This is to simplify the amount of functions exposed as it can get very daunting to try and handle every replication scenario and making sure your calling the right function. If you wish to modify how the replication is handled, you can always go into the functions, modify them, or enable the server/client functions to be BlueprintCallable.
