@@ -2,8 +2,8 @@
 tags: [item]
 ---
 
-# SM_MasterPhysicalItem
-Static Mesh/Skeletal Mesh Master Physical Item
+# A_ItemPhysicalRepresentation
+Actor Item Physical Representation
 Blueprint Child: BP_SM_ItemPhysical
 
 ---
