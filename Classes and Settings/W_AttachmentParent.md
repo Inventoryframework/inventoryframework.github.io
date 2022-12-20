@@ -9,4 +9,4 @@ For example, a gun has a sight and a magazine slot and you want to represent tho
 
 The base widget does not have any kind of layout so you are free to make any layout your project needs.
 
-Both the C++ parent and the blueprint child are abstract, so it won't appear in any drop-down menus. These are designed for the intention to have children made.
+Both the C++ parent and the blueprint child are abstract, so it won't appear in any drop-down menus. These are designed for the intention to have children made from them.

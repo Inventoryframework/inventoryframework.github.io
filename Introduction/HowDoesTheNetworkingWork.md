@@ -2,4 +2,10 @@
 
 Certain inventory data can become quite large, especially with how many containers and items you allow in an inventory. But at the same time, we must store the data on the server, otherwise a client could modify their data before the StartComponent function is called and cheat the system. But to optimize, we try to simplify things. Players only receive data from components that they request data from and data from their own components, but also any update from components they are currently interacting with.
 
-The component keeps track of the players that are currently interacting with a component with the Listeners array, then whenever PlayerA moves, adds, removes or interacts with an item in some way, the component sends RPC calls to the other “listeners” so their widgets and data get updated.
+The component keeps track of the players that are currently interacting with a component with the Listeners array, then whenever PlayerA moves, adds, removes or interacts with an item in some way, the component sends RPC calls to the other "listeners" so their widgets and data get updated.
+
+For functions that modifies a components data, such as moving an item or modifying an items stack count, you must remember that clients only have authority over their own component, they do not have authority over other components data.
+Because of this, most functions require you to call the function on the component the client has authority over. Even though the item you are trying to modify is not on that component.
+This is why, when you look at some of the source code, the functions are getting the component the item belongs to through its UniqueID.ParentComponent and modifying that component's data through the component the client has authority over.
+
+For most functions that modify data in some way, only a single version of that function is available for you to call, and that function handles the replication for you. This is to simplify the amount of functions exposed as it can get very daunting to try and handle every replication scenario and making sure your calling the right function. If you wish to modify how the replication is handled, you can always go into the functions, modify them, or enable the server/client functions to be BlueprintCallable.
