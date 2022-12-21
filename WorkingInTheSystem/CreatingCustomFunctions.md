@@ -29,5 +29,8 @@ It is recommended, where ever possible, to use the item or container UniqueID in
 Here you can see 2 sets of RPC calls. One is <span style="color:brown">ReduceItemCount</span> (indicated in red), which is passing the item struct to the server and then to the client.
 The other is <span style="color:brown">IncreaseItemCount</span> (indicated in blue), which is passing the <span style="color:slateblue">UniqueID</span> to the server and the server is then using that <span style="color:slateblue">UniqueID</span> to resolve what item we are trying to modify. 
 
-Switching to using the <span style="color:slateblue">UniqueID</span> method reduced the RPC size from around 74 bytes down to 13.
+Switching to using the <span style="color:slateblue">UniqueID</span> method reduced the RPC size from around 75 bytes down to 13.
 |||
+
+The only downside is that it is not possible to verify if the client has illegally modified it's data, and it's very difficult to verify that the data inside the items are synced. It is up to you whether that is a big enough problem to do this. Some anti-cheat methods already do a very good job at preventing clients from modifying the games data with external tools.
+If you need to validate the data, you can have the server function still accept the full item/container struct, validate the data, then only pass the UniqueID to the client.
