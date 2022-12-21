@@ -1,5 +1,7 @@
 ---
 order: 20
+tags: [item]
+REVISION NOTES: Paragraph explaining OT_Equipment might be worth explaining in here now because we have the HTML blueprint graphs.
 ---
 
 # Equipping and unequipping items
@@ -14,6 +16,6 @@ Your container's compatibility settings dictate what is allowed in them. If you 
 
 During my research, I found an astonishing amount of different workflows and processes. It was very daunting to try and solve all of them in one go, and maybe my system isn’t perfect, but it tries to solve as many as possible at once, while still being flexible and adjustable.
 
-I recommend reading the comments in the <span style="color:slateblue">EquipmentData</span> struct (Found in <span style="color:violet">DA_CoreItem.h</span>) and going through <span style="color:vioolet">OT_Equipment</span> (which is an object template found in the plugins folder Core -> ActorParents -> ObjectTemplates.) and look at the logic in there to get a better understanding of how the system is using this struct. I would explain it here, but it’s so long and extensive that explaining it in just text and pictures would take too long.
+I recommend reading the comments in the <span style="color:slateblue">EquipmentData</span> struct (Found in <span style="color:violet">DA_CoreItem.h</span>) and going through <span style="color:violet">OT_Equipment</span> (which is an object template found in the plugins folder Core -> ActorParents -> ObjectTemplates.) and look at the logic in there to get a better understanding of how the system is using this struct. I would explain it here, but it’s so long and extensive that explaining it in just text and pictures would take too long.
 
 This object attempts to copy the system that is used in GAS with its <span style="color:brown">PlayMontageAndWait</span> function, which creates an instance that handles the animation, but I wanted to keep mine inside of Blueprints.

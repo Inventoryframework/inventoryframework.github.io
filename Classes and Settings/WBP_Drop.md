@@ -1,12 +1,9 @@
 ---
-tags: [underrevision]
+tags:
 ---
 
 # WBP_Drop
 Widget Blueprint Drop
-
-## <span style="color:red">UNDER REVISION</span>
-
 ---
 
 A simple widget that handles dropping an item. There’s nothing special about this, the context menu widget also has a drop function.

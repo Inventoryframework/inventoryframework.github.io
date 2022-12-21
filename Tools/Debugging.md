@@ -3,7 +3,9 @@ tags: [underrevision]
 ---
 # Debugging
 
-## <span style="color:red">UNDER REVISION</span>
+!!!danger
+Under revision
+!!!
 
 ## Item Inspection
 <span style="color:violet">WBP_Inspect</span> has a ToggleDebug button on the top bar.

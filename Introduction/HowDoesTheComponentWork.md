@@ -1,3 +1,7 @@
+---
+tags: [inventorycomponent]
+---
+
 # How does the component work?
 
 With how strict the performance requirements were for this plugin, I’ve had to design this inventory system slightly differently from other systems you might find either on the marketplace or Youtube tutorials.

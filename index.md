@@ -6,7 +6,7 @@
 
 Nearly every inventory system shares the same foundation, a container with tiles and items slot into those tiles. This Inventory Framework Plugin (IFP) attempts to be that foundation for your project, while allowing for a high level of inventory design, item customization, rapid prototyping and system integration.
 
-From my research, inventory systems were taking 2-6 months (depending on how advanced it was) to be designed, bug tested, network tested and to be documented. With this framework, I try to provide you the framework needed to create your perfect inventory system and bring that initial creation time down.
+From my research, inventory systems were taking 2-6 months or more (depending on how advanced it was) to be designed, bug tested, network tested and to be documented. With this framework, I try to provide you the framework needed to create your perfect inventory system and bring that initial creation time down.
 
 What this provides is the C++ foundation for your programmers and a good Blueprint foundation for your designers, which includes:
 1. Actor component and item parents that handle all the logic for you and are abstract enough so you can implement your mechanics and systems into it.
@@ -18,7 +18,7 @@ What this provides is the C++ foundation for your programmers and a good Bluepri
 
 It is NOT an inventory to fully replicate the mechanics of any specific game. If you want your system to behave like a specific game, you will have to implement those specific mechanics yourself. This system does try to provide you with the functions and data to replicate most inventory systems.
 
-This plugin does not provide an interaction system for you, but an interface system is integrated as that's the foundation of nearly every interaction system I've seen. This is done so it�s more flexible to a project's interaction system. Some use on-click, some use linetrace or something else, but at the heart of most of them is an interface handling the interaction. This is designed to be replaced, as most people already have an interaction system already in place.
+This plugin does not provide an interaction system for you, but an interface system is integrated as that's the foundation of nearly every interaction system I've seen. This is done so it's more flexible to a project's interaction system. Some use on-click, some use linetrace or something else, but at the heart of most of them is an interface handling the interaction. This is designed to be replaced, as most people already have an interaction system already in place.
 
 This plugin does not contain any game-ready art, only demo-ready art. This is purely an inventory system for you to integrate with your game. This is mainly done to reduce bloat and integration pains.
 

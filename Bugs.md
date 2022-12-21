@@ -6,7 +6,9 @@ tags: [underrevision]
 
 ## Known Bugs
 
-## <span style="color:red">UNDER REVISION</span>
+!!!danger
+Under revision
+!!!
 
 - There's a bug with the engine where if any item in your blueprint has �Simulate Physics� enabled, it�ll remove the root component. There are some workarounds but none were perfect, especially with how flexible I wanted the system to be. UE5 preview fixed some issues but I immediately found new ones.
 There's an interface event called UpdateCollision and some items might need to override this function. It�s default is in BP_SM_ItemPhysical and it *should* work in most projects.

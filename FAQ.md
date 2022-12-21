@@ -6,7 +6,9 @@ tags: [underrevision]
 
 # F.A.Q
 
-## <span style="color:red">UNDER REVISION</span>
+!!!danger
+Under revision
+!!!
 
 ### Q: Can the system be used for a more traditional inventory system where all items are 1x1?
 A: Of course! The demos even include traditional inventory systems. There’s a lot of math and nested for loops being done with the idea of things being in different dimensions (also one of the main reasons why a lot of the components functions are in C++, as blueprints aren’t the best at math and nested for loops). But since all that math and nested for loops is being handled in C++, from my performance measurements there’s virtually no performance impact, even with massive items. With that in mind, this system should handle 1x1 items with ease.

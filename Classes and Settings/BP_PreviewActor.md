@@ -5,7 +5,9 @@ tags: [underrevision]
 # BP_PreviewActor
 Blueprint Preview Actor
 
-## <span style="color:red">UNDER REVISION</span>
+!!!danger
+Under revision
+!!!
 
 ---
 
