@@ -4,10 +4,10 @@ tags: [item]
 
 # A_ItemPhysicalRepresentation
 ==- Actor Item Physical Representation
-File location: Source\InventoryFrameworkPlugin\Public\Core\Widgets\W_Tile.h
-File location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_Tile.cpp
+File location: InventoryFrameworkPlugin\Public\Core\Actors\Parents\A_ItemPhysicalRepresentation.h
+File location: InventoryFrameworkPlugin\Private\Core\Actors\Parents\A_ItemPhysicalRepresentation.cpp
 ==- Blueprint Child: BP_SM_ItemPhysical
-File location: Content\Core\Widgets\WBP_Tile.uasset
+File location: Content\Core\ActorParents\BP_SM_ItemPhysical.uasset
 ===
 ---
 
