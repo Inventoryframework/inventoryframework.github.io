@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724931118103">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724946057573">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,11 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../resources/css/retype.css?v=2.4.0.724931118103" rel="stylesheet" />
+    <link href="../resources/css/retype.css?v=2.4.0.724946057573" rel="stylesheet" />
 
-    <script type="text/javascript" src="../resources/js/config.js?v=2.4.0.724931118103" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../resources/js/config.js?v=2.4.0.724946057573" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.4.0.724931118103" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.4.0.724946057573" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -207,10 +207,10 @@
     </div>
 </div>
 <ul>
-<li><p>There&#x27;s a bug with the engine where if any item in your blueprint has �Simulate Physics� enabled, it�ll remove the root component. There are some workarounds but none were perfect, especially with how flexible I wanted the system to be. UE5 preview fixed some issues but I immediately found new ones.<br />
-There&#x27;s an interface event called UpdateCollision and some items might need to override this function. It�s default is in BP_SM_ItemPhysical and it <em>should</em> work in most projects.</p>
+<li><p>There&#x27;s a bug with the engine where if any item in your blueprint has <span style="color:slateblue">Simulate Physics</span> enabled, it&#x27;ll remove the root component. There are some workarounds but none were perfect, especially with how flexible I wanted the system to be. UE5 preview fixed some issues but I immediately found new ones.<br />
+There&#x27;s an interface event called <span style="color:brown">UpdateCollision</span> and some items might need to override this function. It&#x27;s default is in <span style="color:violet">BP_SM_ItemPhysical</span>and it <em>should</em> work in most projects.</p>
 </li>
-<li><p><span style="color:violet">WBP_Highlight</span> is slightly not in the position it’s supposed to be in. I’ve tried to solve this but it seems to be an issue with some floats getting truncated during some of the math. From my testing it was happening completely randomly so it’s been very challenging to diagnose. The Blueprint version is working just fine though. The performance difference between the two is almost none from my testing.</p>
+<li><p><span style="color:violet">WBP_Highlight</span> is slightly not in the position it&#x27;s supposed to be in. I’ve tried to solve this but it seems to be an issue with some floats getting truncated during some of the math. From my testing it was happening completely randomly so it’s been very challenging to diagnose. The Blueprint version is working just fine though. The performance difference between the two is almost none from my testing.</p>
 </li>
 <li><p>The <span style="color:violet">BP_PreviewActor</span>&#x27;s animation is snapping to frame 0 of the animation it is supposed to play whenever the preview is refreshed. This is an issue I’m trying to solve. You can of course replace my actor preview system with a normal preview system, but those require a specific workflow and actor component hierarchy setup, whereas mine does not.<br />
 This might take a while as I’m also trying to figure out a way to have particle effects also not get reset.</p>
@@ -224,6 +224,7 @@ This might take a while as I’m also trying to figure out a way to have particl
         <span>Common Problems</span>
     </h2>
 </doc-anchor-target>
+<p>These aren&#x27;t bugs, but problems that can be misinterpreted as bugs.</p>
 <ul>
 <li><p>The <span style="color:violet">WBP_Highlight</span> widget and <span style="color:violet">WBP_InventoryItem</span> widget padding doesn’t take into account any scaling their parent widgets have to do (like borders). So if you are getting issues with items being dropped in a different tile or an item not lining up properly, there is most likely an issue with your UMG hierarchy/scaling.<br />
 You might have this problem with scroll bars most of the time. An easy fix for that is to go into the ScrollBox, go into Scrollbar Padding, let&#x27;s say the scroll bar is on the right side, go into the right side padding and minus the thickness of the bar.</p>

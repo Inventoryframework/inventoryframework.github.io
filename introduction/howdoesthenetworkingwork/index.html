@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724931118103">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724946057573">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,11 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.724931118103" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.724946057573" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724931118103" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724946057573" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724931118103" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724946057573" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -184,12 +184,12 @@
         <span>How does the networking work?</span>
     </h1>
 </doc-anchor-target>
-<p>Certain inventory data can become quite large, especially with how many containers and items you allow in an inventory. But at the same time, we must store the data on the server, otherwise a client could modify their data before the StartComponent function is called and cheat the system. But to optimize, we try to simplify things. Players only receive data from components that they request data from and data from their own components, but also any update from components they are currently interacting with.</p>
-<p>The component keeps track of the players that are currently interacting with a component with the Listeners array, then whenever PlayerA moves, adds, removes or interacts with an item in some way, the component sends RPC calls to the other &quot;listeners&quot; so their widgets and data get updated.</p>
-<p>For functions that modifies a components data, such as moving an item or modifying an items stack count, you must remember that clients only have authority over their own component, they do not have authority over other components data.<br />
+<p>Certain inventory data can become quite large, especially with how many containers and items you allow in an inventory. To optimize, we try to simplify things. Players only receive data from components that they request data from and data from their own components, but also any update from components they are currently interacting with.</p>
+<p>The component keeps track of the players that are currently interacting with a component with the <span style="color:slateblue">Listeners</span> array, then whenever PlayerA moves, adds, removes or interacts with an item in some way, the component sends RPC calls to the other &quot;listeners&quot; so their widgets and data get updated.</p>
+<p>For functions that modifies a components data, such as moving an item or modifying an items stack count or modifying any other data, you must remember that clients only have authority over their own component, they do not have authority over other components data. This is simply how networking in Unreal Engine works.<br />
 Because of this, most functions require you to call the function on the component the client has authority over. Even though the item you are trying to modify is not on that component.<br />
 This is why, when you look at some of the source code, the functions are getting the component the item belongs to through its <span style="color:slateblue">UniqueID</span>.<span style="color:slateblue">ParentComponent</span> and modifying that component&#x27;s data through the component the client has authority over.</p>
-<p>For most functions that modify data in some way, only a single version of that function is available for you to call, and that function handles the replication for you. This is to simplify the amount of functions exposed as it can get very daunting to try and handle every replication scenario and making sure your calling the right function. If you wish to modify how the replication is handled, you can always go into the functions, modify them, or enable the server/client functions to be BlueprintCallable.</p>
+<p>For most functions that modify data in some way, only a single version of that function is available for you to call, and that function handles the replication for you. This is to simplify the amount of functions exposed as it can get very daunting to try and handle every replication scenario and making sure your calling the right function. If you wish to modify how the replication is handled, you can always go into the functions, modify them, or enable the server/client/internal functions to be BlueprintCallable.</p>
 
                                 
                                 <!-- Required only on API pages -->

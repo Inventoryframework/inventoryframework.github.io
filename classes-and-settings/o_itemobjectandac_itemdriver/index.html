@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724931118103">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724946057573">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>O_ItemObject and AC_ItemDriver</title>
     <meta name="title" content="O_ItemObject and AC_ItemDriver">
-    <meta name="description" content="Object Item and Actor Component Item Driver Blueprint Children: BP_O_ItemObject and BP_AC_ItemDriver" />
+    <meta name="description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Objects\\Parents\\O_ItemObject.h File Location:..." />
 
     <!-- Canonical -->
     <link rel="canonical" href="/classes-and-settings/o_itemobjectandac_itemdriver/" />
@@ -20,21 +20,21 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/classes-and-settings/o_itemobjectandac_itemdriver/">
     <meta property="og:title" content="O_ItemObject and AC_ItemDriver">
-    <meta property="og:description" content="Object Item and Actor Component Item Driver Blueprint Children: BP_O_ItemObject and BP_AC_ItemDriver">
+    <meta property="og:description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Objects\\Parents\\O_ItemObject.h File Location:...">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/classes-and-settings/o_itemobjectandac_itemdriver/">
     <meta property="twitter:title" content="O_ItemObject and AC_ItemDriver">
-    <meta property="twitter:description" content="Object Item and Actor Component Item Driver Blueprint Children: BP_O_ItemObject and BP_AC_ItemDriver">
+    <meta property="twitter:description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Objects\\Parents\\O_ItemObject.h File Location:...">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.724931118103" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.724946057573" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724931118103" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724946057573" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724931118103" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724946057573" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -184,8 +184,28 @@
         <span>O_ItemObject and AC_ItemDriver</span>
     </h1>
 </doc-anchor-target>
-<p>Object Item and Actor Component Item Driver<br />
-Blueprint Children: BP_O_ItemObject and BP_AC_ItemDriver</p>
+<doc-panels>
+   <doc-panel id="object-item" collapsed>
+       <template #title>Object Item</template>
+<p>File Location: Source\InventoryFrameworkPlugin\Public\Core\Objects\Parents\O_ItemObject.h<br />
+File Location: Source\InventoryFrameworkPlugin\Private\Core\Objects\Parents\O_ItemObject.cpp</p>
+   </doc-panel>
+   <doc-panel id="blueprint-child-bp-o-itemobject" collapsed>
+       <template #title>Blueprint Child: BP_O_ItemObject</template>
+<p>File Location: Content\Core\ActorParents\BP_O_ItemObject.uasset</p>
+   </doc-panel>
+</doc-panels>
+<doc-panels>
+   <doc-panel id="actor-component-item-driver" collapsed>
+       <template #title>Actor Component Item Driver</template>
+<p>File Location: Source\InventoryFrameworkPlugin\Public\Core\Components\AC_ItemDriver.h<br />
+File Location: Source\InventoryFrameworkPlugin\Public\Core\Components\AC_ItemDriver.cpp</p>
+   </doc-panel>
+   <doc-panel id="blueprint-child-bp-ac-itemdriver" collapsed>
+       <template #title>Blueprint Child: BP_AC_ItemDriver</template>
+<p>File Location: Content\Core\ActorParents\BP_AC_ItemDriver.uasset</p>
+   </doc-panel>
+</doc-panels>
 <hr />
 <p>These are instanced <span style="color:violet">UObjects</span>, which are known for very buggy behavior, especially when you add networking into the mix.<br />
 The way this system attempts to circumvent these problems is to create components which handle gameplay logic and attach it to the player.</p>
@@ -196,7 +216,8 @@ The way this system attempts to circumvent these problems is to create component
 Clients are able to request the creation of an <span style="color:violet">ItemDriver</span> and pass in a tag, which you can associate with a function. This prevents those pesky situations where you are working on client code, for example a widget, and are trying to activate a function inside an item driver.<br />
 The function <span style="color:brown">GetItemDriver</span> will create the driver for you, but if you are on the client and trying to create an <span style="color:violet">ItemDriver</span> set to <span style="color:slateblue">Both</span>, the function won’t be able to return it, because it has to send an RPC to the server which is not instant.</p>
 <p>This function allows you to pass in a <span style="color:slateblue">tag</span> which will trigger any function you have associated with the tag once the <span style="color:violet">ItemDriver</span> is replicated. Look at the code comment for <span style="color:violet">AC_ItemDriver.h</span> -&gt; <span style="color:brown">ActivateEvent</span>.<br />
-There is an annoying issue though, all variables that can be modified in blueprint will show up as editable variables in the instanced <span style="color:violet">UObjects</span> even if they aren’t set as Instance Editable (This might be a bug, if anyone knows a fix, please tell me). In the meantime, I’ve made it so any variables inside a <span style="color:green">DoNotShow</span> category or with no category at all will not show up here. You can change the behavior inside <span style="color:violet">O_ItemObject.h</span> in the UCLASS macro. Remember you can create sub categories like so; DoNotShow|MyNewCategory. This should help keep all variables that are meant to be hidden organized.<br />
+If you are unfamiliar with GameplayTags, I highly recommend you start using them as they are extremely useful.</p>
+<p>There is an annoying issue though, all variables that can be modified in blueprint will show up as editable variables in the instanced <span style="color:violet">UObjects</span> even if they aren’t set as Instance Editable (This might be a bug, if anyone knows a fix, please tell me). In the meantime, I’ve made it so any variables inside a <span style="color:green">DoNotShow</span> category or with no category at all will not show up here. You can change the behavior inside <span style="color:violet">O_ItemObject.h</span> in the UCLASS macro. Remember you can create sub categories like so; DoNotShow|MyNewCategory. This should help keep all variables that are meant to be hidden organized.<br />
 You can of course inverse this behavior in C++ by using the ShowCategory UCLASS specifier.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">

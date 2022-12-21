@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724931118103">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724946057573">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>W_Highlight</title>
     <meta name="title" content="W_Highlight">
-    <meta name="description" content="Widget Highlight Blueprint Child: WBP_Highlight" />
+    <meta name="description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Widgets\\W_Highlight.h File Location:..." />
 
     <!-- Canonical -->
     <link rel="canonical" href="/classes-and-settings/w_highlight/" />
@@ -20,21 +20,21 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/classes-and-settings/w_highlight/">
     <meta property="og:title" content="W_Highlight">
-    <meta property="og:description" content="Widget Highlight Blueprint Child: WBP_Highlight">
+    <meta property="og:description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Widgets\\W_Highlight.h File Location:...">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/classes-and-settings/w_highlight/">
     <meta property="twitter:title" content="W_Highlight">
-    <meta property="twitter:description" content="Widget Highlight Blueprint Child: WBP_Highlight">
+    <meta property="twitter:description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Widgets\\W_Highlight.h File Location:...">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.724931118103" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.724946057573" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724931118103" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724946057573" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724931118103" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724946057573" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -184,8 +184,17 @@
         <span>W_Highlight</span>
     </h1>
 </doc-anchor-target>
-<p>Widget Highlight<br />
-Blueprint Child: WBP_Highlight</p>
+<doc-panels>
+   <doc-panel id="widget-highlight" collapsed>
+       <template #title>Widget Highlight</template>
+<p>File Location: Source\InventoryFrameworkPlugin\Public\Core\Widgets\W_Highlight.h<br />
+File Location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_Highlight.cpp</p>
+   </doc-panel>
+   <doc-panel id="blueprint-child-wbp-highlight" collapsed>
+       <template #title>Blueprint Child: WBP_Highlight</template>
+<p>File Location: Content\Core\Widgets\DragAndSplit\WBP_Highlight.uasset</p>
+   </doc-panel>
+</doc-panels>
 <hr />
 <p>The majority of the logic for this widget is done in C++ as it’s doing a lot of math on tick to achieve its animation style. There is a pure BP version of the tick logic in <span style="color:violet">WBP_Highlight</span> in case you aren’t a programmer and want to try out your own animation system or if you just want a blueprint version to read to better understand the C++ code if you aren’t familiar with C++.</p>
 <p>There will be a second version without an animation style and will be designed more around performance (currently it can be a bit expensive if you have hundreds of tiles in one container) but that will be in a later version.</p>

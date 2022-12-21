@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724931118103">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724946057573">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,11 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.724931118103" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.724946057573" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724931118103" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724946057573" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724931118103" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724946057573" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -185,8 +185,10 @@
     </h1>
 </doc-anchor-target>
 <ol>
-<li>Item drivers should be destroyed after their logic is complete, especially if it’s from a stackable item. The reason being that it’s really hard or almost impossible to keep track of the stack it came from as that stack can be put into other stacks, split or fully used.</li>
-<li>You must always keep in mind if the item driver is running logic that’s on a timer,  you need to be aware that the item the driver belongs to might become invalid at any point. There is always the chance the item that owns the driver might get destroyed during the timer logic. I also recommend “locking” the player from interacting with the item during this timer or having some sort of failsafe if the player manipulates the item in some way while the timer is still running (For example; a gun playing its pickup animation and the player drops it mid-animation)</li>
+<li><p>Item drivers should be destroyed after their logic is complete, especially if it’s from a stackable item. The reason being that it’s really hard or almost impossible to keep track of the stack it came from as that stack can be put into other stacks, split or fully used.</p>
+</li>
+<li><p>You must always keep in mind if the item driver is running logic that’s on a timer,  you need to be aware that the item the driver belongs to might become invalid at any point. There is always the chance the item that owns the driver might get destroyed during the timer logic. I also recommend “locking” the player from interacting with the item during this timer or having some sort of failsafe if the player manipulates the item in some way while the timer is still running (For example; a gun playing its pickup animation and the player drops it mid-animation)</p>
+</li>
 </ol>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
