@@ -1,6 +1,10 @@
 # W_Attachment Parent
-Widget Attachment Parent
-Blueprint Child: WBP_Attachment
+==- Widget Attachment Parent
+File Location: Source\InventoryFrameworkPlugin\public\Core\Widgets\W_AttachmentParent.h
+File Location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_AttachmentParent.cpp
+==- Blueprint Child: WBP_Attachment
+File Location: Content\Core\Widgets\WBP_AttachmentParent.uasset
+==-
 
 ---
 

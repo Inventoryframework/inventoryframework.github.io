@@ -2,8 +2,12 @@
 tags: [InventoryComponent]
 ---
 # AC_Inventory
-Actor Component Inventory
-Blueprint Child: BP_AC_Inventory
+==- Actor Component Inventory
+File Location: Source\InventoryFrameworkPlugin\Public\Core\Components\AC_Inventory.h
+File Location: Source\InventoryFrameworkPlugin\Private\Core\Components\AC_Inventory.cpp
+==- Blueprint Child: BP_AC_Inventory
+File Location: Content\Core\Components\BP_AC_Inventory.uasset
+==-
 
 ---
 

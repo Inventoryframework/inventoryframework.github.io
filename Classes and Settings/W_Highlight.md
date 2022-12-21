@@ -1,6 +1,11 @@
 # W_Highlight
-Widget Highlight
-Blueprint Child: WBP_Highlight
+
+==- Widget Highlight
+File Location: Source\InventoryFrameworkPlugin\Public\Core\Widgets\W_Highlight.h
+File Location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_Highlight.cpp
+==- Blueprint Child: WBP_Highlight
+File Location: Content\Core\Widgets\DragAndSplit\WBP_Highlight.uasset
+==-
 
 ---
 

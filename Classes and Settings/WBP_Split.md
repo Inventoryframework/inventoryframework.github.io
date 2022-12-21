@@ -1,5 +1,7 @@
 # WBP_Split
-Widget Blueprint Split
+==- Widget Blueprint Split
+File Location: Core\Widgets\DragAndSplit\WBP_Split/uasset
+==-
 
 ---
 

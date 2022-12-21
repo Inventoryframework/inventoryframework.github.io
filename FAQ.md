@@ -19,7 +19,7 @@ At the end of the day, crafting systems just require item data and some form of 
 I might change my mind someday and attempt to implement some sort of abstract base, similar to what this plugin attempts to do for inventory systems.
 
 ### Q: Will stats/attributes or ability systems of any kind be added?
-A: No. I believe most people should be using the Gameplay Ability System framework or something similar and there are a few ways to implement that system (I personally suggest [GAS Companion](https://www.unrealengine.com/marketplace/en-US/product/gas-companion) from the marketplace). Some people also already have a stat/attribute or ability system in place and I do not want to step on their toes.
+A: No. I believe most people should be using the Gameplay Ability System framework or something similar and there are a few ways to implement that system (I personally suggest <a href="https://www.unrealengine.com/marketplace/en-US/product/gas-companion" target="_blank">GAS Companion</a> from the marketplace). Some people also already have a stat/attribute or ability system in place and I do not want to step on their toes.
 
 ### Q: How do you add more variables to items and create new item types?
 A: (Insert video tutorial here)

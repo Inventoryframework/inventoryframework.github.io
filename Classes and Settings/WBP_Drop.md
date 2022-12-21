@@ -3,7 +3,10 @@ tags:
 ---
 
 # WBP_Drop
-Widget Blueprint Drop
+==- Widget Blueprint Drop
+File Location: Content\Core\Widgets\DragAndSplit\WBP_Drop.uasset
+==-
+
 ---
 
 A simple widget that handles dropping an item. There’s nothing special about this, the context menu widget also has a drop function.

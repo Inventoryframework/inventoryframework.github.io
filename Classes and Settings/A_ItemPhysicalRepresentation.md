@@ -3,9 +3,12 @@ tags: [item]
 ---
 
 # A_ItemPhysicalRepresentation
-Actor Item Physical Representation
-Blueprint Child: BP_SM_ItemPhysical
-
+==- Actor Item Physical Representation
+File location: Source\InventoryFrameworkPlugin\Public\Core\Widgets\W_Tile.h
+File location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_Tile.cpp
+==- Blueprint Child: BP_SM_ItemPhysical
+File location: Content\Core\Widgets\WBP_Tile.uasset
+===
 ---
 
 This is your physical representation of the item. If you already have items/weapons of any sorts, you will want to reparent those classes to this.

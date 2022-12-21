@@ -3,7 +3,10 @@ tags: [underrevision]
 ---
 
 # BP_PreviewActor
-Blueprint Preview Actor
+
+==- Blueprint Preview Actor
+File Location: Content\Core\Preview\BP_PreviewActor.uasset
+==-
 
 !!!danger
 Under revision

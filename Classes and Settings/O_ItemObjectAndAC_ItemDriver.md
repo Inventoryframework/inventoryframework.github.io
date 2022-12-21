@@ -3,8 +3,19 @@ tags: [item]
 ---
 
 # O_ItemObject and AC_ItemDriver
-Object Item and Actor Component Item Driver
-Blueprint Children: BP_O_ItemObject and BP_AC_ItemDriver
+==- Object Item
+File Location: Source\InventoryFrameworkPlugin\Public\Core\Objects\Parents\O_ItemObject.h
+File Location: Source\InventoryFrameworkPlugin\Private\Core\Objects\Parents\O_ItemObject.cpp
+==- Blueprint Child: BP_O_ItemObject
+File Location: Content\Core\ActorParents\BP_O_ItemObject.uasset
+==-
+
+==- Actor Component Item Driver
+File Location: Source\InventoryFrameworkPlugin\Public\Core\Components\AC_ItemDriver.h
+File Location: Source\InventoryFrameworkPlugin\Public\Core\Components\AC_ItemDriver.cpp
+==- Blueprint Child: BP_AC_ItemDriver
+File Location: Content\Core\ActorParents\BP_AC_ItemDriver.uasset
+==-
 
 ---
 
@@ -22,5 +33,7 @@ Clients are able to request the creation of an <span style="color:violet">ItemDr
 The function <span style="color:brown">GetItemDriver</span> will create the driver for you, but if you are on the client and trying to create an <span style="color:violet">ItemDriver</span> set to <span style="color:slateblue">Both</span>, the function won’t be able to return it, because it has to send an RPC to the server which is not instant. 
 
 This function allows you to pass in a <span style="color:slateblue">tag</span> which will trigger any function you have associated with the tag once the <span style="color:violet">ItemDriver</span> is replicated. Look at the code comment for <span style="color:violet">AC_ItemDriver.h</span> -> <span style="color:brown">ActivateEvent</span>.
+If you are unfamiliar with GameplayTags, I highly recommend you start using them as they are extremely useful.
+
 There is an annoying issue though, all variables that can be modified in blueprint will show up as editable variables in the instanced <span style="color:violet">UObjects</span> even if they aren’t set as Instance Editable (This might be a bug, if anyone knows a fix, please tell me). In the meantime, I’ve made it so any variables inside a <span style="color:green">DoNotShow</span> category or with no category at all will not show up here. You can change the behavior inside <span style="color:violet">O_ItemObject.h</span> in the UCLASS macro. Remember you can create sub categories like so; DoNotShow|MyNewCategory. This should help keep all variables that are meant to be hidden organized.
 You can of course inverse this behavior in C++ by using the ShowCategory UCLASS specifier. 

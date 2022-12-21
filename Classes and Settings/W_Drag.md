@@ -1,6 +1,11 @@
 # W_Drag
-Widget Drag
-Blueprint Child: WBP_Drag
+
+==- Widget Drag
+File Location: Source\InventoryFrameworkPlugin\Public\Core\Widgets\W_Drag.h
+File Location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_Drag.cpp
+==- Blueprint Child: WBP_Drag
+File Location: Content\Core\Widgets\DragAndSplit\WBP_Drag.uasset
+==-
 
 ---
 

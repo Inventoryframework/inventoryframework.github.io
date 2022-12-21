@@ -3,7 +3,10 @@ tags: [Item]
 ---
 
 # DA_CoreItem
-Data Asset Core Item
+==- Data Asset Core Item
+File location: Source\InventoryFrameworkPlugin\Private\Core\Items\DA_CoreItem.h
+File Location: Source\InventoryFrameworkPlugin\Public\Core\Items\DA_CoreItem.cpp
+==-
 
 ---
 

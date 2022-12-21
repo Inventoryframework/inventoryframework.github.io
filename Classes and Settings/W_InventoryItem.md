@@ -1,6 +1,10 @@
 # W_InventoryItem
-Widget Inventory Item
-Blueprint Child: WBP_InventoryItem
+==- Widget Inventory Item
+File Location: Source\InventoryFrameworkPlugin\Public\Core\Widgets\W_InventoryItem.h
+File Location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_InventoryItem.cpp
+==- Blueprint Child: WBP_InventoryItem
+File Location: Content\Core\Widgets
+==-
 
 ---
 

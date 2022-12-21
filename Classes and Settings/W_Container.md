@@ -1,6 +1,11 @@
 # W_Container
-Widget Container
-Blueprint Child: WBP_Container
+
+==-Widget Container
+File Location: Source\InventoryFrameworkPlugin\Public\Core\Widgets\W_Container.h
+File Location: Source\InventoryFrameworkPlugin\private\Core\Widgets\W_Container.cpp
+==- Blueprint Child: WBP_Container
+File Location: Content\Core\Widgets\WBP_Container.uasset
+==-
 
 ---
 
