@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724946415393">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.724947342702">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -32,11 +32,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.724946415393" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.724947342702" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724946415393" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.724947342702" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724946415393" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.724947342702" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -203,6 +203,7 @@ Widgets also can’t be transported through a network, so if multiplayer is impo
 <li><span style="color:violet">W_Tile</span> also have a reference to the item on top of them, but to reduce memory, tiles have a <span style="color:slateblue">OwningItem</span> integer which references the top left tile of the item, which holds the <span style="color:slateblue">ParentItem</span> reference variable.<br />
 So if you are inside the <span style="color:violet">W_Tile</span> and need to get the item it contains, you would use <span style="color:slateblue">ParentContainer</span> -&gt; <span style="color:slateblue">Tiles</span>[ParentTile] -&gt; <span style="color:slateblue">OwningItem</span> -&gt; <span style="color:brown">GetItemData</span>. Remember to check if <span style="color:slateblue">ParentTile</span> is -1 first, as that means this tile widget doesn’t have any item inside of it.</li>
 </ol>
+<hr />
 <doc-anchor-target id="network-optimizations">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#network-optimizations">#</doc-anchor-trigger>
