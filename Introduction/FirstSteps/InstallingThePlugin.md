@@ -10,7 +10,7 @@ I also recommend using some form of Source Control for easier updating.
 
 This does NOT cover how to install an IDE such as Rider or Visual Studio. You should already have an IDE installed.
 There are also a few demo files that you’ll want to replace and enum entries you need to rename to fit your project.
-[Unreal's docs for setting up Visual Studio](https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DevelopmentSetup/VisualStudioSetup/)
+<a href="https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DevelopmentSetup/VisualStudioSetup/" target="_blank">Unreal's docs for setting up Visual Studio</a>
 
 1. If your project doesn’t have any C++ code, you will want to go into the engine and at the top go to **Tools -> New C++ Class**. It doesn’t matter what you create here or where you save it. This is just to get the engine to generate all the files you need to compile the plugin.
 2. Go to your **Unreal Engine installation -> Engine -> Plugins -> Marketplace** and copy the InventoryFrameworkPlugin.

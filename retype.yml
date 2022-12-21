@@ -10,9 +10,12 @@ markdown:
 links:
 - text: Marketplace
   link: https://retype.com/guides/getting-started/
+  target: blank
 - text: Discord
   link: https://retype.com/guides/getting-started/
+  target: blank
 - text: Trello
   link: https://trello.com/b/pE2DJRlb/inventory-framework-plugin
+  target: blank
 footer:
   copyright: "&copy; Copyright {{ year }}. All rights reserved."
