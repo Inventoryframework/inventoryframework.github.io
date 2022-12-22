@@ -12,7 +12,7 @@ File Location: Content\Core\ActorParents\BP_O_ItemObject.uasset
 
 ==- Actor Component Item Driver
 File Location: Source\InventoryFrameworkPlugin\Public\Core\Components\AC_ItemDriver.h
-File Location: Source\InventoryFrameworkPlugin\Public\Core\Components\AC_ItemDriver.cpp
+File Location: Source\InventoryFrameworkPlugin\Private\Core\Components\AC_ItemDriver.cpp
 ==- Blueprint Child: BP_AC_ItemDriver
 File Location: Content\Core\ActorParents\BP_AC_ItemDriver.uasset
 ==-
