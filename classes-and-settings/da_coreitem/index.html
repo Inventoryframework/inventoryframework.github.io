@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725027826956">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725317788427">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,11 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.725027826956" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.725317788427" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.725027826956" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.725317788427" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.725027826956" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.725317788427" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -190,11 +190,11 @@
 File Location: Source\InventoryFrameworkPlugin\Private\Core\Items\DA_CoreItem.cpp</p>
 </doc-panel>
 <hr />
-<p>This is the data asset that is responsible for the base information for your items. I highly suggest looking at the <span style="color:violet">DA_CoreItem.h</span> file to see all the settings, functions and comments.</p>
-<p>You can show and hide certain settings depending on your setup, and I use that a lot with the <span style="color:slateblue">ItemType</span> enum. Look at all the options, check out the meta properties (EditCondition and EditConditionHides) to see how it’s done, and you can then implement your own options and rulesets for their visibility.</p>
+<p>This is the data asset that is responsible for the base information for your items. I highly suggest looking at the <span style="color:violet"><strong>DA_CoreItem.h</strong></span> file to see all the settings, functions and comments.</p>
+<p>You can show and hide certain settings depending on your setup, and I use that a lot with the <span style="color:slateblue"><strong>ItemType</strong></span> enum. Look at all the options, check out the meta properties (EditCondition and EditConditionHides) to see how it’s done, and you can then implement your own options and rulesets for their visibility.</p>
 <p>Keep in mind, these settings are only HIDDEN, not disabled in the data asset editor, you can still access those variables from the data asset in blueprints and C++ and you have to remember that when making your functions and gameplay logic.<br />
-One of the most important settings to set up here is <span style="color:slateblue">EItemType</span> as many functions use this enum to do casts to the proper children of this asset. Whenever you make a new child, remember to go into the .cpp file and set the default value. You can see an example inside all the .cpp children of this.</p>
-<p>Currently your item actors must be a child of A_ItemPhysicalPresentation. If you want to change this, you can change it like so:</p>
+One of the most important settings to set up here is <span style="color:slateblue"><strong>EItemType</strong></span> as many functions use this enum to do casts to the proper children of this asset. Whenever you make a new child, remember to go into the .cpp file and set the default value. You can see an example inside all the .cpp children of this.</p>
+<p>Currently your item actors must be a child of <span style="color:violet"><strong>A_ItemPhysicalPresentation</strong></span>. If you want to change this, you can change it like so:</p>
 <doc-tabs>
 <doc-tab id="from">
 <template #title>From</template>
