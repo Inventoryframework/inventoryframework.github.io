@@ -19,5 +19,5 @@ The only con regarding data assets is you don’t get a nice table view like you
 
 - Native Controller support is not yet added but is planned.
 - Split screen support is not something I will be adding.
-- The plugin was designed to be [installed locally](https://inventoryframework.github.io/introduction/firststeps/installingtheplugin/) to your project, not the engine. With how the marketplace works and how the engine works, it was much simpler to make this asset a plugin.
+- The plugin was designed to be [**installed locally**](https://inventoryframework.github.io/introduction/firststeps/installingtheplugin/) to your project, not the engine. With how the marketplace works and how the engine works, it was much simpler to make this asset a plugin.
 - Many things have been designed to be as abstract as possible and assume as little as possible about YOUR project and creation process. I do not want to dictate any creative vision and I do not want to step on any toes. I’ve tried to keep the system as painless as possible for you to integrate YOUR systems and assets with this inventory system, such as an attribute, ability or crafting system.

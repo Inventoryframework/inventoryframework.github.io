@@ -13,7 +13,7 @@ This is to achieve four things:
 3. Since widgets have way fewer references, there is less work to be done to manage widgets getting garbage collected properly.
 4. Designers are able to create new widgets and prototype much faster since all the data they need about containers and items is always available from the component.
 
-<span style="color:slateblue">ContainerSettings</span> is an array of all the settings your designers will use and some settings only the programmers will use, and with all the settings combined you can figure out everything about that container.
-When creating a widget for a container, the widget uses a <span style="color:slateblue">UniqueID</span> to find out what container it is representing.
-Items differentiate themselves from each other by using a <span style="color:slateblue">UniqueID</span> as items can have the same name, same data asset and so forth. A component can not give items or containers the same <span style="color:slateblue">UniqueID</span> twice. This is essential for functions to work properly.
+<span style="color:slateblue">**ContainerSettings**</span> is an array of all the settings your designers will use and some settings only the programmers will use, and with all the settings combined you can figure out everything about that container.
+When creating a widget for a container, the widget uses a <span style="color:slateblue">**UniqueID**</span> to find out what container it is representing.
+Items differentiate themselves from each other by using a <span style="color:slateblue">**UniqueID**</span> as items can have the same name, same data asset and so forth. A component can not give items or containers the same <span style="color:slateblue">**UniqueID**</span> twice. This is essential for functions to work properly.
 The component is designed to live on individual actors, not the player controller.
