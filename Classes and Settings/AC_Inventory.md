@@ -40,3 +40,5 @@ If the item widget is available, it'll also call:
 <span style="color:violet">**W_InventoryItem**</span> -> <span style="color:brown">**ParentItemAddedToNetworkingQueue**</span> / <span style="color:brown">**ParentItemRemovedFromNetworkingQueue**</span>
 
 These events are where your designers hook in any logic that alerts the player the item is pending some networking event. This is most often seen as making the item's icon gray-scale or flashing the icon.
+
+The Network Queue system is only relevant for clients, it's never used in single player or listen server scenarios.
