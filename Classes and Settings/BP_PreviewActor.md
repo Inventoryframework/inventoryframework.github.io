@@ -21,7 +21,8 @@ It currently supports <span style="color:violet">**SceneComponent**</span>, <spa
 
 ==- Notes regarding <span style="color:violet">**ChildActorComponent**</span>'s
 
-There is currently no way to disable <span style="color:brown">**BeginPlay**</span>, where as with Actor's you can with a ExposedOnSpawn boolean at the beginning of your BeginPlay logic. If you have any logic connected to your <span style="color:brown">**BeginPlay**</span>, you will need to find a way to disable it for the preview.
+1. There is currently no way to disable <span style="color:brown">**BeginPlay**</span>, where as with Actor's you can with a ExposedOnSpawn boolean at the beginning of your BeginPlay logic. If you have any logic connected to your <span style="color:brown">**BeginPlay**</span>, you will need to find a way to disable it for the preview if there's any logic you don't want the preview to run.
+2. If possible, avoid <span style="color:violet">**ChildActorComponent**</span>'s. They are extremely prone to bugs and odd behaviour, and they don't seem to play well with networking.
 
 ===
 
