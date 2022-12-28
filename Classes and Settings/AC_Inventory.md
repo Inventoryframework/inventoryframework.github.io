@@ -19,13 +19,24 @@ Some examples would be when the player opens their inventory, but you don’t wa
 For pickups, I recommend calling <span style="color:brown">**StartComponent**</span> on either <span style="color:brown">**BeginPlay**</span> or when the player is close to the item and has line of sight of the item, as items that have a spawn chance associated with it need that spawn chance rolled.
 The item might also have items attached to it and be visible, such as a sight on a gun, which also might have a spawn chance and you don’t want that sight to be visible if it failed its spawn chance.
 
+## Settings
 The first category is <span style="color:green">**Settings**</span> and most of these are instance editable, so you’ll be spending most of your time with these settings for your item actors.
 
 <span style="color:slateblue">**ContainerSettings**</span> is where the majority of the work is done. I recommend going into <span style="color:violet">**AC_Inventory.h**</span> and find <span style="color:slateblue">**FS_ContainerSettings**</span>  and looking at the comments for everything as there are some variables that aren’t instance editable.
 
-
-The second category is <span style="color:green">**UserSettings**</span> . It’s up to your settings system to update these if you want the player to be able to change these settings during runtime.
+## User Settings
+The second category is <span style="color:green">**UserSettings**</span> and these are settings that are meant to be used by the player during runtime. It’s up to your settings system to update these if you want the player to be able to change these settings during runtime.
 <span style="color:slateblue">**RotateKey**</span> : While dragging an item, the player might want to rotate an item. When they press this key, it’ll rotate.
 <span style="color:slateblue">**SplitKey**</span> : While dragging a stackable item, when they drop the item onto a valid tile, they can split an item into two stacks.
 
-Third category is <span style="color:Slateblue">**ContainerSettings**</span>  and this is where most of the colors used by the system are dictated. This is set in here so all the widgets can fetch colors easily and so designers can extend any color settings (for example color blind settings) to the user settings. If you want to add any color settings, this place is the preferred place. Item rarity colors are handled in here.
+## Color settings
+Third category is <span style="color:Slateblue">**ColorSettings**</span>  and this is where most of the colors used by the system are dictated. This is set in here so all the widgets can fetch colors easily and so designers can extend any color settings (for example color blind settings) to the user settings. If you want to add any color settings, this place is the preferred place. Item rarity colors are handled in here.
+
+## Network Queue
+The component has an array called <span style="color:Slateblue">**NetworkQueue**</span>, these are items that are waiting for a server RPC to finish. It is up to you to call <span style="color:brown">**AddItemToNetworkQueue**</span> and <span style="color:brown">**RemoveItemFromNetworkQueue**</span>. This will automatically call: 
+<span style="color:violet">**AC_Inventory**</span> -> <span style="color:brown">**ItemAddedToNetworkingQueue**</span> / <span style="color:brown">**ItemRemovedFromNetworkingQueue**</span>.
+
+If the item widget is available, it'll also call: 
+<span style="color:violet">**W_InventoryItem**</span> -> <span style="color:brown">**ParentItemAddedToNetworkingQueue**</span> / <span style="color:brown">**ParentItemRemovedFromNetworkingQueue**</span>
+
+These events are where your designers hook in any logic that alerts the player the item is pending some networking event. This is most often seen as making the item's icon gray-scale or flashing the icon.
