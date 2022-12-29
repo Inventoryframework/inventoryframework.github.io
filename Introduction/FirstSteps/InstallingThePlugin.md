@@ -21,3 +21,6 @@ There are also a few demo files that you’ll want to replace and enum entries y
 7. (Optional) You can now uninstall the plugin from the engine through the Epic Games Launcher, though you won't get notifications from the Epic Games client whenever an update is available.
 
 Everything in the demo folder is designed to be replaced by your assets/Blueprints. It is only there so you don’t get any errors on startup.
+
+---
+Once you are done installing the plugin, I **HIGHLY** advise you make children of nearly every class in this system once you start working with it. This should make updating in the future a lot easier and gives you a lot more customizability.
