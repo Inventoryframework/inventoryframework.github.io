@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725664108274">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725666552140">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,11 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.4.0.725664108274" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.725666552140" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.725664108274" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.725666552140" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.725664108274" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.725666552140" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -202,7 +202,7 @@
 </div>
 <ol>
 <li><p>There are two components, one is the C++ parent and the other is the blueprint child of the C++ component. There is nothing stopping you from making your own BP component with the C++ component as its parent but I still recommend using the Blueprint component. You can also make a blueprint child of the blueprint component, which is the recommended path if you are going to override any functions.<br />
-You want to add it to your actor, if you&#x27;re making an item, I suggest using BP_SM_PhysicalItem as its parent and the component will automatically get added.</p>
+You want to add your component to your actor, if you&#x27;re making an item, I suggest using <span style="color:violet"><strong>BP_SM_PhysicalItem</strong></span>  as its parent and the component will automatically get added. Do note though that the item Data Asset only accepts children of <span style="color:violet"><strong>BP_SM_PhysicalItem</strong></span>. <a href="https://inventoryframework.github.io/classes-and-settings/da_coreitem/#changing-the-physical-actor-class">Go here</a> if you want to change this behavior</p>
 </li>
 <li><p>Bind the containers to your widget.<br />
 Go into your widget and add WBP_Container or any children of that widget to your layout. Then go into your graph and implement the I_Inventory interface. Find the GetContainers interface function and make an array and add your containers. This order is important as the component often searches for things beginning at index 0, so your most used containers should go first to optimize speed.</p>
