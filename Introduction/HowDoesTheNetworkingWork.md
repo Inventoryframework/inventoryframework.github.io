@@ -82,3 +82,10 @@ void S_IncreaseItemCount(FS_UniqueID ItemID, int32 Count)
 ===
 
 ---
+## Unique ID
+
+The UniqueID is a simple method to quickly find containers or items, or ensuring containers or items are valid, and for linking some object to an item (Such as the [item driver's](https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/)). This is covered in multiple sections in the documentation, but here are some things to consider for networking.
+
+- Clients are unable to generate UniqueID's. If a function requires the client to assign a UniqueID to an item or a container, it must receive it from the server. You can see an example in <span style="color:violet">**AC_Inventory.h**</span> -> <span style="color:brown">**TryAddNewItem**</span>
+- UniqueID's scale extremely well with RPC's. The engine is smart enough to recognize if the object reference from multiple UniqueID's is identical, it'll compress that information. With that in mind, the only scaling factor is the integer number. Where as with item or container structs, there's a lot of information that isn't relevant to most functions and the engine doesn't compress that irrelevant information. It is advised to use UniqueID as often as possible, but also keep the above safety methods in mind.
+- There's no way to evaluate from a UniqueID if it was assigned to an item or container. It is not recommended to add more information to this struct as it's meant to be so small and simple, so that it gets replicated extremely quickly and cheaply.
