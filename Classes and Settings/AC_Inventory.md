@@ -33,12 +33,14 @@ The second category is <span style="color:green">**UserSettings**</span> and the
 Third category is <span style="color:Slateblue">**ColorSettings**</span>  and this is where most of the colors used by the system are dictated. This is set in here so all the widgets can fetch colors easily and so designers can extend any color settings (for example color blind settings) to the user settings. If you want to add any color settings, this place is the preferred place. Item rarity colors are handled in here.
 
 ## Network Queue
-The component has an array called <span style="color:Slateblue">**NetworkQueue**</span>, these are items that are waiting for a server RPC to finish. It is up to you to call <span style="color:brown">**AddItemToNetworkQueue**</span> and <span style="color:brown">**RemoveItemFromNetworkQueue**</span>. This will automatically call: 
-<span style="color:violet">**AC_Inventory**</span> -> <span style="color:brown">**ItemAddedToNetworkingQueue**</span> / <span style="color:brown">**ItemRemovedFromNetworkingQueue**</span>.
+The component has an array called <span style="color:Slateblue">**NetworkQueue**</span>, these are items that are waiting for a server RPC to finish. It is up to you to call <span style="color:brown">**C_AddItemToNetworkQueue**</span> and <span style="color:brown">**C_RemoveItemFromNetworkQueue**</span>. This will automatically call <span style="color:brown">**ItemAddedToNetworkingQueue**</span> or <span style="color:brown">**ItemRemovedFromNetworkQueue**</span>.
 
 If the item widget is available, it'll also call: 
 <span style="color:violet">**W_InventoryItem**</span> -> <span style="color:brown">**ParentItemAddedToNetworkingQueue**</span> / <span style="color:brown">**ParentItemRemovedFromNetworkingQueue**</span>
 
 These events are where your designers hook in any logic that alerts the player the item is pending some networking event. This is most often seen as making the item's icon gray-scale or flashing the icon.
+
+You will want to implement some way of preventing players from interacting with items that are pending a network event, either by making the widget uninteractable or through code. You can check if an item is in the queue by using:
+<span style="color:violet">**BPFL_InventoryFunctions.h**</span> -> <span style="color:brown">**IsItemInNetworkQueue**</span>
 
 The Network Queue system is only relevant for clients, it's never used in single player or listen server scenarios.
