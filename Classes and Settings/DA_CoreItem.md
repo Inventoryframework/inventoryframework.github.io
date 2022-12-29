@@ -17,6 +17,8 @@ You can show and hide certain settings depending on your setup, and I use that a
 Keep in mind, these settings are only HIDDEN, not disabled in the data asset editor, you can still access those variables from the data asset in blueprints and C++ and you have to remember that when making your functions and gameplay logic.
 One of the most important settings to set up here is <span style="color:slateblue">**EItemType**</span> as many functions use this enum to do casts to the proper children of this asset. Whenever you make a new child, remember to go into the .cpp file and set the default value. You can see an example inside all the .cpp children of this.
 
+---
+## Changing the Physical Actor class
 Currently your item actors must be a child of <span style="color:violet">**A_ItemPhysicalPresentation**</span>. If you want to change this, you can change it like so:
 +++ From
 ```
