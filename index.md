@@ -1,7 +1,11 @@
 # Inventory Framework Plugin
 
-#### Last updated: 21st December, 2022
-#### Latest version: 1.0.0
+#### Last update: 29th December, 2022
+#### Latest version: Still under development
+
+!!!danger
+This plugin has not released yet, everything is still under review and can be spontaneously removed or changed.
+!!!
 
 ## What is the Inventory Framework Plugin?
 
@@ -19,13 +23,7 @@ What this provides is the C++ foundation for your programmers and a good Bluepri
 
 It is NOT an inventory to fully replicate the mechanics of any specific game. If you want your system to behave like a specific game, you will have to implement those specific mechanics yourself. This system does try to provide you with the functions and data to replicate most inventory systems.
 
-This plugin does not provide an interaction system for you, but an interface system is integrated as that's the foundation of nearly every interaction system I've seen. This is done so it's more flexible to a project's interaction system. Some use on-click, some use linetrace or something else, but at the heart of most of them is an interface handling the interaction. This is designed to be replaced, as most people already have an interaction system already in place.
-
-This plugin does not contain any game-ready art, only demo-ready art. This is purely an inventory system for you to integrate with your game. This is mainly done to reduce bloat and integration pains.
-
-It is advised to have some C++ knowledge or have access to someone who has C++ knowledge before buying this plugin, but it is not necessary.
-
-If you have any issues or questions neither the videos or documentation answer then feel free to message me on Discord or join the discord channel.
+If you have any issues or questions neither the videos or documentation answer then feel free to message me on Discord (Variann#8404) or join the discord channel.
 You can look at the FAQ for more info.
 
 ## Color Sheet:

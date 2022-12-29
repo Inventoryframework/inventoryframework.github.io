@@ -28,5 +28,8 @@ A: (Insert video tutorial here)
 A: No, with the exception of some basic things like the Tile Icon and some other things, just enough so you don’t get any compile errors and can interact with the system before you implement your art.
 I dislike assets that sell themselves as one thing, but then start padding the asset with things that aren’t relevant to what the asset is advertising, which just raises the price and most people just end up removing those extra assets anyways. This is an inventory system and will always be just an inventory system.
 
+### Q: Does the plugin feature an interaction system?
+A: This plugin does not provide a fleshed-out interaction system for you, but an interface system is integrated in the demo's as that's the foundation of nearly every interaction system I've seen. This is done so it's more flexible to a project's interaction system. Some use on-click, some use linetrace or something else, but at the heart of most of them is an interface handling the interaction. This is designed to be replaced, as most people already have an interaction system already in place.
+
 ### Q: Will I be adding X feature/system? For example item weight.
 A: Only if it’s a highly requested feature, only then will I either implement it into the base asset itself or make a youtube tutorial on how to implement it yourself.
