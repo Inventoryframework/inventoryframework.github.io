@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725752774437">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725752797057">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,12 +30,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.725752774437" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.725752797057" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.725752774437" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.725752797057" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.725752774437" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.725752774437" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.725752797057" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.725752797057" defer></script>
     <script id="mermaid-js" type="text/javascript" src="../../resources/js/mermaid.js?v=2.4.0" defer></script>
 </head>
 <body>
@@ -195,7 +195,7 @@
 </doc-anchor-target>
 <p>Certain inventory data can become quite large, especially with how many containers and items you allow in an inventory. To optimize, we try to simplify things. Players only receive data from components that they request data from and data from their own components, but also any update from components they are currently interacting with.</p>
 <p>The component keeps track of the players that are currently interacting with a component with the <span style="color:slateblue"><strong>Listeners</strong></span> array, then whenever PlayerA moves, adds, removes or interacts with an item in some way, the component sends RPC calls to the other &quot;listeners&quot; so their widgets and data get updated.</p>
-<p>For functions that modifies a components data, such as moving an item or modifying an items stack count or modifying any other data, you must remember that clients only have authority over their own component, they do not have authority over other components data. This is simply how networking in Unreal Engine works.<br />
+<p>For functions that modifies a components data, such as moving an item or modifying an items stack count or modifying any other data, you must remember that clients only have authority over their own component, they do not have authority over other components and thus can&#x27;t call functions on other components. This is simply how networking in Unreal Engine works.<br />
 Because of this, most functions require you to call the function on the component the client has authority over. Even though the item you are trying to modify is not on that component.<br />
 This is why, when you look at some of the source code, the functions are getting the component the item belongs to through its <span style="color:slateblue"><strong>UniqueID</strong></span>.<span style="color:slateblue"><strong>ParentComponent</strong></span> and modifying that component&#x27;s data through the component the client has authority over.</p>
 <p>To simplify the code, any function that attempts to automate the replication for you stores its logic in a function with the same name but with a <strong>Internal_</strong> prefix.</p>
@@ -205,9 +205,11 @@ graph TD
     A[Function called] --&gt; B(Evaluate if function should be replicated)
     B --&gt;|Is Single player| C[Call internal function]
     B --&gt;|Is Multiplayer| D[Send server RPC]
+    B --&gt;|Is Multiplayer| H[Add item to network queue]
     D --&gt; E[Call internal function on server, gather list of listeners]
     E --&gt; F[Send Client RPC's to listeners]
-    F --&gt; G[Call internal Function on client]</pre></div>
+    F --&gt; G[Call internal Function on client]
+    G --&gt; R[Remove item from network queue]</pre></div>
 <doc-panel id="code-example" collapsed>
     <template #title>Code example</template>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -258,6 +260,26 @@ void S_IncreaseItemCount(FS_UniqueID ItemID, int32 Count)
 			CurrentListener-&gt;C_IncreaseItemCount(ItemID, Count);
 		}
 	}
+}
+
+void C_IncreaseItemCount_Implementation(FS_UniqueID ItemID, int32 Count)
+{
+    //Find the item we are processing
+	bool ItemFound;
+	FS_InventoryItem Item;
+	ItemID.ParentComponent-&gt;GetItemByUniqueID(ItemID, ItemFound, Item);
+	if(ItemFound)
+	{
+		int32 NewStackCount;
+		InternalIncreaseItemCount(ItemID, Count, NewStackCount);
+        //Item has been processed, remove from network queue
+		C_RemoveItemFromNetworkQueue(Item.UniqueID);
+	}
+}
+
+void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, int32&amp; NewCount)
+{
+    //Start moodifying the item in here
 }</code></pre>
 </doc-codeblock></div>
 </doc-panel>
@@ -271,8 +293,8 @@ void S_IncreaseItemCount(FS_UniqueID ItemID, int32 Count)
 <p>The UniqueID is a simple method to quickly find containers or items, or ensuring containers or items are valid, and for linking some object to an item (Such as the <a href="https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/">item driver&#x27;s</a>). This is covered in multiple sections in the documentation, but here are some things to consider for networking.</p>
 <ul>
 <li>Clients are unable to generate UniqueID&#x27;s. If a function requires the client to assign a UniqueID to an item or a container, it must receive it from the server. You can see an example in <span style="color:violet"><strong>AC_Inventory.h</strong></span> -&gt; <span style="color:brown"><strong>TryAddNewItem</strong></span></li>
-<li>UniqueID&#x27;s scale extremely well with RPC&#x27;s. The engine is smart enough to recognize if the object reference from multiple UniqueID&#x27;s is identical, it&#x27;ll compress that information. With that in mind, the only scaling factor is the integer number. Where as with item or container structs, there&#x27;s a lot of information that isn&#x27;t relevant to most functions and the engine doesn&#x27;t compress that irrelevant information. It is advised to use UniqueID as often as possible, but also keep the above safety methods in mind.</li>
-<li>There&#x27;s no way to evaluate from a UniqueID if it was assigned to an item or container. It is not recommended to add more information to this struct as it&#x27;s meant to be so small and simple, so that it gets replicated extremely quickly and cheaply.</li>
+<li>UniqueID&#x27;s <a href="https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations">scale extremely</a> well with RPC&#x27;s. It is advised to use UniqueID as often as possible, but also keep the above safety methods in mind.</li>
+<li>There&#x27;s no way to evaluate from a UniqueID if it was assigned to an item or container. It is not recommended to add more information to this struct as it&#x27;s meant to be small and simple, so that it gets replicated extremely quickly and cheaply.</li>
 </ul>
 
                                 
