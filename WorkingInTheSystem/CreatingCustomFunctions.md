@@ -36,3 +36,11 @@ Switching to using the <span style="color:slateblue">**UniqueID**</span> method 
 
 The only downside is that it is not possible to verify if the client has illegally modified it's data, and it's very difficult to verify that the data inside the item/container are synced. It is up to you whether that is a big enough problem to do this. Some anti-cheat methods already do a very good job at preventing clients from modifying the games data with external tools.
 If you need to validate the data, you can have the server function still accept the full item/container struct, validate the data, then only pass the <span style="color:slateblue">**UniqueID**</span> to the client.
+
+We covered that [UniqueID's scale](https://inventoryframework.github.io/introduction/howdoesthenetworkingwork/#unique-id) extremely well on another page, but to give you an idea of how well it scales, here's an example
+
+||| Image
+![](/pictures/InventoryItemVSuniqueID.png)
+||| Info
+These are two functions using an array with 5 entries of <span style="color:slateblue">**S_UniqueID**</span>'s (Blue) and an array with 5 entries of <span style="color:slateblue">**S_InventoryItem**</span> (Red)
+|||
