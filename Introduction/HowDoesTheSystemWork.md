@@ -4,6 +4,8 @@ tags: [inventorycomponent]
 
 # How does the system work?
 
+---
+## Design structure
 With how strict the performance requirements were for this plugin, I’ve had to design this inventory system slightly differently from other systems you might find either on the marketplace or Youtube tutorials.
 The biggest thing to keep in mind is that this system does NOT rely on widgets being valid or created to keep track of its data.
 
@@ -21,3 +23,10 @@ When creating a widget for a container, the widget uses a <span style="color:sla
 Items differentiate themselves from each other by using a <span style="color:slateblue">**UniqueID**</span> as items can have the same name, same data asset and so forth. A component can not give items or containers the same <span style="color:slateblue">**UniqueID**</span> twice. This is essential for functions to work properly.
 
 The component is designed to live on individual actors, not the player controller. Though there is no reason why it can't live on the controller, but I won't be actively testing it that way.
+
+---
+## How are the infinite items inside of items achieved?
+
+TLDR; Containers have coordinates explaining what item they belong to. The array is simply containers and those items have an array of items. The only thing the compoonent needs to know whether a container is owned by the component or owned by an item is by checking <span style="color:slateblue">**FS_Container**</span>**.**<span style="color:slateblue">**BelongsToItem**</span>.
+
+I recommend reading the code comment for the container struct and then looking at <span style="color:violet">**AC_Inventory.h**</span> -> <span style="color:brown">**GetItemsContainers**</span> for an example.
