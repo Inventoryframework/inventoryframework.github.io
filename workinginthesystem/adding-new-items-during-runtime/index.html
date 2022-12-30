@@ -9,21 +9,24 @@
     <meta name="generator" content="Retype 2.4.0">
 
     <!-- Primary Meta Tags -->
-    <title>Productivity</title>
-    <meta name="title" content="Productivity">
+    <title>Adding new items during runtime</title>
+    <meta name="title" content="Adding new items during runtime">
+    <meta name="description" content="Adding new items during runtime for single player is no problem and has no restrictions. Just call the function" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="/tools/productivity/" />
+    <link rel="canonical" href="/workinginthesystem/adding-new-items-during-runtime/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/tools/productivity/">
-    <meta property="og:title" content="Productivity">
+    <meta property="og:url" content="/workinginthesystem/adding-new-items-during-runtime/">
+    <meta property="og:title" content="Adding new items during runtime">
+    <meta property="og:description" content="Adding new items during runtime for single player is no problem and has no restrictions. Just call the function">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/tools/productivity/">
-    <meta property="twitter:title" content="Productivity">
+    <meta property="twitter:url" content="/workinginthesystem/adding-new-items-during-runtime/">
+    <meta property="twitter:title" content="Adding new items during runtime">
+    <meta property="twitter:description" content="Adding new items during runtime for single player is no problem and has no restrictions. Just call the function">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -175,12 +178,44 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="productivity" class="break-words">
+<doc-anchor-target id="adding-new-items-during-runtime" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#productivity">#</doc-anchor-trigger>
-        <span>Productivity</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#adding-new-items-during-runtime">#</doc-anchor-trigger>
+        <span>Adding new items during runtime</span>
     </h1>
 </doc-anchor-target>
+<hr />
+<doc-anchor-target id="single-player">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#single-player">#</doc-anchor-trigger>
+        <span>Single player</span>
+    </h2>
+</doc-anchor-target>
+<p>Adding new items during runtime for single player is no problem and has no restrictions. Just call the function <span style="color:violet"><strong>AC_Inventory</strong></span> -&gt; <span style="color:brown"><strong>TryAddNewItem</strong></span>.</p>
+<hr />
+<doc-anchor-target id="multiplayer">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#multiplayer">#</doc-anchor-trigger>
+        <span>Multiplayer</span>
+    </h2>
+</doc-anchor-target>
+<p>For multiplayer though, I&#x27;ve had to wrap this function with a very strict safe guard. Clients are under no circumstance allowed to call this function. If they do find a way, they will get kicked. There is simply no circumstance where the client should even have the slightest chance of gaining access to this function as they could potentially feed it bad data and grant themselves any item within your data base.</p>
+<p>Only the listen server or dedicated server is allowed to use this function.</p>
+<p>This means if you have a quest system or anything of the sort where the player is granted an item, you will have two options:</p>
+<ol>
+<li>Pre-store the item in a component and call the <span style="color:brown"><strong>MoveItem</strong></span> function, but this will permanently remove the item from the old component. Though you could always reset the data after the function is called.</li>
+<li>The system which is calling <span style="color:brown"><strong>TryAddNewItem</strong></span> is already owned by the server, and thus is allowed to call the function legally.</li>
+</ol>
+<hr />
+<doc-anchor-target id="example">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#example">#</doc-anchor-trigger>
+        <span>Example</span>
+    </h2>
+</doc-anchor-target>
+<p>Here is an example of adding a backpack to another component with another backpack inside of it, and that backpack having items inside of it.<br />
+If your item has no containers, just make an empty array for the <span style="color:slateblue"><strong>ItemsContainers</strong></span></p>
+<iframe src="https://blueprintue.com/render/vey0u3ar/"scrolling="no" allowfullscreen width="100%" height="700"></iframe>
 
                                 
                                 <!-- Required only on API pages -->
@@ -190,20 +225,20 @@
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../tools/debugging/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/wbp_split/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Debugging</span>
+                                                <span class="block mt-1">WBP_​Split</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../tools/quality-assurance/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/creatingcustomfunctions/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Quality Assurance</span>
+                                                <span class="block mt-1">Creating custom functions</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -247,6 +282,6 @@
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Productivity", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Adding new items during runtime", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
