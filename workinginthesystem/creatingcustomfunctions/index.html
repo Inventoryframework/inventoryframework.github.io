@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725736600518">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725752774437">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -32,11 +32,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.725736600518" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.725752774437" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.725736600518" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.725752774437" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.725736600518" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.725752774437" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -233,6 +233,25 @@ The other is <span style="color:brown"><strong>IncreaseItemCount</strong></span>
 </div>
 <p>The only downside is that it is not possible to verify if the client has illegally modified it&#x27;s data, and it&#x27;s very difficult to verify that the data inside the item/container are synced. It is up to you whether that is a big enough problem to do this. Some anti-cheat methods already do a very good job at preventing clients from modifying the games data with external tools.<br />
 If you need to validate the data, you can have the server function still accept the full item/container struct, validate the data, then only pass the <span style="color:slateblue"><strong>UniqueID</strong></span> to the client.</p>
+<p>We covered that <a href="https://inventoryframework.github.io/introduction/howdoesthenetworkingwork/#unique-id">UniqueID&#x27;s scale</a> extremely well on another page, but to give you an idea of how well it scales, here&#x27;s an example</p>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-medium leading-snug text-gray-900 border-b border-gray-200 dark:border-dark-650 dark:text-white border-r">
+        <span>Image</span>
+    </div>
+    <div class="flex items-center px-5 py-3 font-medium leading-snug text-gray-900 border-b border-gray-200 dark:border-dark-650 dark:text-white">
+        <span>Info</span>
+    </div>
+    <div class="px-5 py-3 docs-columns-content border-r border-gray-200 dark:border-dark-650">
+<p><figure class="content-center">
+    <img src="../../pictures/inventoryitemvsuniqueid.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+    </div>
+    <div class="px-5 py-3 docs-columns-content">
+<p>These are two functions using an array with 5 entries of <span style="color:slateblue"><strong>S_UniqueID</strong></span>&#x27;s (Blue) and an array with 5 entries of <span style="color:slateblue"><strong>S_InventoryItem</strong></span> (Red)</p>
+    </div>
+</div>
 
                                 
                                 <!-- Required only on API pages -->
