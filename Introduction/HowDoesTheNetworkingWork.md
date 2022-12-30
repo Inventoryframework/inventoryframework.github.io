@@ -7,7 +7,7 @@ Certain inventory data can become quite large, especially with how many containe
 
 The component keeps track of the players that are currently interacting with a component with the <span style="color:slateblue">**Listeners**</span> array, then whenever PlayerA moves, adds, removes or interacts with an item in some way, the component sends RPC calls to the other "listeners" so their widgets and data get updated.
 
-For functions that modifies a components data, such as moving an item or modifying an items stack count or modifying any other data, you must remember that clients only have authority over their own component, they do not have authority over other components data. This is simply how networking in Unreal Engine works.
+For functions that modifies a components data, such as moving an item or modifying an items stack count or modifying any other data, you must remember that clients only have authority over their own component, they do not have authority over other components and thus can't call functions on other components. This is simply how networking in Unreal Engine works.
 Because of this, most functions require you to call the function on the component the client has authority over. Even though the item you are trying to modify is not on that component.
 This is why, when you look at some of the source code, the functions are getting the component the item belongs to through its <span style="color:slateblue">**UniqueID**</span>.<span style="color:slateblue">**ParentComponent**</span> and modifying that component's data through the component the client has authority over.
 
@@ -21,9 +21,11 @@ graph TD
     A[Function called] --> B(Evaluate if function should be replicated)
     B -->|Is Single player| C[Call internal function]
     B -->|Is Multiplayer| D[Send server RPC]
+    B -->|Is Multiplayer| H[Add item to network queue]
     D --> E[Call internal function on server, gather list of listeners]
     E --> F[Send Client RPC's to listeners]
     F --> G[Call internal Function on client]
+    G --> R[Remove item from network queue]
 ```
 
 ==- Code example
@@ -78,6 +80,26 @@ void S_IncreaseItemCount(FS_UniqueID ItemID, int32 Count)
 		}
 	}
 }
+
+void C_IncreaseItemCount_Implementation(FS_UniqueID ItemID, int32 Count)
+{
+    //Find the item we are processing
+	bool ItemFound;
+	FS_InventoryItem Item;
+	ItemID.ParentComponent->GetItemByUniqueID(ItemID, ItemFound, Item);
+	if(ItemFound)
+	{
+		int32 NewStackCount;
+		InternalIncreaseItemCount(ItemID, Count, NewStackCount);
+        //Item has been processed, remove from network queue
+		C_RemoveItemFromNetworkQueue(Item.UniqueID);
+	}
+}
+
+void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, int32& NewCount)
+{
+    //Start moodifying the item in here
+}
 ```
 ===
 
@@ -87,5 +109,5 @@ void S_IncreaseItemCount(FS_UniqueID ItemID, int32 Count)
 The UniqueID is a simple method to quickly find containers or items, or ensuring containers or items are valid, and for linking some object to an item (Such as the [item driver's](https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/)). This is covered in multiple sections in the documentation, but here are some things to consider for networking.
 
 - Clients are unable to generate UniqueID's. If a function requires the client to assign a UniqueID to an item or a container, it must receive it from the server. You can see an example in <span style="color:violet">**AC_Inventory.h**</span> -> <span style="color:brown">**TryAddNewItem**</span>
-- UniqueID's scale extremely well with RPC's. The engine is smart enough to recognize if the object reference from multiple UniqueID's is identical, it'll compress that information. With that in mind, the only scaling factor is the integer number. Where as with item or container structs, there's a lot of information that isn't relevant to most functions and the engine doesn't compress that irrelevant information. It is advised to use UniqueID as often as possible, but also keep the above safety methods in mind.
-- There's no way to evaluate from a UniqueID if it was assigned to an item or container. It is not recommended to add more information to this struct as it's meant to be so small and simple, so that it gets replicated extremely quickly and cheaply.
+- UniqueID's [scale extremely](https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations) well with RPC's. It is advised to use UniqueID as often as possible, but also keep the above safety methods in mind.
+- There's no way to evaluate from a UniqueID if it was assigned to an item or container. It is not recommended to add more information to this struct as it's meant to be small and simple, so that it gets replicated extremely quickly and cheaply.
