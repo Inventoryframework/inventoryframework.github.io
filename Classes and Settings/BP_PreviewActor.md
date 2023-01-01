@@ -29,3 +29,7 @@ It currently supports <span style="color:violet">**SceneComponent**</span>, <spa
 It should be easy to add compatibility for more components, you’ll have to add them yourself, but the currently supported components should support the vast majority of components that have any sort of visual importance.
 You can optimize the construction or simply prevent this actor from duplicating a specific component by going into <span style="color:slateblue">**ComponentTags**</span> and adding “**DONOTPREVIEW**”.
 Though remember, since the actor is trying to reconstruct the hierarchy setup inside your original actor, any components attached to components that you labeled as “**DONOTPREVIEW**” will break.
+
+---
+## Skeletal Meshes
+The default animations for skeletal meshes is retrieved via an interface function <span style="color:brown">**GetEquipmentData**</span>. This allows you to assign what animations the previewed skeletal mesh will play. For now it is only looping one animation, but an animation blueprint can be added to this struct if you wish.
