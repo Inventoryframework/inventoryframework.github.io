@@ -16,5 +16,5 @@ The <span style="color:brown">**GetItemData**</span> function automatically gets
 
 This should allow for more designer friendly architecture, as you could make two children of this widget, one for example the normal inventory item widget the player has in their inventory and then another for vendors and you could have them store items in a list format and things would still work together.
 
-<span style="color:violet">**WBP_InventoryItem**</span> is where icon generation is handled. It’s pretty straight forward, copying the behavior to other children should be simple. It uses the [**BP_PreviewActor**](https://inventoryframework.github.io/classes-and-settings/bp_previewactor/) to achieve this.
+<span style="color:violet">**WBP_InventoryItem**</span> -> <span style="color:brown">**GenerateItemIcon**</span> is where icon generation is handled. It’s pretty straight forward, copying the behavior to other children should be simple. It uses the [**BP_PreviewActor**](https://inventoryframework.github.io/classes-and-settings/bp_previewactor/) to achieve this.
 The data asset editor window has a <span style="color:green">**UI**</span> category which has various settings to adjust or optimize the generated icons.
