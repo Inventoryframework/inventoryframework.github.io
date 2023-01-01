@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725859357661">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725929303943">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,11 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.725859357661" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.725929303943" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.725859357661" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.725929303943" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.725859357661" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.725929303943" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -218,6 +218,14 @@ It does this by getting all components of the owning actor and then duplicating 
 <p>It should be easy to add compatibility for more components, you’ll have to add them yourself, but the currently supported components should support the vast majority of components that have any sort of visual importance.<br />
 You can optimize the construction or simply prevent this actor from duplicating a specific component by going into <span style="color:slateblue"><strong>ComponentTags</strong></span> and adding “<strong>DONOTPREVIEW</strong>”.<br />
 Though remember, since the actor is trying to reconstruct the hierarchy setup inside your original actor, any components attached to components that you labeled as “<strong>DONOTPREVIEW</strong>” will break.</p>
+<hr />
+<doc-anchor-target id="skeletal-meshes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#skeletal-meshes">#</doc-anchor-trigger>
+        <span>Skeletal Meshes</span>
+    </h2>
+</doc-anchor-target>
+<p>The default animations for skeletal meshes is retrieved via an interface function <span style="color:brown"><strong>GetEquipmentData</strong></span>. This allows you to assign what animations the previewed skeletal mesh will play. For now it is only looping one animation, but an animation blueprint can be added to this struct if you wish.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
