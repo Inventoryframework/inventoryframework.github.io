@@ -18,5 +18,7 @@ All three are abstract, so you must either use the widgets in the demo folder or
 ### Inventory Item
 - size box to control the size (<span style="color:brown">**GetSizeBox**</span>)
 - Image for the item icon (<span style="color:brown">**GetImage**</span>)
+- (Not mandatory, but is recommended) - Loading Throbber for indicating the item is loading (<span style="color:brown">**GetLoadingThrobber**</span>)
+For this widget, there are various "Update" functions that are called inside <span style="color:violet">**W_InventoryItem.h**</span> -> <span style="color:brown">**ConstructWidget**</span>. These update functions should also be overriden
 
 The hierarchy inside your custom widget can be structured in whatever way you want, but they must contain the above mentioned widgets inside the hierarchy.
