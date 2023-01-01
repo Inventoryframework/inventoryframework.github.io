@@ -3,7 +3,7 @@
 - This plugin was created for an open-world game that has very strict performance requirements. Because of this, some logic is handled in C++ as an inventory system like this does a lot of math. The design architecture is also designed to give programmers more control of when widgets and data is initialized. The architecture has also been made in mind for large-scale projects.
 This does mean though that there is a specific and strict workflow for setting up the component for items, especially sub containers. I've made an Editor Utility Widget which should prevent any human errors and allow people to work in the system without those strict requirements slowing down your creation process.
 
-- The architecture was made with designers in mind, so certain C++ functions can be overridden in Blueprints and some functions are only needed on the Blueprint level and in some cases there are both C++ and Blueprint versions of the same function. This system is not meant to be purely C++ or Blueprints, but a healthy mix of the two.
+- The architecture was made with designers in mind, so certain C++ functions can be overridden in Blueprints and some functions are only needed on the Blueprint level. This system is not meant to be purely C++ or Blueprints, rather a healthy mix of the two.
 If you can't write in C++ or don't have access to anyone who can write C++ code for you, the current functions should allow for you to create nearly any Blueprint logic you should need.
 
 - Data Assets are being used instead of Data Tables for a few reasons:
@@ -19,5 +19,5 @@ The only con regarding data assets is you don’t get a nice table view like you
 
 - Native Controller support is not yet added but is planned.
 - Split screen support is not something I will be adding.
-- The plugin was designed to be [**installed locally**](https://inventoryframework.github.io/introduction/firststeps/installingtheplugin/) to your project, not the engine. With how the marketplace works and how the engine works, it was much simpler to make this asset a plugin.
+- The plugin was designed to be [**installed locally**](https://inventoryframework.github.io/introduction/firststeps/installingtheplugin/) to your project, not the engine. With how the marketplace works and how the engine works, it was much simpler to make this asset a plugin. This has also had the nice side effect of updating the system to be much easier.
 - Many things have been designed to be as abstract as possible and assume as little as possible about YOUR project and creation process. I do not want to dictate any creative vision and I do not want to step on any toes. I’ve tried to keep the system as painless as possible for you to integrate YOUR systems and assets with this inventory system, such as an attribute, ability or crafting system.
