@@ -4,7 +4,7 @@
 #### Latest version: Still under development
 
 !!!danger
-This plugin has not released yet, everything is still under review and can be spontaneously removed or changed.
+This plugin has not been released yet, everything is still under review and can be spontaneously removed or changed.
 !!!
 
 ## What is the Inventory Framework Plugin?
