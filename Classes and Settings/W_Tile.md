@@ -4,7 +4,9 @@ File Location: Source\InventoryFrameworkPlugin\Public\Core\Widgets\W_Tile.h
 File Location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_Tile.cpp
 ==- Bluerint Child: WBP_Tile
 File Location: Content\Core\Widgets\WBP_Tile.uasset
-==- 
+==- Demo widget: WBP_DemoTile
+File Location: Content\Demo\Widgets\WBP_DemoTile.uasset
+==-
 
 ---
 

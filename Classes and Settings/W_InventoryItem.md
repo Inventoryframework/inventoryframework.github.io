@@ -4,6 +4,8 @@ File Location: Source\InventoryFrameworkPlugin\Public\Core\Widgets\W_InventoryIt
 File Location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_InventoryItem.cpp
 ==- Blueprint Child: WBP_InventoryItem
 File Location: Content\Core\Widgets
+==- Demo widget: WBP_DemoInventoryItem
+File Location: Content\Demo\Widgets\WBP_DemoInventoryItem.uasset
 ==-
 
 ---

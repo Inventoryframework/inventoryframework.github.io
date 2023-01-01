@@ -5,6 +5,8 @@ File Location: Source\InventoryFrameworkPlugin\Public\Core\Widgets\W_Container.h
 File Location: Source\InventoryFrameworkPlugin\private\Core\Widgets\W_Container.cpp
 ==- Blueprint Child: WBP_Container
 File Location: Content\Core\Widgets\WBP_Container.uasset
+==- Demo widget: WBP_DemoContainer
+File Location: Content\Demo\Widgets\WBP_DemoContainer.uasset
 ==-
 
 ---
