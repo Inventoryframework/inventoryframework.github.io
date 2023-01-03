@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.725929303943">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.726042615085">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,11 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.4.0.725929303943" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.726042615085" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.725929303943" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.726042615085" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.725929303943" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.726042615085" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -192,6 +192,25 @@ First is this allows you complete control over what items are attached to (for e
 <p>During my research, I found an astonishing amount of different workflows and processes. It was very daunting to try and solve all of them in one go, and maybe my system isn’t perfect, but it tries to solve as many as possible at once, while still being flexible and adjustable.</p>
 <p>I recommend reading the comments in the <span style="color:slateblue"><strong>EquipmentData</strong></span> struct (Found in <span style="color:violet"><strong>DA_CoreItem.h</strong></span>) and going through <span style="color:violet"><strong>OT_Equipment</strong></span> (which is an object template found in the plugins folder Core -&gt; ActorParents -&gt; ObjectTemplates.) and look at the logic in there to get a better understanding of how the system is using this struct. I would explain it here, but it’s so long and extensive that explaining it in just text and pictures would take too long.</p>
 <p>This object attempts to copy the system that is used in GAS with its <span style="color:brown"><strong>PlayMontageAndWait</strong></span> function, which creates an instance that handles the animation, but I wanted to keep mine inside of Blueprints.</p>
+<hr />
+<doc-anchor-target id="optimizations">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#optimizations">#</doc-anchor-trigger>
+        <span>Optimizations</span>
+    </h2>
+</doc-anchor-target>
+<p>For weapons and equippables, I&#x27;ve implemented three methods of creating your equipment mesh (Item reperesentation):</p>
+<ol>
+<li>Blueprint, this allows you to simply use any blueprint you&#x27;ve made as the item representation.</li>
+<li>Skeletal mesh</li>
+<li>Static mesh</li>
+</ol>
+<p>Blueprint&#x27;s are obviously the most expensive, but are the most customizable. I recommend staying away from using Blueprint&#x27;s as your item representation whenever possible.</p>
+<p>For skeletal and static meshes, you gain access to most settings you would have in the details panel while editing them in a blueprint</p>
+<doc-panel id="notes-regarding-skeletal-and-static-meshes" collapsed>
+    <template #title>Notes regarding Skeletal and Static Meshes</template>
+<p>The default material section is not available (I assume this is an engine bug?). If you wish to change the default materials, go into Rendering -&gt; Override Materials</p>
+</doc-panel>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
