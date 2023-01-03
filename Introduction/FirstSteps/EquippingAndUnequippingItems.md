@@ -19,3 +19,18 @@ During my research, I found an astonishing amount of different workflows and pro
 I recommend reading the comments in the <span style="color:slateblue">**EquipmentData**</span> struct (Found in <span style="color:violet">**DA_CoreItem.h**</span>) and going through <span style="color:violet">**OT_Equipment**</span> (which is an object template found in the plugins folder Core -> ActorParents -> ObjectTemplates.) and look at the logic in there to get a better understanding of how the system is using this struct. I would explain it here, but it’s so long and extensive that explaining it in just text and pictures would take too long.
 
 This object attempts to copy the system that is used in GAS with its <span style="color:brown">**PlayMontageAndWait**</span> function, which creates an instance that handles the animation, but I wanted to keep mine inside of Blueprints.
+
+---
+## Optimizations
+For weapons and equippables, I've implemented three methods of creating your equipment mesh (Item reperesentation):
+1. Blueprint, this allows you to simply use any blueprint you've made as the item representation.
+2. Skeletal mesh
+3. Static mesh
+
+Blueprint's are obviously the most expensive, but are the most customizable. I recommend staying away from using Blueprint's as your item representation whenever possible.
+
+For skeletal and static meshes, you gain access to most settings you would have in the details panel while editing them in a blueprint
+
+==- Notes regarding Skeletal and Static Meshes
+The default material section is not available (I assume this is an engine bug?). If you wish to change the default materials, go into Rendering -> Override Materials
+===
