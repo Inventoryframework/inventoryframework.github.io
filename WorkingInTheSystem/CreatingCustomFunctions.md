@@ -40,7 +40,7 @@ If you need to validate the data, you can have the server function still accept 
 We covered that [UniqueID's scale](https://inventoryframework.github.io/introduction/howdoesthenetworkingwork/#unique-id) extremely well on another page, but to give you an idea of how well it scales, here's an example
 
 ||| Image
-![](/pictures/InventoryItemVSuniqueID.png)
+![](/pictures/InventoryItemVSuniqueID1.png)
 ||| Info
 These are two functions using an array with 5 entries of <span style="color:slateblue">**S_UniqueID**</span>'s (Blue) and an array with 5 entries of <span style="color:slateblue">**S_InventoryItem**</span> (Red)
 |||
