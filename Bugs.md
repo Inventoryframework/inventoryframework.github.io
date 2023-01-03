@@ -20,6 +20,8 @@ This might take a while as I’m also trying to figure out a way to have particl
 
 - In 5.1, RenderTargets can break if your quality settings are below Epic.
 
+- When equipping a blueprint item, the attachment does not seem to be working if the components are set to replicate by default. You will want to go into your blueprint, go through all components and uncheck "Component Replicates" until the issue is gone.
+
 ## Common Problems
 These aren't bugs, but problems that can be misinterpreted as bugs.
 
