@@ -17,7 +17,7 @@ Under revision
 This is an actor that “should” perfectly duplicate the appearance of any specific actor.
 It does this by getting all components of the owning actor and then duplicating it and reconstructing the hierarchy structure to match the hierarchy structure of the owning actor. This includes any attached actors.
 
-It currently supports <span style="color:violet">**SceneComponent**</span>, <span style="color:violet">**PrimitiveSceneComponent**</span>, <span style="color:violet">**ChildActorComponent**</span>, <span style="color:violet">**StaticMeshComponent**</span> and <span style="color:violet">**SkeletalMeshComponent**</span>. Though <span style="color:violet">**ChildActorComponent**</span>'s are known to be extremely buggy and I personally don't suggest you use them with this system.
+It currently supports <span style="color:violet">**SceneComponent**</span>, <span style="color:violet">**PrimitiveSceneComponent**</span>, <span style="color:violet">**ChildActorComponent**</span>, <span style="color:violet">**StaticMeshComponent**</span> and <span style="color:violet">**SkeletalMeshComponent**</span>.
 
 ==- Notes regarding <span style="color:violet">**ChildActorComponent**</span>'s
 
