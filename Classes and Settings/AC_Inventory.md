@@ -23,11 +23,12 @@ The item might also have items attached to it and be visible, such as a sight on
 ## Settings
 The first category is <span style="color:green">**Settings**</span> and most of these are instance editable, so you’ll be spending most of your time with these settings for your item actors.
 
-<span style="color:slateblue">**ContainerSettings**</span> is where the majority of the work is done. I recommend going into <span style="color:violet">**AC_Inventory.h**</span> and find <span style="color:slateblue">**FS_ContainerSettings**</span>  and looking at the comments for everything as there are some variables that aren’t instance editable.
+<span style="color:slateblue">**ContainerSettings**</span> is where the majority of the work is done. I recommend going into <span style="color:violet">**IFP_CoreData.h**</span> and find <span style="color:slateblue">**FS_ContainerSettings**</span>  and looking at the comments for everything as there are some variables that aren’t instance editable.
 
 ---
 ## User Settings
 The second category is <span style="color:green">**UserSettings**</span> and these are settings that are meant to be used by the player during runtime. It’s up to your settings system to update these if you want the player to be able to change these settings during runtime.
+The input system is extremely basic and is meant to be replaced. They are never used at a C++ level, so your designers can replace it easily.
 <span style="color:slateblue">**RotateKey**</span> : While dragging an item, the player might want to rotate an item. When they press this key, it’ll rotate.
 <span style="color:slateblue">**SplitKey**</span> : While dragging a stackable item, when they drop the item onto a valid tile, they can split an item into two stacks.
 
@@ -37,14 +38,18 @@ Third category is <span style="color:Slateblue">**ColorSettings**</span>  and th
 
 ---
 ## Network Queue
-The component has an array called <span style="color:Slateblue">**NetworkQueue**</span>, these are items that are waiting for a server RPC to finish. It is up to you to call <span style="color:brown">**C_AddItemToNetworkQueue**</span> and <span style="color:brown">**C_RemoveItemFromNetworkQueue**</span>. This will automatically call <span style="color:brown">**ItemAddedToNetworkingQueue**</span> or <span style="color:brown">**ItemRemovedFromNetworkQueue**</span>.
+The component has an array called <span style="color:Slateblue">**NetworkQueue**</span>, these are items that are waiting for a server RPC to finish. It is up to you to call <span style="color:brown">**C_AddItemToNetworkQueue**</span> and <span style="color:brown">**C_RemoveItemFromNetworkQueue**</span>. This will automatically call <span style="color:brown">**ItemAddedToNetworkQueue**</span> or <span style="color:brown">**ItemRemovedFromNetworkQueue**</span>.
 
 If the item widget is available, it'll also call: 
-<span style="color:violet">**W_InventoryItem**</span> -> <span style="color:brown">**ParentItemAddedToNetworkingQueue**</span> / <span style="color:brown">**ParentItemRemovedFromNetworkingQueue**</span>
+<span style="color:violet">**W_InventoryItem**</span> -> <span style="color:brown">**ParentItemAddedToNetworkQueue**</span> / <span style="color:brown">**ParentItemRemovedFromNetworkQueue**</span>
 
 These events are where your designers hook in any logic that alerts the player the item is pending some networking event. This is most often seen as making the item's icon gray-scale or flashing the icon.
 
 You will want to implement some way of preventing players from interacting with items that are pending a network event, either by making the widget uninteractable or through code. You can check if an item is in the queue by using:
-<span style="color:violet">**BPFL_InventoryFunctions.h**</span> -> <span style="color:brown">**IsItemInNetworkQueue**</span>
+<span style="color:violet">**FL_InventoryFramework.h**</span> -> <span style="color:brown">**IsItemInNetworkQueue**</span>
 
 The Network Queue system is only relevant for clients, it's never used in single player or listen server scenarios.
+
+---
+## Infinite containers
+Containers can be infinite in either the X or Y direction, the system tries to dynamically resize the container whenever an item is moved, added or removed from it.
