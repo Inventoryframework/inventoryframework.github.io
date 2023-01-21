@@ -1,6 +1,6 @@
 # Style Guide
 
-I have tried to follow the popular <a href="https://github.com/Allar/ue5-style-guidee" target="_blank">**UE5 Style Guide**</a>. Though I may sometimes accidentally or purposefully sway from it. I am very open to criticism, if something is confusing or inconsistent, don't hesitate to let me know.
+I have tried to follow the popular <a href="https://github.com/Allar/ue5-style-guide" target="_blank">**UE5 Style Guide**</a>. Though I may sometimes accidentally or purposefully sway from it. I am very open to criticism, if something is confusing or inconsistent, don't hesitate to let me know.
 
 ---
 ## Functions
