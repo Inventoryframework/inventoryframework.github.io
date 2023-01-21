@@ -30,3 +30,5 @@ You might have this problem with scroll bars most of the time. An easy fix for t
 
 - <span style="color:violet">**BP_PreviewActor**</span>'s automated camera distance is determined by all components which have collision enabled. This means if you have collision hitboxes or something similar on your actors, the camera will try to adjust to fit that in the camera view.
 Remember to use the tag “**DONOTPREVIEW**” on those collision components if the <span style="color:violet">**BP_PreviewActor**</span> is copying them.
+
+- Your item is not showing up in the asset manager or your getting a "Ignoring PrimaryAssetType Items - Conflicts with DA_CoreItem - Asset: ITEMNAMEHERE" in your message log. This happens when there are two identical data assets. This will most likely happen when you have two completely blank data assets and haven't filled in any of the data yet.
