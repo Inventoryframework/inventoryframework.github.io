@@ -27,6 +27,6 @@ The component is designed to live on individual actors, not the player controlle
 ---
 ## How are the infinite items inside of items achieved?
 
-TLDR; Containers have coordinates explaining what item they belong to. The array is simply containers and those items have an array of items. The only thing the compoonent needs to know whether a container is owned by the component or owned by an item is by checking <span style="color:slateblue">**FS_Container**</span>**.**<span style="color:slateblue">**BelongsToItem**</span>.
+TLDR; Containers have coordinates explaining what item they belong to. The array is simply containers and those containers have an array of items. The only thing the compoonent needs to know whether a container is owned by the component or owned by an item is by checking <span style="color:slateblue">**FS_Container**</span>**.**<span style="color:slateblue">**BelongsToItem**</span>.
 
 I recommend reading the code comment for the container struct and then looking at <span style="color:violet">**AC_Inventory.h**</span> -> <span style="color:brown">**GetItemsContainers**</span> for an example.
