@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.726043199501">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.727657614103">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -21,20 +21,22 @@
     <meta property="og:url" content="/bugs/">
     <meta property="og:title" content="Bugs">
     <meta property="og:description" content="Under revision">
+    <meta property="og:image" content="/pictures/inaccuratehighlightproblem1.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/bugs/">
     <meta property="twitter:title" content="Bugs">
     <meta property="twitter:description" content="Under revision">
+    <meta property="twitter:image" content="/pictures/inaccuratehighlightproblem1.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../resources/css/retype.css?v=2.4.0.726043199501" rel="stylesheet" />
+    <link href="../resources/css/retype.css?v=2.4.0.727657614103" rel="stylesheet" />
 
-    <script type="text/javascript" src="../resources/js/config.js?v=2.4.0.726043199501" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../resources/js/config.js?v=2.4.0.727657614103" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.4.0.726043199501" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.4.0.727657614103" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -234,7 +236,33 @@ You might have this problem with scroll bars most of the time. An easy fix for t
 <li><p><span style="color:violet"><strong>BP_PreviewActor</strong></span>&#x27;s automated camera distance is determined by all components which have collision enabled. This means if you have collision hitboxes or something similar on your actors, the camera will try to adjust to fit that in the camera view.<br />
 Remember to use the tag “<strong>DONOTPREVIEW</strong>” on those collision components if the <span style="color:violet"><strong>BP_PreviewActor</strong></span> is copying them.</p>
 </li>
+<li><p>Your item is not showing up in the asset manager or your getting a &quot;Ignoring PrimaryAssetType Items - Conflicts with DA_CoreItem - Asset: ITEMNAMEHERE&quot; in your message log. This happens when there are two identical data assets. This will most likely happen when you have two completely blank data assets and haven&#x27;t filled in any of the data yet.</p>
+</li>
+<li><p>The highlight widget is going outside the boundaries of the container or is getting clipped. This happens if the sizing of the widget does not match the container dimensions. This is most common if the contaienr slotted into a canvas panel. If that is the case, you can check &quot;Size To Content&quot;, but for other widgets, you will have to manage the sizing of the container and in some cases, it&#x27;s handled automatically.</p>
+</li>
 </ul>
+<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+    <div class="flex items-center px-5 py-3 font-medium leading-snug text-gray-900 border-b border-gray-200 dark:border-dark-650 dark:text-white border-r">
+        <span>Example 1</span>
+    </div>
+    <div class="flex items-center px-5 py-3 font-medium leading-snug text-gray-900 border-b border-gray-200 dark:border-dark-650 dark:text-white">
+        <span>Example 2</span>
+    </div>
+    <div class="px-5 py-3 docs-columns-content border-r border-gray-200 dark:border-dark-650">
+<p><figure class="content-center">
+    <img src="../pictures/inaccuratehighlightproblem1.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+    </div>
+    <div class="px-5 py-3 docs-columns-content">
+<p><figure class="content-center">
+    <img src="../pictures/inaccuratehighlightproblem2.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+    </div>
+</div>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
