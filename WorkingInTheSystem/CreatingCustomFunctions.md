@@ -21,7 +21,7 @@ So if you are inside the <span style="color:violet">**W_Tile**</span> and need t
 
 ## Network optimizations
 
-It is recommended, where ever possible, to use the item or container UniqueID instead of the struct in your RPC calls, and then have your server use the UniqueID to figure out which struct to use.
+It is recommended, where ever possible, to use the item or container <span style="color:slateblue">**UniqueID**</span> instead of the struct in your RPC calls, and then have your server use the <span style="color:slateblue">**UniqueID**</span> to figure out which struct to use.
 
 
 
