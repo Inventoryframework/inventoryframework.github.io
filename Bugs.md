@@ -32,3 +32,11 @@ You might have this problem with scroll bars most of the time. An easy fix for t
 Remember to use the tag “**DONOTPREVIEW**” on those collision components if the <span style="color:violet">**BP_PreviewActor**</span> is copying them.
 
 - Your item is not showing up in the asset manager or your getting a "Ignoring PrimaryAssetType Items - Conflicts with DA_CoreItem - Asset: ITEMNAMEHERE" in your message log. This happens when there are two identical data assets. This will most likely happen when you have two completely blank data assets and haven't filled in any of the data yet.
+
+- The highlight widget is going outside the boundaries of the container or is getting clipped. This happens if the sizing of the widget does not match the container dimensions. This is most common if the contaienr slotted into a canvas panel. If that is the case, you can check "Size To Content", but for other widgets, you will have to manage the sizing of the container and in some cases, it's handled automatically.
+
+||| Example 1
+![](/pictures/InaccurateHighlightProblem1.png)
+||| Example 2
+![](/pictures/InaccurateHighlightProblem2.png)
+|||
