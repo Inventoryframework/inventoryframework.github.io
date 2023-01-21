@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.727657614103">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.727660419396">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,11 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.4.0.727657614103" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.727660419396" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.727657614103" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.727660419396" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.727657614103" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.727660419396" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -184,19 +184,18 @@
         <span>Installing the plugin</span>
     </h1>
 </doc-anchor-target>
-<p>Because of how integral an inventory system is to a game, I highly recommend you DO NOT install the plugin to the engine and then use it that way, but instead install the plugin locally to your project. That way you can use the plugin in multiple projects without having a change that works in one project mess up the other project. This means you can also have much better control how the parents behave and work and not have to worry about changes made for another project. But it does mean updating the system is a bit harder than usual. I’ll try my best to keep the change log as up to date and accurate as possible.<br />
-I also recommend using some form of Source Control for easier updating.</p>
+<p>Because of how integral an inventory system is to a game, I highly recommend you DO NOT install the plugin to the engine and then use it that way, but instead install the plugin locally to your project. That way you can use the plugin in multiple projects without having a change that works in one project mess up the other project. This means you can also have much better control how the parents behave and work and not have to worry about changes made for another project. But it does mean updating the system is a bit more work, but it is very straight forward if you have source-control set up, as it&#x27;ll tell you all the changes and you can reimplement any custom changes you made to suit your project.</p>
 <p>This does NOT cover how to install an IDE such as Rider or Visual Studio. You should already have an IDE installed.<br />
 There are also a few demo files that you’ll want to replace and enum entries you need to rename to fit your project.<br />
 <a href="https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DevelopmentSetup/VisualStudioSetup/" target="_blank"><strong>Unreal&#x27;s docs for setting up Visual Studio</strong></a></p>
 <ol>
 <li>If your project doesn’t have any C++ code, you will want to go into the engine and at the top go to <strong>Tools -&gt; New C++ Class</strong>. It doesn’t matter what you create here or where you save it. This is just to get the engine to generate all the files you need to compile the plugin.</li>
-<li>Go to your <strong>Unreal Engine installation -&gt; Engine -&gt; Plugins -&gt; Marketplace</strong> and copy the InventoryFrameworkPlugin.</li>
+<li>Go to your <strong>Unreal Engine installation -&gt; Engine -&gt; Plugins -&gt; Marketplace</strong> and copy the InventoryFrameworkPlugin folder.</li>
 <li>Go into your project&#x27;s root folder (Where your .uproject is), create a folder called “Plugins” if you don’t have one.</li>
-<li>Paste the InventoryFrameworkPlugin into the plugin folder.</li>
+<li>Paste the InventoryFrameworkPlugin folder into the plugin folder.</li>
 <li>Go back to your .uproject, right click and generate “Visual Studio Project Files”.</li>
 <li>Open the solution file with whatever IDE you use (For example Visual Studio or Rider) and build the project.</li>
-<li>(Optional) You can now uninstall the plugin from the engine through the Epic Games Launcher, though you won&#x27;t get notifications from the Epic Games client whenever an update is available.</li>
+<li>(Optional) You can now uninstall the plugin from the engine through the Epic Games Launcher, though you won&#x27;t get notifications from the Epic Games client whenever an update is available (The discord announces every update as well).</li>
 </ol>
 <p>Everything in the demo folder is designed to be replaced by your assets/Blueprints. It is only there so you don’t get any errors on startup.</p>
 <hr />
