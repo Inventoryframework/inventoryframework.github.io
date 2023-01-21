@@ -103,6 +103,10 @@ void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, i
 ```
 ===
 
+### Why not just use a multicast?
+
+Because of how large some RPC's can get, I did not find multicasts to be acceptable for most of the functions. A lot of the RPC's are just simply not relevant for most clients anyways.
+
 ---
 ## Unique ID
 
