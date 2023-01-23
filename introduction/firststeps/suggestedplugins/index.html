@@ -9,34 +9,32 @@
     <meta name="generator" content="Retype 2.4.0">
 
     <!-- Primary Meta Tags -->
-    <title>Creating custom functions</title>
-    <meta name="title" content="Creating custom functions">
-    <meta name="description" content="Once you’re comfortable enough in the system to make your own functions and/or change the current functions, here are some things to keep in mind." />
+    <title>Suggested Plugins</title>
+    <meta name="title" content="Suggested Plugins">
+    <meta name="description" content="This is a list of plugins that I personally suggest you use alongside this plugin. None of these are mandatory and completely optional." />
 
     <!-- Canonical -->
-    <link rel="canonical" href="/workinginthesystem/creatingcustomfunctions/" />
+    <link rel="canonical" href="/introduction/firststeps/suggestedplugins/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/workinginthesystem/creatingcustomfunctions/">
-    <meta property="og:title" content="Creating custom functions">
-    <meta property="og:description" content="Once you’re comfortable enough in the system to make your own functions and/or change the current functions, here are some things to keep in mind.">
-    <meta property="og:image" content="/pictures/networkoptimization.png">
+    <meta property="og:url" content="/introduction/firststeps/suggestedplugins/">
+    <meta property="og:title" content="Suggested Plugins">
+    <meta property="og:description" content="This is a list of plugins that I personally suggest you use alongside this plugin. None of these are mandatory and completely optional.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/workinginthesystem/creatingcustomfunctions/">
-    <meta property="twitter:title" content="Creating custom functions">
-    <meta property="twitter:description" content="Once you’re comfortable enough in the system to make your own functions and/or change the current functions, here are some things to keep in mind.">
-    <meta property="twitter:image" content="/pictures/networkoptimization.png">
+    <meta property="twitter:url" content="/introduction/firststeps/suggestedplugins/">
+    <meta property="twitter:title" content="Suggested Plugins">
+    <meta property="twitter:description" content="This is a list of plugins that I personally suggest you use alongside this plugin. None of these are mandatory and completely optional.">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.727761993858" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.727761993858" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.727761993858" data-turbo-eval="false" defer></script>
-    <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.727761993858" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.727761993858" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.727761993858" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -51,7 +49,7 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
+                        <a id="docs-site-logo" href="../../../" class="flex items-center leading-snug text-xl">
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Inventory Framework Plugin</span>
                         </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
                     </div>
@@ -180,78 +178,34 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="creating-custom-functions" class="break-words">
+<doc-anchor-target id="suggested-plugins" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#creating-custom-functions">#</doc-anchor-trigger>
-        <span>Creating custom functions</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#suggested-plugins">#</doc-anchor-trigger>
+        <span>Suggested Plugins</span>
     </h1>
 </doc-anchor-target>
-<p>Once you’re comfortable enough in the system to make your own functions and/or change the current functions, here are some things to keep in mind.</p>
-<p>You should always assume an item does not have a widget version of itself. If you need access to the widget of an item, you can use <span style="color:brown"><strong>GetWidgetForItem</strong></span>. Remember to check if the widget is valid.<br />
-Widgets also can’t be transported through a network, so if multiplayer is important to you, your server functions can’t rely on data from widgets.</p>
-<doc-anchor-target id="finding-items">
+<p>This is a list of plugins that I personally suggest you use alongside this plugin. None of these are mandatory and completely optional.</p>
+<doc-anchor-target id="gas-companion">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#finding-items">#</doc-anchor-trigger>
-        <span>Finding Items</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#gas-companion">#</doc-anchor-trigger>
+        <span><a href="https://www.unrealengine.com/marketplace/en-US/product/gas-companion" target="_blank"><strong>GAS Companion</strong></a></span>
     </h2>
 </doc-anchor-target>
-<p>Finding an item is a very common scenario when you start making your own functions.</p>
-<p>The container&#x27;s <span style="color:slateblue"><strong>TileMap</strong></span> combined with an item&#x27;s <span style="color:slateblue"><strong>UniqueID</strong></span> is the most reliable way of finding items.</p>
-<p>The component includes a function to get an item at item at a specific index of a container GetItemAtSpecificIndex, then there is a bit more expensive way of finding an item but it’ll go through all containers, GetItemByUniqueID.</p>
-<ol>
-<li>The <span style="color:slateblue"><strong>UniqueID</strong></span> is the most reliable method of finding a very specific item, container or item driver, other than a direct reference to the item, container or item driver, but even then a direct reference might get outdated if the player moves the item or modifies it in some way. The <span style="color:slateblue"><strong>UniqueID</strong></span> is only updated for containers and items if they are moved to a new component.</li>
-<li><span style="color:violet"><strong>W_Tile</strong></span> also have a reference to the item on top of them, but to reduce memory, tiles have a <span style="color:slateblue"><strong>OwningItem</strong></span> integer which references the top left tile of the item, which holds the <span style="color:slateblue"><strong>ParentItem</strong></span> reference variable.<br />
-So if you are inside the <span style="color:violet"><strong>W_Tile</strong></span> and need to get the item it contains, you would use <span style="color:slateblue"><strong>ParentContainer</strong></span> -&gt; <span style="color:slateblue"><strong>Tiles</strong></span>[ParentTile] -&gt; <span style="color:slateblue"><strong>OwningItem</strong></span> -&gt; <span style="color:brown"><strong>GetItemData</strong></span>. Remember to check if <span style="color:slateblue"><strong>ParentTile</strong></span> is -1 first, as that means this tile widget doesn’t have any item inside of it.</li>
-</ol>
-<hr />
-<doc-anchor-target id="network-optimizations">
+<p>Unreal Engine&#x27;s built-in Gameplay Ability System (GAS) is extremely powerful and is becoming an industry standard. There is a problem with it though; it&#x27;s very beginner-unfriendly. It&#x27;s annoying to make attributes and can take a long time to set it up. The plugin GASCompanion does all the heavy lifting for you, has good documentation and good Discord support. I am not implementing a attribute or ability system with this system because I believe you should be using GAS (Either a plugin or your own implementation).</p>
+<doc-anchor-target id="saviour">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#network-optimizations">#</doc-anchor-trigger>
-        <span>Network optimizations</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#saviour">#</doc-anchor-trigger>
+        <span><a href="https://www.unrealengine.com/marketplace/en-US/product/savior" target="_blank"><strong>Saviour</strong></a></span>
     </h2>
 </doc-anchor-target>
-<p>It is recommended, where ever possible, to use the item or container <span style="color:slateblue"><strong>UniqueID</strong></span> instead of the struct in your RPC calls, and then have your server use the <span style="color:slateblue"><strong>UniqueID</strong></span> to figure out which struct to use.</p>
-<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
-    <div class="flex items-center px-5 py-3 font-medium leading-snug text-gray-900 border-b border-gray-200 dark:border-dark-650 dark:text-white border-r">
-        <span>Image</span>
-    </div>
-    <div class="flex items-center px-5 py-3 font-medium leading-snug text-gray-900 border-b border-gray-200 dark:border-dark-650 dark:text-white">
-        <span>Info</span>
-    </div>
-    <div class="px-5 py-3 docs-columns-content border-r border-gray-200 dark:border-dark-650">
-<p><figure class="content-center">
-    <img src="../../pictures/networkoptimization.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-    </div>
-    <div class="px-5 py-3 docs-columns-content">
-<p>Here you can see 2 sets of RPC calls. One is <span style="color:brown"><strong>ReduceItemCount</strong></span> (indicated in red), which is passing the item struct to the server and then to the client.<br />
-The other is <span style="color:brown"><strong>IncreaseItemCount</strong></span> (indicated in blue), which is passing the <span style="color:slateblue"><strong>UniqueID</strong></span> to the server and the server is then using that <span style="color:slateblue"><strong>UniqueID</strong></span> to resolve what item we are trying to modify.</p>
-<p>Switching to using the <span style="color:slateblue"><strong>UniqueID</strong></span> method reduced the RPC size from around 75 bytes down to 13.</p>
-    </div>
-</div>
-<p>The only downside is that it is not possible to verify if the client has illegally modified it&#x27;s data, and it&#x27;s very difficult to verify that the data inside the item/container are synced. It is up to you whether that is a big enough problem to do this. Some anti-cheat methods already do a very good job at preventing clients from modifying the games data with external tools.<br />
-If you need to validate the data, you can have the server function still accept the full item/container struct, validate the data, then only pass the <span style="color:slateblue"><strong>UniqueID</strong></span> to the client.</p>
-<p>We covered that <a href="https://inventoryframework.github.io/introduction/howdoesthenetworkingwork/#unique-id">UniqueID&#x27;s scale</a> extremely well on another page, but to give you an idea of how well it scales, here&#x27;s an example</p>
-<div class="mb-6 overflow-hidden border rounded-md docs-columns dark:border-dark-650" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
-    <div class="flex items-center px-5 py-3 font-medium leading-snug text-gray-900 border-b border-gray-200 dark:border-dark-650 dark:text-white border-r">
-        <span>Image</span>
-    </div>
-    <div class="flex items-center px-5 py-3 font-medium leading-snug text-gray-900 border-b border-gray-200 dark:border-dark-650 dark:text-white">
-        <span>Info</span>
-    </div>
-    <div class="px-5 py-3 docs-columns-content border-r border-gray-200 dark:border-dark-650">
-<p><figure class="content-center">
-    <img src="../../pictures/inventoryitemvsuniqueid.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-    </div>
-    <div class="px-5 py-3 docs-columns-content">
-<p>These are two functions using an array with 5 entries of <span style="color:slateblue"><strong>S_UniqueID</strong></span>&#x27;s (Blue) and an array with 5 entries of <span style="color:slateblue"><strong>S_InventoryItem</strong></span> (Red)</p>
-    </div>
-</div>
+<p>The default save and load system in Unreal Engine is not good and is in desperate need of major revamp or improvements. While Saviour&#x27;s documentation is a bit weird, the code underneath it is excellent and makes the save and load system triple A quality.</p>
+<doc-anchor-target id="custom-thumbnails">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#custom-thumbnails">#</doc-anchor-trigger>
+        <span><a href="https://www.unrealengine.com/marketplace/en-US/product/custom-thumbnails" target="_blank"><strong>Custom Thumbnails</strong></a></span>
+    </h2>
+</doc-anchor-target>
+<p>If you plan on having a large item data base and you have an icon artist, this plugin makes working with that data base way better.</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -261,20 +215,20 @@ If you need to validate the data, you can have the server function still accept 
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/adding-new-items-during-runtime/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../introduction/firststeps/equippingandunequippingitems/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Adding new items during runtime</span>
+                                                <span class="block mt-1">Equipping and unequipping items</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/creating-custom-widgets/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../introduction/howdoesthenetworkingwork/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Creating custom widgets</span>
+                                                <span class="block mt-1">How does the networking work?</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -318,6 +272,6 @@ If you need to validate the data, you can have the server function still accept 
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Creating custom functions", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Suggested Plugins", level: 3, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
