@@ -8,3 +8,9 @@ Networking functions are prefixed with **C_** for client, **S_** for server and 
 For functions that attempt to automate replication, the bulk of the function's code is stored in a function with a **Internal_** prefix. These are typically called both by the server and client. If you want access to the internal functions, you will need to add UFUNCTION(BlueprintCallable) above them.
 
 In blueprint functions, local variables are prefixed with an **L**.
+
+---
+## Tools
+All editor utility widgets are stored inside Content -> Core -> Widgets -> EditorUtilityWidgets -> Tools.
+Any widgets or special components for each editor utility widget is stored in its own folder named after the editor utility widget inside the EditorUtilityWidgets folder.
+This is done so you can bookmark/favourite the Tools folder and have access to all the tools quickly.
