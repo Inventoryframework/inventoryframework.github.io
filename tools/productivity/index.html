@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.727761993858">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.728389742272">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -11,6 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Productivity</title>
     <meta name="title" content="Productivity">
+    <meta name="description" content="You will very likely be spending a good amount of time using this utility widget, so I suggest bookmarking it or having some way of quickly accessing..." />
 
     <!-- Canonical -->
     <link rel="canonical" href="/tools/productivity/" />
@@ -19,19 +20,21 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/tools/productivity/">
     <meta property="og:title" content="Productivity">
+    <meta property="og:description" content="You will very likely be spending a good amount of time using this utility widget, so I suggest bookmarking it or having some way of quickly accessing...">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/tools/productivity/">
     <meta property="twitter:title" content="Productivity">
+    <meta property="twitter:description" content="You will very likely be spending a good amount of time using this utility widget, so I suggest bookmarking it or having some way of quickly accessing...">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.727761993858" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.728389742272" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.727761993858" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.728389742272" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.727761993858" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.728389742272" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -181,6 +184,28 @@
         <span>Productivity</span>
     </h1>
 </doc-anchor-target>
+<hr />
+<doc-anchor-target id="inventory-helper">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#inventory-helper">#</doc-anchor-trigger>
+        <span>Inventory Helper</span>
+    </h2>
+</doc-anchor-target>
+<p>You will very likely be spending a good amount of time using this utility widget, so I suggest bookmarking it or having some way of quickly accessing it while you work.</p>
+<p>Working with the raw container struct and the array of items is extremely cumbersome and not very efficient use of time. It also does not provide any sort of feedback of items that might be overlapping or have gone outside the bounds of the container.</p>
+<p>This is why I&#x27;ve developed the Inventory Helper. This is a editor utility widget which attempts to mimick the final result you&#x27;d see in game and providing a place for you to create your own in-editor tools without going into C++.</p>
+<doc-panel id="limitations" collapsed>
+    <template #title>Limitations</template>
+<ul>
+<li>The normal highlight widget is not supported. An alternate method is used inside the inventory helper.</li>
+<li>Item splitting is not supported.</li>
+<li>Only basic item collision is supported, no combining or stacking.</li>
+<li>The Item Void actor is not meant to be interacted with outside the inventory helper. If you wish to modify the Item Void, you will need to do that through the inventory helper.</li>
+</ul>
+</doc-panel>
+<p>It is <strong>HIGHLY</strong> advised to rarely, if ever, work with the raw container settings array. The only exception is class defaults. Use the inventory helper whenever you can.</p>
+<p>Because of how many features this helper has, it becomes a lot to write down, so I&#x27;ve made a video going over how to use the inventory helper and cover many of its features.</p>
+<p>What might confuse most is the &quot;Void&quot; widget and actor. Dragging and dropping an item onto the background will &quot;pin&quot; the item exactly where you dropped it. But the item data and its containers must be stored <em>somewhere</em></p>
 
                                 
                                 <!-- Required only on API pages -->
