@@ -22,6 +22,7 @@ This might take a while as I’m also trying to figure out a way to have particl
 
 - When equipping a blueprint item, the attachment does not seem to be working if the components are set to replicate by default. You will want to go into your blueprint, go through all components and uncheck "Component Replicates" until the issue is gone.
 
+
 ## Common Problems
 These aren't bugs, but problems that can be misinterpreted as bugs.
 
@@ -40,3 +41,5 @@ Remember to use the tag “**DONOTPREVIEW**” on those collision components if 
 ||| Example 2
 ![](/pictures/InaccurateHighlightProblem2.png)
 |||
+
+- Unable to save <span style="color:violet">**DA_ItemVoid**</span> or getting crashes when closing the editor/changing levels while using it. This is because a object reference is being stored inside the data asset, but when your closing the editor or changing levels its not letting that object get garbage collected. In C++ you will want to add "SkipSerialization" to the UProperty (Look at FS_UniqueID for example) and reset all the data inside.

@@ -23,6 +23,5 @@ Whatever you fill in inside of <span style="color:slateblue">**Asset Registry Ca
 ## Validating
 To validate your items are being discovered correctly, I suggest going into the [InventoryHelper](http://inventoryframework.github.io/tools/productivity/#inventory-helper) and hitting Refresh near the bottom right. You can also search for your item.
 
-If an item is not appearing there, either the above steps were not followed correctly or the asset manager is ignoring it because no data has been changed inside of it or it is identical to another item.
-
-If an item is still not appearing there, go into "Windows" and open the output log and look for "Ignoring PrimaryAssetType Items - Conflicts with DA_CoreItem - Asset: ITEMNAMEHERE" in your message log.
+If an item is not appearing there, either the above steps were not followed correctly or the asset manager is ignoring it for some reason.
+If you go into "Windows" and open the output log and find any "Ignoring PrimaryAssetType Items - Conflicts with DA_CoreItem - Asset: ITEMNAMEHERE" in your message log, it means no data has been changed inside of your data asset or it is identical to another data asset.
