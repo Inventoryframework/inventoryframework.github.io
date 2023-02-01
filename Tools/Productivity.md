@@ -27,5 +27,6 @@ If you are using source control, I suggest adding DA_ItemVoid to your ignore lis
 - Item splitting is not supported.
 - Only basic item collision is supported, no combining or stacking.
 - The Item Void actor and data asset is not meant to be interacted with outside the inventory helper. If you wish to modify the Item Void regularily, consider modifying
+- Generated item icons do not work. It is suggested opening your game, inspecting the item and saving the generated icon to disk, then setting it inside the data asset.
 ===
 
