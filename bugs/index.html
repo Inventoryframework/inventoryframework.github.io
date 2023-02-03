@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.728558714957">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.728761735363">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -32,11 +32,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../resources/css/retype.css?v=2.4.0.728558714957" rel="stylesheet" />
+    <link href="../resources/css/retype.css?v=2.4.0.728761735363" rel="stylesheet" />
 
-    <script type="text/javascript" src="../resources/js/config.js?v=2.4.0.728558714957" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../resources/js/config.js?v=2.4.0.728761735363" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.4.0.728558714957" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.4.0.728761735363" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -216,16 +216,14 @@
 </div>
 <ul>
 <li><p>There&#x27;s a bug with the engine where if any item in your blueprint has <span style="color:slateblue"><strong>Simulate Physics</strong></span> enabled, it&#x27;ll remove the root component. There are some workarounds but none were perfect, especially with how flexible I wanted the system to be. UE5 preview fixed some issues but I immediately found new ones.<br />
-There&#x27;s an interface event called <span style="color:brown"><strong>UpdateCollision</strong></span> and some items might need to override this function. It&#x27;s default is in <span style="color:violet"><strong>BP_SM_ItemPhysical</strong></span>and it <em>should</em> work in most projects.</p>
+There&#x27;s an interface event called <span style="color:brown"><strong>UpdateCollision</strong></span> and some items might need to override this function. It&#x27;s default is in <span style="color:violet"><strong>BP_SM_ItemPhysical</strong></span> and it <em>should</em> work in most projects.</p>
 </li>
-<li><p><span style="color:violet"><strong>WBP_Highlight</strong></span> is slightly not in the position it&#x27;s supposed to be in. I’ve tried to solve this but it seems to be an issue with some floats getting truncated during some of the math. From my testing it was happening completely randomly so it’s been very challenging to diagnose. The Blueprint version is working just fine though. The performance difference between the two is almost none from my testing.</p>
-</li>
-<li><p>The <span style="color:violet"><strong>BP_PreviewActor</strong></span>&#x27;s animation is snapping to frame 0 of the animation it is supposed to play whenever the preview is refreshed. This is an issue I’m trying to solve. You can of course replace my actor preview system with a normal preview system, but those require a specific workflow and actor component hierarchy setup, whereas mine does not.<br />
+<li><p>The <span style="color:violet"><strong>BP_PreviewActor</strong></span>&#x27;s animation is snapping to frame 0 of the animation whenever the preview is refreshed. This is an issue I’m trying to solve. You can of course replace my actor preview system with a normal preview system, but those require a specific workflow and actor component hierarchy setup, whereas mine does not.<br />
 This might take a while as I’m also trying to figure out a way to have particle effects also not get reset.</p>
 </li>
 <li><p>In 5.1, RenderTargets can break if your quality settings are below Epic.</p>
 </li>
-<li><p>When equipping a blueprint item, the attachment does not seem to be working if the components are set to replicate by default. You will want to go into your blueprint, go through all components and uncheck &quot;Component Replicates&quot; until the issue is gone.</p>
+<li><p>When equipping a blueprint item, the attachment does not seem to be working if the components are set to replicate by default. You will want to go into your blueprint, go through all components and uncheck &quot;Component Replicates&quot; until the issue is gone. They will still replicate, even though they aren&#x27;t set to replicate.</p>
 </li>
 </ul>
 <doc-anchor-target id="common-problems">
@@ -242,7 +240,7 @@ You might have this problem with scroll bars most of the time. An easy fix for t
 <li><p><span style="color:violet"><strong>BP_PreviewActor</strong></span>&#x27;s automated camera distance is determined by all components which have collision enabled. This means if you have collision hitboxes or something similar on your actors, the camera will try to adjust to fit that in the camera view.<br />
 Remember to use the tag “<strong>DONOTPREVIEW</strong>” on those collision components if the <span style="color:violet"><strong>BP_PreviewActor</strong></span> is copying them.</p>
 </li>
-<li><p>Your item is not showing up in the asset manager or your getting a &quot;Ignoring PrimaryAssetType Items - Conflicts with DA_CoreItem - Asset: ITEMNAMEHERE&quot; in your message log. This happens when there are two identical data assets. This will most likely happen when you have two completely blank data assets and/or haven&#x27;t filled in any of the data yet.</p>
+<li><p>Your item is not showing up in the asset manager or your getting a &quot;Ignoring PrimaryAssetType Items - Conflicts with SOMECLASSNAME - Asset: ITEMNAMEHERE&quot; in your message log. This happens when there are two identical data assets. This will most likely happen when you have two completely blank data assets and/or haven&#x27;t filled in any of the data yet.</p>
 </li>
 <li><p>The highlight widget is going outside the boundaries of the container or is getting clipped. This happens if the sizing of the widget does not match the container dimensions. This is most common if the container is slotted into a canvas panel. If that is the case, you can check &quot;Size To Content&quot;. For other widgets, you will have to manage the sizing of the container and in some cases, it&#x27;s handled automatically.</p>
 </li>
