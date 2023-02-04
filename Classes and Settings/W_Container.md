@@ -25,4 +25,4 @@ So if I want mine to appear after 8 tiles while my container is 10 tiles tall an
 
 <span style="color:slateblue">**TileClass**</span> and <span style="color:slateblue">**ItemClass**</span> are the default classes used to create the widgets for each instance of a container. It is recommended to try and keep these the same where ever your containers are to try and maintain consistent visuals through out your game.
 
-<span style="color:violet">**DA_CoreItem**</span> has a override map, where if the current containers class if found in that map, it'll then use the item widget in that map instead of the assigned <span style="color:slateblue">**ItemClass**</span>. This could be useful for when a special item needs it own item widget.
+<span style="color:violet">**DA_CoreItem**</span> has a override map, where if the current containers class is found in that map, it'll then use the item widget in that map instead of the assigned <span style="color:slateblue">**ItemClass**</span>. This could be useful for when a special item needs it own item widget.
