@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.728818994731">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.728904694558">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -32,11 +32,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../resources/css/retype.css?v=2.4.0.728818994731" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.728904694558" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.728818994731" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.728904694558" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.728818994731" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.728904694558" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -211,7 +211,7 @@
     </h2>
 </doc-anchor-target>
 <p>Inside your item data assets, you can see in the <span style="color:green"><strong>Developer Settings</strong></span> there&#x27;s a &quot;<span style="color:slateblue"><strong>Asset Registry Category</strong></span>&quot; variable. The default is &quot;Items&quot;, just like the asset type we just set up in the asset manager.</p>
-<p>You are able to either change the default for children of <span style="color:violet"><strong>DA_CoreItem</strong></span> to be something unique, or change it per-item. If you have massive item data bases, it is recommended to organize your data base using custom asset types.</p>
+<p>You are able to either change the default for children of <span style="color:violet"><strong>DA_CoreItem</strong></span> to be something unique, or change it per-item. If you have massive item data bases (500+ items), it is recommended to organize your data base using custom asset types.</p>
 <p>Whatever you fill in inside of <span style="color:slateblue"><strong>Asset Registry Category</strong></span>, you will need to follow the above steps, but replacing the Primary Asset Type with whatever you put into <span style="color:slateblue"><strong>Asset Registry Category</strong></span>. You also must save the data asset manually after the change.</p>
 <hr />
 <doc-anchor-target id="validating">
@@ -222,7 +222,7 @@
 </doc-anchor-target>
 <p>To validate your items are being discovered correctly, I suggest going into the <a href="http://inventoryframework.github.io/tools/productivity/#inventory-helper">InventoryHelper</a> and hitting Refresh near the bottom right. You can also search for your item.</p>
 <p>If an item is not appearing there, either the above steps were not followed correctly or the asset manager is ignoring it for some reason.<br />
-If you go into &quot;Windows&quot; and open the output log and find any &quot;Ignoring PrimaryAssetType Items - Conflicts with DA_CoreItem - Asset: ITEMNAMEHERE&quot; in your message log, it means no data has been changed inside of your data asset or it is identical to another data asset.</p>
+If you go into &quot;Windows&quot; and open the output log and find any &quot;Ignoring PrimaryAssetType Items - Conflicts with SOMECLASSNAME - Asset: ITEMNAMEHERE&quot; in your message log, it means no data has been changed inside of your data asset or it is identical to another data asset.</p>
 
                                 
                                 <!-- Required only on API pages -->
