@@ -2,7 +2,7 @@
 
 ---
 ## Containers, Tiles and Items
-These three will be the widgets you'll most likely end up working with the most. To improve the hierarchy, I've tried to not add any components that aren't necessary. Those that are essential for the widgets to function, I've added Getter functions that request the essential widget. This way you're design hierarchy can be in whatever design you want and still use the parent widgets. But this does mean you need to override those functions and passs the widget through as a variable.
+These three widgets are the ones you'll most likely end up working with the most. To improve the hierarchy, I've tried to not add any components that aren't necessary. Those that are essential for the widgets to function, I've added Getter functions that request the essential widget. This way you're design hierarchy can be in whatever design you want and still use the parent widgets. But this does mean you need to override those functions and passs the widget through as a variable.
 
 All three are abstract, so you must either use the widgets in the demo folder or make your own children.
 

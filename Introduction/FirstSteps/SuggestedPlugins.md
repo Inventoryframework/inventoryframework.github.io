@@ -11,7 +11,7 @@ Unreal Engine's built-in Gameplay Ability System (GAS) is extremely powerful and
 
 ## <a href="https://www.unrealengine.com/marketplace/en-US/product/savior" target="_blank">**Saviour**</a>
 The default save and load system in Unreal Engine is not good and is in desperate need of major revamp or improvements. While Saviour's documentation is a bit weird, the code underneath it is excellent and makes the save and load system triple A quality and the developer is very active on its forum thread.
-I will be supporting saving and loading with the default save system. I am not experienced enough in the saving and loading to create a custom C++ solution.
+I will be supporting saving and loading with the default save system. I am not experienced enough in custom saving and loading to create a custom C++ solution.
 
 ## <a href="https://www.unrealengine.com/marketplace/en-US/product/custom-thumbnails" target="_blank">**Custom Thumbnails**</a>
 If you plan on having a large item data base and you have an icon artist, this plugin makes working with that data base way better.
