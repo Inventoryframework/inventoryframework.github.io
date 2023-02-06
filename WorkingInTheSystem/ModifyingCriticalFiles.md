@@ -20,5 +20,5 @@ If you are looking to optimize this struct, you "can" remove the ContainerIndex 
 
 ---
 # FS_ContainerSettings
-This struct might get a small revamp in the future. The tile map, while it is useful for single player games and drastically speeds up collision tests and look-ups, it's becoming a bit too expensive for replication.
-It is not recommended to remove anything unless you are certain you won't need it. Most of the data, outside of the tile map, is extremely small outside of the tile map.
+This struct might get a small revamp in the future. The tile map, while it is useful for single player games and drastically speeds up collision tests and look-ups, it might be too expensive for some projects that might have strict network bandwidth.
+It is not recommended to remove anything unless you are certain you won't need it. Most of the data, other than the tile map, is extremely small.
