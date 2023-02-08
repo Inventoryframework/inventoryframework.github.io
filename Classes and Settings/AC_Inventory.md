@@ -53,3 +53,17 @@ The Network Queue system is only relevant for clients, it's never used in single
 ---
 ## Infinite containers
 Containers can be infinite in either the X or Y direction, the system tries to dynamically resize the container whenever an item is moved, added or removed from it.
+
+---
+## States
+The containers can be in one of three states during development.
+- The "raw" state is where <span style="color:slateblue">**UniqueID**</span>'s are not set and containers <span style="color:slateblue">**BelongsToItem**</span> directions are direct index directions and all object references are null. The  component is designed to be in this state for when you call the <span style="color:brown">**StartComponent**</span> function. This is where all the data is "human readable", but most functions won't work.
+- The "Editor" state is where <span style="color:slateblue">**Unique**</span>'s have been initialized and <span style="color:slateblue">**BelongsToItem**</span> are set to the items and containers <span style="color:slateblue">**UniqueID**</span>'s and some object references might be valid. This state is meant for development and it might make some data not human-readable, and it'll mean most of your functions will work as if you are in a valid game session. Many tools depend on the component being in this state, such as the  InventoryHelper.
+- Finally there's the "Initialized" state. This simply means the gameplay logic has called the <span style="color:brown">**StartComponent**</span> function and you are inside a gameplay session. The component should never be put into this state while you're outside of a game session.
+
+You can use <span style="color:brown">**GetComponentState**</span> to resolve what state it is in, and look inside that function to better understand what conditions must be met for each state.
+
+There is a function called <span style="color:brown">**ConvertToRawState**</span> which will prepare all containers for a gameplay session. Ideally, this function should not be called during a gameplay session as it's a waste of CPU time. All container data should already be prepped for gameplay.
+There is also another function called <span style="color:brown">**ConvertFromRawStateToEditorState**</span> which preps all data to be usable for editor tools.
+
+There is a editor utility widget called "EUW_EditorStateChecker" which simply checks a list of actors and their inventory components and checks the components state, then return a list of all actors that aren't prepped for gameplay. The component also gives you a message on its BeginPlay if it's state was still in the Editor state.
