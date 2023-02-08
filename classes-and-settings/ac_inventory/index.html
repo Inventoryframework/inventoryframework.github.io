@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729013283230">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729183982699">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,11 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.729013283230" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.729183982699" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729013283230" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729183982699" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729013283230" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729183982699" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -257,6 +257,23 @@ The input system is extremely basic and is meant to be replaced. They are never 
     </h2>
 </doc-anchor-target>
 <p>Containers can be infinite in either the X or Y direction, the system tries to dynamically resize the container whenever an item is moved, added or removed from it.</p>
+<hr />
+<doc-anchor-target id="states">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#states">#</doc-anchor-trigger>
+        <span>States</span>
+    </h2>
+</doc-anchor-target>
+<p>The containers can be in one of three states during development.</p>
+<ul>
+<li>The &quot;raw&quot; state is where <span style="color:slateblue"><strong>UniqueID</strong></span>&#x27;s are not set and containers <span style="color:slateblue"><strong>BelongsToItem</strong></span> directions are direct index directions and all object references are null. The  component is designed to be in this state for when you call the <span style="color:brown"><strong>StartComponent</strong></span> function. This is where all the data is &quot;human readable&quot;, but most functions won&#x27;t work.</li>
+<li>The &quot;Editor&quot; state is where <span style="color:slateblue"><strong>Unique</strong></span>&#x27;s have been initialized and <span style="color:slateblue"><strong>BelongsToItem</strong></span> are set to the items and containers <span style="color:slateblue"><strong>UniqueID</strong></span>&#x27;s and some object references might be valid. This state is meant for development and it might make some data not human-readable, and it&#x27;ll mean most of your functions will work as if you are in a valid game session. Many tools depend on the component being in this state, such as the  InventoryHelper.</li>
+<li>Finally there&#x27;s the &quot;Initialized&quot; state. This simply means the gameplay logic has called the <span style="color:brown"><strong>StartComponent</strong></span> function and you are inside a gameplay session. The component should never be put into this state while you&#x27;re outside of a game session.</li>
+</ul>
+<p>You can use <span style="color:brown"><strong>GetComponentState</strong></span> to resolve what state it is in, and look inside that function to better understand what conditions must be met for each state.</p>
+<p>There is a function called <span style="color:brown"><strong>ConvertToRawState</strong></span> which will prepare all containers for a gameplay session. Ideally, this function should not be called during a gameplay session as it&#x27;s a waste of CPU time. All container data should already be prepped for gameplay.<br />
+There is also another function called <span style="color:brown"><strong>ConvertFromRawStateToEditorState</strong></span> which preps all data to be usable for editor tools.</p>
+<p>There is a editor utility widget called &quot;EUW_EditorStateChecker&quot; which simply checks a list of actors and their inventory components and checks the components state, then return a list of all actors that aren&#x27;t prepped for gameplay. The component also gives you a message on its BeginPlay if it&#x27;s state was still in the Editor state.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>

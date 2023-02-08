@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729013283230">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729183982699">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -32,11 +32,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.729013283230" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.729183982699" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729013283230" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729183982699" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729013283230" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729183982699" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -203,7 +203,7 @@ Widgets also can’t be transported through a network, so if multiplayer is impo
 </doc-anchor-target>
 <p>Finding an item is a very common scenario when you start making your own functions.</p>
 <p>The container&#x27;s <span style="color:slateblue"><strong>TileMap</strong></span> combined with an item&#x27;s <span style="color:slateblue"><strong>UniqueID</strong></span> is the most reliable way of finding items.</p>
-<p>The component includes a function to get an item at item at a specific index of a container GetItemAtSpecificIndex, then there is a bit more expensive way of finding an item but it’ll go through all containers, GetItemByUniqueID.</p>
+<p>The component includes a function to get an item at item at a specific index of a container called <span style="color:brown"><strong>GetItemAtSpecificIndex</strong></span>, then there is a bit more expensive way of finding an item but it’ll go through all containers, <span style="color:brown"><strong>GetItemByUniqueID</strong></span>.</p>
 <ol>
 <li>The <span style="color:slateblue"><strong>UniqueID</strong></span> is the most reliable method of finding a very specific item, container or item driver, other than a direct reference to the item, container or item driver, but even then a direct reference might get outdated if the player moves the item or modifies it in some way. The <span style="color:slateblue"><strong>UniqueID</strong></span> is only updated for containers and items if they are moved to a new component.</li>
 <li><span style="color:violet"><strong>W_Tile</strong></span> also have a reference to the item on top of them, but to reduce memory, tiles have a <span style="color:slateblue"><strong>OwningItem</strong></span> integer which references the top left tile of the item, which holds the <span style="color:slateblue"><strong>ParentItem</strong></span> reference variable.<br />

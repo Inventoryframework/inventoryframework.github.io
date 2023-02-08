@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729013283230">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729183982699">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,12 +30,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.729013283230" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.729183982699" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729013283230" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729183982699" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729013283230" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.729013283230" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729183982699" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.729183982699" defer></script>
     <script id="mermaid-js" type="text/javascript" src="../../resources/js/mermaid.js?v=2.4.0" defer></script>
 </head>
 <body>
@@ -295,7 +295,7 @@ void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, i
         <span>Why not just use a multicast?</span>
     </h3>
 </doc-anchor-target>
-<p>Because of how large some RPC&#x27;s can get, I did not find multicasts to be acceptable for most of the functions. A lot of the RPC&#x27;s are just simply not relevant for most clients anyways.</p>
+<p>Because of how large some RPC&#x27;s can get, I did not find multicasts to be acceptable for most of the functions. A lot of the RPC&#x27;s are just simply not relevant for most clients anyways, and managing relevancy is a lot more complicated than a simple array of actors.</p>
 <hr />
 <doc-anchor-target id="unique-id">
     <h2>
@@ -306,8 +306,8 @@ void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, i
 <p>The UniqueID is a simple method to quickly find containers or items, or ensuring containers or items are valid, and for linking some object to an item (Such as the <a href="https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/">item driver&#x27;s</a>). This is covered in multiple sections in the documentation, but here are some things to consider for networking.</p>
 <ul>
 <li>Clients are unable to generate UniqueID&#x27;s. If a function requires the client to assign a UniqueID to an item or a container, it must receive it from the server. You can see an example in <span style="color:violet"><strong>AC_Inventory.h</strong></span> -&gt; <span style="color:brown"><strong>TryAddNewItem</strong></span></li>
-<li>UniqueID&#x27;s <a href="https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations">scale extremely</a> well with RPC&#x27;s. It is advised to use UniqueID as often as possible.</li>
-<li>There&#x27;s no way to evaluate from a UniqueID if it was assigned to an item or container. It is not recommended to add more information to this struct as it&#x27;s meant to be small and simple, so that it gets replicated extremely quickly and cheaply.</li>
+<li>UniqueID&#x27;s <a href="https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations">scale extremely</a> well with RPC&#x27;s. It is advised to use UniqueID&#x27;s as often as possible.</li>
+<li>There&#x27;s no way to evaluate from a UniqueID if it was assigned to an item or container without going through all items and containers until you find a match. It is not recommended to add more information to this struct as it&#x27;s meant to be small and simple, so that it gets replicated extremely quickly and cheaply.</li>
 </ul>
 
                                 
