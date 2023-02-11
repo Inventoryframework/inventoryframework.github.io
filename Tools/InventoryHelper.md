@@ -1,10 +1,9 @@
 ---
 tags: [underrevision, tools]
 ---
-# Productivity
+# Inventory Helper
 
 ---
-## Inventory Helper
 You will very likely be spending a good amount of time using this utility widget, so I suggest bookmarking it or having some way of quickly accessing it while you work.
 
 Working with the raw container struct and the array of items is extremely cumbersome and not very efficient use of time. It also does not provide any sort of feedback of items that might be overlapping or have gone outside the bounds of the container.
@@ -15,6 +14,7 @@ It is **HIGHLY** advised to rarely, if ever, work with the raw container setting
 
 Because of how many features this helper has, it becomes a lot to write down, so I've made a video (Not yet released) going over how to use the inventory helper and cover many of its features.
 
+---
 ### The void system
 What might confuse most is the "Void" widget and actor. Dragging and dropping an item onto the background will "pin" the item exactly where you dropped it. But the item data and its containers must be stored on an actor *somewhere* in the currently loaded level. The void actor is where that data is stored. This also has the benefit of acting as a proxy for moving an item from one actor to another.
 You can select one actor, move an item into the void area, then select another actor and move the item into one of its containers.
