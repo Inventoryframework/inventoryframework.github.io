@@ -24,7 +24,9 @@ This might take a while as I’m also trying to figure out a way to have particl
 ## Common Problems
 These aren't bugs, but problems that can be misinterpreted as bugs.
 
-- The <span style="color:violet">**WBP_Highlight**</span> widget and <span style="color:violet">**WBP_InventoryItem**</span> widget padding doesn’t take into account any scaling their parent widgets have to do (like borders). So if you are getting issues with items being dropped in a different tile or an item not lining up properly, there is most likely an issue with your UMG hierarchy/scaling.
+- The inspector debugger changes are being set but not being saved after closing the editor. This is because the engine seemingly refuses to label assets as dirty while a gameplay session is active and doesn't label them as dirty after closing the gameplay session. An asset that is dirty will have an asterisk (*) indicating that you have changes that need to be saved, but since it refuses to label it as dirty, it means that you have to manually open the asset and pressing save, even though there is no star indicating that you have changes that need to be saved. This may be a engine bug or is intended, but there is nothing I can do to fix this right now.
+
+- The <span style="color:violet">**WBP_Highlight**</span> widget and <span style="color:violet">**WBP_InventoryItem**</span> widget padding doesn't take into account any scaling their parent widgets have to do (like borders). So if you are getting issues with items being dropped in a different tile or an item not lining up properly, there is most likely an issue with your UMG hierarchy/scaling.
 You might have this problem with scroll bars most of the time. An easy fix for that is to go into the ScrollBox, go into Scrollbar Padding, let's say the scroll bar is on the right side, go into the right side padding and minus the thickness of the bar.
 
 - <span style="color:violet">**BP_PreviewActor**</span>'s automated camera distance is determined by all components which have collision enabled. This means if you have collision hitboxes or something similar on your actors, the camera will try to adjust to fit that in the camera view.
