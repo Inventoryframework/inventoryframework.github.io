@@ -7,6 +7,7 @@
 This plugin has not been released yet, everything is still under review and can be spontaneously removed or changed.
 !!!
 
+---
 ## What is the Inventory Framework Plugin?
 
 Nearly every inventory system shares the same foundation, a container with tiles and items slot into those tiles. This Inventory Framework Plugin (IFP) attempts to be that foundation for your project, while allowing for a high level of inventory design, item customization, rapid prototyping and system integration.
@@ -27,5 +28,6 @@ It is NOT an inventory to fully replicate the mechanics of any specific game. If
 If you have any issues or questions neither the videos or documentation answer then feel free to message me on Discord (Variann#8404) or join the discord channel.
 You can look at the FAQ for more info.
 
+---
 ## Color Sheet:
 <span style="color:brown">**functions**</span> - <span style="color:slateblue">**Variable**</span> - <span style="color:green">**category**</span> - <span style="color:violet">**class**</span>
