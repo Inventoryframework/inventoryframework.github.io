@@ -3,38 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729287891971">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729468250961">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
 
     <!-- Primary Meta Tags -->
-    <title>Productivity</title>
-    <meta name="title" content="Productivity">
-    <meta name="description" content="You will very likely be spending a good amount of time using this utility widget, so I suggest bookmarking it or having some way of quickly accessing..." />
+    <title>Item Inspector</title>
+    <meta name="title" content="Item Inspector">
+    <meta name="description" content="This is not a editor utility widget, but rather a in-game tool. The files can be found inside Core -> Widgets -> ExamineAndInspect" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="/tools/productivity/" />
+    <link rel="canonical" href="/tools/iteminspector/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/tools/productivity/">
-    <meta property="og:title" content="Productivity">
-    <meta property="og:description" content="You will very likely be spending a good amount of time using this utility widget, so I suggest bookmarking it or having some way of quickly accessing...">
+    <meta property="og:url" content="/tools/iteminspector/">
+    <meta property="og:title" content="Item Inspector">
+    <meta property="og:description" content="This is not a editor utility widget, but rather a in-game tool. The files can be found inside Core -> Widgets -> ExamineAndInspect">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/tools/productivity/">
-    <meta property="twitter:title" content="Productivity">
-    <meta property="twitter:description" content="You will very likely be spending a good amount of time using this utility widget, so I suggest bookmarking it or having some way of quickly accessing...">
+    <meta property="twitter:url" content="/tools/iteminspector/">
+    <meta property="twitter:title" content="Item Inspector">
+    <meta property="twitter:description" content="This is not a editor utility widget, but rather a in-game tool. The files can be found inside Core -> Widgets -> ExamineAndInspect">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.729287891971" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.729468250961" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729287891971" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729468250961" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729287891971" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729468250961" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -184,42 +184,42 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="productivity" class="break-words">
+<doc-anchor-target id="item-inspector" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#productivity">#</doc-anchor-trigger>
-        <span>Productivity</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#item-inspector">#</doc-anchor-trigger>
+        <span>Item Inspector</span>
     </h1>
 </doc-anchor-target>
 <hr />
-<doc-anchor-target id="inventory-helper">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#inventory-helper">#</doc-anchor-trigger>
-        <span>Inventory Helper</span>
-    </h2>
-</doc-anchor-target>
-<p>You will very likely be spending a good amount of time using this utility widget, so I suggest bookmarking it or having some way of quickly accessing it while you work.</p>
-<p>Working with the raw container struct and the array of items is extremely cumbersome and not very efficient use of time. It also does not provide any sort of feedback of items that might be overlapping or have gone outside the bounds of the container.</p>
-<p>This is why I&#x27;ve developed the Inventory Helper. This is a editor utility widget which attempts to mimick the final result you&#x27;d see in game and providing a place for you to create your own in-editor tools without going into C++.</p>
-<p>It is <strong>HIGHLY</strong> advised to rarely, if ever, work with the raw container settings array. The only exception is class defaults. Use the inventory helper whenever you can.</p>
-<p>Because of how many features this helper has, it becomes a lot to write down, so I&#x27;ve made a video (Not yet released) going over how to use the inventory helper and cover many of its features.</p>
-<doc-anchor-target id="the-void-system">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#the-void-system">#</doc-anchor-trigger>
-        <span>The void system</span>
-    </h3>
-</doc-anchor-target>
-<p>What might confuse most is the &quot;Void&quot; widget and actor. Dragging and dropping an item onto the background will &quot;pin&quot; the item exactly where you dropped it. But the item data and its containers must be stored on an actor <em>somewhere</em> in the currently loaded level. The void actor is where that data is stored. This also has the benefit of acting as a proxy for moving an item from one actor to another.<br />
-You can select one actor, move an item into the void area, then select another actor and move the item into one of its containers.</p>
-<doc-panel id="limitations" collapsed>
-    <template #title>Limitations</template>
-<ul>
-<li>The normal highlight widget is not supported. An alternate method is used inside the inventory helper.</li>
-<li>Item splitting is not supported.</li>
-<li>Only basic item collision is supported, no combining or stacking.</li>
-<li>The Item Void actor is not meant to be interacted with outside the inventory helper. If you wish to modify the Item Void regularily, consider modifying the InventoryHelper and have the tool modify it for you.</li>
-<li>Generated item icons do not work. It is suggested to open your game, inspecting the item and saving the generated icon to disk, then setting it inside the data asset.</li>
-</ul>
-</doc-panel>
+<p>This is not a editor utility widget, but rather a in-game tool. The files can be found inside Core -&gt; Widgets -&gt; ExamineAndInspect<br />
+<span style="color:violet"><strong>WBP_Inspect</strong></span> has a ToggleDebug button on the top bar. Pressing this will expose this tool to the user.</p>
+<p>There is a drop down menu allowing you to select whether you want to modify the generated icon settings or the inspection settings.</p>
+<p>You can use this for figuring out what rotation and location you want to feed into the generated icon settings.<br />
+Pressing any of the XYZ rotation or location buttons will rotate or move the mesh by the amount set in the slider. You can also manually put in a value in any of the text boxes. Zoom refers to the camera distance from the item.</p>
+<p>You can save your values to the data asset by pressing the <strong>Save to Asset</strong> button.<br />
+It is always more efficient for the game thread to NOT generate the item icons via the preview system. It is recommended whenever possible to save the icons and assigning that to the data asset, then disabling <span style="color:slateblue"><strong>Use Generated Item Icon</strong></span> inside the data asset.</p>
+<hr />
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Important</h5>
+<ol>
+<li>The engine does not load assets added to the content browser while a game session is active. For saved item icons to work properly, you must first right click and save the texture, then right click it and press <strong>Asset Actions -&gt; Reload</strong></li>
+<li>The engine will not properly label the data asset as dirty (an asterisk * indicating that the asset has changes that need to be saved.) after pressing the <strong>Save to Asset</strong> Button or the <strong>Set Icon</strong> buttons. You must open the data asset yourself and pressing save, even though there is no star indicating that there are changes waiting to be saved. If you don&#x27;t do this, your changes will be lost after closing the editor and it won&#x27;t prompt you if you want to save the data asset.</li>
+</ol>
+        </div>
+    </div>
+</div>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
@@ -228,9 +228,6 @@ You can select one actor, move an item into the void area, then select another a
                                         </a>
                                         <span class="mr-2"><a href="../../tags/underrevision/" class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
                                     <span>underrevision</span>
-                                </a></span>
-                                        <span class="mr-2"><a href="../../tags/tools/" class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>tools</span>
                                 </a></span>
                                     </span>
                                 </div>
@@ -242,11 +239,11 @@ You can select one actor, move an item into the void area, then select another a
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../tools/debugging/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../tools/inventoryhelper/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Debugging</span>
+                                                <span class="block mt-1">Inventory Helper</span>
                                             </span>
                                         </a>
                                     </div>
@@ -299,6 +296,6 @@ You can select one actor, move an item into the void area, then select another a
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Productivity", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Item Inspector", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
