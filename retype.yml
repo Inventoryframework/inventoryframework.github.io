@@ -2,9 +2,10 @@ input: .
 output: .retype
 url: # Add your website address here
 branding:
-  title: Inventory Framework Plugin
+  title: Inventory Framework
   label: Docs
   text: "#ffffff"
+  logo: pictures/Logo.png
 markdown:
   lineBreaks: hard # or, hard
 links:
