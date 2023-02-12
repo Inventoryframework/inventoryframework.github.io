@@ -1,11 +1,12 @@
 input: .
+favicon: pictures/favicon4.png
 output: .retype
 url: # Add your website address here
 branding:
   title: Inventory Framework
   label: Docs
   text: "#ffffff"
-  logo: pictures/Logo.png
+  logo: pictures/logo2.png
 markdown:
   lineBreaks: hard # or, hard
 links:
