@@ -22,7 +22,9 @@ When creating a widget for a container, the widget uses a <span style="color:sla
 
 Items differentiate themselves from each other by using a <span style="color:slateblue">**UniqueID**</span> as items can have the same name, same data asset and so forth, they can even share the same position inside a container while in-editor. A component can not give items or containers the same <span style="color:slateblue">**UniqueID**</span> twice. This is essential for functions to work properly.
 
-The component is designed to live on individual actors, not the player controller. Though there is no reason why it can't live on the controller, but I won't be actively testing it that way. It is highly recommended to head over to the [AC_Inventory](https://inventoryframework.github.io/classes-and-settings/ac_inventory/) page and giving a read. Understanding the main component that makes this system work is crucial to understanding the in's and out's of the system.
+The component is designed to live on individual actors, not the player controller. Though there is no reason why it can't live on the controller, but I won't be actively testing it that way. 
+
+It is highly recommended to head over to the [AC_Inventory](https://inventoryframework.github.io/classes-and-settings/ac_inventory/) page and giving a read. Understanding the main component that makes this system work is crucial to understanding the in's and out's of the system.
 
 ---
 ## How are the infinite items inside of items achieved?
