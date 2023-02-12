@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729468250961">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729518312432">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,11 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.729468250961" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.729518312432" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729468250961" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729518312432" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729468250961" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729518312432" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -224,6 +224,23 @@ It does this by getting all components of the owning actor and then duplicating 
 <p>It should be easy to add compatibility for more components, you’ll have to add them yourself, but the currently supported components should support the vast majority of components that have any sort of visual importance.<br />
 You can optimize the construction or simply prevent this actor from duplicating a specific component by going into <span style="color:slateblue"><strong>ComponentTags</strong></span> and adding “<strong>DONOTPREVIEW</strong>”.<br />
 Though remember, since the actor is trying to reconstruct the hierarchy setup inside your original actor, any components attached to components that you labeled as “<strong>DONOTPREVIEW</strong>” will break.</p>
+<p>This actor will render out a render target for you to use however you wish and this is how the item icon generation is handled.</p>
+<p>Even though the render scene component only see’s the preview actor itself and it only receives lighting from lighting channel 2 (Channel can be changed, but it’s recommended not to have it on 1 if your game has day/night cycles), <span style="color:violet"><strong>BP_PreviewActor</strong></span>’s lighting can still affect another <span style="color:violet"><strong>BP_PreviewActor</strong></span>.<br />
+Even while spawning them at a ridiculously long range of random locations, during my playtesting I still had this scenario happen.<br />
+To fix this, there’s a <span style="color:violet"><strong>BP_PreviewActorCollider</strong></span> which you will spawn first, which will test for collision and adjust its location. Then you spawn <span style="color:violet"><strong>BP_PreviewActor</strong></span> itself and set its location inside the collider.</p>
+<p>This does mean though that you need to handle the collision responses for this. I recommend creating a new collision channel specifically for both the <span style="color:violet"><strong>BP_PreviewActor</strong></span> and <span style="color:violet"><strong>BP_PreviewActorCollider</strong></span>.</p>
+<hr />
+<doc-anchor-target id="camera-management">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#camera-management">#</doc-anchor-trigger>
+        <span>Camera management</span>
+    </h2>
+</doc-anchor-target>
+<p>The <span style="color:violet"><strong>BP_PreviewActor</strong></span> will attempt to find the first component which has a socket called “PreviewCameraSocket” and attach the camera to that socket. If none is found, you’ll get an error message and the camera will stay attached to the PreviewActor’s root.<br />
+Ideally, all your meshes should have this socket that you want to use this actor on. But to improve prototyping, I’ve added a few options to the item data asset:<br />
+(ADD PICTURE HERE)</p>
+<p>Once you&#x27;re far enough into production or willing to keep all meshes up to date with the socket, you should remove these three settings.</p>
+<p>The actor supports auto-generated estimated camera distances, so you don’t have to debug every item to create a camera distance while in a prototyping phase. You can disable this by checking <span style="color:slateblue"><strong>Use Custom Arm Length</strong></span>.</p>
 <hr />
 <doc-anchor-target id="skeletal-meshes">
     <h2>
@@ -232,6 +249,18 @@ Though remember, since the actor is trying to reconstruct the hierarchy setup in
     </h2>
 </doc-anchor-target>
 <p>The default animations for skeletal meshes is retrieved via an interface function <span style="color:brown"><strong>GetEquipmentData</strong></span>. This allows you to assign what animations the previewed skeletal mesh will play. For now it is only looping one animation, but an animation blueprint can be added to this struct if you wish.</p>
+<hr />
+<doc-anchor-target id="optimizations">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#optimizations">#</doc-anchor-trigger>
+        <span>Optimizations</span>
+    </h2>
+</doc-anchor-target>
+<p>It is also up to you to manage the render targets and when they should be released from the GPU. You can see an example in <span style="color:violet"><strong>WBP_InventoryItem</strong></span> -&gt; <span style="color:brown"><strong>TryReleaseGeneratedIcon</strong></span>. I’ve tried to automate the release and creation for the widgets that come with this plugin, but if you are making a new widget and are new to render scene components, you must call ReleaseRenderTarget2D for the texture.</p>
+<p>It is hard to create a perfectly automated system, so if you ever encounter an icon vanishing for an item, that means the render target was released improperly. During your prototyping phase, I recommend you just release and wipe the references when the player closes their inventory. Then when you’re in your optimization phase, you can try to optimize this.<br />
+Do keep in mind that live captures can get very expensive, very quickly, since they are capturing a new image every frame.</p>
+<p>You can limit it by enabling <span style="color:slateblue"><strong>CaptureEveryFrame</strong></span> and limiting the <span style="color:slateblue"><strong>TickInterval</strong></span> inside of <span style="color:violet"><strong>SceneCaptureComponent2D</strong></span>.</p>
+<p>I have these disabled by default, so if your actor isn’t animating, you need to enable CaptureEveryFrame.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>

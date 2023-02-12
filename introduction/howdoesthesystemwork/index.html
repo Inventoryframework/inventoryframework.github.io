@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729468250961">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729518312432">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,11 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../resources/css/retype.css?v=2.4.0.729468250961" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.729518312432" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729468250961" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729518312432" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729468250961" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729518312432" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -210,7 +210,8 @@ The biggest thing to keep in mind is that this system does NOT rely on widgets b
 <p><span style="color:slateblue"><strong>ContainerSettings</strong></span> is an array inside of <span style="color:violet"><strong>AC_Inventory.h</strong></span> and it contains all the settings your designers will use and some settings only the programmers will use, and with all the settings combined you can figure out everything about that container.</p>
 <p>When creating a widget for a container, the widget uses a <span style="color:slateblue"><strong>UniqueID</strong></span> to find out what container it is representing.</p>
 <p>Items differentiate themselves from each other by using a <span style="color:slateblue"><strong>UniqueID</strong></span> as items can have the same name, same data asset and so forth, they can even share the same position inside a container while in-editor. A component can not give items or containers the same <span style="color:slateblue"><strong>UniqueID</strong></span> twice. This is essential for functions to work properly.</p>
-<p>The component is designed to live on individual actors, not the player controller. Though there is no reason why it can&#x27;t live on the controller, but I won&#x27;t be actively testing it that way. It is highly recommended to head over to the <a href="https://inventoryframework.github.io/classes-and-settings/ac_inventory/">AC_Inventory</a> page and giving a read. Understanding the main component that makes this system work is crucial to understanding the in&#x27;s and out&#x27;s of the system.</p>
+<p>The component is designed to live on individual actors, not the player controller. Though there is no reason why it can&#x27;t live on the controller, but I won&#x27;t be actively testing it that way.</p>
+<p>It is highly recommended to head over to the <a href="https://inventoryframework.github.io/classes-and-settings/ac_inventory/">AC_Inventory</a> page and giving a read. Understanding the main component that makes this system work is crucial to understanding the in&#x27;s and out&#x27;s of the system.</p>
 <hr />
 <doc-anchor-target id="how-are-the-infinite-items-inside-of-items-achieved">
     <h2>
