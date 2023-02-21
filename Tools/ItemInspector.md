@@ -18,5 +18,5 @@ It is always more efficient for the game thread to NOT generate the item icons v
 ---
 !!!Important
 1. The engine does not load assets added to the content browser while a game session is active. For saved item icons to work properly, you must first right click and save the texture, then right click it and press **Asset Actions -> Reload**
-2. The engine will not properly label the data asset as dirty (an asterisk * indicating that the asset has changes that need to be saved.) after pressing the **Save to Asset** Button or the **Set Icon** buttons. You must open the data asset yourself and pressing save, even though there is no star indicating that there are changes waiting to be saved. If you don't do this, your changes will be lost after closing the editor and it won't prompt you if you want to save the data asset.
+2. The engine will not properly label the data asset as dirty (an asterisk * indicating that the asset has changes that need to be saved.) after pressing the **Save to Asset** Button or the **Set Icon** buttons. You must open the data asset yourself and press save, even though there is no star indicating that there are changes waiting to be saved. If you don't do this, your changes will be lost after closing the editor and it won't prompt you if you want to save the data asset.
 !!!
