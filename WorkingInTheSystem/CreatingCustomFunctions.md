@@ -5,6 +5,7 @@ Once you’re comfortable enough in the system to make your own functions and/or
 You should always assume an item does not have a widget version of itself. If you need access to the widget of an item, you can use <span style="color:brown">**GetWidgetForItem**</span>. Remember to check if the widget is valid.
 Widgets also can’t be transported through a network, so if multiplayer is important to you, your server functions can’t rely on data from widgets.
 
+---
 ## Finding Items
 
 Finding an item is a very common scenario when you start making your own functions.
