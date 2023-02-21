@@ -48,6 +48,9 @@ These events are where your designers hook in any logic that alerts the player t
 You will want to implement some way of preventing players from interacting with items that are pending a network event, either by making the widget uninteractable or through code. You can check if an item is in the queue by using:
 <span style="color:violet">**FL_InventoryFramework.h**</span> -> <span style="color:brown">**IsItemInNetworkQueue**</span>
 
+Containers can also be added to the network queue, though for now it is only used for <span style="color:brown">**AdjustContainerSize**</span>. It has all the same functions as the item network queue, but with the word "Item" replaced with "Container".
+It is highly recommended to "soft lock" players from spamming <span style="color:brown">**AdjustContainerSize**</span> as it can get very heavy for network traffic.
+
 The Network Queue system is only relevant for clients, it's never used in single player or listen server scenarios.
 
 ---
