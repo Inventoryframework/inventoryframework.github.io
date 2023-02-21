@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.729523654981">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730286117202">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,12 +30,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../pictures/favicon4.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.729523654981" rel="stylesheet" />
+    <link href="../../pictures/favicon.png" rel="icon" />
+    <link href="../../resources/css/retype.css?v=2.4.0.730286117202" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.729523654981" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.730286117202" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.729523654981" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.730286117202" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -52,8 +52,8 @@
                     <div class="flex items-center px-2 md:px-6">
                         <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
                             <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
-                                <img class="max-h-10 dark:hidden md:inline-block" src="../../pictures/logo2.png">
-                                <img class="max-h-10 hidden dark:inline-block" src="../../pictures/logo2.png">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../pictures/logo.png">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../pictures/logo.png">
                             </span>
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Inventory Framework</span>
                         </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
@@ -205,6 +205,7 @@ File Location: Source\InventoryFrameworkPlugin\Private\Core\Items\DA_CoreItem.cp
 <p>You can show and hide certain settings depending on your setup, and I use that a lot with the <span style="color:slateblue"><strong>ItemType</strong></span> enum. Look at all the options, check out the meta properties (EditCondition and EditConditionHides) to see how it’s done, and you can then implement your own options and rulesets for their visibility.</p>
 <p>Keep in mind, these settings are only HIDDEN, not disabled in the data asset editor, you can still access those variables from the data asset in blueprints and C++ and you have to remember that when making your functions and gameplay logic.<br />
 One of the most important settings to set up here is <span style="color:slateblue"><strong>EItemType</strong></span> as many functions use this enum to do casts to the proper children of this asset. Whenever you make a new child, remember to go into the .cpp file and set the default value. You can see an example inside all the .cpp children of this.</p>
+<p>If you are new to C++ or Unreal Engine, I suggest looking <a href="https://benui.ca/unreal/uproperty/" target="_blank"><strong>here</strong></a> to find all the specifiers you can give each variable.</p>
 <hr />
 <doc-anchor-target id="changing-the-physical-actor-class">
     <h2>
@@ -227,6 +228,7 @@ TSoftClassPtr&lt;AA_ItemPhysicalRepresentation&gt; PhysicalActor = nullptr;</cod
 <pre class="language-none"><code v-pre class="language-none">UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=&quot;CoreSettings&quot;)
 TSoftClassPtr&lt;AActor&gt; PhysicalActor = nullptr;</code></pre>
 </doc-codeblock></div>
+<p>AActor can be swapped out for any class, it does not need to be AActor, but it must be a child of AActor.</p>
 </doc-tab>
 </doc-tabs>
 
