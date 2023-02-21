@@ -1,4 +1,5 @@
 ---
+tags: [Todo]
 order: 100
 ---
 
@@ -20,6 +21,13 @@ There are also a few demo files that you’ll want to replace and enum entries y
 7. (Optional) You can now uninstall the plugin from the engine through the Epic Games Launcher, though you won't get notifications from the Epic Games client whenever an update is available (The discord announces every update as well).
 
 Everything in the demo folder is designed to be replaced by your assets/Blueprints. It is only there so you don’t get any errors on startup.
+
+---
+# Finding the plugin content in your content browser
+
+//TODO: Add pictures
+
+To find the blueprints, you will want to start the engine, go into your content browser and make sure that in your settings (Usually located at the top right of the content browser) and make sure "Show Plugin Content" is checked. Once that is checked, you will find a "Plugins" folder and in there you will find "InventoryFrameworkPlugin content"
 
 ---
 Once you are done installing the plugin, I **HIGHLY** advise you make children of nearly every class in this system once you start working with it. This should make updating in the future a lot easier and gives you a lot more customizability.
