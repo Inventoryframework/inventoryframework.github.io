@@ -13,7 +13,7 @@ This is why, when you look at some of the source code, the functions are getting
 
 To simplify the code, any function that attempts to automate the replication for you stores its logic in a function with the same name but with a **Internal_** prefix.
 
-For most functions that modify data in some way, only a single version of that function is available for you to call, and that function handles the replication for you. This is to simplify the amount of functions exposed as it can get very daunting to try and handle every replication scenario and making sure your calling the right function. If you wish to modify how the replication is handled, you can always go into the functions, modify them, or enable the server/client/internal functions to be BlueprintCallable.
+For most functions that modify data in some way, only a single version of that function is available for you to call, and that function handles the replication for you. This is to simplify the amount of functions exposed as it can get very daunting to try and handle every replication scenario and making sure your calling the right function. If you wish to modify how the replication is handled, you can always go into the functions, modify them, or enable the server/client/internal functions to be BlueprintCallable (Example would be <span style="color:violet">**AC_Inventory**</span> -> <span style="color:brown">**Internal_AdjustContainerSize**</span>).
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -112,6 +112,9 @@ Because of how large some RPC's can get, I did not find multicasts to be accepta
 
 The UniqueID is a simple method to quickly find containers or items, or ensuring containers or items are valid, and for linking some object to an item (Such as the [item driver's](https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/)). This is covered in multiple sections in the documentation, but here are some things to consider for networking.
 
-- Clients are unable to generate UniqueID's. If a function requires the client to assign a UniqueID to an item or a container, it must receive it from the server. You can see an example in <span style="color:violet">**AC_Inventory.h**</span> -> <span style="color:brown">**TryAddNewItem**</span>
+- Clients and servers must stay in sync when it comes to UniqueID's. This leaves you with two options;
+
+1. Pre-generate the UniqueID's on the server, then pass them to the client and have your logic assign that UniqueID to the item. This is not advised as it can get bad for networking and it is generally cumbersome to program and manage it.
+2. Use <span style="color:brown">**GenerateUniqueIDWithSeed**</span>. Now the only thing you need to ensure is that the client and server are using the same seed and they'll both generate the same UniqueID. Though you must make sure that both the client and server have identical <span style="color:brown">**GeneratedUniqueIDs**</span>, as the function relies on that being in sync to guarantee it'll generate a valid UniqueID.
 - UniqueID's [scale extremely](https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations) well with RPC's. It is advised to use UniqueID's as often as possible.
 - There's no way to evaluate from a UniqueID if it was assigned to an item or container without going through all items and containers until you find a match. It is not recommended to add more information to this struct as it's meant to be small and simple, so that it gets replicated extremely quickly and cheaply.
