@@ -20,9 +20,13 @@ What might confuse most is the "Void" widget and actor. Dragging and dropping an
 You can select one actor, move an item into the void area, then select another actor and move the item into one of its containers.
 
 ==- Limitations
-- The normal highlight widget is not supported. An alternate method is used inside the inventory helper.
+
+<span style="color:brown">**functions**</span> - <span style="color:slateblue">**Variable**</span> - <span style="color:green">**category**</span> - <span style="color:violet">**class**</span>
+
+- It is NOT recommended to edit the <span style="color:slateblue">**Container Settings**</span> through the <span style="color:slateblue">**SelectedComponent**</span> widget. The reason being is that the <span style="color:brown">**OnPropertyChanged**</span> event does not return which index has been modified. Meaning it is not possible to resolve which container or which item was modified, which means that every container widget and item widget must be updated. Only modify the container settings inside this widget if you really have to.
+- The normal highlight widget is not supported. An alternate method is used instead.
 - Item splitting is not supported.
 - Only basic item collision is supported, no combining or stacking.
 - The Item Void actor is not meant to be interacted with outside the inventory helper. If you wish to modify the Item Void regularily, consider modifying the InventoryHelper and have the tool modify it for you.
-- Generated item icons do not work. It is suggested to open your game, inspecting the item and saving the generated icon to disk, then setting it inside the data asset.
+- <a href="https://trello.com/c/SE98T1XT/64-generated-item-icons-for-editor-utility-widgets" target="_blank">**Generated item icons do not work**</a> . It is suggested to open your game, inspecting the item and saving the generated icon to disk, then setting it inside the data asset.
 ===
