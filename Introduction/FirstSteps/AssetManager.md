@@ -25,3 +25,14 @@ To validate your items are being discovered correctly, I suggest going into the 
 
 If an item is not appearing there, either the above steps were not followed correctly or the asset manager is ignoring it for some reason.
 If you go into "Windows" and open the output log and find any "Ignoring PrimaryAssetType Items - Conflicts with SOMECLASSNAME - Asset: ITEMNAMEHERE" in your message log, it means no data has been changed inside of your data asset or it is identical to another data asset.
+
+---
+## Limitations
+As of 5.1, there is still no way of mixing C++ and blueprint data assets, for now you can only have C++ data assets, and you can't do a lot of hierarchy setups. All of your parents must live at a C++ level.
+Because the item data asset variable lives in C++, there is no way to reference blueprint data assets. If you check "Has Blueprint Classes" the system will not work.
+
+--- 
+## Bulk Editing
+You'll sometimes find yourself with tons of items and need to modify a large amount of items. This is where a good folder hierarchy setup is essential. In the demo project, every item is in its own folder, but all of those folders are inside **DemoShowcase -> Items**, if you go into the Items folder, find the filter on the left of the search bar and go into **Miscellaneous -> Data Asset** you will see every item inside the demo. If you select multiple, then right click and go into **Asset Actions -> Bulk Edit Via Property Matrix**, you'll find the property matrix editor.
+
+<a href="https://docs.unrealengine.com/4.27/en-US/Basics/UI/PropertyMatrix/" target="_blank">**Unreal's docs for the Property Matrix**</a>
