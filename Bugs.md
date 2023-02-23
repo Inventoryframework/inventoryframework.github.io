@@ -20,6 +20,8 @@ This might take a while as I’m also trying to figure out a way to have particl
 
 - When equipping a blueprint item, the attachment does not seem to be working if the components are set to replicate by default. You will want to go into your blueprint, go through all components and uncheck "Component Replicates" until the issue is gone. They will still replicate, even though they aren't set to replicate.
 
+- The "Reset to Default Property Value" button for container settings is not resetting values to their proper defaults and it's always showing for all values, even if the value is set to its default. I am unsure what is causing this.
+
 
 ## Common Problems
 These aren't bugs, but problems that can be misinterpreted as bugs.
@@ -43,3 +45,6 @@ Remember to use the tag “**DONOTPREVIEW**” on those collision components if 
 |||
 
 - Unable to save <span style="color:violet">**DA_ItemVoid**</span> or getting crashes when closing the editor/changing levels while using it. This is because a object reference is being stored inside the data asset, but when your closing the editor or changing levels its not letting that object get garbage collected. In C++ you will want to add "SkipSerialization" to the UProperty (Look at FS_UniqueID for example) and reset all the data inside.
+
+- After adding or changing default values inside <span style="color:slateblue">**FS_InventoryItem**</span>, the InventoryHelper will falsely report a value is no longer set to default and will reset it to the wrong value when pressing the reset button. This is happening because the struct inside the InventoryHelper did not get updated. You must go into <span style="color:violet">**EUW_InventoryHelper**</span> and find <span style="color:slateblue">**SelectedItem**</span> and update its default settings.
+The same might happen to the context menu, so you must go to <span style="color:violet">**WBP_ContextMenu_EditorOnly**</span> and find <span style="color:slateblue">**Item**</span> and update its default settings.
