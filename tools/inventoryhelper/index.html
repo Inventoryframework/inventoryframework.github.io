@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730287934114">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730488144261">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,11 +31,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/favicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.730287934114" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.730488144261" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.730287934114" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.730287934114" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -212,12 +212,14 @@
 You can select one actor, move an item into the void area, then select another actor and move the item into one of its containers.</p>
 <doc-panel id="limitations" collapsed>
     <template #title>Limitations</template>
+<p><span style="color:brown"><strong>functions</strong></span> - <span style="color:slateblue"><strong>Variable</strong></span> - <span style="color:green"><strong>category</strong></span> - <span style="color:violet"><strong>class</strong></span></p>
 <ul>
-<li>The normal highlight widget is not supported. An alternate method is used inside the inventory helper.</li>
+<li>It is NOT recommended to edit the <span style="color:slateblue"><strong>Container Settings</strong></span> through the <span style="color:slateblue"><strong>SelectedComponent</strong></span> widget. The reason being is that the <span style="color:brown"><strong>OnPropertyChanged</strong></span> event does not return which index has been modified. Meaning it is not possible to resolve which container or which item was modified, which means that every container widget and item widget must be updated. Only modify the container settings inside this widget if you really have to.</li>
+<li>The normal highlight widget is not supported. An alternate method is used instead.</li>
 <li>Item splitting is not supported.</li>
 <li>Only basic item collision is supported, no combining or stacking.</li>
 <li>The Item Void actor is not meant to be interacted with outside the inventory helper. If you wish to modify the Item Void regularily, consider modifying the InventoryHelper and have the tool modify it for you.</li>
-<li>Generated item icons do not work. It is suggested to open your game, inspecting the item and saving the generated icon to disk, then setting it inside the data asset.</li>
+<li><a href="https://trello.com/c/SE98T1XT/64-generated-item-icons-for-editor-utility-widgets" target="_blank"><strong>Generated item icons do not work</strong></a> . It is suggested to open your game, inspecting the item and saving the generated icon to disk, then setting it inside the data asset.</li>
 </ul>
 </doc-panel>
 

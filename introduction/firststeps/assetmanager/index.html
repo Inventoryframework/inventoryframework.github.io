@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730287934114">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730488144261">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -33,11 +33,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/favicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=2.4.0.730287934114" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.730488144261" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.730287934114" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.730287934114" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -228,6 +228,24 @@
 <p>To validate your items are being discovered correctly, I suggest going into the <a href="http://inventoryframework.github.io/tools/productivity/#inventory-helper">InventoryHelper</a> and hitting Refresh near the bottom right. You can also search for your item.</p>
 <p>If an item is not appearing there, either the above steps were not followed correctly or the asset manager is ignoring it for some reason.<br />
 If you go into &quot;Windows&quot; and open the output log and find any &quot;Ignoring PrimaryAssetType Items - Conflicts with SOMECLASSNAME - Asset: ITEMNAMEHERE&quot; in your message log, it means no data has been changed inside of your data asset or it is identical to another data asset.</p>
+<hr />
+<doc-anchor-target id="limitations">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#limitations">#</doc-anchor-trigger>
+        <span>Limitations</span>
+    </h2>
+</doc-anchor-target>
+<p>As of 5.1, there is still no way of mixing C++ and blueprint data assets, for now you can only have C++ data assets, and you can&#x27;t do a lot of hierarchy setups. All of your parents must live at a C++ level.<br />
+Because the item data asset variable lives in C++, there is no way to reference blueprint data assets. If you check &quot;Has Blueprint Classes&quot; the system will not work.</p>
+<hr />
+<doc-anchor-target id="bulk-editing">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bulk-editing">#</doc-anchor-trigger>
+        <span>Bulk Editing</span>
+    </h2>
+</doc-anchor-target>
+<p>You&#x27;ll sometimes find yourself with tons of items and need to modify a large amount of items. This is where a good folder hierarchy setup is essential. In the demo project, every item is in its own folder, but all of those folders are inside <strong>DemoShowcase -&gt; Items</strong>, if you go into the Items folder, find the filter on the left of the search bar and go into <strong>Miscellaneous -&gt; Data Asset</strong> you will see every item inside the demo. If you select multiple, then right click and go into <strong>Asset Actions -&gt; Bulk Edit Via Property Matrix</strong>, you&#x27;ll find the property matrix editor.</p>
+<p><a href="https://docs.unrealengine.com/4.27/en-US/Basics/UI/PropertyMatrix/" target="_blank"><strong>Unreal&#x27;s docs for the Property Matrix</strong></a></p>
 
                                 
                                 <!-- Required only on API pages -->

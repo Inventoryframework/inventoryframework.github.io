@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730287934114">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730488144261">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,12 +31,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/favicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.730287934114" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.730488144261" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.730287934114" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.730287934114" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.730287934114" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.730488144261" defer></script>
     <script id="mermaid-js" type="text/javascript" src="../../resources/js/mermaid.js?v=2.4.0" defer></script>
 </head>
 <body>
@@ -314,7 +314,7 @@ void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, i
 </ul>
 <ol>
 <li>Pre-generate the UniqueID&#x27;s on the server, then pass them to the client and have your logic assign that UniqueID to the item. This is not advised as it can get bad for networking and it is generally cumbersome to program and manage it.</li>
-<li>Use <span style="color:brown"><strong>GenerateUniqueIDWithSeed</strong></span>. Now the only thing you need to ensure is that the client and server are using the same seed and they&#x27;ll both generate the same UniqueID. Though you must make sure that both the client and server have identical <span style="color:brown"><strong>GeneratedUniqueIDs</strong></span>, as the function relies on that being in sync to guarantee it&#x27;ll generate a valid UniqueID.</li>
+<li>Use <span style="color:brown"><strong>GenerateUniqueIDWithSeed</strong></span>. Now the only thing you need to ensure is that the client and server are using the same seed and they&#x27;ll both generate the same UniqueID.</li>
 </ol>
 <ul>
 <li>UniqueID&#x27;s <a href="https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations">scale extremely</a> well with RPC&#x27;s. It is advised to use UniqueID&#x27;s as often as possible.</li>
