@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730488144261">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730564689040">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -33,11 +33,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/favicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=2.4.0.730488144261" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.730564689040" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.730564689040" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.730564689040" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -197,6 +197,7 @@
         <span>Asset Manager</span>
     </h1>
 </doc-anchor-target>
+<hr />
 <p>For the asset manager to pick up your item data base and for several tools to function correctly, you must set up the asset manager per project.</p>
 <ol>
 <li>Go into Projects Settings.</li>
@@ -236,7 +237,7 @@ If you go into &quot;Windows&quot; and open the output log and find any &quot;Ig
     </h2>
 </doc-anchor-target>
 <p>As of 5.1, there is still no way of mixing C++ and blueprint data assets, for now you can only have C++ data assets, and you can&#x27;t do a lot of hierarchy setups. All of your parents must live at a C++ level.<br />
-Because the item data asset variable lives in C++, there is no way to reference blueprint data assets. If you check &quot;Has Blueprint Classes&quot; the system will not work.</p>
+Because the item data asset variable inside <span style="color:slateblue"><strong>FS_InventoryItem</strong></span> lives in C++, there is no way to reference blueprint data assets. If you check &quot;Has Blueprint Classes&quot; the system will not work.</p>
 <hr />
 <doc-anchor-target id="bulk-editing">
     <h2>

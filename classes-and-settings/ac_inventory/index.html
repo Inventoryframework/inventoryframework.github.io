@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730488144261">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730564689040">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,11 +31,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/favicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.730488144261" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.730564689040" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.730564689040" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.730564689040" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -207,9 +207,9 @@ File Location: Source\InventoryFrameworkPlugin\Private\Core\Components\AC_Invent
    </doc-panel>
 </doc-panels>
 <hr />
-<p>This is where the vast majority of the logic is handled and starts. You have full control of when the component activates by calling the <span style="color:brown"><strong>StartComponent</strong></span> function. When called, the component initializes the containers and the items inside or the pickup if the owning actor is a pickup. This does NOT prepare the widgets versions of the containers and the items.</p>
+<p>This is where the vast majority of the logic is handled and starts. You have full control of when the component activates by calling the <span style="color:brown"><strong>StartComponent</strong></span> function. When called, the component initializes the containers and the items inside or the pickup if the owning actor is a pickup. This does NOT prepare the widgets versions of the containers and the items. But this function must be called before you display any widgets or any data to the player.</p>
 <p>To create the widget version of a container and its items, call <span style="color:brown"><strong>BindContainerWithWidget</strong></span> and hook in the container struct and the container widget. This should give you full control of when you want to construct a container.<br />
-Some examples would be when the player opens their inventory, but you don’t want to load all the items&#x27; attachment widgets. You could then load the attachment widgets when the player inspects the item. For inventory systems that can get massive with a lot of items inside of it with attachment widgets associated with it, this should massively improve performance and memory usage if used correctly.</p>
+Some examples would be when the player opens their inventory, but you don’t want to load all the items&#x27; attachment widgets. You could then load the attachment widgets when the player inspects the item. For inventory systems that can get massive with a lot of items inside of it with attachment widgets associated with it, this massively improve performance and memory usage if used correctly.</p>
 <p>For pickups, I recommend calling <span style="color:brown"><strong>StartComponent</strong></span> on either <span style="color:brown"><strong>BeginPlay</strong></span> or when the player is close to the item and has line of sight of the item, as items that have a spawn chance associated with it need that spawn chance rolled.<br />
 The item might also have items attached to it and be visible, such as a sight on a gun, which also might have a spawn chance and you don’t want that sight to be visible if it failed its spawn chance.</p>
 <hr />
@@ -280,7 +280,7 @@ It is highly recommended to &quot;soft lock&quot; players from spamming <span st
 <p>You can use <span style="color:brown"><strong>GetComponentState</strong></span> to resolve what state it is in, and look inside that function to better understand what conditions must be met for each state.</p>
 <p>There is a function called <span style="color:brown"><strong>ConvertToRawState</strong></span> which will prepare all containers for a gameplay session. Ideally, this function should not be called during a gameplay session as it&#x27;s a waste of CPU time. All container data should already be prepped for gameplay.<br />
 There is also another function called <span style="color:brown"><strong>ConvertFromRawStateToEditorState</strong></span> which preps all data to be usable for editor tools.</p>
-<p>There is a editor utility widget called &quot;EUW_EditorStateChecker&quot; which simply checks a list of actors and their inventory components and checks the components state, then return a list of all actors that aren&#x27;t prepped for gameplay. The component also gives you a message on its BeginPlay if it&#x27;s state was still in the Editor state.</p>
+<p>There is a editor utility widget called &quot;EUW_QualityControl&quot; which can check a list of actors and their inventory components and checks the components state, then return a list of all actors that aren&#x27;t prepped for gameplay. The component also gives you a message on its BeginPlay if it&#x27;s state was still in the Editor state.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>

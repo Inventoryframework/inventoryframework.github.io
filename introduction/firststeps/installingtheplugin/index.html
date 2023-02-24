@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730488144261">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730564689040">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -21,21 +21,23 @@
     <meta property="og:url" content="/introduction/firststeps/installingtheplugin/">
     <meta property="og:title" content="Installing the plugin">
     <meta property="og:description" content="Because of how integral an inventory system is to a game, I highly recommend you DO NOT install the plugin to the engine and then use it that way,...">
+    <meta property="og:image" content="/pictures/showplugincontent.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/introduction/firststeps/installingtheplugin/">
     <meta property="twitter:title" content="Installing the plugin">
     <meta property="twitter:description" content="Because of how integral an inventory system is to a game, I highly recommend you DO NOT install the plugin to the engine and then use it that way,...">
+    <meta property="twitter:image" content="/pictures/showplugincontent.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/favicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=2.4.0.730488144261" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.730564689040" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.730564689040" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.730564689040" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -195,6 +197,7 @@
         <span>Installing the plugin</span>
     </h1>
 </doc-anchor-target>
+<hr />
 <p>Because of how integral an inventory system is to a game, I highly recommend you DO NOT install the plugin to the engine and then use it that way, but instead install the plugin locally to your project. That way you can use the plugin in multiple projects without having a change that works in one project mess up the other project. This means you can also have much better control how the parents behave and work and not have to worry about changes made for another project. But it does mean updating the system is a bit more work, but it is very straight forward if you have source-control set up, as it&#x27;ll tell you all the changes and you can reimplement any custom changes you made to suit your project.</p>
 <p>This does NOT cover how to install an IDE such as Rider or Visual Studio. You should already have an IDE installed.<br />
 There are also a few demo files that you’ll want to replace and enum entries you need to rename to fit your project.<br />
@@ -216,10 +219,15 @@ There are also a few demo files that you’ll want to replace and enum entries y
         <span>Finding the plugin content in your content browser</span>
     </h1>
 </doc-anchor-target>
-<p>//TODO: Add pictures</p>
-<p>To find the blueprints, you will want to start the engine, go into your content browser and make sure that in your settings (Usually located at the top right of the content browser) and make sure &quot;Show Plugin Content&quot; is checked. Once that is checked, you will find a &quot;Plugins&quot; folder and in there you will find &quot;InventoryFrameworkPlugin content&quot;</p>
+<p><figure class="content-center">
+    <img src="../../../pictures/showplugincontent.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>To find the blueprints, you will want to start the engine, go into your content browser and make sure that in your settings (1) and make sure &quot;Show Plugin Content&quot; (2) is checked. Once that is checked, you will find a &quot;Plugins&quot; folder and in there you will find &quot;InventoryFrameworkPlugin content&quot; (3)</p>
 <hr />
 <p>Once you are done installing the plugin, I <strong>HIGHLY</strong> advise you make children of nearly every class in this system once you start working with it. This should make updating in the future a lot easier and gives you a lot more customizability.</p>
+<p>It is highly recommended to head over to the <a href="https://inventoryframework.github.io/introduction/howdoesthesystemwork/">How does the system work?</a> page and giving a read before proceeding.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>

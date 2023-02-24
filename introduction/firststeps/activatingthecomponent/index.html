@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730488144261">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730564689040">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Activating the component</title>
     <meta name="title" content="Activating the component">
-    <meta name="description" content="Under revision" />
+    <meta name="description" content="Starting the component is very simple, just call AC_Inventory-> StartComponent. The bigger challenge will be deciding when you want to call this..." />
 
     <!-- Canonical -->
     <link rel="canonical" href="/introduction/firststeps/activatingthecomponent/" />
@@ -20,22 +20,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/introduction/firststeps/activatingthecomponent/">
     <meta property="og:title" content="Activating the component">
-    <meta property="og:description" content="Under revision">
+    <meta property="og:description" content="Starting the component is very simple, just call AC_Inventory-> StartComponent. The bigger challenge will be deciding when you want to call this...">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/introduction/firststeps/activatingthecomponent/">
     <meta property="twitter:title" content="Activating the component">
-    <meta property="twitter:description" content="Under revision">
+    <meta property="twitter:description" content="Starting the component is very simple, just call AC_Inventory-> StartComponent. The bigger challenge will be deciding when you want to call this...">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/favicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=2.4.0.730488144261" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.730564689040" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.730564689040" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.730488144261" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.730564689040" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -195,31 +195,38 @@
         <span>Activating the component</span>
     </h1>
 </doc-anchor-target>
-<div class="flex mb-6">
-    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-red-500"></div>
-    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
-        <div class="flex items-center ml-4 h-7">
-            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-red-500" width="22" height="22" viewBox="0 0 24 24" role="presentation">
-                <g fill="currentColor"><g>
-                    <path d="M21.71 6.15L15.85.29c-.19-.18-.44-.29-.71-.29H6.86c-.27 0-.52.11-.71.29L.29 6.15c-.18.19-.29.44-.29.71v8.28c0 .27.11.52.29.71l5.86 5.86c.19.18.44.29.71.29h8.28c.27 0 .52-.11.71-.29l5.86-5.86a.99.99 0 00.29-.71V6.86c0-.27-.11-.52-.29-.71zM20 14.73L14.73 20H7.27L2 14.73V7.27L7.27 2h7.45L20 7.27v7.46z"></path>
-                    <path d="M11 12c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .55.45 1 1 1zM11.01 14c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
-                </g></g>
-            </svg>
-        </div>
-        <div class="pr-5 ml-3 w-full">
-<p>Under revision</p>
-        </div>
-    </div>
-</div>
+<hr />
+<doc-anchor-target id="starting-the-component">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#starting-the-component">#</doc-anchor-trigger>
+        <span>Starting the component</span>
+    </h2>
+</doc-anchor-target>
+<p>Starting the component is very simple, just call <span style="color:violet"><strong>AC_Inventory</strong></span> -&gt; <span style="color:brown"><strong>StartComponent</strong></span>.<br />
+The bigger challenge will be deciding when you want to call this function. Typically this can be called at <span style="color:brown"><strong>BeginPlay</strong></span> or when the player gets close to the actor. This will depend on some factors, the biggest being if any item inside the component will be visually present AND if they have a spawn chance. For example; a gun with a sight on it and the sight has a spawn chance. The sight&#x27;s spawn chance might fail, and you might want the sight to get removed off the gun. Another example would be an NPC that is wearing some armor that has a spawn chance. If the armor fails its spawn chance, you&#x27;ll probably want to modify some attributes and remove the armor.</p>
+<p>This type of logic is very project dependant and depends on if the inventory component is eating up any impactful performance. I suggest leaving the <span style="color:brown"><strong>StartComponent</strong></span> function on <span style="color:brown"><strong>BeginPlay</strong></span>, and when it&#x27;s time to optimize your games performance, then you start evaluating if calling <span style="color:brown"><strong>StartComponent</strong></span> is more worthwhile being called at different times.</p>
+<hr />
+<doc-anchor-target id="stopping-the-component">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#stopping-the-component">#</doc-anchor-trigger>
+        <span>Stopping the component</span>
+    </h2>
+</doc-anchor-target>
+<p>This function will remove all widgets and object references. Under no circumstances should this function be called while the player is actively interacting with the component.<br />
+Here&#x27;s a list of scenarios where you want to refrain from calling <span style="color:brown"><strong>StopComponent</strong></span>.</p>
+<ol>
+<li>The player will be interacting with the component within a short period  of time, perhaps within 10 minutes.</li>
+<li>If the player will be interacting with the component again, if the component has a lot of items or a lot of containers and it causes a noticable hitch when starting the component, it might be more efficient to keep the component active.</li>
+<li>The component has items that have a spawn chance. Every time the component starts, it&#x27;ll roll these spawn chances.</li>
+<li>In a multiplayer scenario, you&#x27;ll be eating a potentially large RPC call every time you start the component. If you stop the component and the player interacts with this component again, the <span style="color:brown"><strong>StartComponent</strong></span> function will call a RPC that might be quite large.</li>
+</ol>
+<p>If your games memory usage is tight, it might be worthwhile trying to call <span style="color:brown"><strong>StopComponent</strong></span>, but the above points must be kept in mind.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
                                         <a href="../../../tags/">
                                             <svg class="inline-block -mb-px mr-1.5 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" overflow="visible" fill="currentColor"><g><path d="M21.3 9.88l-8.59-8.59C12.52 1.11 12.27 1 12 1H2c-.55 0-1 .45-1 1v10c0 .27.11.52.29.71l8.59 8.58c.57.57 1.32.88 2.12.88s1.55-.31 2.12-.88l7.17-7.17a3.009 3.009 0 00.01-4.24zm-1.42 2.82l-7.17 7.17c-.39.39-1.02.39-1.42 0L3 11.59V3h8.59l8.29 8.29c.39.39.39 1.03 0 1.41z" /><path d="M7.01 6C6.45 6 6 6.45 6 7s.45 1 1 1 1-.45 1-1-.44-1-.99-1z" /></g></svg>
                                         </a>
-                                        <span class="mr-2"><a href="../../../tags/underrevision/" class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>underrevision</span>
-                                </a></span>
                                         <span class="mr-2"><a href="../../../tags/inventorycomponent/" class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
                                     <span>inventorycomponent</span>
                                 </a></span>
