@@ -1,5 +1,5 @@
 ---
-tags: [underrevision, tools]
+tags: [tools]
 ---
 # Inventory Helper
 

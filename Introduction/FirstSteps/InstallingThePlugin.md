@@ -5,7 +5,7 @@ order: 100
 
 # Installing the plugin
 
-
+---
 Because of how integral an inventory system is to a game, I highly recommend you DO NOT install the plugin to the engine and then use it that way, but instead install the plugin locally to your project. That way you can use the plugin in multiple projects without having a change that works in one project mess up the other project. This means you can also have much better control how the parents behave and work and not have to worry about changes made for another project. But it does mean updating the system is a bit more work, but it is very straight forward if you have source-control set up, as it'll tell you all the changes and you can reimplement any custom changes you made to suit your project.
 
 This does NOT cover how to install an IDE such as Rider or Visual Studio. You should already have an IDE installed.
@@ -25,9 +25,11 @@ Everything in the demo folder is designed to be replaced by your assets/Blueprin
 ---
 # Finding the plugin content in your content browser
 
-//TODO: Add pictures
+![](/pictures/ShowPluginContent.png)
 
-To find the blueprints, you will want to start the engine, go into your content browser and make sure that in your settings (Usually located at the top right of the content browser) and make sure "Show Plugin Content" is checked. Once that is checked, you will find a "Plugins" folder and in there you will find "InventoryFrameworkPlugin content"
+To find the blueprints, you will want to start the engine, go into your content browser and make sure that in your settings (1) and make sure "Show Plugin Content" (2) is checked. Once that is checked, you will find a "Plugins" folder and in there you will find "InventoryFrameworkPlugin content" (3)
 
 ---
 Once you are done installing the plugin, I **HIGHLY** advise you make children of nearly every class in this system once you start working with it. This should make updating in the future a lot easier and gives you a lot more customizability.
+
+It is highly recommended to head over to the [How does the system work?](https://inventoryframework.github.io/introduction/howdoesthesystemwork/) page and giving a read before proceeding.

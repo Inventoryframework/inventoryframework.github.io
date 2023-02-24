@@ -4,6 +4,7 @@ order: 90
 
 # Asset Manager
 
+---
 For the asset manager to pick up your item data base and for several tools to function correctly, you must set up the asset manager per project.
 1. Go into Projects Settings.
 2. Under the "Game" category, select "Asset Manager".
@@ -29,7 +30,7 @@ If you go into "Windows" and open the output log and find any "Ignoring PrimaryA
 ---
 ## Limitations
 As of 5.1, there is still no way of mixing C++ and blueprint data assets, for now you can only have C++ data assets, and you can't do a lot of hierarchy setups. All of your parents must live at a C++ level.
-Because the item data asset variable lives in C++, there is no way to reference blueprint data assets. If you check "Has Blueprint Classes" the system will not work.
+Because the item data asset variable inside <span style="color:slateblue">**FS_InventoryItem**</span> lives in C++, there is no way to reference blueprint data assets. If you check "Has Blueprint Classes" the system will not work.
 
 --- 
 ## Bulk Editing

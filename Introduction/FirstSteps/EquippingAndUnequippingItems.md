@@ -6,6 +6,7 @@ REVISION NOTES: Paragraph explaining OT_Equipment might be worth explaining in h
 
 # Equipping and unequipping items
 
+---
 A big problem I try to solve with this system is that I did not want to assume anything about how your actors' meshes are set up, how your equipment setup looked like and I did not want to make a base player or actor blueprint.
 There are two main reasons behind this decision: 
 First is this allows you complete control over what items are attached to (for example if you have a horse and want to give it armor, but the component is only setup on the player) and secondly is that people might already have a player blueprint hierarchy setup and I did not want to mess with that and some people might not want to use my hierarchy setup.
