@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730564689040">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731416885099">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,12 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../pictures/favicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=2.4.0.730564689040" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.731416885099" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.730564689040" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.731416885099" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.730564689040" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.731416885099" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -201,9 +200,11 @@
 You want to add your component to your actor, if you&#x27;re making an item, I suggest using <span style="color:violet"><strong>BP_SM_PhysicalItem</strong></span>  as its parent and the component will automatically get added. Do note though that the item Data Asset only accepts children of <span style="color:violet"><strong>BP_SM_PhysicalItem</strong></span>. <a href="https://inventoryframework.github.io/classes-and-settings/da_coreitem/#changing-the-physical-actor-class">Go here</a> if you want to change this behavior</p>
 </li>
 <li><p>Inside the component you&#x27;ll find an array called <span style="color:slateblue"><strong>ContainerSettings</strong></span>. These are your settings and where you&#x27;ll add any items to the container. It is most common to give them a unique name, which you&#x27;ll later use in the next step to assign them to a container widget.<br />
-You will also need to set what kind of type this container is inside <span style="color:slateblue"><strong>InventoryType</strong></span> and give the component a widget inside <span style="color:slateblue"><strong>WidgetClass</strong></span> which it&#x27;ll use to display its containers. Typically for player characters, this is the inventory screen.</p>
+You will also need to set what kind of type this container is inside <span style="color:slateblue"><strong>InventoryType</strong></span> and give the component a widget inside <span style="color:slateblue"><strong>WidgetClass</strong></span> which it&#x27;ll use to display its containers. Typically for player characters, this is the inventory screen.<br />
+The order of these containers are important. There are many functions that try and find the first available container, which scans the containers from index 0 to the last index.</p>
 </li>
-<li><p>Now you&#x27;ll need to bind your containers to a widget to represent the container. Go into your widget and add a child of <span style="color:violet"><strong>WBP_Container</strong></span> to your layout. The plugin comes with a widget called <span style="color:violet"><strong>WBP_DemoContainer</strong></span> which has all the visuals set up for you. Then go into your graph and implement the <span style="color:violet"><strong>I_Inventory</strong></span> interface. Find the <span style="color:brown"><strong>GetContainers</strong></span> interface function and make an array and add your containers.<br />
+<li><p>Now you&#x27;ll need to bind your containers to a widget to represent the container. This is optional, there are cases where you might not want a container to have a widget representation. Though this is not recommended for actors out in the world, as the InventoryHelper tool won&#x27;t be able to see the container and it becomes a bit more difficult to manage those containers.<br />
+Go into your widget and add a child of <span style="color:violet"><strong>WBP_Container</strong></span> to your layout. The plugin comes with a widget called <span style="color:violet"><strong>WBP_DemoContainer</strong></span> which has all the visuals set up for you. Then go into your graph and implement the <span style="color:violet"><strong>I_Inventory</strong></span> interface. Find the <span style="color:brown"><strong>GetContainers</strong></span> interface function and make an array and add your containers.<br />
 Somewhere throughout your logic you will need to call <span style="color:brown"><strong>BindContainerWithWidget</strong></span>, you can see an example on how I call this function inside <span style="color:violet"><strong>BP_Interactable</strong></span> or <span style="color:violet"><strong>BP_PlayerCharacter</strong></span>.</p>
 </li>
 </ol>

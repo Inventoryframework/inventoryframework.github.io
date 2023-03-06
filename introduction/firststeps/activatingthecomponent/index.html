@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.730564689040">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731416885099">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -30,12 +30,11 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../pictures/favicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=2.4.0.730564689040" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.731416885099" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.730564689040" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.731416885099" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.730564689040" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.731416885099" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -205,6 +204,7 @@
 <p>Starting the component is very simple, just call <span style="color:violet"><strong>AC_Inventory</strong></span> -&gt; <span style="color:brown"><strong>StartComponent</strong></span>.<br />
 The bigger challenge will be deciding when you want to call this function. Typically this can be called at <span style="color:brown"><strong>BeginPlay</strong></span> or when the player gets close to the actor. This will depend on some factors, the biggest being if any item inside the component will be visually present AND if they have a spawn chance. For example; a gun with a sight on it and the sight has a spawn chance. The sight&#x27;s spawn chance might fail, and you might want the sight to get removed off the gun. Another example would be an NPC that is wearing some armor that has a spawn chance. If the armor fails its spawn chance, you&#x27;ll probably want to modify some attributes and remove the armor.</p>
 <p>This type of logic is very project dependant and depends on if the inventory component is eating up any impactful performance. I suggest leaving the <span style="color:brown"><strong>StartComponent</strong></span> function on <span style="color:brown"><strong>BeginPlay</strong></span>, and when it&#x27;s time to optimize your games performance, then you start evaluating if calling <span style="color:brown"><strong>StartComponent</strong></span> is more worthwhile being called at different times.</p>
+<p>The order of the items inside every container is very important. If you hover over an items <span style="color:slateblue"><strong>TileIndex</strong></span> you&#x27;ll see your options. If an item is set to finding the first tile available or a random tile, then another item attempts to spawn on top of that item, it&#x27;ll fail. There is a delegate which will fire whenever an item fails to spawn.</p>
 <hr />
 <doc-anchor-target id="stopping-the-component">
     <h2>
@@ -220,6 +220,7 @@ Here&#x27;s a list of scenarios where you want to refrain from calling <span sty
 <li>The component has items that have a spawn chance. Every time the component starts, it&#x27;ll roll these spawn chances.</li>
 <li>In a multiplayer scenario, you&#x27;ll be eating a potentially large RPC call every time you start the component. If you stop the component and the player interacts with this component again, the <span style="color:brown"><strong>StartComponent</strong></span> function will call a RPC that might be quite large.</li>
 </ol>
+<p>The component can not be stopped while its <span style="color:slateblue"><strong>Listeners</strong></span> array is not empty, which is used for multiplayer.</p>
 <p>If your games memory usage is tight, it might be worthwhile trying to call <span style="color:brown"><strong>StopComponent</strong></span>, but the above points must be kept in mind.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
