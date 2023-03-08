@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731477405610">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731572997177">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -33,11 +33,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=2.4.0.731477405610" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.731572997177" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.731477405610" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.731572997177" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.731477405610" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.731572997177" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -226,7 +226,7 @@
         <span>Validating</span>
     </h2>
 </doc-anchor-target>
-<p>To validate your items are being discovered correctly, I suggest going into the <a href="http://inventoryframework.github.io/tools/productivity/#inventory-helper">InventoryHelper</a> and hitting Refresh near the bottom right. You can also search for your item.</p>
+<p>To validate your items are being discovered correctly, I suggest going into the <strong><a href="http://inventoryframework.github.io/tools/productivity/#inventory-helper">InventoryHelper</a></strong> and hitting Refresh near the bottom right. You can also search for your item.</p>
 <p>If an item is not appearing there, either the above steps were not followed correctly or the asset manager is ignoring it for some reason.<br />
 If you go into &quot;Windows&quot; and open the output log and find any &quot;Ignoring PrimaryAssetType Items - Conflicts with SOMECLASSNAME - Asset: ITEMNAMEHERE&quot; in your message log, it means no data has been changed inside of your data asset or it is identical to another data asset.</p>
 <hr />
@@ -236,7 +236,7 @@ If you go into &quot;Windows&quot; and open the output log and find any &quot;Ig
         <span>Limitations</span>
     </h2>
 </doc-anchor-target>
-<p>As of 5.1, there is still no way of mixing C++ and blueprint data assets, for now you can only have C++ data assets, and you can&#x27;t do a lot of hierarchy setups. All of your parents must live at a C++ level.<br />
+<p>As of 5.1, there is still no way of mixing normal and blueprint data assets, for now you can only have normal data assets, and you can&#x27;t do a lot of hierarchy setups. All of your parent files must live at a C++ level.<br />
 Because the item data asset variable inside <span style="color:slateblue"><strong>FS_InventoryItem</strong></span> lives in C++, there is no way to reference blueprint data assets. If you check &quot;Has Blueprint Classes&quot; the system will not work.</p>
 <hr />
 <doc-anchor-target id="bulk-editing">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731477405610">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731572997177">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,12 +31,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.731477405610" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.731572997177" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.731477405610" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.731572997177" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.731477405610" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.731477405610" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.731572997177" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.731572997177" defer></script>
     <script id="mermaid-js" type="text/javascript" src="../../resources/js/mermaid.js?v=2.4.0" defer></script>
 </head>
 <body>
@@ -319,6 +319,7 @@ void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, i
 <ul>
 <li>UniqueID&#x27;s <a href="https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations">scale extremely</a> well with RPC&#x27;s. It is advised to use UniqueID&#x27;s as often as possible.</li>
 <li>There&#x27;s no way to evaluate from a UniqueID if it was assigned to an item or container without going through all items and containers until you find a match. It is not recommended to add more information to this struct as it&#x27;s meant to be small and simple, so that it gets replicated extremely quickly and cheaply.</li>
+<li>UniqueID&#x27;s from components the client does not have information on will not work. For example, two players are interacting with a chest and Player-1 moves an item from their inventory to the chest, Player-2 will not have the information necessary to move the item on their side. Some functions simply need more information than the UniqueID can provide.</li>
 </ul>
 
                                 
