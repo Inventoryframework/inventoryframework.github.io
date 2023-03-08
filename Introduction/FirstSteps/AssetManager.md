@@ -22,14 +22,14 @@ Whatever you fill in inside of <span style="color:slateblue">**Asset Registry Ca
 
 ---
 ## Validating
-To validate your items are being discovered correctly, I suggest going into the [InventoryHelper](http://inventoryframework.github.io/tools/productivity/#inventory-helper) and hitting Refresh near the bottom right. You can also search for your item.
+To validate your items are being discovered correctly, I suggest going into the **[InventoryHelper](http://inventoryframework.github.io/tools/productivity/#inventory-helper)** and hitting Refresh near the bottom right. You can also search for your item.
 
 If an item is not appearing there, either the above steps were not followed correctly or the asset manager is ignoring it for some reason.
 If you go into "Windows" and open the output log and find any "Ignoring PrimaryAssetType Items - Conflicts with SOMECLASSNAME - Asset: ITEMNAMEHERE" in your message log, it means no data has been changed inside of your data asset or it is identical to another data asset.
 
 ---
 ## Limitations
-As of 5.1, there is still no way of mixing C++ and blueprint data assets, for now you can only have C++ data assets, and you can't do a lot of hierarchy setups. All of your parents must live at a C++ level.
+As of 5.1, there is still no way of mixing normal and blueprint data assets, for now you can only have normal data assets, and you can't do a lot of hierarchy setups. All of your parent files must live at a C++ level.
 Because the item data asset variable inside <span style="color:slateblue">**FS_InventoryItem**</span> lives in C++, there is no way to reference blueprint data assets. If you check "Has Blueprint Classes" the system will not work.
 
 --- 
