@@ -116,5 +116,7 @@ The UniqueID is a simple method to quickly find containers or items, or ensuring
 
 1. Pre-generate the UniqueID's on the server, then pass them to the client and have your logic assign that UniqueID to the item. This is not advised as it can get bad for networking and it is generally cumbersome to program and manage it.
 2. Use <span style="color:brown">**GenerateUniqueIDWithSeed**</span>. Now the only thing you need to ensure is that the client and server are using the same seed and they'll both generate the same UniqueID.
+
 - UniqueID's [scale extremely](https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations) well with RPC's. It is advised to use UniqueID's as often as possible.
 - There's no way to evaluate from a UniqueID if it was assigned to an item or container without going through all items and containers until you find a match. It is not recommended to add more information to this struct as it's meant to be small and simple, so that it gets replicated extremely quickly and cheaply.
+- UniqueID's from components the client does not have information on will not work. For example, two players are interacting with a chest and Player-1 moves an item from their inventory to the chest, Player-2 will not have the information necessary to move the item on their side. Some functions simply need more information than the UniqueID can provide.
