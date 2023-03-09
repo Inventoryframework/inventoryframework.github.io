@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731573006274">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731676578693">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,11 +31,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=2.4.0.731573006274" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.731676578693" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.731573006274" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.731676578693" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.731573006274" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.731676578693" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -200,10 +200,11 @@
 There are two main reasons behind this decision:<br />
 First is this allows you complete control over what items are attached to (for example if you have a horse and want to give it armor, but the component is only setup on the player) and secondly is that people might already have a player blueprint hierarchy setup and I did not want to mess with that and some people might not want to use my hierarchy setup.</p>
 <p>Your container&#x27;s compatibility settings dictate what is allowed in them. If you only want helmets to go into container X, then your helmet items should use <span style="color:slateblue"><strong>EquipmentSlot</strong></span> (Rename one of the options to Helmet) and your container should only allow Helmets. You can also of course rename one of the <span style="color:slateblue"><strong>EquipmentType</strong></span> enum entries to “Head” and make your helmet item be of <span style="color:slateblue"><strong>EquipmentType</strong></span> “Head” and then all items that might not be a helmet, but are a head item like glasses can go into that container.</p>
-<p><span style="color:slateblue"><strong>EquipmentData</strong></span> in your item data asset is a struct which attempts to solve most issues when it comes to having multiple skeletons, meshes or complex equipment logic, such as having a gun attached to a backpack which is attached to the player character and that gun has a sight attached to it or FPS shooter setups where you have a local arms skeleton and then a full body skeleton. This struct also attempts to keep the system away from hard coding any types of “main weapon” and “secondary weapon” or anything of the sort. I’ve found those types of setups  often become cumbersome when a designer wants to add or remove these types of things.</p>
+<p>The logic that runs the equipping and unequipping logic is stored in a object and item driver called IO_Equipment and ID_Equipment (if you are unfamiliar with the <a href="https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/">item driver system</a>, I suggest getting familiar with it first) and they use a struct called <span style="color:slateblue"><strong>EquipmentData</strong></span>, this struct attempts to solve most issues when it comes to having multiple skeletons, meshes or complex equipment logic, such as having a gun attached to a backpack which is attached to the player character and that gun has a sight attached to it or FPS shooter setups where you have a local arms skeleton and then a full body skeleton. This struct also attempts to keep the system away from hard coding any types of “main weapon” and “secondary weapon” or anything of the sort. I’ve found those types of setups  often become cumbersome when a designer wants to add or remove these types of things.</p>
+<p>Keeping the equipping system inside of a item driver provides a modular way for you to allow any item you want to be equippable, or trigger special animations when its added to an items container. It also allows you to easily implement your own system if you want without rewriting C++ code or affecting how the inventory system works at a fundamental level.</p>
 <p>During my research, I found an astonishing amount of different workflows and processes. It was very daunting to try and solve all of them in one go, and maybe my system isn’t perfect, but it tries to solve as many as possible at once, while still being flexible and adjustable.</p>
-<p>I recommend reading the comments in the <span style="color:slateblue"><strong>EquipmentData</strong></span> struct (Found in <span style="color:violet"><strong>IFP_CoreData.h</strong></span>) and going through <span style="color:violet"><strong>OT_Equipment</strong></span> (which is an object template found in the plugins folder Core -&gt; ActorParents -&gt; ObjectTemplates.) and look at the logic in there to get a better understanding of how the system is using this struct. I would explain it here, but it’s so long and extensive that explaining it in just text and pictures would take too long.</p>
-<p>This object attempts to copy the system that is used in GAS with its <span style="color:brown"><strong>PlayMontageAndWait</strong></span> function, which creates an instance that handles the animation, but I wanted to keep mine inside of Blueprints.</p>
+<p>I recommend reading the comments in the <span style="color:slateblue"><strong>EquipmentData</strong></span> struct (Found in <span style="color:violet"><strong>IFP_CoreData.h</strong></span>) and going through <span style="color:violet"><strong>ID_Equipment</strong></span> (which is an item driver found in the plugins folder Core -&gt; ActorParents -&gt; DriversAndObjects -&gt; Equipment.) and look at the logic in there to get a better understanding of how the system is using this struct. I would explain it here, but it’s so long and extensive that explaining it in just text and pictures would take too long.<br />
+This driver attempts to copy the system that is used in GAS with its <span style="color:brown"><strong>PlayMontageAndWait</strong></span> function, which creates an object that handles the animation, but I wanted to keep mine inside of Blueprints.</p>
 <hr />
 <doc-anchor-target id="optimizations">
     <h2>
