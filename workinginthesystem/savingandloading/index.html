@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731676578693">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.731852636290">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,11 +31,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.731676578693" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.731852636290" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.731676578693" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.731852636290" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.731676578693" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.731852636290" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -211,8 +211,11 @@
         </div>
     </div>
 </div>
+<p>The demo includes an extremely basic save and load system. I will not be implementing anything advanced, because if you ever decide to remove the inventory system from your project, you will have to extract the save and load system from this project. You should have some system which you can bring to all of your projects.</p>
 <p>Everything is saved in structs, so it should be compatible with your save system. It’s up to your save and load system to manage this, but if you need an example, the demo project has an example of a simple save and load system.</p>
-<p>But let’s be honest, Unreal Engine’s save system is not very good and lacks too many fundamental features. I recommend a plugin from the marketplace called <a href="https://www.unrealengine.com/marketplace/en-US/product/savior" target="_blank"><strong>Saviour</strong></a>.</p>
+<p>But let’s be honest, Unreal Engine’s blueprint save system is not very good and lacks too many fundamental features. I recommend a plugin from the marketplace called <a href="https://www.unrealengine.com/marketplace/en-US/product/savior" target="_blank"><strong>Saviour</strong></a>.</p>
+<p>If you are going to make your own save and load system, I suggest using C++ as the current Blueprint functionality of Unreal&#x27;s save and load system is really bad.<br />
+There are a few C++ saving and loading system tutorials on Youtube which cover how to serialize nearly any data you want, all of which should be compatible with this system.</p>
 <doc-anchor-target id="things-to-keep-in-mind">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#things-to-keep-in-mind">#</doc-anchor-trigger>
@@ -220,6 +223,25 @@
     </h2>
 </doc-anchor-target>
 <p>UniqueID&#x27;s must reset whenever you try to save containers and items. The parent component object reference can not be saved. The component has a function called <span style="color:brown"><strong>GetContainersForSaveState</strong></span> which provides you with a copy of the containers, but some data has been modified to be compatible with save files. I recommend looking inside this function to better understand what can not be stored in the save file.</p>
+<doc-anchor-target id="multiplayer">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#multiplayer">#</doc-anchor-trigger>
+        <span>Multiplayer</span>
+    </h2>
+</doc-anchor-target>
+<p>When a client connects, it&#x27;s up to your save system to assign them the appropriate container settings.</p>
+<doc-anchor-target id="equipment">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#equipment">#</doc-anchor-trigger>
+        <span>Equipment</span>
+    </h2>
+</doc-anchor-target>
+<p>When you load a save, you might want some equipment the player has to become visible.<br />
+You have two options:</p>
+<ol>
+<li>The component has a delegate for when it is started, from which you can assign a Trigger Filter inside of the Equipment Item Driver. These should be instantaneous attachments and no animations should occur at the same time as they can cancel each other before any critical notifies occur.</li>
+<li>Your save and load system has the ability to restore actors. From here you must ensure the restored actor gets the owning items UniqueID as a tag, unless you&#x27;ve also implemented a way to save the owning items UniqueID.</li>
+</ol>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
