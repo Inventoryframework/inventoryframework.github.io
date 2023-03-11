@@ -7,8 +7,6 @@ I have tried to follow the popular <a href="https://github.com/Allar/ue5-style-g
 Networking functions are prefixed with **C_** for client, **S_** for server and **MC**_ for multicast.
 For functions that attempt to automate replication, the bulk of the function's code is stored in a function with a **Internal_** prefix. These are typically called both by the server and client. If you want access to the internal functions, you will need to add **BlueprintCallable**  to the UFUNCTION above them.
 
-In blueprint functions, local variables are prefixed with an **L**.
-
 ---
 ## Tools
 All editor utility widgets are stored inside Plugin folder -> Content -> Core -> Widgets -> EditorUtilityWidgets -> Tools.
