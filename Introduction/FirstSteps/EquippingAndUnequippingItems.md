@@ -39,8 +39,8 @@ The default material section is not available (I assume this is an engine bug?).
 
 ---
 # Notes on general equipment system design
-Equipping and unequipping items can get messy, most importantly it can get messy when players start spamming the system with animations, either by quickly equipping and unequipping an item really quickly or equipping multiple items, all trying to activate montages which will interrupt each other.
-
+- Equipping and unequipping items can get messy, most importantly it can get messy when players start spamming the system with animations, either by quickly equipping and unequipping an item really quickly or equipping multiple items, all trying to activate montages which will interrupt each other.
 In the demo, items do not play an animation when equipped or unequipped. But they do play an animation when you holster or unholster an item. If you're in multiplayer, the item will also be added to the network queue to prevent clients from spamming the server with RPC's.
-
 By default, there is no failsafe if an animation is interrupted as that is something most designers want to implement their own system into. Some designers might want players to be able to cancel animations or cancel the equip if it was interrupted. It is up to you to implement any sort of failsafe if players are finding ways to manipulate this animation cancelling in ways you don't like.
+
+- If you're going to have items visible on your character, it is recommended to have at least one setup for every item that instantly attaches the item to the desired location and mesh. This is so when you load a save, you won't get several animations playing at the same time and overlapping each other.
