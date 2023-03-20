@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.732532108020">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.732621534939">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,11 +31,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=2.4.0.732532108020" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.732621534939" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.732532108020" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.732621534939" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.732532108020" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.732621534939" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -223,6 +223,11 @@ This driver attempts to copy the system that is used in GAS with its <span style
 <doc-panel id="notes-regarding-skeletal-and-static-meshes" collapsed>
     <template #title>Notes regarding Skeletal and Static Meshes</template>
 <p>The default material section is not available (I assume this is an engine bug?). If you wish to change the default materials, go into Rendering -&gt; Override Materials</p>
+</doc-panel>
+<doc-panel id="notes-for-optimal-multiplayer-experience" collapsed>
+    <template #title>Notes for optimal multiplayer experience</template>
+<p>The way Unreal handles replication for attached actors is not the most elegant. When another player becomes relevant for another client, not all attached actors will get replicated within the same frame. Leading to odd snapping or pop-in. This could be awkward if you have naked characters and then the clothing around them are blueprints.</p>
+<p>This is another reason why it&#x27;s suggested to stay away from blueprints for multiplayer, as with meshes, since they get attached to the actor itself, when it comes time to replicate it theres no snapping or pop-in. All components on an actor are replicated within the same frame.</p>
 </doc-panel>
 <hr />
 <doc-anchor-target id="notes-on-general-equipment-system-design">
