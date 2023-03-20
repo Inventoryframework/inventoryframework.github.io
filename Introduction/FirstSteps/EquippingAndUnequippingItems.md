@@ -37,6 +37,12 @@ For skeletal and static meshes, you gain access to most settings you would have 
 The default material section is not available (I assume this is an engine bug?). If you wish to change the default materials, go into Rendering -> Override Materials
 ===
 
+==- Notes for optimal multiplayer experience
+The way Unreal handles replication for attached actors is not the most elegant. When another player becomes relevant for another client, not all attached actors will get replicated within the same frame. Leading to odd snapping or pop-in. This could be awkward if you have naked characters and then the clothing around them are blueprints.
+
+This is another reason why it's suggested to stay away from blueprints for multiplayer, as with meshes, since they get attached to the actor itself, when it comes time to replicate it theres no snapping or pop-in. All components on an actor are replicated within the same frame.
+===
+
 ---
 # Notes on general equipment system design
 - Equipping and unequipping items can get messy, most importantly it can get messy when players start spamming the system with animations, either by quickly equipping and unequipping an item really quickly or equipping multiple items, all trying to activate montages which will interrupt each other.
