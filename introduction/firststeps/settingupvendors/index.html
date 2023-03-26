@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.732621534939">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.733105867635">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,11 +31,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=2.4.0.732621534939" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=2.4.0.733105867635" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.732621534939" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.733105867635" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.732621534939" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.733105867635" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -200,7 +200,7 @@
 <p>Right now, the system only considers items that are children of <span style="color:violet"><strong>IDA_Currency.h</strong></span> as viable currencies that can be exchanged for a vendor item.<br />
 Prices are calculated inside <span style="color:violet"><strong>FL_InventoryFramework.h</strong></span> -&gt; <span style="color:brown"><strong>GetItemPrice</strong></span>, and the function that evaluates if a player can afford an item is <span style="color:violet"><strong>AC_Inventory.h</strong></span> -&gt; <span style="color:brown"><strong>CanAffordItem</strong></span>. Remember, you can override an items price inside their override settings.</p>
 <p>The system by default has an array of currencies which players can use to buy items, but it does not by default provide a way of allowing the player to select which currency to use to buy or sell an item. It simply uses the first available currency it can find. It&#x27;s up to you to implement that sort of logic.</p>
-<p>Most games tend to have vendors keep track of how much money the vendor has, then when you sell an item to the vendor they spend their own currency and grant it to the player. There are four vendors in the demo, each showing a different way of handling the vendor logic.</p>
+<p>Most games tend to have vendors keep track of how much money the vendor has, then when you sell an item to the vendor they spend their own currency and grant it to the player. There are three vendors in the demo, each showing a different way of handling the vendor logic.</p>
 <p>If a logic error occurs, for example trying to give the player currency, but they do not have enough space in their inventory, you can call a delegate called <span style="color:brown"><strong>CurrencyAdditionFailed</strong></span>. This is where you might want to implement some sort of mail system or queue system, as it feels pretty bad for players when they sell an item and they don&#x27;t get their currency for it. The demo does not include any system for handling this problem.</p>
 <p>There are many ways of handling vendor behaviour. Nearly every game handles it slightly differently, which is why the framework does not try to handle any of this logic for you at a C++ level.</p>
 <p>Instead, there are three points in the system where you can inject your own custom logic and rules for handling vendor interactions.</p>
