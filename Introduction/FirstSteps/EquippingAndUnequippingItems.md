@@ -38,9 +38,11 @@ The default material section is not available (I assume this is an engine bug?).
 ===
 
 ==- Notes for optimal multiplayer experience
-The way Unreal handles replication for attached actors is not the most elegant. When another player becomes relevant for another client, not all attached actors will get replicated within the same frame. Leading to odd snapping or pop-in. This could be awkward if you have naked characters and then the clothing around them are blueprints.
+The way Unreal handles replication for attached actors is not the most elegant. When another player becomes relevant for another client, not all attached actors will get replicated within the same frame, and they might not even replicate in the order that you want them to. Leading to odd snapping or pop-in. This could be awkward if you have naked characters and then the clothing around them are blueprints.
 
 This is another reason why it's suggested to stay away from blueprints for multiplayer, as with meshes, since they get attached to the actor itself, when it comes time to replicate it theres no snapping or pop-in. All components on an actor are replicated within the same frame.
+
+There is always a chance a packet will be dropped, which is again why you should refrain from blueprints as the engine does a very good job ensuring every mesh component is replicated. For every blueprint, you're adding another actor, and another equipment manager component, and more RPC's and more RepNotify's and each of those have a chance to get dropped.
 ===
 
 ---
