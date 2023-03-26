@@ -12,7 +12,7 @@ Prices are calculated inside <span style="color:violet">**FL_InventoryFramework.
 
 The system by default has an array of currencies which players can use to buy items, but it does not by default provide a way of allowing the player to select which currency to use to buy or sell an item. It simply uses the first available currency it can find. It's up to you to implement that sort of logic.
 
-Most games tend to have vendors keep track of how much money the vendor has, then when you sell an item to the vendor they spend their own currency and grant it to the player. There are four vendors in the demo, each showing a different way of handling the vendor logic.
+Most games tend to have vendors keep track of how much money the vendor has, then when you sell an item to the vendor they spend their own currency and grant it to the player. There are three vendors in the demo, each showing a different way of handling the vendor logic.
 
 If a logic error occurs, for example trying to give the player currency, but they do not have enough space in their inventory, you can call a delegate called <span style="color:brown">**CurrencyAdditionFailed**</span>. This is where you might want to implement some sort of mail system or queue system, as it feels pretty bad for players when they sell an item and they don't get their currency for it. The demo does not include any system for handling this problem.
 
