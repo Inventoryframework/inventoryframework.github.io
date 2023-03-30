@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.733105867635">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.733486391092">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,12 +31,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.733105867635" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.733486391092" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.733105867635" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.733486391092" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.733105867635" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.733105867635" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.733486391092" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.733486391092" defer></script>
     <script id="mermaid-js" type="text/javascript" src="../../resources/js/mermaid.js?v=2.4.0" defer></script>
 </head>
 <body>
@@ -72,7 +72,7 @@
                                 <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/" target="_blank">Marketplace</a>
                             </li>
                             <li class="mr-6">
-                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/" target="_blank">Discord</a>
+                                <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://discord.gg/bBfa9pwtEn" target="_blank">Discord</a>
                             </li>
                             <li class="mr-6">
                                 <a class="py-2 md:mb-0 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://trello.com/b/pE2DJRlb/inventory-framework-plugin" target="_blank">Trello</a>
@@ -160,7 +160,7 @@
                                         <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/" target="_blank">Marketplace</a>
                                     </li>
                                     <li class="mr-6">
-                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/" target="_blank">Discord</a>
+                                        <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://discord.gg/bBfa9pwtEn" target="_blank">Discord</a>
                                     </li>
                                     <li class="mr-6">
                                         <a class="block py-1 inline-flex items-center text-sm whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://trello.com/b/pE2DJRlb/inventory-framework-plugin" target="_blank">Trello</a>
@@ -301,6 +301,7 @@ void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, i
     </h3>
 </doc-anchor-target>
 <p>Because of how large some RPC&#x27;s can get, I did not find multicasts to be acceptable for most of the functions. A lot of the RPC&#x27;s are just simply not relevant for most clients anyways, and managing relevancy is a lot more complicated than a simple array of actors.</p>
+<p>RepNotify&#x27;s also can not be used because there is no way to label them as &quot;Reliable&quot; which means they are susceptible to packet loss and they share the same issue with multicasts; They are simply too expensive and much of the data is simply not relevant.</p>
 <hr />
 <doc-anchor-target id="unique-id">
     <h2>
