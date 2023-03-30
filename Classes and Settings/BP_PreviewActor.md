@@ -1,5 +1,5 @@
 ---
-tags: [underrevision]
+tags:
 ---
 
 # BP_PreviewActor
@@ -7,10 +7,6 @@ tags: [underrevision]
 ==- Blueprint Preview Actor
 File Location: Content\Core\Preview\BP_PreviewActor.uasset
 ==-
-
-!!!danger
-Under revision
-!!!
 
 ---
 
@@ -36,15 +32,15 @@ Even though the render scene component only see’s the preview actor itself and
 Even while spawning them at a ridiculously long range of random locations, during my playtesting I still had this scenario happen.
 To fix this, there’s a <span style="color:violet">**BP_PreviewActorCollider**</span> which you will spawn first, which will test for collision and adjust its location. Then you spawn <span style="color:violet">**BP_PreviewActor**</span> itself and set its location inside the collider.
 
-This does mean though that you need to handle the collision responses for this. I recommend creating a new collision channel specifically for both the <span style="color:violet">**BP_PreviewActor**</span> and <span style="color:violet">**BP_PreviewActorCollider**</span>.
+This does mean though that you need to handle the collision responses for this. I recommend creating a new collision channel for <span style="color:violet">**BP_PreviewActor**</span> and <span style="color:violet">**BP_PreviewActorCollider**</span>.
 
 ---
 ## Camera management
 The <span style="color:violet">**BP_PreviewActor**</span> will attempt to find the first component which has a socket called “PreviewCameraSocket” and attach the camera to that socket. If none is found, you’ll get an error message and the camera will stay attached to the PreviewActor’s root.
 Ideally, all your meshes should have this socket that you want to use this actor on. But to improve prototyping, I’ve added a few options to the item data asset:
-(ADD PICTURE HERE)
+-![](/pictures/PreviewActorAdjustments.png)
 
-Once you're far enough into production or willing to keep all meshes up to date with the socket, you should remove these three settings.
+Once you're far enough into production or willing to keep all meshes up to date with the socket, you should remove these four settings.
 
 The actor supports auto-generated estimated camera distances, so you don’t have to debug every item to create a camera distance while in a prototyping phase. You can disable this by checking <span style="color:slateblue">**Use Custom Arm Length**</span>.
 
@@ -61,4 +57,4 @@ Do keep in mind that live captures can get very expensive, very quickly, since t
 
 You can limit it by enabling <span style="color:slateblue">**CaptureEveryFrame**</span> and limiting the <span style="color:slateblue">**TickInterval**</span> inside of <span style="color:violet">**SceneCaptureComponent2D**</span>.
 
-I have these disabled by default, so if your actor isn’t animating, you need to enable CaptureEveryFrame.
+I have these disabled by default, so if your actor isn’t animating, you need to enable CaptureEveryFrame, or if you're duplicating an item, you can go into its data asset and disable <span style="color:slateblue">**UseStaticCapture**</span>.
