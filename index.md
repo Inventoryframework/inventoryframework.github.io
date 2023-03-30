@@ -19,13 +19,13 @@ What this provides is the C++ foundation for your programmers and a good Bluepri
 2. Widgets that are designer friendly (Easy to implement new logic, add animations to events, create children, etc). They also handle all the drag, drop, highlighting, splitting, combining logic and more.
 3. Advanced data assets for your items instead of data tables.
 4. A system that has no reliance on widgets to create or handle its data, meaning everything you need to know about an item is always accessible.
-5. Container system that allows for near infinite (array limit) items inside of items. This means you can make a backpack, which has several containers, then a gun inside one of those containers and then that gun can have containers which have items inside of them. It can keep going for as long as you want.
+5. Container system that allows for infinite items inside of items. This means you can make a backpack, which has several containers, then a gun inside one of those containers and then that gun can have containers which have items inside of them. It can keep going for as long as you want.
 6. Actor appearance duplication system that copies the appearance of your items allowing you to both inspect items and auto-generate icons. It works with all actors, not just item actors. No longer do you need to follow a hierarchy setup like many other inventory systems need. You can create your items however you want and the system will automatically duplicate the appearance for either generating item icons or letting you examine an item.
 7. Powerful in-game and in-editor tools to improve quality control and speed up workflow.
 
 It is NOT an inventory to fully replicate the mechanics of any specific game. If you want your system to behave like a specific game, you will have to implement those specific mechanics yourself. This system does try to provide you with the functions and data to replicate most inventory systems.
 
-If you have any issues or questions neither the videos or documentation answer then feel free to message me on Discord (Variann#8404) or join the discord channel.
+If you have any issues or questions neither the videos or documentation answer then feel free to message me on Discord (Varian#8033) or join the discord channel.
 You can look at the FAQ for more info.
 
 ---
