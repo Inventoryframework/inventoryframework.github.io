@@ -1,12 +1,8 @@
 ---
-tags: [underrevision]
+tags:
 ---
 
 # Saving and loading
-
-!!!danger
-Under revision
-!!!
 
 The demo includes an extremely basic save and load system. I will not be implementing anything advanced, because if you ever decide to remove the inventory system from your project, you will have to extract the save and load system from this project. You should have some system which you can bring to all of your projects.
 
