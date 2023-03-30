@@ -107,6 +107,8 @@ void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, i
 
 Because of how large some RPC's can get, I did not find multicasts to be acceptable for most of the functions. A lot of the RPC's are just simply not relevant for most clients anyways, and managing relevancy is a lot more complicated than a simple array of actors.
 
+RepNotify's also can not be used because there is no way to label them as "Reliable" which means they are susceptible to packet loss and they share the same issue with multicasts; They are simply too expensive and much of the data is simply not relevant.
+
 ---
 ## Unique ID
 
