@@ -39,5 +39,5 @@ There is an annoying issue though, all variables that can be modified in bluepri
 You can of course inverse this behavior in C++ by using the ShowCategory UCLASS specifier. 
 
 ==- Important notes
-- Whenever possible, use soft references and try to avoid hard references. Item data bases are one of the fastest ways of creating a nasty web of hard references and before you know it, the majority of your game is loaded at times where you don't want it to be.
+- Whenever possible, use soft references and try to avoid hard references. Item data bases are one of the fastest ways of creating a nasty web of hard references and before you know it, the majority of your game is loaded at times where you don't want it to be. These objects and drivers are potentially the biggest culprit in this system to create that kind of nasty web of hard references.
 ==-
