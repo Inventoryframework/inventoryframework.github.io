@@ -13,6 +13,8 @@ This might take a while as I’m also trying to figure out a way to have particl
 
 - The "Reset to Default Property Value" button for container settings is not resetting values to their proper defaults and it's always showing for all values, even if the value is set to its default. I am unsure what is causing this.
 
+- Refreshing the Preview actor is behaving differently in a shipping build than while in editor. From the code, it's supposed to behave exactly the same. For now, it is  advised to simply recreate the entire preview actor instead of refreshing it.
+
 
 ## Common Problems
 These aren't bugs, but problems that can be misinterpreted as bugs.
