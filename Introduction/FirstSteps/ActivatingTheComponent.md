@@ -26,3 +26,5 @@ Here's a list of scenarios where you want to refrain from calling <span style="c
 The component can not be stopped while its <span style="color:slateblue">**Listeners**</span> array is not empty, which is used for multiplayer.
 
 If your games memory usage is tight, it might be worthwhile trying to call <span style="color:brown">**StopComponent**</span>, but the above points must be kept in mind.
+
+What might be worthwhile for you to optimize would be to try and clean up any widgets and object references the component is holding onto. That is most often the root of any performance issues after activating a component with a lot of items.
