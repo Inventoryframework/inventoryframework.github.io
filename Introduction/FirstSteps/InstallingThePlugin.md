@@ -29,6 +29,8 @@ To find the blueprints, you will want to start the engine, go into your content 
 
 ![](/pictures/ShowPluginContent.png)
 
+If you decide to NOT install the plugin locally, you will also have to check "Show Engine Content" and then go into Engine -> Plugins -> InventoryFrameworkPlugin Content
+
 ---
 Once you are done installing the plugin, I **HIGHLY** advise you make children of any class in this system once you want to modify. This should make updating in the future a lot easier and gives you a lot more customizability.
 
