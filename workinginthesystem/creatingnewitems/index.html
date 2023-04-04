@@ -9,33 +9,33 @@
     <meta name="generator" content="Retype 2.4.0">
 
     <!-- Primary Meta Tags -->
-    <title>Equipping and unequipping items</title>
-    <meta name="title" content="Equipping and unequipping items">
-    <meta name="description" content="A big problem I try to solve with this system is that I did not want to assume anything about how your actors' meshes are set up, how your equipment..." />
+    <title>Creating new items</title>
+    <meta name="title" content="Creating new items">
+    <meta name="description" content="Creating new items is very simple. To start off, you'll need to go into the engine and find your content browser, right click and go to" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="/introduction/firststeps/equippingandunequippingitems/" />
+    <link rel="canonical" href="/workinginthesystem/creatingnewitems/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/introduction/firststeps/equippingandunequippingitems/">
-    <meta property="og:title" content="Equipping and unequipping items">
-    <meta property="og:description" content="A big problem I try to solve with this system is that I did not want to assume anything about how your actors' meshes are set up, how your equipment...">
+    <meta property="og:url" content="/workinginthesystem/creatingnewitems/">
+    <meta property="og:title" content="Creating new items">
+    <meta property="og:description" content="Creating new items is very simple. To start off, you'll need to go into the engine and find your content browser, right click and go to">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/introduction/firststeps/equippingandunequippingitems/">
-    <meta property="twitter:title" content="Equipping and unequipping items">
-    <meta property="twitter:description" content="A big problem I try to solve with this system is that I did not want to assume anything about how your actors' meshes are set up, how your equipment...">
+    <meta property="twitter:url" content="/workinginthesystem/creatingnewitems/">
+    <meta property="twitter:title" content="Creating new items">
+    <meta property="twitter:description" content="Creating new items is very simple. To start off, you'll need to go into the engine and find your content browser, right click and go to">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=2.4.0.733920137850" rel="stylesheet" />
+    <link href="../../pictures/websiteicon.png" rel="icon" />
+    <link href="../../resources/css/retype.css?v=2.4.0.733920137850" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=2.4.0.733920137850" data-turbo-eval="false" defer></script>
-    <script type="text/javascript" src="../../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=2.4.0.733920137850" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.733920137850" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.733920137850" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -50,10 +50,10 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../../../" class="flex items-center leading-snug text-xl">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
                             <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
-                                <img class="max-h-10 dark:hidden md:inline-block" src="../../../pictures/logo.png">
-                                <img class="max-h-10 hidden dark:inline-block" src="../../../pictures/logo.png">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../pictures/logo.png">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../pictures/logo.png">
                             </span>
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Inventory Framework</span>
                         </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
@@ -189,84 +189,32 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="equipping-and-unequipping-items" class="break-words">
+<doc-anchor-target id="creating-new-items" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#equipping-and-unequipping-items">#</doc-anchor-trigger>
-        <span>Equipping and unequipping items</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#creating-new-items">#</doc-anchor-trigger>
+        <span>Creating new items</span>
     </h1>
 </doc-anchor-target>
+<p>Creating new items is very simple.<br />
+To start off, you&#x27;ll need to go into the engine and find your content browser, right click and go to <strong>Miscellaneous -&gt; Data Asset</strong> and a pop up will appear asking you what parent your data asset should derive from.<br />
+You might have your own children or have removed some of the children that come with the asset, but whatever asset you choose must derive from <span style="color:violet"><strong>DA_CoreItem</strong></span> at some point in its hierarchy.</p>
+<p>I suggest creating a folder for your item and placing the data asset in there.</p>
+<p>To create a blueprint actor for your item, you will have to create an actor who at some point in its hierarchy is a child of <span style="color:violet"><strong>BP_SM_ItemPhysical</strong></span>.</p>
+<p>To have the asset manager pick up your data asset, it can not be identical to another data asset. (This includes the base file, so if all your variables are set to default, the asset will not get picked up.) Typically you want to immediately give your item a name and a developer image for the InventoryHelper.</p>
 <hr />
-<p>A big problem I try to solve with this system is that I did not want to assume anything about how your actors&#x27; meshes are set up, how your equipment setup looked like and I did not want to make a base player or actor blueprint.<br />
-There are two main reasons behind this decision:<br />
-First is this allows you complete control over what items are attached to (for example if you have a horse and want to give it armor, but the component is only setup on the player) and secondly is that people might already have a player blueprint hierarchy setup and I did not want to mess with that and some people might not want to use my hierarchy setup.</p>
-<p>Your container&#x27;s compatibility settings dictate what is allowed in them. If you only want helmets to go into container X, then your helmet items should use <span style="color:slateblue"><strong>EquipmentSlot</strong></span> (Rename one of the options to Helmet) and your container should only allow Helmets. You can also of course rename one of the <span style="color:slateblue"><strong>EquipmentType</strong></span> enum entries to “Head” and make your helmet item be of <span style="color:slateblue"><strong>EquipmentType</strong></span> “Head” and then all items that might not be a helmet, but are a head item like glasses can go into that container.</p>
-<p>The logic that runs the equipping and unequipping logic is stored in a object and item driver called <span style="color:violet"><strong>IO_Equipment</strong></span> and <span style="color:violet"><strong>ID_Equipment</strong></span> (if you are unfamiliar with the <a href="https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/">item driver system</a>, I suggest getting familiar with it first) and they use a struct called <span style="color:slateblue"><strong>EquipmentData</strong></span>, this struct attempts to solve most issues when it comes to having multiple skeletons, meshes or complex equipment logic, such as having a gun attached to a backpack which is attached to the player character and that gun has a sight attached to it or FPS shooter setups where you have a local arms skeleton and then a full body skeleton. This struct also attempts to keep the system away from hard coding any types of “main weapon” and “secondary weapon” or anything of the sort. I’ve found those types of setups  often become cumbersome when a designer wants to add or remove these types of things.</p>
-<p>Keeping the equipping system inside of a item driver provides a modular way for you to allow any item you want to be equippable, or trigger special animations when its added to an items container. It also allows you to easily implement your own system if you want without rewriting C++ code or affecting how the inventory system works at a fundamental level.</p>
-<p>During my research, I found an astonishing amount of different workflows and processes. It was very daunting to try and solve all of them in one go, and maybe my system isn’t perfect, but it tries to solve as many as possible at once, while still being flexible and adjustable.</p>
-<p>I recommend reading the comments in the <span style="color:slateblue"><strong>EquipmentData</strong></span> struct (Found in <span style="color:violet"><strong>IFP_CoreData.h</strong></span>) and going through <span style="color:violet"><strong>ID_Equipment</strong></span> (which is an item driver found in the plugins folder Core -&gt; ActorParents -&gt; DriversAndObjects -&gt; Equipment.) and look at the logic in there to get a better understanding of how the system is using this struct. I would explain it here, but it’s so long and extensive that explaining it in just text and pictures would take too long.<br />
-This driver attempts to copy the system that is used in GAS with its <span style="color:brown"><strong>PlayMontageAndWait</strong></span> function, which creates an object that handles the animation, but I wanted to keep mine inside of Blueprints.</p>
-<hr />
-<doc-anchor-target id="optimizations">
+<doc-anchor-target id="creating-new-c-children-of-da_coreitem">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#optimizations">#</doc-anchor-trigger>
-        <span>Optimizations</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#creating-new-c-children-of-da_coreitem">#</doc-anchor-trigger>
+        <span>Creating new C++ children of DA_CoreItem</span>
     </h2>
 </doc-anchor-target>
-<p>For weapons and equippables, I&#x27;ve implemented three methods of creating your equipment mesh (Item reperesentation):</p>
-<ol>
-<li>Blueprint, this allows you to simply use any blueprint you&#x27;ve made as the item representation.</li>
-<li>Skeletal mesh</li>
-<li>Static mesh</li>
-</ol>
-<p>Blueprint&#x27;s are obviously the most expensive, but are the most customizable. I recommend staying away from using Blueprint&#x27;s as your item representation whenever possible. For multiplayer, meshes are encouraged even more as they are very cheap to replicate.</p>
-<p>For skeletal and static meshes, you gain access to most settings you would have in the details panel while editing them in a blueprint</p>
-<doc-panel id="notes-regarding-skeletal-and-static-meshes" collapsed>
-    <template #title>Notes regarding Skeletal and Static Meshes</template>
-<p>The default material section is not available (I assume this is an engine bug?). If you wish to change the default materials, go into Rendering -&gt; Override Materials</p>
-</doc-panel>
-<doc-panel id="notes-for-optimal-multiplayer-experience" collapsed>
-    <template #title>Notes for optimal multiplayer experience</template>
-<p>The way Unreal handles replication for attached actors is not the most elegant. When another player becomes relevant for another client, not all attached actors will get replicated within the same frame, and they might not even replicate in the order that you want them to. Leading to odd snapping or pop-in. This could be awkward if you have naked characters and then the clothing around them are blueprints.</p>
-<p>This is another reason why it&#x27;s suggested to stay away from blueprints for multiplayer, as with meshes, since they get attached to the actor itself, when it comes time to replicate it theres no snapping or pop-in. All components on an actor are replicated within the same frame.</p>
-<p>There is always a chance a packet will be dropped, which is again why you should refrain from blueprints as the engine does a very good job ensuring every mesh component is replicated. For every blueprint, you&#x27;re adding another actor, and another equipment manager component, and more RPC&#x27;s and more RepNotify&#x27;s and each of those have a chance to get dropped.</p>
-</doc-panel>
-<hr />
-<doc-anchor-target id="notes-on-general-equipment-system-design">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#notes-on-general-equipment-system-design">#</doc-anchor-trigger>
-        <span>Notes on general equipment system design</span>
-    </h1>
-</doc-anchor-target>
-<ul>
-<li><p>Equipping and unequipping items can get messy, most importantly it can get messy when players start spamming the system with animations, either by quickly equipping and unequipping an item really quickly or equipping multiple items, all trying to activate montages which will interrupt each other.<br />
-In the demo, items do not play an animation when equipped or unequipped. But they do play an animation when you holster or unholster an item. If you&#x27;re in multiplayer, the item will also be added to the network queue to prevent clients from spamming the server with RPC&#x27;s.<br />
-By default, there is no failsafe if an animation is interrupted as that is something most designers want to implement their own system into. Some designers might want players to be able to cancel animations or cancel the equip if it was interrupted. It is up to you to implement any sort of failsafe if players are finding ways to manipulate this animation cancelling in ways you don&#x27;t like.</p>
-</li>
-<li><p>If you&#x27;re going to have items visible on your character, it is recommended to have at least one setup for every item that instantly attaches the item to the desired location and mesh. This is so when you load a save, you won&#x27;t get several animations playing at the same time and overlapping each other.</p>
-</li>
-</ul>
-<hr />
-<doc-anchor-target id="why-are-all-my-components-getting-renamed">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#why-are-all-my-components-getting-renamed">#</doc-anchor-trigger>
-        <span>Why are all my components getting renamed?</span>
-    </h1>
-</doc-anchor-target>
-<p>The system automatically tries to keep all components attached to an actor with unique names. Including attached actors. This is because of how the  preview system works. The preview system attempts to reconstruct the actor it&#x27;s previewing without fully cloning it. There are ways of perfectly cloning an actor, but those are very expensive and come with their own set of problems. The preview system only looks at the visible components on the actor, including attached actors, and reconstructs it. But problems occur if two components have the same name from 2 different attached actors.<br />
-When the preview system reconstructs the actor, it finds out what component it was attached to, but it needs to know which component that is on itself, it can&#x27;t use the object reference. This means that if two components have the same name, it&#x27;ll mess up which component it should attach to. The simple fix to this is to make sure all components have a unique name. The engine already handles this if you attach a component to an actor and that actor has a component with the same name, but it does not do this for attached actors.</p>
-<p>But to simplify debugging, only a underscore and a random number is added to the end of it. The  rest of the name is untouched.</p>
+<p>You might want to create your own category of items, and since the engine does not allow you to mix C++ and blueprint children of data assets, you are unfortunately forced to create C++ children.</p>
+<p>I suggest installing the plugin directly to your project, and then creating new children inside the <strong>Items</strong> folder, which is found inside the plugins <strong>Core</strong> folder.</p>
+<p>If you are creating a new category, you will also want to find the EItemType enum inside <span style="color:violet"><strong>IFP_CoreData.h</strong></span> and create a new entry. Then inside your newly created .cpp file, override the constructor and set the type to be equal to this new category.<br />
+This is so functions inside of <span style="color:violet"><strong>DA_CoreItem</strong></span> can perform the correct casts to retrieve data from its children.<br />
+You can find examples of this inside of the children of <span style="color:violet"><strong>DA_CoreItem</strong></span> that come with the plugin.</p>
 
-                                <div class="flex items-center mt-6 mb-6 clear-both">
-                                    <span>
-                                        <a href="../../../tags/">
-                                            <svg class="inline-block -mb-px mr-1.5 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" overflow="visible" fill="currentColor"><g><path d="M21.3 9.88l-8.59-8.59C12.52 1.11 12.27 1 12 1H2c-.55 0-1 .45-1 1v10c0 .27.11.52.29.71l8.59 8.58c.57.57 1.32.88 2.12.88s1.55-.31 2.12-.88l7.17-7.17a3.009 3.009 0 00.01-4.24zm-1.42 2.82l-7.17 7.17c-.39.39-1.02.39-1.42 0L3 11.59V3h8.59l8.29 8.29c.39.39.39 1.03 0 1.41z" /><path d="M7.01 6C6.45 6 6 6.45 6 7s.45 1 1 1 1-.45 1-1-.44-1-.99-1z" /></g></svg>
-                                        </a>
-                                        <span class="mr-2"><a href="../../../tags/item/" class="no-link inline-flex items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>item</span>
-                                </a></span>
-                                    </span>
-                                </div>
-                
+                                
                                 <!-- Required only on API pages -->
                                 <doc-toolbar-member-filter-no-results />
                             </div>
@@ -274,20 +222,20 @@ When the preview system reconstructs the actor, it finds out what component it w
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../introduction/firststeps/activatingthecomponent/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/creating-custom-widgets/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Activating the component</span>
+                                                <span class="block mt-1">Creating custom widgets</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../introduction/firststeps/settingupvendors/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/draganddrop/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Setting up vendors</span>
+                                                <span class="block mt-1">Drag and drop</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -331,6 +279,6 @@ When the preview system reconstructs the actor, it finds out what component it w
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Equipping and unequipping items", level: 3, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Creating new items", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
