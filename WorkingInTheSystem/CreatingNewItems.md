@@ -6,7 +6,13 @@ You might have your own children or have removed some of the children that come 
 
 I suggest creating a folder for your item and placing the data asset in there.
 
-To create a blueprint actor for your item, you will have to create an actor who at some point in its hierarchy is a child of <span style="color:violet">**BP_SM_ItemPhysical**</span>.
+To create a blueprint actor for your item, you will have to create an actor who at some point in its hierarchy is a child of <span style="color:violet">**BP_SM_ItemPhysical**</span>, then set that as your <span style="color:Slateblue">**PhysicalActor**</span>
+
+The actor will automatically get the blueprint inventory component assigned to it. You will need to go into the component settings and change a few things.
+1. Set <span style="color:Slateblue">**InventoryType**</span> to "**Pickup**"
+2. Add one index to <span style="color:Slateblue">**ContainerSettings**</span> and set the <span style="color:Slateblue">**ContainerType**</span> to "**ThisActor**". This will then hide most of the settings except for the items array.
+3. Your items array should only have one index, which will be your newly created data asset. All settings can be left to their default.
+4. (Optional) If your item has containers associated with it, the data asset should have a <span style="color:Slateblue">**AttachmentSettings**</span> with an array of <span style="color:Slateblue">**DefaultContainers**</span>. You will want to import these default containers into the blueprint actors <span style="color:Slateblue">**ContainerSettings**</span>, while leaving the first <span style="color:Slateblue">**ContainerSettings**</span> array index (0) and the first item array index (0) as the item this actor is representing. An example can be found in the example project with the gun and backpack item.
 
 To have the asset manager pick up your data asset, it can not be identical to another data asset. (This includes the base file, so if all your variables are set to default, the asset will not get picked up.) Typically you want to immediately give your item a name and a developer image for the InventoryHelper.
 
