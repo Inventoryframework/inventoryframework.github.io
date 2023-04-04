@@ -1,5 +1,6 @@
 # Creating new items
 
+---
 Creating new items is very simple.
 To start off, you'll need to go into the engine and find your content browser, right click and go to **Miscellaneous -> Data Asset** and a pop up will appear asking you what parent your data asset should derive from.
 You might have your own children or have removed some of the children that come with the asset, but whatever asset you choose must derive from <span style="color:violet">**DA_CoreItem**</span> at some point in its hierarchy.
