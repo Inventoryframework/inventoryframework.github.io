@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.733920137850">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.733920726956">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,11 +31,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.733920137850" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.733920726956" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.733920137850" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.733920726956" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.733920137850" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.733920726956" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -199,7 +199,14 @@
 To start off, you&#x27;ll need to go into the engine and find your content browser, right click and go to <strong>Miscellaneous -&gt; Data Asset</strong> and a pop up will appear asking you what parent your data asset should derive from.<br />
 You might have your own children or have removed some of the children that come with the asset, but whatever asset you choose must derive from <span style="color:violet"><strong>DA_CoreItem</strong></span> at some point in its hierarchy.</p>
 <p>I suggest creating a folder for your item and placing the data asset in there.</p>
-<p>To create a blueprint actor for your item, you will have to create an actor who at some point in its hierarchy is a child of <span style="color:violet"><strong>BP_SM_ItemPhysical</strong></span>.</p>
+<p>To create a blueprint actor for your item, you will have to create an actor who at some point in its hierarchy is a child of <span style="color:violet"><strong>BP_SM_ItemPhysical</strong></span>, then set that as your <span style="color:Slateblue"><strong>PhysicalActor</strong></span></p>
+<p>The actor will automatically get the blueprint inventory component assigned to it. You will need to go into the component settings and change a few things.</p>
+<ol>
+<li>Set <span style="color:Slateblue"><strong>InventoryType</strong></span> to &quot;<strong>Pickup</strong>&quot;</li>
+<li>Add one index to <span style="color:Slateblue"><strong>ContainerSettings</strong></span> and set the <span style="color:Slateblue"><strong>ContainerType</strong></span> to &quot;<strong>ThisActor</strong>&quot;. This will then hide most of the settings except for the items array.</li>
+<li>Your items array should only have one index, which will be your newly created data asset. All settings can be left to their default.</li>
+<li>(Optional) If your item has containers associated with it, the data asset should have a <span style="color:Slateblue"><strong>AttachmentSettings</strong></span> with an array of <span style="color:Slateblue"><strong>DefaultContainers</strong></span>. You will want to import these default containers into the blueprint actors <span style="color:Slateblue"><strong>ContainerSettings</strong></span>, while leaving the first <span style="color:Slateblue"><strong>ContainerSettings</strong></span> array index (0) and the first item array index (0) as the item this actor is representing. An example can be found in the example project with the gun and backpack item.</li>
+</ol>
 <p>To have the asset manager pick up your data asset, it can not be identical to another data asset. (This includes the base file, so if all your variables are set to default, the asset will not get picked up.) Typically you want to immediately give your item a name and a developer image for the InventoryHelper.</p>
 <hr />
 <doc-anchor-target id="creating-new-c-children-of-da_coreitem">
