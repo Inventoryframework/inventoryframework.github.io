@@ -1,5 +1,6 @@
 # Introduction
 
+---
 - This plugin was created for an open-world game that has very strict performance requirements. Because of this, some logic is handled in C++ as an inventory system like this does a lot of math. The design architecture is also designed to give programmers more control of when widgets and data is initialized. The architecture has also been made in mind for large-scale projects.
 This does mean though that there is a specific and strict workflow for setting up the component for items, especially sub containers. I've made an Editor Utility Widget called [InventoryHelper](https://inventoryframework.github.io/tools/inventoryhelper/) which should prevent most human errors and allow people to work in the system without those strict requirements slowing down your creation process.
 
