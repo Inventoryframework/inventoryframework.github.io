@@ -1,4 +1,5 @@
 # Creating new items
+<a href="https://youtu.be/GzxE6spwgCQ" target="_blank">**Video documentation**</a>
 
 ---
 Creating new items is very simple.

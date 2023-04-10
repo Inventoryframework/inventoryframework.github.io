@@ -2,6 +2,8 @@
 tags: [tools]
 ---
 # Inventory Helper
+<a href="https://youtu.be/5CsMMlH9w2Y" target="_blank">**Video documentation**</a>
+
 
 ---
 You will very likely be spending a good amount of time using this utility widget, so I suggest bookmarking it or having some way of quickly accessing it while you work.
