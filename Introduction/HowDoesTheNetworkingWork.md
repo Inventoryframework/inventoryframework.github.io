@@ -32,6 +32,7 @@ graph TD
 
 
 ```C++
+//Increase the count of an item by @Count
 void IncreaseItemCount(FS_InventoryItem Item, int32 Count, int32& NewCount)
 {
     if(UKismetSystemLibrary::IsStandalone(this))
@@ -58,6 +59,7 @@ void IncreaseItemCount(FS_InventoryItem Item, int32 Count, int32& NewCount)
 	C_AddItemToNetworkQueue(Item.UniqueID);
 }
 
+//Increase the item count on the server
 void S_IncreaseItemCount(FS_UniqueID ItemID, int32 Count)
 {
     int32 NewStackCount
@@ -81,6 +83,7 @@ void S_IncreaseItemCount(FS_UniqueID ItemID, int32 Count)
 	}
 }
 
+//Increase the item count for listening clients
 void C_IncreaseItemCount_Implementation(FS_UniqueID ItemID, int32 Count)
 {
     //Find the item we are processing
@@ -98,12 +101,13 @@ void C_IncreaseItemCount_Implementation(FS_UniqueID ItemID, int32 Count)
 
 void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, int32& NewCount)
 {
-    //Start moodifying the item in here
+    //Start moodifying the item in here.
+    //This was called on both client and server, so the same logic is ran for everyone.
 }
 ```
 ===
 
-### Why not just use a multicast?
+### Why not just use a multicast or RepNotify?
 
 Because of how large some RPC's can get, I did not find multicasts to be acceptable for most of the functions. A lot of the RPC's are just simply not relevant for most clients anyways, and managing relevancy is a lot more complicated than a simple array of actors.
 
@@ -116,9 +120,9 @@ The UniqueID is a simple method to quickly find containers or items, or ensuring
 
 - Clients and servers must stay in sync when it comes to UniqueID's. This leaves you with two options;
 
-1. Pre-generate the UniqueID's on the server, then pass them to the client and have your logic assign that UniqueID to the item. This is not advised as it can get bad for networking and it is generally cumbersome to program and manage it.
-2. Use <span style="color:brown">**GenerateUniqueIDWithSeed**</span>. Now the only thing you need to ensure is that the client and server are using the same seed and they'll both generate the same UniqueID.
+1. Pre-generate the <span style="color:slateblue">**UniqueID**</span>'s on the server, then pass them to the client and have your logic assign that <span style="color:slateblue">**UniqueID**</span> to the item. This is not advised as it can get bad for networking and it is generally cumbersome to program and manage it.
+2. Use <span style="color:brown">**GenerateUniqueIDWithSeed**</span>. Now the only thing you need to ensure is that the client and server are using the same seed and they'll both generate the same <span style="color:slateblue">**UniqueID**</span>.
 
-- UniqueID's [scale extremely](https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations) well with RPC's. It is advised to use UniqueID's as often as possible.
-- There's no way to evaluate from a UniqueID if it was assigned to an item or container without going through all items and containers until you find a match. It is not recommended to add more information to this struct as it's meant to be small and simple, so that it gets replicated extremely quickly and cheaply.
-- UniqueID's from components the client does not have information on will not work. For example, two players are interacting with a chest and Player-1 moves an item from their inventory to the chest, Player-2 will not have the information necessary to move the item on their side. Some functions simply need more information than the UniqueID can provide.
+- <span style="color:slateblue">**UniqueID**</span>'s [scale extremely](https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations) well with RPC's. It is advised to use <span style="color:slateblue">**UniqueID**</span>'s as often as possible.
+- There's no way to evaluate from a <span style="color:slateblue">**UniqueID**</span> if it was assigned to an item or container without going through all items and containers until you find a match. It is not recommended to add more information to this struct as it's meant to be small and simple, so that it gets replicated extremely quickly and cheaply.
+- <span style="color:slateblue">**UniqueID**</span>'s from components the client does not have information on will not work. For example, two players are interacting with a chest and Player-1 moves an item from their inventory to the chest, Player-2 will not have the information necessary to move the item on their side, since they do not have the information needed from Player-1's inventory component. Some functions simply need more information than the <span style="color:slateblue">**UniqueID**</span> can provide.
