@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.733933679127">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.734544352408">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,12 +31,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.733933679127" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.734544352408" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.733933679127" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.734544352408" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.733933679127" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.733933679127" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.734544352408" data-turbo-eval="false" defer></script>
+    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=2.4.0.734544352408" defer></script>
     <script id="mermaid-js" type="text/javascript" src="../../resources/js/mermaid.js?v=2.4.0" defer></script>
 </head>
 <body>
@@ -224,7 +224,8 @@ graph TD
 <doc-panel id="code-example" collapsed>
     <template #title>Code example</template>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-cpp"><code v-pre class="language-cpp">void IncreaseItemCount(FS_InventoryItem Item, int32 Count, int32&amp; NewCount)
+<pre class="language-cpp"><code v-pre class="language-cpp">//Increase the count of an item by @Count
+void IncreaseItemCount(FS_InventoryItem Item, int32 Count, int32&amp; NewCount)
 {
     if(UKismetSystemLibrary::IsStandalone(this))
 	{
@@ -250,6 +251,7 @@ graph TD
 	C_AddItemToNetworkQueue(Item.UniqueID);
 }
 
+//Increase the item count on the server
 void S_IncreaseItemCount(FS_UniqueID ItemID, int32 Count)
 {
     int32 NewStackCount
@@ -273,6 +275,7 @@ void S_IncreaseItemCount(FS_UniqueID ItemID, int32 Count)
 	}
 }
 
+//Increase the item count for listening clients
 void C_IncreaseItemCount_Implementation(FS_UniqueID ItemID, int32 Count)
 {
     //Find the item we are processing
@@ -290,14 +293,15 @@ void C_IncreaseItemCount_Implementation(FS_UniqueID ItemID, int32 Count)
 
 void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, int32&amp; NewCount)
 {
-    //Start moodifying the item in here
+    //Start moodifying the item in here.
+    //This was called on both client and server, so the same logic is ran for everyone.
 }</code></pre>
 </doc-codeblock></div>
 </doc-panel>
-<doc-anchor-target id="why-not-just-use-a-multicast">
+<doc-anchor-target id="why-not-just-use-a-multicast-or-repnotify">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#why-not-just-use-a-multicast">#</doc-anchor-trigger>
-        <span>Why not just use a multicast?</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#why-not-just-use-a-multicast-or-repnotify">#</doc-anchor-trigger>
+        <span>Why not just use a multicast or RepNotify?</span>
     </h3>
 </doc-anchor-target>
 <p>Because of how large some RPC&#x27;s can get, I did not find multicasts to be acceptable for most of the functions. A lot of the RPC&#x27;s are just simply not relevant for most clients anyways, and managing relevancy is a lot more complicated than a simple array of actors.</p>
@@ -314,13 +318,13 @@ void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, i
 <li>Clients and servers must stay in sync when it comes to UniqueID&#x27;s. This leaves you with two options;</li>
 </ul>
 <ol>
-<li>Pre-generate the UniqueID&#x27;s on the server, then pass them to the client and have your logic assign that UniqueID to the item. This is not advised as it can get bad for networking and it is generally cumbersome to program and manage it.</li>
-<li>Use <span style="color:brown"><strong>GenerateUniqueIDWithSeed</strong></span>. Now the only thing you need to ensure is that the client and server are using the same seed and they&#x27;ll both generate the same UniqueID.</li>
+<li>Pre-generate the <span style="color:slateblue"><strong>UniqueID</strong></span>&#x27;s on the server, then pass them to the client and have your logic assign that <span style="color:slateblue"><strong>UniqueID</strong></span> to the item. This is not advised as it can get bad for networking and it is generally cumbersome to program and manage it.</li>
+<li>Use <span style="color:brown"><strong>GenerateUniqueIDWithSeed</strong></span>. Now the only thing you need to ensure is that the client and server are using the same seed and they&#x27;ll both generate the same <span style="color:slateblue"><strong>UniqueID</strong></span>.</li>
 </ol>
 <ul>
-<li>UniqueID&#x27;s <a href="https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations">scale extremely</a> well with RPC&#x27;s. It is advised to use UniqueID&#x27;s as often as possible.</li>
-<li>There&#x27;s no way to evaluate from a UniqueID if it was assigned to an item or container without going through all items and containers until you find a match. It is not recommended to add more information to this struct as it&#x27;s meant to be small and simple, so that it gets replicated extremely quickly and cheaply.</li>
-<li>UniqueID&#x27;s from components the client does not have information on will not work. For example, two players are interacting with a chest and Player-1 moves an item from their inventory to the chest, Player-2 will not have the information necessary to move the item on their side. Some functions simply need more information than the UniqueID can provide.</li>
+<li><span style="color:slateblue"><strong>UniqueID</strong></span>&#x27;s <a href="https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations">scale extremely</a> well with RPC&#x27;s. It is advised to use <span style="color:slateblue"><strong>UniqueID</strong></span>&#x27;s as often as possible.</li>
+<li>There&#x27;s no way to evaluate from a <span style="color:slateblue"><strong>UniqueID</strong></span> if it was assigned to an item or container without going through all items and containers until you find a match. It is not recommended to add more information to this struct as it&#x27;s meant to be small and simple, so that it gets replicated extremely quickly and cheaply.</li>
+<li><span style="color:slateblue"><strong>UniqueID</strong></span>&#x27;s from components the client does not have information on will not work. For example, two players are interacting with a chest and Player-1 moves an item from their inventory to the chest, Player-2 will not have the information necessary to move the item on their side, since they do not have the information needed from Player-1&#x27;s inventory component. Some functions simply need more information than the <span style="color:slateblue"><strong>UniqueID</strong></span> can provide.</li>
 </ul>
 
                                 
