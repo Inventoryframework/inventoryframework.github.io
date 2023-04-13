@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.734544352408">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.734691135756">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,11 +31,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.734544352408" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.734691135756" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.734544352408" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.734691135756" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.734544352408" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.734691135756" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -253,8 +253,6 @@ The input system is extremely basic and is meant to be replaced. They are never 
 <p>These events are where your designers hook in any logic that alerts the player the item is pending some networking event. This is most often seen as making the item&#x27;s icon gray-scale or flashing the icon.</p>
 <p>You will want to implement some way of preventing players from interacting with items that are pending a network event, either by making the widget uninteractable or through code. You can check if an item is in the queue by using:<br />
 <span style="color:violet"><strong>FL_InventoryFramework.h</strong></span> -&gt; <span style="color:brown"><strong>IsItemInNetworkQueue</strong></span></p>
-<p>Containers can also be added to the network queue, though for now it is only used for <span style="color:brown"><strong>AdjustContainerSize</strong></span>. It has all the same functions as the item network queue, but with the word &quot;Item&quot; replaced with &quot;Container&quot;.<br />
-It is highly recommended to &quot;soft lock&quot; players from spamming <span style="color:brown"><strong>AdjustContainerSize</strong></span> as it can get very heavy for network traffic.</p>
 <p>The Network Queue system is only relevant for clients, it&#x27;s never used in single player or listen server scenarios.</p>
 <hr />
 <doc-anchor-target id="infinite-containers">
@@ -278,9 +276,8 @@ It is highly recommended to &quot;soft lock&quot; players from spamming <span st
 <li>Finally there&#x27;s the &quot;Initialized&quot; state. This simply means the gameplay logic has called the <span style="color:brown"><strong>StartComponent</strong></span> function and you are inside a gameplay session. The component should never be put into this state while you&#x27;re outside of a game session.</li>
 </ul>
 <p>You can use <span style="color:brown"><strong>GetComponentState</strong></span> to resolve what state it is in, and look inside that function to better understand what conditions must be met for each state.</p>
-<p>There is a function called <span style="color:brown"><strong>ConvertToRawState</strong></span> which will prepare all containers for a gameplay session. Ideally, this function should not be called during a gameplay session as it&#x27;s a waste of CPU time. All container data should already be prepped for gameplay.<br />
+<p>There is a function called <span style="color:brown"><strong>ConvertToRawState</strong></span> which will prepare all containers for a gameplay session. Ideally, this function should not be called during a gameplay session as it&#x27;s a waste of CPU time. All container data should already be prepped for gameplay. By default, the component calls this function on its <span style="color:brown"><strong>BeginPlay</strong></span> if it detects the actor was not setup properly and spit out a print string.<br />
 There is also another function called <span style="color:brown"><strong>ConvertFromRawStateToEditorState</strong></span> which preps all data to be usable for editor tools.</p>
-<p>There is a editor utility widget called &quot;EUW_QualityControl&quot; which can check a list of actors and their inventory components and checks the components state, then return a list of all actors that aren&#x27;t prepped for gameplay. The component also gives you a message on its BeginPlay if it&#x27;s state was still in the Editor state.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
