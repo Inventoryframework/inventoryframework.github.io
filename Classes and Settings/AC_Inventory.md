@@ -48,9 +48,6 @@ These events are where your designers hook in any logic that alerts the player t
 You will want to implement some way of preventing players from interacting with items that are pending a network event, either by making the widget uninteractable or through code. You can check if an item is in the queue by using:
 <span style="color:violet">**FL_InventoryFramework.h**</span> -> <span style="color:brown">**IsItemInNetworkQueue**</span>
 
-Containers can also be added to the network queue, though for now it is only used for <span style="color:brown">**AdjustContainerSize**</span>. It has all the same functions as the item network queue, but with the word "Item" replaced with "Container".
-It is highly recommended to "soft lock" players from spamming <span style="color:brown">**AdjustContainerSize**</span> as it can get very heavy for network traffic.
-
 The Network Queue system is only relevant for clients, it's never used in single player or listen server scenarios.
 
 ---
@@ -66,7 +63,5 @@ The containers can be in one of three states during development.
 
 You can use <span style="color:brown">**GetComponentState**</span> to resolve what state it is in, and look inside that function to better understand what conditions must be met for each state.
 
-There is a function called <span style="color:brown">**ConvertToRawState**</span> which will prepare all containers for a gameplay session. Ideally, this function should not be called during a gameplay session as it's a waste of CPU time. All container data should already be prepped for gameplay.
+There is a function called <span style="color:brown">**ConvertToRawState**</span> which will prepare all containers for a gameplay session. Ideally, this function should not be called during a gameplay session as it's a waste of CPU time. All container data should already be prepped for gameplay. By default, the component calls this function on its <span style="color:brown">**BeginPlay**</span> if it detects the actor was not setup properly and spit out a print string.
 There is also another function called <span style="color:brown">**ConvertFromRawStateToEditorState**</span> which preps all data to be usable for editor tools.
-
-There is a editor utility widget called "EUW_QualityControl" which can check a list of actors and their inventory components and checks the components state, then return a list of all actors that aren't prepped for gameplay. The component also gives you a message on its BeginPlay if it's state was still in the Editor state.
