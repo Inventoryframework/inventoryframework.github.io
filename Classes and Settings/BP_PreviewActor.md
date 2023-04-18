@@ -28,7 +28,7 @@ Though remember, since the actor is trying to reconstruct the hierarchy setup in
 
 This actor will render out a render target for you to use however you wish and this is how the item icon generation is handled.
 
-Even though the render scene component only see’s the preview actor itself and it only receives lighting from lighting channel 2 (Channel can be changed, but it’s recommended not to have it on 1 if your game has day/night cycles), <span style="color:violet">**BP_PreviewActor**</span>’s lighting can still affect another <span style="color:violet">**BP_PreviewActor**</span>.
+Even though the render scene component only see’s the preview actor itself and it only receives lighting from lighting channel 1 (Channel can be changed, but it’s recommended not to have it on 1 if your game has day/night cycles), <span style="color:violet">**BP_PreviewActor**</span>’s lighting can still affect another <span style="color:violet">**BP_PreviewActor**</span>.
 Even while spawning them at a ridiculously long range of random locations, during my playtesting I still had this scenario happen.
 To fix this, there’s a <span style="color:violet">**BP_PreviewActorCollider**</span> which you will spawn first, which will test for collision and adjust its location. Then you spawn <span style="color:violet">**BP_PreviewActor**</span> itself and set its location inside the collider.
 
