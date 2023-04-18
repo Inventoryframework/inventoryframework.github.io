@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.734691135756">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.735149820333">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -33,11 +33,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.734691135756" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.735149820333" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.734691135756" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.735149820333" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.734691135756" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.735149820333" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -216,7 +216,7 @@ It does this by getting all components of the <strong>owning actor</strong> and 
 You can optimize the construction or simply prevent this actor from duplicating a specific component by going into <span style="color:slateblue"><strong>ComponentTags</strong></span> and adding “<strong>DONOTPREVIEW</strong>”.<br />
 Though remember, since the actor is trying to reconstruct the hierarchy setup inside your original actor, any components attached to components that you labeled as “<strong>DONOTPREVIEW</strong>” will break.</p>
 <p>This actor will render out a render target for you to use however you wish and this is how the item icon generation is handled.</p>
-<p>Even though the render scene component only see’s the preview actor itself and it only receives lighting from lighting channel 2 (Channel can be changed, but it’s recommended not to have it on 1 if your game has day/night cycles), <span style="color:violet"><strong>BP_PreviewActor</strong></span>’s lighting can still affect another <span style="color:violet"><strong>BP_PreviewActor</strong></span>.<br />
+<p>Even though the render scene component only see’s the preview actor itself and it only receives lighting from lighting channel 1 (Channel can be changed, but it’s recommended not to have it on 1 if your game has day/night cycles), <span style="color:violet"><strong>BP_PreviewActor</strong></span>’s lighting can still affect another <span style="color:violet"><strong>BP_PreviewActor</strong></span>.<br />
 Even while spawning them at a ridiculously long range of random locations, during my playtesting I still had this scenario happen.<br />
 To fix this, there’s a <span style="color:violet"><strong>BP_PreviewActorCollider</strong></span> which you will spawn first, which will test for collision and adjust its location. Then you spawn <span style="color:violet"><strong>BP_PreviewActor</strong></span> itself and set its location inside the collider.</p>
 <p>This does mean though that you need to handle the collision responses for this. I recommend creating a new collision channel for <span style="color:violet"><strong>BP_PreviewActor</strong></span> and <span style="color:violet"><strong>BP_PreviewActorCollider</strong></span>.</p>
