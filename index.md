@@ -2,11 +2,7 @@
 
 ---
 #### Last update: 27th April, 2023
-#### Latest version: Still under development
-
-!!!danger
-This plugin has not been released yet, everything is still under review and can be spontaneously removed or changed.
-!!!
+#### Latest version: 1.0.0
 
 ---
 Links can be found at the top of the page.
