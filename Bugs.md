@@ -8,12 +8,14 @@ tags:
 
 - The <span style="color:violet">**BP_PreviewActor**</span>'s animation is snapping to frame 0 of the animation whenever the preview is refreshed. This is an issue I’m trying to solve. You can of course replace my actor preview system with a normal preview system, but those require a specific workflow and actor component hierarchy setup, whereas mine does not.
 This might take a while as I’m also trying to figure out a way to have particle effects also not get reset.
+NOTE: This has been fixed in the next upcoming update.
 
 - In 5.1, RenderTargets can break if your quality settings are below Epic.
 
 - The "Reset to Default Property Value" button for container settings is not resetting values to their proper defaults and it's always showing for all values, even if the value is set to its default. I am unsure what is causing this.
 
 - Refreshing the Preview actor is behaving differently in a shipping build than while in editor. From the code, it's supposed to behave exactly the same. For now, it is  advised to simply recreate the entire preview actor instead of refreshing it.
+NOTE: This has been fixed in the next upcoming update.
 
 
 ## Common Problems
