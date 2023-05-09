@@ -4,7 +4,6 @@ tags: [Tools]
 # Item Inspector
 
 ---
-This is not a editor utility widget, but rather a in-game tool. The files can be found inside Core -> Widgets -> ExamineAndInspect
 <span style="color:violet">**WBP_Inspect**</span> has a ToggleDebug button on the top bar. Pressing this will expose this tool to the user.
 
 There is a drop down menu allowing you to select whether you want to modify the generated icon settings or the inspection settings.
