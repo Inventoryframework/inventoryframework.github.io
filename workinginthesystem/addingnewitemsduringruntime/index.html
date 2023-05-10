@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.737052001376">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.737052151223">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
 
     <!-- Primary Meta Tags -->
-    <title>Creating custom widgets</title>
-    <meta name="title" content="Creating custom widgets">
-    <meta name="description" content="These three widgets are the ones you'll most likely end up working with the most." />
+    <title>Adding new items during runtime</title>
+    <meta name="title" content="Adding new items during runtime">
+    <meta name="description" content="Adding new items during runtime for single player is no problem and has no restrictions. Just call the function" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="/workinginthesystem/creating-custom-widgets/" />
+    <link rel="canonical" href="/workinginthesystem/addingnewitemsduringruntime/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/workinginthesystem/creating-custom-widgets/">
-    <meta property="og:title" content="Creating custom widgets">
-    <meta property="og:description" content="These three widgets are the ones you'll most likely end up working with the most.">
+    <meta property="og:url" content="/workinginthesystem/addingnewitemsduringruntime/">
+    <meta property="og:title" content="Adding new items during runtime">
+    <meta property="og:description" content="Adding new items during runtime for single player is no problem and has no restrictions. Just call the function">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/workinginthesystem/creating-custom-widgets/">
-    <meta property="twitter:title" content="Creating custom widgets">
-    <meta property="twitter:description" content="These three widgets are the ones you'll most likely end up working with the most.">
+    <meta property="twitter:url" content="/workinginthesystem/addingnewitemsduringruntime/">
+    <meta property="twitter:title" content="Adding new items during runtime">
+    <meta property="twitter:description" content="Adding new items during runtime for single player is no problem and has no restrictions. Just call the function">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.737052001376" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.737052151223" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.737052001376" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.737052151223" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.737052001376" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.737052151223" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -189,56 +189,44 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="creating-custom-widgets" class="break-words">
+<doc-anchor-target id="adding-new-items-during-runtime" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#creating-custom-widgets">#</doc-anchor-trigger>
-        <span>Creating custom widgets</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#adding-new-items-during-runtime">#</doc-anchor-trigger>
+        <span>Adding new items during runtime</span>
     </h1>
 </doc-anchor-target>
 <hr />
-<doc-anchor-target id="containers-tiles-and-items">
+<doc-anchor-target id="single-player">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#containers-tiles-and-items">#</doc-anchor-trigger>
-        <span>Containers, Tiles and Items</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#single-player">#</doc-anchor-trigger>
+        <span>Single player</span>
     </h2>
 </doc-anchor-target>
-<p>These three widgets are the ones you&#x27;ll most likely end up working with the most. To improve the hierarchy, I&#x27;ve tried to not add any components that aren&#x27;t necessary. Those that are essential for the widgets to function, I&#x27;ve added Getter functions that request the essential widget. This way you&#x27;re design hierarchy can be in whatever design you want and still use the parent widgets. But this does mean you need to override those functions and passs the widget through as a variable.</p>
-<p>All three are abstract, so you must either use the widgets in the demo folder or make your own children.</p>
-<doc-anchor-target id="containers">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#containers">#</doc-anchor-trigger>
-        <span>Containers</span>
-    </h3>
+<p>Adding new items during runtime for single player is no problem and has no restrictions. Just call the function <span style="color:violet"><strong>AC_Inventory</strong></span> -&gt; <span style="color:brown"><strong>TryAddNewItem</strong></span>.</p>
+<hr />
+<doc-anchor-target id="multiplayer">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#multiplayer">#</doc-anchor-trigger>
+        <span>Multiplayer</span>
+    </h2>
 </doc-anchor-target>
-<ul>
-<li>Border is needed for scrolling support and sizing (<span style="color:brown"><strong>GetBorder</strong></span>)</li>
-<li>ContainerOverlay holds the item widgets (<span style="color:brown"><strong>GetOverlay</strong></span>)</li>
-<li>Grid panel holds the tiles (<span style="color:brown"><strong>GetGridPanel</strong></span>)</li>
-<li>(Not mandatory, but is recommended) - Scroll box is needed for scrolling (<span style="color:brown"><strong>GetScrollBox</strong></span>)</li>
-</ul>
-<doc-anchor-target id="tiles">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#tiles">#</doc-anchor-trigger>
-        <span>Tiles</span>
-    </h3>
+<p>For multiplayer though, I&#x27;ve had to wrap this function with a very strict safe guard. Clients are under no circumstance allowed to call this function. If they do find a way, they will get kicked. There is simply no circumstance where the client should even have the slightest chance of gaining access to this function as they could potentially feed it bad data and grant themselves any item within your data base.</p>
+<p>Only the listen server or dedicated server is allowed to use this function.</p>
+<p>This means if you have a quest system or anything of the sort where the player is granted an item, you will have two options:</p>
+<ol>
+<li>Pre-store the item in a component and call the <span style="color:brown"><strong>MoveItem</strong></span> function, but this will permanently remove the item from the old component. Though you could always reset the data after the function is called.</li>
+<li>The system which is calling <span style="color:brown"><strong>TryAddNewItem</strong></span> is already owned by the server, and thus is allowed to call the function legally.</li>
+</ol>
+<hr />
+<doc-anchor-target id="example">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#example">#</doc-anchor-trigger>
+        <span>Example</span>
+    </h2>
 </doc-anchor-target>
-<ul>
-<li>Size Box to control the size (<span style="color:brown"><strong>GetSizeBox</strong></span>)</li>
-</ul>
-<doc-anchor-target id="inventory-item">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#inventory-item">#</doc-anchor-trigger>
-        <span>Inventory Item</span>
-    </h3>
-</doc-anchor-target>
-<ul>
-<li>size box to control the size (<span style="color:brown"><strong>GetSizeBox</strong></span>)</li>
-<li>Image for the item icon (<span style="color:brown"><strong>GetImage</strong></span>)</li>
-<li>(Not mandatory, but is recommended) - Loading Throbber for indicating the item is loading (<span style="color:brown"><strong>GetLoadingThrobber</strong></span>)<br />
-For this widget, there are various &quot;Update&quot; functions that are called inside <span style="color:violet"><strong>W_InventoryItem.h</strong></span> -&gt; <span style="color:brown"><strong>ConstructWidget</strong></span> and in some other places. These update functions should also be overriden</li>
-</ul>
-<p>The hierarchy inside your custom widget can be structured in whatever way you want, but they must contain the above mentioned widgets inside the hierarchy.<br />
-Nearly every function inside these widgets are designed to be overriden for maximum customization.</p>
+<p>Here is an example of adding a backpack to another component with another backpack inside of it, and that backpack having items inside of it.<br />
+If your item has no containers, just make an empty array for the <span style="color:slateblue"><strong>ItemsContainers</strong></span></p>
+<iframe src="https://blueprintue.com/render/vey0u3ar/"scrolling="no" allowfullscreen width="100%" height="700"></iframe>
 
                                 
                                 <!-- Required only on API pages -->
@@ -248,20 +236,20 @@ Nearly every function inside these widgets are designed to be overriden for maxi
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/creatingcustomfunctions/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/wbp_split/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Creating custom functions</span>
+                                                <span class="block mt-1">WBP_​Split</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/creatingnewitems/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/creatingcustomfunctions/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Creating new items</span>
+                                                <span class="block mt-1">Creating custom functions</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -305,6 +293,6 @@ Nearly every function inside these widgets are designed to be overriden for maxi
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Creating custom widgets", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Adding new items during runtime", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
