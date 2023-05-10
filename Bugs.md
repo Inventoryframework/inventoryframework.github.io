@@ -17,6 +17,8 @@ NOTE: This has been fixed in the next upcoming update.
 - Refreshing the Preview actor is behaving differently in a shipping build than while in editor. From the code, it's supposed to behave exactly the same. For now, it is  advised to simply recreate the entire preview actor instead of refreshing it.
 NOTE: This has been fixed in the next upcoming update.
 
+- If an item fails to spawn, it can cause issues with other containers not functioning properly. Until this issue is resolved, it is suggested to leave all containers compatibility settings alone and making sure your container is large enough to fit all items inside of it.
+
 
 ## Common Problems
 These aren't bugs, but problems that can be misinterpreted as bugs.
