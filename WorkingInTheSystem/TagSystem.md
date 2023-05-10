@@ -1,7 +1,3 @@
----
-
----
-
 # Tag system
 
 <a href="https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/Tags/" target="_blank">**Gameplay tags**</a> are extremely powerful and this system attempts to allow itself to expand to various needs using not just gameplay tags, but also a value associated with tags.
