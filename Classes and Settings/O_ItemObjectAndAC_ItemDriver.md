@@ -38,6 +38,14 @@ If you are unfamiliar with GameplayTags, I highly recommend you start using them
 There is an annoying issue though, all variables that can be modified in blueprint will show up as editable variables in the instanced <span style="color:violet">**ItemObject**</span> even if they aren’t set as Instance Editable (This might be a bug, if anyone knows a fix, please tell me). In the meantime, I’ve made it so any variables inside a <span style="color:green">**DoNotShow**</span> category or with no category at all will not show up here. You can change the behavior inside <span style="color:violet">**O_ItemObject.h**</span> in the UCLASS macro. Remember you can create sub categories like so; DoNotShow|MyNewCategory. This should help keep all variables that are meant to be hidden organized.
 You can of course inverse this behavior in C++ by using the ShowCategory UCLASS specifier. 
 
-==- Important notes
-- Whenever possible, use soft references and try to avoid hard references. Item data bases are one of the fastest ways of creating a nasty web of hard references and before you know it, the majority of your game is loaded at times where you don't want it to be. These objects and drivers are potentially the biggest culprit in this system to create that kind of nasty web of hard references.
-==-
+
+!!!Important
+- Whenever possible, use soft references and try to avoid hard references. Item data bases are one of the fastest ways of creating a nasty web of hard references and before you know it, the majority of your game is loaded at times where you don't want it to be. These objects are potentially the biggest culprit in this system to create that kind of nasty web of hard references.
+!!!
+
+## Data-only objects
+Objects do not need to a driver to go along with it. In the <span style="color:slateblue">**ConstructionSettings**</span> for your object, you can set it to be Data-Only. Sometimes all you need is a place to store variables, and while you can add those variables to the data asset itself, some people do not want to go into C++ OR there is some data that can't be categorised to an item category. For example; quest data. Any item can be a part of a quest, but you might not want create a data asset dedicated to a quest.
+
+Data-only objects can do some functions and some logic, but no timers, no replication or have any modifiable data. It is a place for constant data that does not change during runtime, just like the data inside the data asset.
+
+You can then retrieve this data by using the <span style="color:brown">**GetObjectsByTag**</span>/<span style="color:brown">**GetObjectsByClass**</span>. The class version will automatically cast to the correct blueprint. For the tag version, you manually have to cast to your blueprint.
