@@ -44,7 +44,7 @@ You can of course inverse this behavior in C++ by using the ShowCategory UCLASS 
 !!!
 
 ## Data-only objects
-Objects do not need to a driver to go along with it. In the <span style="color:slateblue">**ConstructionSettings**</span> for your object, you can set it to be Data-Only. Sometimes all you need is a place to store variables, and while you can add those variables to the data asset itself, some people do not want to go into C++ OR there is some data that can't be categorised to an item category. For example; quest data. Any item can be a part of a quest, but you might not want create a data asset dedicated to a quest.
+Objects do not need to a driver to go along with it. In the <span style="color:slateblue">**ConstructionSettings**</span> for your object, you can set it to be Data-Only. Sometimes all you need is a place to store variables, and while you can add those variables to the data asset itself, some people do not want to go into C++ OR there is some data that can't be categorised to an item category. For example; quest data. Any item can be a part of a quest, but you might not want create a data asset parent dedicated to a quest category.
 
 Data-only objects can do some functions and some logic, but no timers, no replication or have any modifiable data. It is a place for constant data that does not change during runtime, just like the data inside the data asset.
 
