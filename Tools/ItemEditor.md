@@ -9,4 +9,4 @@ This tool is also meant to provide a simple interface for designers to create to
 ## Tool box
 With the asset comes a shape editor, with more tools for this tool box coming in the future.
 
-- The icon editor allows you to edit the inspect and generated item icon settings, and allowing you to see how the item will look like in game with whatever item widget you have selected. You might want to go into WBP_ItemWidgetPreview and setting the default widget class to a class you commonly use.
+- The icon editor allows you to edit the inspect and generated item icon settings, and allowing you to see how the item will look like in game with whatever item widget you have selected. You might want to go into <span style="color:violet">**WBP_ItemWidgetPreview**</span> and setting the default widget class to a class you commonly use.
