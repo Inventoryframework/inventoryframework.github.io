@@ -4,20 +4,14 @@ icon: bug
 tags:
 ---
 
+This list is only relevant to the latest version of the plugin, old version of the plugin will slowly lose bug-tracking. If you are on a old version of the plugin and have found a bug, you can always ask on the discord for help.
+
 ## Known Bugs
-
-- The <span style="color:violet">**BP_PreviewActor**</span>'s animation is snapping to frame 0 of the animation whenever the preview is refreshed. This is an issue I’m trying to solve. You can of course replace my actor preview system with a normal preview system, but those require a specific workflow and actor component hierarchy setup, whereas mine does not.
-This might take a while as I’m also trying to figure out a way to have particle effects also not get reset.
-NOTE: This has been fixed in the next upcoming update.
-
 - In 5.1, RenderTargets can break if your quality settings are below Epic.
 
 - The "Reset to Default Property Value" button for container settings is not resetting values to their proper defaults and it's always showing for all values, even if the value is set to its default. I am unsure what is causing this.
 
-- Refreshing the Preview actor is behaving differently in a shipping build than while in editor. From the code, it's supposed to behave exactly the same. For now, it is  advised to simply recreate the entire preview actor instead of refreshing it.
-NOTE: This has been fixed in the next upcoming update.
-
-- If an item fails to spawn, it can cause issues with other containers not functioning properly. Until this issue is resolved, it is suggested to leave all containers compatibility settings alone and making sure your container is large enough to fit all items inside of it.
+- Listen Server with autonomous proxies are causing issues with replication. This has been fixed, but will be released with 1.1.1 after Epic reviews the 5.2 release.
 
 
 ## Common Problems
