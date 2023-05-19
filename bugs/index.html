@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.737239559171">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.737796922878">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Bugs</title>
     <meta name="title" content="Bugs">
-    <meta name="description" content="The BP_PreviewActor's animation is snapping to frame 0 of the animation whenever the preview is refreshed. This is an issue I’m trying to solve." />
+    <meta name="description" content="This list is only relevant to the latest version of the plugin, old version of the plugin will slowly lose bug-tracking." />
 
     <!-- Canonical -->
     <link rel="canonical" href="/bugs/" />
@@ -20,24 +20,24 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/bugs/">
     <meta property="og:title" content="Bugs">
-    <meta property="og:description" content="The BP_PreviewActor's animation is snapping to frame 0 of the animation whenever the preview is refreshed. This is an issue I’m trying to solve.">
+    <meta property="og:description" content="This list is only relevant to the latest version of the plugin, old version of the plugin will slowly lose bug-tracking.">
     <meta property="og:image" content="/pictures/inaccuratehighlightproblem1.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/bugs/">
     <meta property="twitter:title" content="Bugs">
-    <meta property="twitter:description" content="The BP_PreviewActor's animation is snapping to frame 0 of the animation whenever the preview is refreshed. This is an issue I’m trying to solve.">
+    <meta property="twitter:description" content="This list is only relevant to the latest version of the plugin, old version of the plugin will slowly lose bug-tracking.">
     <meta property="twitter:image" content="/pictures/inaccuratehighlightproblem1.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../pictures/websiteicon.png" rel="icon" />
-    <link href="../resources/css/retype.css?v=2.4.0.737239559171" rel="stylesheet" />
+    <link href="../resources/css/retype.css?v=2.4.0.737796922878" rel="stylesheet" />
 
-    <script type="text/javascript" src="../resources/js/config.js?v=2.4.0.737239559171" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../resources/js/config.js?v=2.4.0.737796922878" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.4.0.737239559171" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../resources/js/lunr.js?v=2.4.0.737796922878" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -197,6 +197,7 @@
         <span>Bugs</span>
     </h1>
 </doc-anchor-target>
+<p>This list is only relevant to the latest version of the plugin, old version of the plugin will slowly lose bug-tracking. If you are on a old version of the plugin and have found a bug, you can always ask on the discord for help.</p>
 <doc-anchor-target id="known-bugs">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#known-bugs">#</doc-anchor-trigger>
@@ -204,18 +205,11 @@
     </h2>
 </doc-anchor-target>
 <ul>
-<li><p>The <span style="color:violet"><strong>BP_PreviewActor</strong></span>&#x27;s animation is snapping to frame 0 of the animation whenever the preview is refreshed. This is an issue I’m trying to solve. You can of course replace my actor preview system with a normal preview system, but those require a specific workflow and actor component hierarchy setup, whereas mine does not.<br />
-This might take a while as I’m also trying to figure out a way to have particle effects also not get reset.<br />
-NOTE: This has been fixed in the next upcoming update.</p>
-</li>
 <li><p>In 5.1, RenderTargets can break if your quality settings are below Epic.</p>
 </li>
 <li><p>The &quot;Reset to Default Property Value&quot; button for container settings is not resetting values to their proper defaults and it&#x27;s always showing for all values, even if the value is set to its default. I am unsure what is causing this.</p>
 </li>
-<li><p>Refreshing the Preview actor is behaving differently in a shipping build than while in editor. From the code, it&#x27;s supposed to behave exactly the same. For now, it is  advised to simply recreate the entire preview actor instead of refreshing it.<br />
-NOTE: This has been fixed in the next upcoming update.</p>
-</li>
-<li><p>If an item fails to spawn, it can cause issues with other containers not functioning properly. Until this issue is resolved, it is suggested to leave all containers compatibility settings alone and making sure your container is large enough to fit all items inside of it.</p>
+<li><p>Listen Server with autonomous proxies are causing issues with replication. This has been fixed, but will be released with 1.1.1 after Epic reviews the 5.2 release.</p>
 </li>
 </ul>
 <doc-anchor-target id="common-problems">

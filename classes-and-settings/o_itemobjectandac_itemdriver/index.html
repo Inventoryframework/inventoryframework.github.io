@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.737239559171">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="2.4.0.737796922878">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 2.4.0">
@@ -31,11 +31,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=2.4.0.737239559171" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=2.4.0.737796922878" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.737239559171" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=2.4.0.737796922878" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=2.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.737239559171" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=2.4.0.737796922878" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -230,12 +230,35 @@ The function <span style="color:brown"><strong>GetItemDriver</strong></span> wil
 If you are unfamiliar with GameplayTags, I highly recommend you start using them as they are extremely useful.</p>
 <p>There is an annoying issue though, all variables that can be modified in blueprint will show up as editable variables in the instanced <span style="color:violet"><strong>ItemObject</strong></span> even if they aren’t set as Instance Editable (This might be a bug, if anyone knows a fix, please tell me). In the meantime, I’ve made it so any variables inside a <span style="color:green"><strong>DoNotShow</strong></span> category or with no category at all will not show up here. You can change the behavior inside <span style="color:violet"><strong>O_ItemObject.h</strong></span> in the UCLASS macro. Remember you can create sub categories like so; DoNotShow|MyNewCategory. This should help keep all variables that are meant to be hidden organized.<br />
 You can of course inverse this behavior in C++ by using the ShowCategory UCLASS specifier.</p>
-<doc-panel id="important-notes" collapsed>
-    <template #title>Important notes</template>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Important</h5>
 <ul>
-<li>Whenever possible, use soft references and try to avoid hard references. Item data bases are one of the fastest ways of creating a nasty web of hard references and before you know it, the majority of your game is loaded at times where you don&#x27;t want it to be. These objects and drivers are potentially the biggest culprit in this system to create that kind of nasty web of hard references.</li>
+<li>Whenever possible, use soft references and try to avoid hard references. Item data bases are one of the fastest ways of creating a nasty web of hard references and before you know it, the majority of your game is loaded at times where you don&#x27;t want it to be. These objects are potentially the biggest culprit in this system to create that kind of nasty web of hard references.</li>
 </ul>
-</doc-panel>
+        </div>
+    </div>
+</div>
+<doc-anchor-target id="data-only-objects">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data-only-objects">#</doc-anchor-trigger>
+        <span>Data-only objects</span>
+    </h2>
+</doc-anchor-target>
+<p>Objects do not need to a driver to go along with it. In the <span style="color:slateblue"><strong>ConstructionSettings</strong></span> for your object, you can set it to be Data-Only. Sometimes all you need is a place to store variables, and while you can add those variables to the data asset itself, some people do not want to go into C++ OR there is some data that can&#x27;t be categorised to an item category. For example; quest data. Any item can be a part of a quest, but you might not want create a data asset dedicated to a quest.</p>
+<p>Data-only objects can do some functions and some logic, but no timers, no replication or have any modifiable data. It is a place for constant data that does not change during runtime, just like the data inside the data asset.</p>
+<p>You can then retrieve this data by using the <span style="color:brown"><strong>GetObjectsByTag</strong></span>/<span style="color:brown"><strong>GetObjectsByClass</strong></span>. The class version will automatically cast to the correct blueprint. For the tag version, you manually have to cast to your blueprint.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
