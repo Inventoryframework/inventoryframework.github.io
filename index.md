@@ -8,6 +8,11 @@
 Links can be found at the top of the page.
 <a href="https://youtu.be/c2MY_3hFayM" target="_blank">**Introduction Video**</a>
 
+!!!Important
+5.2 is still being reviewed by Epic, I apologize for the delay. If you are in need of the 5.2 version, you can message me on discord with a receipt or some other proof of purchase and I'll send you the compiled 5.2 plugin
+!!!
+
+
 ---
 ## What is the Inventory Framework Plugin?
 
