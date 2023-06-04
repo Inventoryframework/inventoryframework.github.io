@@ -9,24 +9,24 @@
     <meta name="generator" content="Retype 3.0.2">
 
     <!-- Primary Meta Tags -->
-    <title>How does the networking work?</title>
-    <meta name="title" content="How does the networking work?">
-    <meta name="description" content="Certain inventory data can become quite large, especially with how many containers and items you allow in an inventory." />
+    <title>1.2.0</title>
+    <meta name="title" content="1.2.0">
+    <meta name="description" content="Engine support: 5.2 Status: In Development" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="/introduction/howdoesthenetworkingwork/" />
+    <link rel="canonical" href="/versions/v1.2.0/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/introduction/howdoesthenetworkingwork/">
-    <meta property="og:title" content="How does the networking work?">
-    <meta property="og:description" content="Certain inventory data can become quite large, especially with how many containers and items you allow in an inventory.">
+    <meta property="og:url" content="/versions/v1.2.0/">
+    <meta property="og:title" content="1.2.0">
+    <meta property="og:description" content="Engine support: 5.2 Status: In Development">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/introduction/howdoesthenetworkingwork/">
-    <meta property="twitter:title" content="How does the networking work?">
-    <meta property="twitter:description" content="Certain inventory data can become quite large, especially with how many containers and items you allow in an inventory.">
+    <meta property="twitter:url" content="/versions/v1.2.0/">
+    <meta property="twitter:title" content="1.2.0">
+    <meta property="twitter:description" content="Engine support: 5.2 Status: In Development">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -36,8 +36,6 @@
     <script type="text/javascript" src="../../resources/js/config.js?v=3.0.2.739232586274" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=3.0.2" data-turbo-eval="false" defer></script>
     <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=3.0.2.739232586274" data-turbo-eval="false" defer></script>
-    <script id="prism-js" type="text/javascript" src="../../resources/js/prism.js?v=3.0.2.739232586274" defer></script>
-    <script id="mermaid-js" type="text/javascript" src="../../resources/js/mermaid.js?v=3.0.2" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -191,140 +189,87 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="how-does-the-networking-work" class="break-words">
+<doc-anchor-target id="120" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#how-does-the-networking-work">#</doc-anchor-trigger>
-        <span>How does the networking work?</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#120">#</doc-anchor-trigger>
+        <span>1.2.0</span>
     </h1>
 </doc-anchor-target>
-<hr />
-<doc-anchor-target id="listeners">
+<p>Engine support: 5.2<br />
+Status: In Development</p>
+<doc-anchor-target id="important-for-those-updating">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#important-for-those-updating">#</doc-anchor-trigger>
+        <span>Important for those updating:</span>
+    </h1>
+</doc-anchor-target>
+<p>Because both the container struct and item struct were modified in this update, it means that a lot of blueprints were updated and might override any chances you might have made. Remember to backup your version before installing.</p>
+<doc-anchor-target id="items">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#listeners">#</doc-anchor-trigger>
-        <span>Listeners</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#items">#</doc-anchor-trigger>
+        <span>Items</span>
     </h2>
 </doc-anchor-target>
-<p>Certain inventory data can become quite large, especially with how many containers and items you allow in an inventory. To optimize, we try to simplify things. Players only receive data from components that they request data from and data from their own components, but also any update from components they are currently interacting with.</p>
-<p>The component keeps track of the players that are currently interacting with a component with the <span style="color:slateblue"><strong>Listeners</strong></span> array, then whenever PlayerA moves, adds, removes or interacts with an item in some way, the component sends RPC calls to the other &quot;listeners&quot; so their widgets and data get updated.</p>
-<p>For functions that modifies a components data, such as moving an item or modifying an items stack count or modifying any other data, you must remember that clients only have authority over their own component, they do not have authority over other components and thus can&#x27;t call functions on other components. This is simply how networking in Unreal Engine works.<br />
-Because of this, most functions require you to call the function on the component the client has authority over. Even though the item you are trying to modify is not on that component.<br />
-This is why, when you look at some of the source code, the functions are getting the component the item belongs to through its <span style="color:slateblue"><strong>UniqueID</strong></span>.<span style="color:slateblue"><strong>ParentComponent</strong></span> and modifying that component&#x27;s data through the component the client has authority over.</p>
-<p>To simplify the code, any function that attempts to automate the replication for you stores its logic in a function with the same name but with a <strong>Internal_</strong> prefix.</p>
-<p>For most functions that modify data in some way, only a single version of that function is available for you to call, and that function handles the replication for you. This is to simplify the amount of functions exposed as it can get very daunting to try and handle every replication scenario and making sure your calling the right function. If you wish to modify how the replication is handled, you can always go into the functions, modify them, or enable the server/client/internal functions to be BlueprintCallable (Example would be <span style="color:violet"><strong>AC_Inventory</strong></span> -&gt; <span style="color:brown"><strong>Internal_AdjustContainerSize</strong></span>).</p>
-<div class="overflow-hidden mb-6 py-4 dark:px-5 dark:bg-white rounded-md"><pre class="mermaid w-full">%%{init: {'theme':'forest'}}%%
-graph TD
-    A[Function called] --&gt; B(Evaluate if function should be replicated)
-    B --&gt;|Is Single player| C[Call internal function]
-    B --&gt;|Is Multiplayer| D[Send server RPC]
-    B --&gt;|Is Multiplayer| H[Add item to network queue]
-    D --&gt; E[Call internal function on server, gather list of listeners]
-    E --&gt; F[Send Client RPC's to listeners]
-    F --&gt; G[Call internal Function on client]
-    G --&gt; R[Remove item from network queue]</pre></div>
-<doc-panel id="code-example" collapsed>
-    <template #title>Code example</template>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-cpp"><code v-pre class="language-cpp">//Increase the count of an item by @Count
-void IncreaseItemCount(FS_InventoryItem Item, int32 Count, int32&amp; NewCount)
-{
-    if(UKismetSystemLibrary::IsStandalone(this))
-	{
-        //Single player, don't bother with any replication stuff
-		InternalIncreaseItemCount(Item.UniqueID, Count, NewCount);
-		return;
-	}
-
-    //Update server data
-	S_IncreaseItemCount(Item.UniqueID, Count);
-
-    //Predict the result if item is stackable.
-	if(Item.Item-&gt;CanItemStack() == true)
-	{
-		NewCount = FMath::Clamp(Item.Count + Count, 1, Item.Item-&gt;MaxStack);
-	}
-	else
-	{
-		NewCount = Item.Count;
-	}
-    
-    //Notify the player the item is currently busy
-	C_AddItemToNetworkQueue(Item.UniqueID);
-}
-
-//Increase the item count on the server
-void S_IncreaseItemCount(FS_UniqueID ItemID, int32 Count)
-{
-    int32 NewStackCount
-    if(GetOwner()-&gt;GetRemoteRole() == ROLE_SimulatedProxy) //This is dedicated or listen server. Don't bother with client RPC
-	{
-		InternalIncreaseItemCount(ItemID, Count, NewStackCount);
-	}
-	else //Client is calling, update server, then call client RPC
-	{
-		InternalIncreaseItemCount(ItemID, Count, NewStackCount);
-		C_IncreaseItemCount(ItemID, Count);
-	}
-	
-	for(const auto&amp; CurrentListener : ItemID.ParentComponent-&gt;Listeners)
-	{
-		//Update all clients that are currently listening to this component's replication calls.
-		if(CurrentListener-&gt;GetOwner()-&gt;GetRemoteRole() == ROLE_AutonomousProxy &amp;&amp; CurrentListener != this)
-		{
-			CurrentListener-&gt;C_IncreaseItemCount(ItemID, Count);
-		}
-	}
-}
-
-//Increase the item count for listening clients
-void C_IncreaseItemCount_Implementation(FS_UniqueID ItemID, int32 Count)
-{
-    //Find the item we are processing
-	bool ItemFound;
-	FS_InventoryItem Item;
-	ItemID.ParentComponent-&gt;GetItemByUniqueID(ItemID, ItemFound, Item);
-	if(ItemFound)
-	{
-		int32 NewStackCount;
-		InternalIncreaseItemCount(ItemID, Count, NewStackCount);
-        //Item has been processed, remove from network queue
-		C_RemoveItemFromNetworkQueue(Item.UniqueID);
-	}
-}
-
-void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, int32&amp; NewCount)
-{
-    //Start moodifying the item in here.
-    //This was called on both client and server, so the same logic is ran for everyone.
-}</code></pre>
-</doc-codeblock></div>
-</doc-panel>
-<doc-anchor-target id="why-not-just-use-a-multicast-or-repnotify">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#why-not-just-use-a-multicast-or-repnotify">#</doc-anchor-trigger>
-        <span>Why not just use a multicast or RepNotify?</span>
-    </h3>
-</doc-anchor-target>
-<p>Because of how large some RPC&#x27;s can get, I did not find multicasts to be acceptable for most of the functions. A lot of the RPC&#x27;s are just simply not relevant for most clients anyways, and managing relevancy is a lot more complicated than a simple array of actors.</p>
-<p>RepNotify&#x27;s also can not be used because there is no way to label them as &quot;Reliable&quot; which means they are susceptible to packet loss and they share the same issue with multicasts; They are simply too expensive and much of the data is simply not relevant.</p>
-<hr />
-<doc-anchor-target id="unique-id">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#unique-id">#</doc-anchor-trigger>
-        <span>Unique ID</span>
-    </h2>
-</doc-anchor-target>
-<p>The UniqueID is a simple method to quickly find containers or items, or ensuring containers or items are valid, and for linking some object to an item (Such as the <a href="https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/">item driver&#x27;s</a>). This is covered in multiple sections in the documentation, but here are some things to consider for networking.</p>
 <ul>
-<li>Clients and servers must stay in sync when it comes to UniqueID&#x27;s. This leaves you with two options;</li>
+<li>Default item tags have been implemented. These are defined in the item data asset, whenever a component is started and an item does not have any of the tags from the data asset, they will automatically be applied.</li>
+<li><span style="color:slateblue"><strong>ContainerName</strong></span> has been labelled as deprecated and will be replaced with  <span style="color:slateblue"><strong>ContainerIdentifier</strong></span> tag, making it easier for renaming a container and reduces human error when binding containers with their widget representation.
+<ul>
+<li>During 1.2 both the <span style="color:slateblue"><strong>ContainerName</strong></span> and <span style="color:slateblue"><strong>ContainerIdentifier</strong></span> will work, but <span style="color:slateblue"><strong>ContainerName</strong></span> will be fully removed in the next update.</li>
 </ul>
-<ol>
-<li>Pre-generate the <span style="color:slateblue"><strong>UniqueID</strong></span>&#x27;s on the server, then pass them to the client and have your logic assign that <span style="color:slateblue"><strong>UniqueID</strong></span> to the item. This is not advised as it can get bad for networking and it is generally cumbersome to program and manage it.</li>
-<li>Use <span style="color:brown"><strong>GenerateUniqueIDWithSeed</strong></span>. Now the only thing you need to ensure is that the client and server are using the same seed and they&#x27;ll both generate the same <span style="color:slateblue"><strong>UniqueID</strong></span>.</li>
-</ol>
+</li>
+<li>The physical actor for an item no longer requires any containers to be setup inside the blueprint. When the component is started, it&#x27;ll automatically add the default containers from the data asset.</li>
+</ul>
+<doc-anchor-target id="item-drivers">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#item-drivers">#</doc-anchor-trigger>
+        <span>Item drivers</span>
+    </h2>
+</doc-anchor-target>
 <ul>
-<li><span style="color:slateblue"><strong>UniqueID</strong></span>&#x27;s <a href="https://inventoryframework.github.io/workinginthesystem/creatingcustomfunctions/#network-optimizations">scale extremely</a> well with RPC&#x27;s. It is advised to use <span style="color:slateblue"><strong>UniqueID</strong></span>&#x27;s as often as possible.</li>
-<li>There&#x27;s no way to evaluate from a <span style="color:slateblue"><strong>UniqueID</strong></span> if it was assigned to an item or container without going through all items and containers until you find a match. It is not recommended to add more information to this struct as it&#x27;s meant to be small and simple, so that it gets replicated extremely quickly and cheaply.</li>
-<li><span style="color:slateblue"><strong>UniqueID</strong></span>&#x27;s from components the client does not have information on will not work. For example, two players are interacting with a chest and Player-1 moves an item from their inventory to the chest, Player-2 will not have the information necessary to move the item on their side, since they do not have the information needed from Player-1&#x27;s inventory component. Some functions simply need more information than the <span style="color:slateblue"><strong>UniqueID</strong></span> can provide.</li>
+<li>Item drivers now have the option to &quot;follow&quot; the item they were created by. This means that if a driver is created for an item and the item is moved to a new actor, that driver is moved as well to the new actor. The driver is not destroyed and reconstructed, it will retain all information and continue running any timer logic.</li>
+<li>Drivers are now referenced by the item struct, giving easy access to access an items item driver.</li>
+</ul>
+<doc-anchor-target id="widgets">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#widgets">#</doc-anchor-trigger>
+        <span>Widgets</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>The update functions inside of <span style="color:violet"><strong>W_InventoryItem</strong></span> have been labelled as deprecated.</li>
+<li>New <span style="color:violet"><strong>I_WidgetUpdates</strong></span> interface added, contains all the update functions that were deprecated in <span style="color:violet"><strong>W_InventoryItem</strong></span>
+<ul>
+<li>During 1.2 both the deprecated functions and the interface events will be called, but the update functions inside of <span style="color:violet"><strong>W_InventoryItem</strong></span> will be fully removed in the next update.</li>
+</ul>
+</li>
+<li>Item struct and container struct now has an array of &quot;<span style="color:slateblue"><strong>External Widgets</strong></span>&quot;, making it easier to manage hotbars, quest trackers and any other widget that is listening to any item updates without listening to a bunch of delegates.</li>
+<li>External widgets get all the same Update functions that the item widget does from the <span style="color:violet"><strong>I_WidgetUpdates</strong></span> interface.</li>
+<li>More update functions have been added for tags, tag values and equip/unequip events.</li>
+<li>Add, Remove and Get External Widgets helper functions for both items and containers have been added.</li>
+</ul>
+<doc-anchor-target id="example-project">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#example-project">#</doc-anchor-trigger>
+        <span>Example Project</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>Added two quick slot example, one for global tracking where a specific item asset is tracked across the entire inventory, and another for a specific slot.</li>
+<li>In the context menu, the Equip and Unequip buttons now actually... You know... Equips and unequips the item...</li>
+<li>Example project has been updated to no longer use any of the deprecated features.</li>
+<li>Gameplay tags have been moved to a data table.</li>
+</ul>
+<doc-anchor-target id="bug-fixes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bug-fixes">#</doc-anchor-trigger>
+        <span>Bug fixes</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>When splitting an item, the newly created item widget would get created in the incorrect location.</li>
+<li>Fix: Generated item icon were being stretched in certain scenarios.</li>
+<li>Fix: Item count was getting reset to default if it was dropped.</li>
+<li>Fix: Random min/max count could be called multiple times.</li>
 </ul>
 
                                 
@@ -335,20 +280,20 @@ void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, i
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../introduction/firststeps/suggestedplugins/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../versions/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Suggested Plugins</span>
+                                                <span class="block mt-1">Versions</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../introduction/howdoesthesystemwork/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../versions/v1.1.0/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">How does the system work?</span>
+                                                <span class="block mt-1">1.​1.​0</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -392,6 +337,6 @@ void UAC_Inventory::InternalIncreaseItemCount(FS_UniqueID ItemID, int32 Count, i
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "How does the networking work?", level: 2, icon: "file", hasPrism: true, hasMermaid: true, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "1.2.0", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
