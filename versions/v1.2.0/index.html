@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.2.739232586274">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.2.739308217926">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.0.2">
@@ -31,11 +31,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../resources/css/retype.css?v=3.0.2.739232586274" rel="stylesheet" />
+    <link href="../../resources/css/retype.css?v=3.0.2.739308217926" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../resources/js/config.js?v=3.0.2.739232586274" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../resources/js/config.js?v=3.0.2.739308217926" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../resources/js/retype.js?v=3.0.2" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=3.0.2.739232586274" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../resources/js/lunr.js?v=3.0.2.739308217926" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -204,6 +204,17 @@ Status: In Development</p>
     </h1>
 </doc-anchor-target>
 <p>Because both the container struct and item struct were modified in this update, it means that a lot of blueprints were updated and might override any chances you might have made. Remember to backup your version before installing.</p>
+<doc-anchor-target id="component">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#component">#</doc-anchor-trigger>
+        <span>Component</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li><span style="color:brown"><strong>FindFirstAvailableContainerAndTile</strong></span> and <span style="color:brown">**FindFirstAvailableTile **</span> have been replaced with <span style="color:brown"><strong>GetFirstAvailableContainerAndTile</strong></span> and <span style="color:brown"><strong>GetFirstAvailableTile</strong></span>. These functions can now also be overriden at a blueprint level to allow designers to implement their own rules of how the system finds available containers and tiles.</li>
+<li><span style="color:brown"><strong>CheckForSpace</strong></span> and <span style="color:brown"><strong>CheckBothRotationsForSpace</strong></span> has been updated to return an array of items that were in the way instead of just the first item.</li>
+<li>Added function for checking if items can be swapped and another function for swapping 2 item locations.</li>
+</ul>
 <doc-anchor-target id="items">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#items">#</doc-anchor-trigger>
@@ -214,7 +225,7 @@ Status: In Development</p>
 <li>Default item tags have been implemented. These are defined in the item data asset, whenever a component is started and an item does not have any of the tags from the data asset, they will automatically be applied.</li>
 <li><span style="color:slateblue"><strong>ContainerName</strong></span> has been labelled as deprecated and will be replaced with  <span style="color:slateblue"><strong>ContainerIdentifier</strong></span> tag, making it easier for renaming a container and reduces human error when binding containers with their widget representation.
 <ul>
-<li>During 1.2 both the <span style="color:slateblue"><strong>ContainerName</strong></span> and <span style="color:slateblue"><strong>ContainerIdentifier</strong></span> will work, but <span style="color:slateblue"><strong>ContainerName</strong></span> will be fully removed in the next update.</li>
+<li>During 1.2 both the <span style="color:slateblue"><strong>ContainerName</strong></span> will continue to work for most functions, as most have been updated to use <span style="color:slateblue"><strong>ContainerIdentifier</strong></span> instead, but <span style="color:slateblue"><strong>ContainerName</strong></span> will be fully removed in the next update. It&#x27;s recommended to update your containers immediately.</li>
 </ul>
 </li>
 <li>The physical actor for an item no longer requires any containers to be setup inside the blueprint. When the component is started, it&#x27;ll automatically add the default containers from the data asset.</li>
@@ -243,7 +254,7 @@ Status: In Development</p>
 </ul>
 </li>
 <li>Item struct and container struct now has an array of &quot;<span style="color:slateblue"><strong>External Widgets</strong></span>&quot;, making it easier to manage hotbars, quest trackers and any other widget that is listening to any item updates without listening to a bunch of delegates.</li>
-<li>External widgets get all the same Update functions that the item widget does from the <span style="color:violet"><strong>I_WidgetUpdates</strong></span> interface.</li>
+<li>External widgets get all the same Update functions that the item widget and container widget does from the <span style="color:violet"><strong>I_WidgetUpdates</strong></span> interface.</li>
 <li>More update functions have been added for tags, tag values and equip/unequip events.</li>
 <li>Add, Remove and Get External Widgets helper functions for both items and containers have been added.</li>
 </ul>
@@ -270,6 +281,7 @@ Status: In Development</p>
 <li>Fix: Generated item icon were being stretched in certain scenarios.</li>
 <li>Fix: Item count was getting reset to default if it was dropped.</li>
 <li>Fix: Random min/max count could be called multiple times.</li>
+<li>Fix: The item and container tag delegates are no longer getting spammed.</li>
 </ul>
 
                                 
