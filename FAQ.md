@@ -19,6 +19,7 @@ I might change my mind someday and attempt to implement some sort of abstract ba
 ---
 ### Q: Will stats/attributes or ability systems of any kind be added?
 A: No. I believe most people should be using the Gameplay Ability System framework as it is becoming the industry standard or something similar (I personally suggest <a href="https://www.unrealengine.com/marketplace/en-US/product/gas-companion" target="_blank">**GAS Companion**</a> from the marketplace). A lot of people also already have a stat/attribute or ability system in place and I do not want to step on their toes.
+The [tag system](https://inventoryframework.github.io/workinginthesystem/tagsystem/) does allow you to create basic stats and attributes for items, but I generally recommend people use GAS or a more fleshed out system designed around that.
 
 ---
 ### Q: Will I be adding any art, meshes or animations to the asset?
