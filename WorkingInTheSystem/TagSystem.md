@@ -12,3 +12,11 @@ The tag system is fairly simple, containers could use them as labels, for exampl
 There are helper functions for resolving the value of specific tags, finding items or containers with specific tags and more.
 
 Since these tags and values live on the container and item struct, is is very simple to serialize for your save file.
+
+---
+
+!!!Important
+The below text is a 1.2 feature, which will be sent for Epic's review process immediately after 1.1.1 is accepted.
+!!!
+
+The add, remove and set functions have the option to "IgnoreNetworkQueue", if this is check to true, the item will not be added or removed from the network queue. This can be useful for moments where you are fine with server and client data not being in sync for a short moment. If you check this to true, you should NOT rely on that tag for any data validation.
