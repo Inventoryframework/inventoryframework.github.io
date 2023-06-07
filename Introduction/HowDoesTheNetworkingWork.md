@@ -16,7 +16,6 @@ To simplify the code, any function that attempts to automate the replication for
 For most functions that modify data in some way, only a single version of that function is available for you to call, and that function handles the replication for you. This is to simplify the amount of functions exposed as it can get very daunting to try and handle every replication scenario and making sure your calling the right function. If you wish to modify how the replication is handled, you can always go into the functions, modify them, or enable the server/client/internal functions to be BlueprintCallable (Example would be <span style="color:violet">**AC_Inventory**</span> -> <span style="color:brown">**Internal_AdjustContainerSize**</span>).
 
 ```mermaid
-%%{init: {'theme':'forest'}}%%
 graph TD
     A[Function called] --> B(Evaluate if function should be replicated)
     B -->|Is Single player| C[Call internal function]
