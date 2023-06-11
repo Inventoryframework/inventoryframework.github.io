@@ -12,13 +12,14 @@ This does NOT cover how to install an IDE such as Rider or Visual Studio. You sh
 <a href="https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DevelopmentSetup/VisualStudioSetup/" target="_blank">**Unreal's docs for setting up Visual Studio**</a>
 There are also a few demo files that you’ll want to replace and enum entries you need to rename to fit your project.
 
-1. If your project doesn’t have any C++ code, you will want to go into the engine and at the top go to **Tools -> New C++ Class**. It doesn’t matter what you create here or where you save it. This is just to get the engine to generate all the files you need to compile the plugin.
-2. Go to your **Unreal Engine installation -> Engine -> Plugins -> Marketplace** and copy the InventoryFrameworkPlugin folder.
-3. Go into your project's root folder (Where your .uproject is), create a folder called “Plugins” if you don’t have one.
-4. Paste the InventoryFrameworkPlugin folder into the plugin folder.
-5. Go back to your .uproject, right click and press "Generate Visual Studio Project Files”.
-6. Open the solution file with whatever IDE you use (For example Visual Studio or Rider) and build the project.
-7. (Optional) You can now uninstall the plugin from the engine through the Epic Games Launcher, though you won't get notifications from the Epic Games client whenever an update is available (The discord announces every update as well).
+1. Download the plugin through the Epic games client just like how you would download any other plugin.
+2. If your project doesn’t have any C++ code, you will want to go into the engine and at the top go to **Tools -> New C++ Class**. It doesn’t matter what you create here or where you save it. This is just to get the engine to generate all the files you need to compile the plugin.
+3. Go to your **Unreal Engine installation -> Engine -> Plugins -> Marketplace** and copy the InventoryFrameworkPlugin folder.
+4. Go into your project's root folder (Where your .uproject is), create a folder called “Plugins” if you don’t have one.
+5. Paste the InventoryFrameworkPlugin folder into the plugin folder.
+6. Go back to your .uproject, right click and press "Generate Visual Studio Project Files”.
+7. Open the solution file with whatever IDE you use (For example Visual Studio or Rider) and build the project.
+8. (Optional) You can now uninstall the plugin from the engine through the Epic Games Launcher, though you won't get notifications from the Epic Games client whenever an update is available (The discord announces every update as well).
 
 Everything in the demo folder is designed to be replaced by your assets/Blueprints. It is only there so you don’t get any errors on startup.
 
