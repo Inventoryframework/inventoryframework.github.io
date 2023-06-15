@@ -42,7 +42,7 @@ There is an annoying issue though, all variables that can be modified in bluepri
 You can of course inverse this behavior in C++ by using the ShowCategory UCLASS specifier. 
 
 !!!Important
-The below text is a 1.2 feature, which will be sent for Epic's review process immediately after 1.1.1 is accepted.
+The below text is a 1.2 feature, which is currently pending review by Epic.
 !!!
 In 1.2, there is an option to have drivers "follow" the item. In C++, you are able to detach and attach actor components from one actor to another. With this setting enabled, the driver will do its best to follow the item where ever it goes. That means moving the item from your inventory to another or dropping the item and the item creating its own physical actor will receive the already existing item driver. Any timers and variables are kept alive as this is a non-destructive process.
 
