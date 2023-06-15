@@ -8,11 +8,6 @@
 Links can be found at the top of the page.
 <a href="https://youtu.be/c2MY_3hFayM" target="_blank">**Introduction Video**</a>
 
-!!!Important
-5.2 is still being reviewed by Epic, I apologize for the delay. If you are in need of the 5.2 version, you can message me on discord with a receipt or some other proof of purchase and I'll send you the compiled 5.2 plugin
-!!!
-
-
 ---
 ## What is the Inventory Framework Plugin?
 
@@ -31,7 +26,7 @@ What this provides is the C++ foundation for your programmers and a good Bluepri
 
 It is NOT an inventory to fully replicate the mechanics of any specific game. If you want your system to behave like a specific game, you will have to implement those specific mechanics yourself. This system does try to provide you with the functions and data to replicate most inventory systems.
 
-If you have any issues or questions neither the videos or documentation answer then feel free to message me on Discord (Varian#8033) or join the discord channel.
+If you have any issues or questions neither the videos or documentation answer then feel free to message me on Discord (Variandaemon) or join the discord channel.
 You can look at the FAQ for more info.
 
 ---
