@@ -11,8 +11,6 @@ This list is only relevant to the latest version of the plugin, old version of t
 
 - The "Reset to Default Property Value" button for container settings is not resetting values to their proper defaults and it's always showing for all values, even if the value is set to its default. I am unsure what is causing this.
 
-- Listen Server with autonomous proxies are causing issues with replication. This has been fixed, but will be released with 1.1.1 after Epic reviews the 5.2 release.
-
 
 ## Common Problems
 These aren't bugs, but problems that can be misinterpreted as bugs.
