@@ -38,7 +38,13 @@ If you are unfamiliar with GameplayTags, I highly recommend you start using them
 There is an annoying issue though, all variables that can be modified in blueprint will show up as editable variables in the instanced <span style="color:violet">**ItemObject**</span> even if they aren’t set as Instance Editable (This might be a bug, if anyone knows a fix, please tell me). In the meantime, I’ve made it so any variables inside a <span style="color:green">**DoNotShow**</span> category or with no category at all will not show up here. You can change the behavior inside <span style="color:violet">**O_ItemObject.h**</span> in the UCLASS macro. Remember you can create sub categories like so; DoNotShow|MyNewCategory. This should help keep all variables that are meant to be hidden organized.
 You can of course inverse this behavior in C++ by using the ShowCategory UCLASS specifier. 
 
+!!!Important
+The below text is a 1.2 feature, which will be sent for Epic's review process immediately after 1.1.1 is accepted.
+!!!
 
+
+
+---
 !!!Important
 - Whenever possible, use soft references and try to avoid hard references. Item data bases are one of the fastest ways of creating a nasty web of hard references and before you know it, the majority of your game is loaded at times where you don't want it to be. These objects are potentially the biggest culprit in this system to create that kind of nasty web of hard references.
 !!!
