@@ -17,6 +17,9 @@ File Location: Source\InventoryFrameworkPlugin\Private\Core\Components\AC_ItemDr
 File Location: Content\Core\ActorParents\BP_AC_ItemDriver.uasset
 ==-
 
+
+
+
 ---
 Ever wanted to tie gameplay logic to your items without cluterring up your character and AI blueprints? If so, then this is the place for you!
 
@@ -49,9 +52,23 @@ The below text is a 1.2 feature, which will be sent for Epic's review process im
 - Whenever possible, use soft references and try to avoid hard references. Item data bases are one of the fastest ways of creating a nasty web of hard references and before you know it, the majority of your game is loaded at times where you don't want it to be. These objects are potentially the biggest culprit in this system to create that kind of nasty web of hard references.
 !!!
 
+---
 ## Data-only objects
 Objects do not need to a driver to go along with it. In the <span style="color:slateblue">**ConstructionSettings**</span> for your object, you can set it to be Data-Only. Sometimes all you need is a place to store variables, and while you can add those variables to the data asset itself, some people do not want to go into C++ OR there is some data that can't be categorised to an item category. For example; quest data. Any item can be a part of a quest, but you might not want create a data asset parent dedicated to a quest category.
 
 Data-only objects can do some functions and some logic, but no timers, no replication or have any modifiable data. It is a place for constant data that does not change during runtime, just like the data inside the data asset.
 
 You can then retrieve this data by using the <span style="color:brown">**GetObjectsByTag**</span>/<span style="color:brown">**GetObjectsByClass**</span>. The class version will automatically cast to the correct blueprint. For the tag version, you manually have to cast to your blueprint.
+
+---
+## Tips and tricks
+
+![](/pictures/BadObjectClassNames.png)
+By default, your objects will display their default class name in the drop down menu.
+
+
+![](/pictures/GoodObjectClassNames.png)
+You can change the name they are given inside this drop down menu by following the next steps.
+
+-![](/pictures/ClassNameExample.png)
+By going into your Class Settings (1) you can change the class name (2). The drop down menu will now display whatever text you put in here.
