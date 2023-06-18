@@ -13,7 +13,7 @@ File Location: Content\Core\Components\BP_AC_Inventory.uasset
 
 This is where the vast majority of the logic is handled and starts. You have full control of when the component activates by calling the <span style="color:brown">**StartComponent**</span> function. When called, the component initializes the containers and the items inside or the pickup if the owning actor is a pickup. This does NOT prepare the widgets versions of the containers and the items. But this function must be called before you display any widgets or any data to the player.
 
-To create the widget version of a container and its items, call <span style="color:brown">**BindContainerWithWidget**</span> and hook in the container struct and the container widget. This should give you full control of when you want to construct a container.
+To create the widget version of a container and its items, call <span style="color:brown">**BindContainerWithWidget**</span> and hook in the container struct and the container widget. This should give you full control of when you want to construct the widget for a container.
 Some examples would be when the player opens their inventory, but you don’t want to load all the items' attachment widgets. You could then load the attachment widgets when the player inspects the item. For inventory systems that can get massive with a lot of items inside of it with attachment widgets associated with it, this massively improve performance and memory usage if used correctly.
 
 For pickups, I recommend calling <span style="color:brown">**StartComponent**</span> on either <span style="color:brown">**BeginPlay**</span> or when the player is close to the item and has line of sight of the item, as items that have a spawn chance associated with it need that spawn chance rolled.
@@ -38,7 +38,7 @@ Third category is <span style="color:Slateblue">**ColorSettings**</span>  and th
 
 ---
 ## Network Queue
-The component has an array called <span style="color:Slateblue">**NetworkQueue**</span>, these are items that are waiting for a server RPC to finish. It is up to you to call <span style="color:brown">**C_AddItemToNetworkQueue**</span> and <span style="color:brown">**C_RemoveItemFromNetworkQueue**</span>. This will automatically call <span style="color:brown">**ItemAddedToNetworkQueue**</span> or <span style="color:brown">**ItemRemovedFromNetworkQueue**</span>.
+The component has an array called <span style="color:Slateblue">**NetworkQueue**</span>, these are items that are waiting for a server RPC to finish. If you are writing your own networking code, it is up to you to call <span style="color:brown">**C_AddItemToNetworkQueue**</span> and <span style="color:brown">**C_RemoveItemFromNetworkQueue**</span>. This will automatically call <span style="color:brown">**ItemAddedToNetworkQueue**</span> or <span style="color:brown">**ItemRemovedFromNetworkQueue**</span>.
 
 If the item widget is available, it'll also call: 
 <span style="color:violet">**W_InventoryItem**</span> -> <span style="color:brown">**ParentItemAddedToNetworkQueue**</span> / <span style="color:brown">**ParentItemRemovedFromNetworkQueue**</span>
@@ -48,7 +48,7 @@ These events are where your designers hook in any logic that alerts the player t
 You will want to implement some way of preventing players from interacting with items that are pending a network event, either by making the widget uninteractable or through code. You can check if an item is in the queue by using:
 <span style="color:violet">**FL_InventoryFramework.h**</span> -> <span style="color:brown">**IsItemInNetworkQueue**</span>
 
-The Network Queue system is only relevant for clients, it's never used in single player or listen server scenarios.
+The Network Queue system is only relevant for clients, it's never used in single player or server scenarios.
 
 ---
 ## Infinite containers

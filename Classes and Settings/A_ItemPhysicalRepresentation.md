@@ -21,5 +21,3 @@ It’s very important when making your items that have a physical representation
 
 The setup for pickups goes like this: In your <span style="color:slateblue">**ContainerSettings**</span> index 0, you set <span style="color:slateblue">**ContainerType**</span> to <span style="color:slateblue">**ThisActor**</span> and item index 0 is the pickup data asset. There should be no other items in this items array.
 Containers that might be attached to the pickup are added after and they can have Inventory or Equipment selected, but never <span style="color:slateblue">**CurrentItem**</span>.
-
-There is a tool included in the plugin that queries every item data asset, checks the actor references and then checks if that actor reference is referencing the correct item data asset.

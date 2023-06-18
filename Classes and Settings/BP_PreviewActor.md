@@ -38,7 +38,7 @@ This does mean though that you need to handle the collision responses for this. 
 ## Camera management
 The <span style="color:violet">**BP_PreviewActor**</span> will attempt to find the first component which has a socket called “PreviewCameraSocket” and attach the camera to that socket. If none is found, you’ll get an error message and the camera will stay attached to the PreviewActor’s root.
 Ideally, all your meshes should have this socket that you want to use this actor on. But to improve prototyping, I’ve added a few options to the item data asset:
--![](/pictures/PreviewActorAdjustments.png)
+![](/pictures/PreviewActorAdjustments.png)
 
 Once you're far enough into production or willing to keep all meshes up to date with the socket, you should remove these four settings.
 
