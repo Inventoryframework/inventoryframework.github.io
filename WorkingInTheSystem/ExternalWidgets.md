@@ -15,7 +15,3 @@ For your external widgets to receive these updates, you'll want to go to your cl
 The <span style="color:violet">**I_WidgetUpdates**</span> interface is designed to be extended for your needs.
 
 Utilizing external widgets can replace delegate events from the component, but there are still moments where delegates are better, for example a quest tracker keeping track of how much of a specific item data asset you have in your inventory.
-
----
-## Color Sheet:
-<span style="color:brown">**functions**</span> - <span style="color:slateblue">**Variable**</span> - <span style="color:green">**category**</span> - <span style="color:violet">**class**</span>
