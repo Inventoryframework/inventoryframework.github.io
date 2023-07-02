@@ -21,6 +21,8 @@ There are also a few demo files that you’ll want to replace and enum entries y
 7. Open the solution file with whatever IDE you use (For example Visual Studio or Rider) and build the project.
 8. (Optional) You can now uninstall the plugin from the engine through the Epic Games Launcher, though you won't get notifications from the Epic Games client whenever an update is available (The discord announces every update as well).
 
+- The engine automatically enables the plugin the majority of the time. In rare cases, it might not enable it. If it didn't, open your project, go to Edit -> Plugins and search for "Inventory Framework Plugin" and make sure it's enabled.
+
 Everything in the demo folder is designed to be replaced by your assets/Blueprints. It is only there so you don’t get any errors on startup.
 
 ---
