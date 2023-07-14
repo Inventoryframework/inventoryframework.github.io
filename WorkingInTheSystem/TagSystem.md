@@ -15,8 +15,4 @@ Since these tags and values live on the container and item struct, is is very si
 
 ---
 
-!!!Important
-The below text is a 1.2 feature, which is currently pending Epic review.
-!!!
-
 The add, remove and set functions have the option to "IgnoreNetworkQueue", if this is check to true, the item will not be added or removed from the network queue. This can be useful for moments where you are fine with server and client data not being in sync for a short moment. If you check this to true, you should NOT rely on that tag for any data validation.
