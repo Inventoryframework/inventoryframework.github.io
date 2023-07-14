@@ -1,8 +1,6 @@
 # External Widgets
 
-!!!Important
-This is a 1.2 feature, which will be sent for Epic's review process immediately after 1.1.1 is accepted.
-!!!
+- Version support: 1.2+
 
 Both the item struct and container struct has an array of <span style="color:slateblue">**ExternalWidgets**</span>. There are helper functions for both adding and removing widgets from this array.
 
