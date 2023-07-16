@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.742814765075">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.0.3.742822182081">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.0.3">
@@ -31,11 +31,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/websiteicon.png" rel="icon" />
-    <link href="../../../resources/css/retype.css?v=3.0.3.742814765075" rel="stylesheet" />
+    <link href="../../../resources/css/retype.css?v=3.0.3.742822182081" rel="stylesheet" />
 
-    <script type="text/javascript" src="../../../resources/js/config.js?v=3.0.3.742814765075" data-turbo-eval="false" defer></script>
+    <script type="text/javascript" src="../../../resources/js/config.js?v=3.0.3.742822182081" data-turbo-eval="false" defer></script>
     <script type="text/javascript" src="../../../resources/js/retype.js?v=3.0.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=3.0.3.742814765075" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" type="text/javascript" src="../../../resources/js/lunr.js?v=3.0.3.742822182081" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -255,6 +255,15 @@ By default, there is no failsafe if an animation is interrupted as that is somet
 <p>The system automatically tries to keep all components attached to an actor with unique names. Including attached actors. This is because of how the  preview system works. The preview system attempts to reconstruct the actor it&#x27;s previewing without fully cloning it. There are ways of perfectly cloning an actor, but those are very expensive and come with their own set of problems. The preview system only looks at the visible components on the actor, including attached actors, and reconstructs it. But problems occur if two components have the same name from 2 different attached actors.<br />
 When the preview system reconstructs the actor, it finds out what component it was attached to, but it needs to know which component that is on itself, it can&#x27;t use the object reference. This means that if two components have the same name, it&#x27;ll mess up which component it should attach to. The simple fix to this is to make sure all components have a unique name. The engine already handles this if you attach a component to an actor and that actor has a component with the same name, but it does not do this for attached actors.</p>
 <p>But to simplify debugging, only a underscore and a random number is added to the end of it. The  rest of the name is untouched.</p>
+<hr />
+<doc-anchor-target id="where-are-the-items-being-created">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#where-are-the-items-being-created">#</doc-anchor-trigger>
+        <span>Where are the items being created?</span>
+    </h1>
+</doc-anchor-target>
+<p>A separate actor component called <span style="color:violet"><strong>BP_AC_EquipmentManager</strong></span> is created and attached to the owning actor to handle the creation of items. This is handled this way because of replication. Before the system was replicated, this component didn&#x27;t even exist and the system worked just like it does now.</p>
+<p>This component is responsible for ensuring items are replicated in the correct order and attaching things in the correct order, in case an item got replicated before the item it is attached to is replicated.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
