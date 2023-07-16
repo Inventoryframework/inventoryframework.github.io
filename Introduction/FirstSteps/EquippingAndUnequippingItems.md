@@ -59,3 +59,9 @@ The system automatically tries to keep all components attached to an actor with 
 When the preview system reconstructs the actor, it finds out what component it was attached to, but it needs to know which component that is on itself, it can't use the object reference. This means that if two components have the same name, it'll mess up which component it should attach to. The simple fix to this is to make sure all components have a unique name. The engine already handles this if you attach a component to an actor and that actor has a component with the same name, but it does not do this for attached actors.
 
 But to simplify debugging, only a underscore and a random number is added to the end of it. The  rest of the name is untouched.
+
+---
+# Where are the items being created?
+A separate actor component called <span style="color:violet">**BP_AC_EquipmentManager**</span> is created and attached to the owning actor to handle the creation of items. This is handled this way because of replication. Before the system was replicated, this component didn't even exist and the system worked just like it does now.
+
+This component is responsible for ensuring items are replicated in the correct order and attaching things in the correct order, in case an item got replicated before the item it is attached to is replicated.
