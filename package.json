@@ -1,11 +1,9 @@
 {
-  "scripts": 
-  {
+  "scripts": {
     "start": "retype watch",
     "build": "retype build"
   },
-  "dependencies": 
-  {
-    "retypeapp-win-x64": "^2.4.0"
+  "dependencies": {
+    "retypeapp-win-x64": "^3.0.3"
   }
 }
