@@ -34,3 +34,28 @@ TSoftClassPtr<AActor> PhysicalActor = nullptr;
 ```
 AActor can be swapped out for any class, it does not need to be AActor, but it must be a child of AActor.
 +++
+
+---
+## Custom shapes
+
+!!!Important
+This is a 2.0 feature which is still in development
+!!!
+
+This inventory system features container styles where items can be different lengths and different heights.
+The way you define your shape is by adding the Custom Shape object to your <span style="color:slateblue">**ObjectsAndDrivers**</span> array and using the <span style="color:slateblue">**DisabledTiles**</span> array. Though this is not very pleasant to work with in its raw array format. It is recommended to use the [ItemEditor](https://inventoryframework.github.io/tools/itemeditor/), where you'll find a toolbox with a few tools inside of it, one being the shape editor. Which gives you a much better UI to work with.
+
+---
+## Asset verification
+
+!!!Important
+This is a 2.0 feature which is still in development
+!!!
+
+To aid quality assurance, the data asset has a "Verify Data" button at the top of the asset.
+The verification validates everything in the following process:
+1. Use the <span style="color:slateblue">**ValidationClass**</span> in the <span style="color:slateblue">**DeveloperSettngs**</span> category to execute its <span style="color:brown">**VerifyData**</span> function. (Because we can't use Blueprint data assets, this step is used to get around that limitation.)
+2. <span style="color:slateblue">**ValidationClass**</span> -> <span style="color:brown">**VerifyData**</span> will run some code to check if any mistakes have been made. Since every project is different, it is suggested to create your own child of <span style="color:violet">**O_ItemAssetValidation**</span> and write your own code. To validate the data of object references, an interface function from the <span style="color:violet">**I_Validation.h**</span> interface also named <span style="color:brown">**VerifyData**</span> is called. You can see an example of this inside of <span style="color:violet">**O_BasicItemValidation**</span> and <span style="color:violet">**IO_Consumable**</span>
+3. If any error messages are created during any of the <span style="color:brown">**VerifyData**</span> functions, you'll get a message at the bottom right stating the error message. If the <span style="color:slateblue">**ErrorMessages**</span> array is empty, the item passes the verification.
+
+Do note, if an item does not pass the verification, it does NOT prevent you from playing the game.

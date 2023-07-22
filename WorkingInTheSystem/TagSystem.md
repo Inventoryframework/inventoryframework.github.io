@@ -11,7 +11,7 @@ The tag system is fairly simple, containers could use them as labels, for exampl
 
 There are helper functions for resolving the value of specific tags, finding items or containers with specific tags and more.
 
-Since these tags and values live on the container and item struct, is is very simple to serialize for your save file.
+Since these tags and values live on the container and item struct, it is very simple to serialize for your save file.
 
 ---
 
