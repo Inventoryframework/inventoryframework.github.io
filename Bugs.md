@@ -11,6 +11,10 @@ This list is only relevant to the latest version of the plugin, old version of t
 
 - The "Reset to Default Property Value" button for container settings is not resetting values to their proper defaults and it's always showing for all values, even if the value is set to its default. I am unsure what is causing this.
 
+- The drag widgets sizing is much larger than it is supposed to be for a couple of frames. There is currently a 0.05 delay inside <span style="color:violet">**WBP_Drag**</span> to resolve this. This is a band-aid fix, I'll try to resolve this fully in the future.
+
+- While inside a editor utility widget, the gameplay tags slate widget is not updating properly. The DetailsView widget is riddled with a few bugs as of at least 5.2 when it comes to custom slate struct widgets. The best you can do right now is open the gameplay tag to see what values are inside of it and adding/removing something to update it, then it'll show the values inside the tag correctly.
+
 
 ## Common Problems
 These aren't bugs, but problems that can be misinterpreted as bugs.

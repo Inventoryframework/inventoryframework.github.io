@@ -38,19 +38,11 @@ AActor can be swapped out for any class, it does not need to be AActor, but it m
 ---
 ## Custom shapes
 
-!!!Important
-This is a 2.0 feature which is still in development
-!!!
-
 This inventory system features container styles where items can be different lengths and different heights.
 The way you define your shape is by adding the Custom Shape object to your <span style="color:slateblue">**ObjectsAndDrivers**</span> array and using the <span style="color:slateblue">**DisabledTiles**</span> array. Though this is not very pleasant to work with in its raw array format. It is recommended to use the [ItemEditor](https://inventoryframework.github.io/tools/itemeditor/), where you'll find a toolbox with a few tools inside of it, one being the shape editor. Which gives you a much better UI to work with.
 
 ---
 ## Asset verification
-
-!!!Important
-This is a 2.0 feature which is still in development
-!!!
 
 To aid quality assurance, the data asset has a "Verify Data" button at the top of the asset.
 The verification validates everything in the following process:
