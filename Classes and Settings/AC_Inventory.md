@@ -65,3 +65,11 @@ You can use <span style="color:brown">**GetComponentState**</span> to resolve wh
 
 There is a function called <span style="color:brown">**ConvertToRawState**</span> which will prepare all containers for a gameplay session. Ideally, this function should not be called during a gameplay session as it's a waste of CPU time. All container data should already be prepped for gameplay. By default, the component calls this function on its <span style="color:brown">**BeginPlay**</span> if it detects the actor was not setup properly and spit out a print string.
 There is also another function called <span style="color:brown">**ConvertFromRawStateToEditorState**</span> which preps all data to be usable for editor tools.
+
+---
+## Attached spawned items
+An important aspect to remember is that whenever you have a item that has a spawned actor to represent it, such as a gun item inside the players equipment container, the inventory component on the spawned item should NOT be used.
+
+This will mostly happen with the equipment system when using Blueprint items. The reason for this is because spawned blueprints can be deleted and restored over and over, so they are unreliable to store any important data. It would also mean that the blueprint would always have to stay alive if you wanted to explore the items containers while the item isn't spawned (In this example, the gun item hasn't been equipped). An items containers always live on the component that own the item, (In this example, the gun's containers live on the character that is holding the gun).
+
+To retrieve the items true data, you need to retrieve the UniqueID of the owning item in some way. Generally this means storing the items UniqueID inside your spawned blueprint. <span style="color:violet">**BP_SM_ItemPhysical**</span> does this through an interface event called <span style="color:brown">**PassUniqueID**</span> and stores the data inside <span style="color:slateblue">**RootItemData**</span>.

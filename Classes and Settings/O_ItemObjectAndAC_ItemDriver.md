@@ -50,9 +50,9 @@ In 1.2, there is an option to have drivers "follow" the item. In C++, you are ab
 
 ---
 ## Data-only objects
-Objects do not need to a driver to go along with it. In the <span style="color:slateblue">**ConstructionSettings**</span> for your object, you can set it to be Data-Only. Sometimes all you need is a place to store variables, and while you can add those variables to the data asset itself, some people do not want to go into C++ OR there is some data that can't be categorised to an item category. For example; quest data. Any item can be a part of a quest, but you might not want create a data asset parent dedicated to a quest category.
+Objects do not need to a driver to go along with it. Sometimes all you need is a place to store variables, and while you can add those variables to the data asset itself, some people do not want to go into C++ OR there is some data that can't be categorised to an item category. For example; quest data. Any item can be a part of a quest, but you might not want create a data asset parent dedicated to a quest category.
 
-Data-only objects can do some functions and some logic, but no timers, no replication or have any modifiable data. It is a place for constant data that does not change during runtime, just like the data inside the data asset.
+For data-only objects, it's recommended to use <span style="color:violet">**O_PureItemObject**</span> as the parent for your object.
 
 You can then retrieve this data by using the <span style="color:brown">**GetObjectsByTag**</span>/<span style="color:brown">**GetObjectsByClass**</span>. The class version will automatically cast to the correct blueprint. For the tag version, you manually have to cast to your blueprint.
 
