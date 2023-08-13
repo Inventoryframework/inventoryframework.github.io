@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.744849051520">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.745267759959">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.1.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.1.0.744849051520" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.1.0.745267759959" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.744849051520" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.745267759959" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.1.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.744849051520" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.745267759959" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -283,6 +283,7 @@ This also means <span style="color:slateblue"><strong>CompatibilitySettings</str
 </li>
 <li>The first multithreaded sorting function has been added. For now I&#x27;m starting with just sorting by name to find out if the current approach works. If the current approach works, I&#x27;ll start working on more sorting functions and hopefully make a tutorial on how to make your own custom sorting function.</li>
 <li>Added <span style="color:slateblue"><strong>AssetTags</strong></span> and <span style="color:slateblue"><strong>AssetTagValues</strong></span> to the data asset. These are similar to the default tags, except they are NOT added to the item struct and can not be modified, removed or added during runtime.</li>
+<li>When an item is equipped and using a blueprint actor as it&#x27;s physical representation, the root items <span style="color:slateblue"><strong>UniqueID</strong></span> is now passed to the actor and stored inside <span style="color:slateblue"><strong>RootItemID</strong></span>, allowing the spawned actor to access it&#x27;s true item data.</li>
 </ul>
 <hr>
 <doc-anchor-target id="tag-system">
@@ -356,6 +357,8 @@ This also means <span style="color:slateblue"><strong>CompatibilitySettings</str
 <li>Equipment system for clients would try to play an animation on skeletal meshes with WaitForNotify and then create it, causing the animation to not play as the mesh had not been replicated yet.</li>
 <li>Updating the unequip location for static and skeletal meshes was not functioning correctly.</li>
 <li><span style="color:brown"><strong>CheckCompatibility</strong></span> would not take the items default tags and tag values into consideration while in the editor.</li>
+<li>Increase and Decrease item count could crash if invalid item data was passed in.</li>
+<li><span style="color:brown"><strong>TryAddNewItem</strong></span> could cause issues with <span style="color:brown"><strong>CheckCompatibility</strong></span></li>
 </ul>
 
                                 
