@@ -6,7 +6,11 @@ order: 100
 # Installing the plugin
 
 ---
-Because of how integral an inventory system is to a game, I highly recommend you DO NOT install the plugin to the engine and then use it that way, but instead install the plugin locally to your project. That way you can use the plugin in multiple projects without having a change that works in one project mess up the other project. This means you can also have much better control how the parents behave and work and not have to worry about changes made for another project. But it does mean updating the system is a bit more work, but it is very straight forward if you have source-control set up, as it'll tell you all the changes and you can reimplement any custom changes you made to suit your project.
+Because of how integral an inventory system is to a game, I highly recommend you DO NOT install the plugin to the engine and then use it that way, but instead install the plugin locally to your project. That way you can use the plugin in multiple projects without having a change that works in one project mess up the other project. 
+This means you can also have much better control how the parents behave and work and not have to worry about changes made for another project. But it does mean updating the system is a bit more work, but it is very straight forward if you have source-control set up, as it'll tell you all the changes and you can reimplement any custom changes you made to suit your project.
+This is not mandatory, but can greatly help in the future when you want to update safely.
+
+Once you are done installing the plugin (either locally or through the engine), I **HIGHLY** advise you make children of any class in this system once you want to modify the class. This should make updating in the future a lot easier and gives you a lot more customizability.
 
 This does NOT cover how to install an IDE such as Rider or Visual Studio. You should already have an IDE installed.
 <a href="https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DevelopmentSetup/VisualStudioSetup/" target="_blank">**Unreal's docs for setting up Visual Studio**</a>
@@ -35,6 +39,5 @@ To find the blueprints, you will want to start the engine, go into your content 
 If you decide to NOT install the plugin locally, you will also have to check "Show Engine Content" and then go into Engine -> Plugins -> InventoryFrameworkPlugin Content
 
 ---
-Once you are done installing the plugin, I **HIGHLY** advise you make children of any class in this system once you want to modify. This should make updating in the future a lot easier and gives you a lot more customizability.
 
 It is highly recommended to head over to the [How does the system work?](https://inventoryframework.github.io/introduction/howdoesthesystemwork/) page and giving a read before proceeding.
