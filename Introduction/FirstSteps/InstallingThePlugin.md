@@ -5,6 +5,8 @@ order: 100
 
 # Installing the plugin
 
+Video walkthrough of the first steps: https://www.youtube.com/watch?v=78vurTeroX4
+
 ---
 Because of how integral an inventory system is to a game, I highly recommend you DO NOT install the plugin to the engine and then use it that way, but instead install the plugin locally to your project. That way you can use the plugin in multiple projects without having a change that works in one project mess up the other project. 
 This means you can also have much better control how the parents behave and work and not have to worry about changes made for another project. But it does mean updating the system is a bit more work, but it is very straight forward if you have source-control set up, as it'll tell you all the changes and you can reimplement any custom changes you made to suit your project.
