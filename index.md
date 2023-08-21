@@ -6,7 +6,7 @@
 
 ---
 Links can be found at the top of the page.
-<a href="https://youtu.be/c2MY_3hFayM" target="_blank">**Introduction Video**</a>
+<a href="https://youtu.be/cIOmKTgNAD0" target="_blank">**Introduction Video**</a>
 
 ---
 ## What is the Inventory Framework Plugin?
