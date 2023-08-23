@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.745970760069">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.1.0.746128974741">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.1.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.1.0.745970760069" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.1.0.746128974741" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.745970760069" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.1.0.746128974741" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.1.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.745970760069" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.1.0.746128974741" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -211,6 +211,15 @@ File location: InventoryFrameworkPlugin\Private\Core\Actors\Parents\A_ItemPhysic
 <p>It’s very important when making your items that have a physical representation in the world and can be picked up that the component on that actor references the data asset that references this physical actor. Otherwise when you drop the item, it’ll spawn the wrong class.</p>
 <p>The setup for pickups goes like this: In your <span style="color:slateblue"><strong>ContainerSettings</strong></span> index 0, you set <span style="color:slateblue"><strong>ContainerType</strong></span> to <span style="color:slateblue"><strong>ThisActor</strong></span> and item index 0 is the pickup data asset. There should be no other items in this items array.<br />
 Containers that might be attached to the pickup are added after and they can have Inventory or Equipment selected, but never <span style="color:slateblue"><strong>CurrentItem</strong></span>.</p>
+<hr>
+<doc-anchor-target id="custom-blueprint-children">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#custom-blueprint-children">#</doc-anchor-trigger>
+        <span>Custom Blueprint Children</span>
+    </h1>
+</doc-anchor-target>
+<p>The BP_SM_ItemPhysical is a optional parent in your hierarchy. It has some code that you will want to copy over to any parents that you have if you wish to make your own, primarily the BeginPlay, Equip and Unequip delegates.</p>
+<p>You will also have to attach the InventoryComponent (I suggest the blueprint one, as it is a child of the C++ version) and setup the I_Inventory::GetInventoryComponent interface function and return your inventory component.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
