@@ -21,3 +21,9 @@ It’s very important when making your items that have a physical representation
 
 The setup for pickups goes like this: In your <span style="color:slateblue">**ContainerSettings**</span> index 0, you set <span style="color:slateblue">**ContainerType**</span> to <span style="color:slateblue">**ThisActor**</span> and item index 0 is the pickup data asset. There should be no other items in this items array.
 Containers that might be attached to the pickup are added after and they can have Inventory or Equipment selected, but never <span style="color:slateblue">**CurrentItem**</span>.
+
+---
+# Custom Blueprint Children
+The BP_SM_ItemPhysical is a optional parent in your hierarchy. It has some code that you will want to copy over to any parents that you have if you wish to make your own, primarily the BeginPlay, Equip and Unequip delegates.
+
+You will also have to attach the InventoryComponent (I suggest the blueprint one, as it is a child of the C++ version) and setup the I_Inventory::GetInventoryComponent interface function and return your inventory component.
