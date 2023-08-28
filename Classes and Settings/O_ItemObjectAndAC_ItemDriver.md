@@ -40,7 +40,7 @@ If you are unfamiliar with GameplayTags, I highly recommend you start using them
 
 There is an annoying issue though, all variables that can be modified in blueprint will show up as editable variables in the instanced <span style="color:violet">**ItemObject**</span> even if they aren’t set as Instance Editable (This might be a bug, if anyone knows a fix, please tell me). In the meantime, I’ve made it so any variables inside a <span style="color:green">**DoNotShow**</span> category or with no category at all will not show up here. You can change the behavior inside <span style="color:violet">**O_ItemObject.h**</span> in the UCLASS macro. Remember you can create sub categories like so; DoNotShow|MyNewCategory. This should help keep all variables that are meant to be hidden organized.
 
-In 1.2, there is an option to have drivers "follow" the item. In C++, you are able to detach and attach actor components from one actor to another. With this setting enabled, the driver will do its best to follow the item where ever it goes. That means moving the item from your inventory to another or dropping the item and the item creating its own physical actor will receive the already existing item driver. Any timers and variables are kept alive as this is a non-destructive process.
+There is an option to have drivers "follow" the item. In C++, you are able to detach and attach actor components from one actor to another. With this setting enabled, the driver will do its best to follow the item where ever it goes. That means moving the item from your inventory to another or dropping the item and the item creating its own physical actor will receive the already existing item driver. Any timers and variables are kept alive as this is a non-destructive process.
 
 
 ---
