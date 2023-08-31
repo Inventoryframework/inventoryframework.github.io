@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.2.0.746518818294">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.2.0.746802367791">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.2.0">
@@ -33,11 +33,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../pictures/websiteicon.png" rel="icon">
-    <link href="../resources/css/retype.css?v=3.2.0.746518818294" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.2.0.746802367791" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.2.0.746518818294" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.2.0.746802367791" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.2.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.2.0.746518818294" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.2.0.746802367791" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -210,6 +210,8 @@
 <li><p>The drag widgets sizing is much larger than it is supposed to be for a couple of frames. There is currently a 0.05 delay inside <span style="color:violet"><strong>WBP_Drag</strong></span> to resolve this. This is a band-aid fix, I&#x27;ll try to resolve this fully in the future.</p>
 </li>
 <li><p>While inside a editor utility widget, the gameplay tags slate widget is not updating properly. The DetailsView widget is riddled with a few bugs as of at least 5.2 when it comes to custom slate struct widgets. The best you can do right now is open the gameplay tag to see what values are inside of it and adding/removing something to update it, then it&#x27;ll show the values inside the tag correctly.</p>
+</li>
+<li><p>In 5.2, saving an icon has a high chance of crashing the editor. This is an engine bug, it seems to happen at random. If anyone knows a fix, let me know.</p>
 </li>
 </ul>
 <doc-anchor-target id="common-problems">
