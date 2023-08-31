@@ -15,6 +15,8 @@ This list is only relevant to the latest version of the plugin, old version of t
 
 - While inside a editor utility widget, the gameplay tags slate widget is not updating properly. The DetailsView widget is riddled with a few bugs as of at least 5.2 when it comes to custom slate struct widgets. The best you can do right now is open the gameplay tag to see what values are inside of it and adding/removing something to update it, then it'll show the values inside the tag correctly.
 
+- In 5.2, saving an icon has a high chance of crashing the editor. This is an engine bug, it seems to happen at random. If anyone knows a fix, let me know.
+
 
 ## Common Problems
 These aren't bugs, but problems that can be misinterpreted as bugs.
