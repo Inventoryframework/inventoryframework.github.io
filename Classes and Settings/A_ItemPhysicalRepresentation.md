@@ -24,6 +24,6 @@ Containers that might be attached to the pickup are added after and they can hav
 
 ---
 # Custom Blueprint Children
-The BP_SM_ItemPhysical is a optional parent in your hierarchy. It has some code that you will want to copy over to any parents that you have if you wish to make your own, primarily the BeginPlay, Equip and Unequip delegates.
+The BP_SM_ItemPhysical is a optional parent in your hierarchy. It has some code that you will want to copy over to any parents that you have if you wish to make your own, primarily the BeginPlay, Equip and Unequip delegates, and Destroyed event.
 
-You will also have to attach the InventoryComponent (I suggest the blueprint one, as it is a child of the C++ version) and setup the I_Inventory::GetInventoryComponent interface function and return your inventory component.
+The C++ inventory compoonent will automatically get added to your actor, but the base C++ version should not be used. You want to click on the InventoryComponent in your components list and set ComponentClass to BP_AC_Inventory (Or your own child of the inventory component if you've made one)
