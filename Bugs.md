@@ -7,7 +7,6 @@ tags:
 This list is only relevant to the latest version of the plugin, old version of the plugin will slowly lose bug-tracking. If you are on a old version of the plugin and have found a bug, you can always ask on the discord for help.
 
 ## Known Bugs
-- In 5.1, RenderTargets can break if your quality settings are below Epic.
 
 - The "Reset to Default Property Value" button for container settings is not resetting values to their proper defaults and it's always showing for all values, even if the value is set to its default. I am unsure what is causing this.
 
