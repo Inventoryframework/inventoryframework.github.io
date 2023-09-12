@@ -18,3 +18,13 @@ I will be supporting saving and loading with the default save system. I am not e
 ---
 ## <a href="https://www.unrealengine.com/marketplace/en-US/product/custom-thumbnails" target="_blank">**Custom Thumbnails**</a>
 If you plan on having a large item data base and you have an icon artist, this plugin makes working with that data base way better.
+
+---
+## <a href="https://github.com/IDI-Systems/UnrealImGui" target="_blank">**UnrealImGui**</a>
+DearImGui is a great tool used in tons of game engines and is amazing for debugging your game.
+You can get blueprint support through <a href="https://github.com/TheEnbyWitch/ImGuiBlueprint" target="_blank">**ImGuiBlueprint**</a> (I have a <a href="https://github.com/Variann/ImGuiBlueprint" target="_blank">**personal repo**</a> where I've added more widget support)
+I sometimes use this plugin to quickly visualize data from a bunch of items while in-game.
+
+---
+## <a href="https://github.com/Variann/UE4-EditorScriptingToolsPlugin" target="_blank">**EditorScriptingTools**</a>
+This plugin lets you customize the editor without touching C++. This way you can add UMG widget tools into the item data asset all inside blueprints and without touching the plugin.
