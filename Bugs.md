@@ -16,6 +16,9 @@ This list is only relevant to the latest version of the plugin, old version of t
 
 - In 5.2, saving an icon has a high chance of crashing the editor. This is an engine bug, it seems to happen at random. If anyone knows a fix, let me know.
 
+- The UE "Clamp (Float)" node's behavior has changed between 5.2 and 5.3, causing highlight widget when dragging an item to be able to go outside the boundaries of the container.
+I'm not going to try and fix this, as it's not a critical issue, just a visual one, and it seems like this is a bug on Epic's side. If it's not fixed in 5.3.1/5.4, then I'll fix it.
+
 
 ## Common Problems
 These aren't bugs, but problems that can be misinterpreted as bugs.
