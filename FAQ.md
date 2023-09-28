@@ -12,9 +12,8 @@ A: Of course! Containers have styles, and the List style already converts all it
 
 ---
 ### Q: Is there a crafting system implemented?
-A: No. This is an inventory system, not an inventory and crafting system. I know many assets on the marketplace already include a crafting system, but crafting systems are very genre dependent and often behave completely differently. I don’t think I can implement any sort of abstract base that can adapt to all scenarios. I feel like most people will either just not use the system I implement or remove it, and the time I spend implementing it will just raise the price.
-At the end of the day, crafting systems just require item data and some form of a “recipe”. It should not be difficult to create your crafting system with the item data system this asset uses and the functions the inventory component has.
-I might change my mind someday and attempt to implement some sort of abstract base, similar to what this plugin attempts to do for inventory systems. But as of right now, there are no plans to implement anything relating to a crafting system.
+A: Right now, no. I am currently experimenting with a crafting system that might be abstract enough to fit into the plugin. It'll most likely get added around 2.3.
+At the end of the day, crafting systems just require item data and some form of a “recipe”. It should not be difficult to create your crafting system with the item data system this asset uses and the functions the inventory component has. Some people already have added a crafting system, so it is completely possible.
 
 ---
 ### Q: Will stats/attributes or ability systems of any kind be added?
