@@ -19,6 +19,9 @@ This list is only relevant to the latest version of the plugin, old version of t
 - The UE "Clamp (Float)" node's behavior has changed between 5.2 and 5.3, causing highlight widget when dragging an item to be able to go outside the boundaries of the container.
 I'm not going to try and fix this, as it's not a critical issue, just a visual one, and it seems like this is a bug on Epic's side. If it's not fixed in 5.3.1/5.4, then I'll fix it.
 
+- The inventory component might be falsely reporting it might be "corrupted" or a custom property list is not initialized correctly. This is happening because when a component is declared in C++ and then the ComponentClass is set to a blueprint, it starts loading everything connected to that blueprint. Some assets seem to be breaking something inside of UE's loading process and causing issues. I haven't noticed any patterns, but most of the issues seem to occur when a player character is referenced.
+Because of this, you really have to mind your hard references, or go through the process of removing the C++ version, which I do not recommend. You should be minding your hard references, especially when it comes to the inventory component.
+
 
 ## Common Problems
 These aren't bugs, but problems that can be misinterpreted as bugs.
