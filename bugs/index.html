@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.749181198480">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.749333163407">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -33,11 +33,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../pictures/websiteicon.png" rel="icon">
-    <link href="../resources/css/retype.css?v=3.5.0.749181198480" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.5.0.749333163407" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.5.0.749181198480" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.5.0.749333163407" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.5.0.749181198480" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.5.0.749333163407" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -212,6 +212,9 @@
 </li>
 <li><p>The UE &quot;Clamp (Float)&quot; node&#x27;s behavior has changed between 5.2 and 5.3, causing highlight widget when dragging an item to be able to go outside the boundaries of the container.<br />
 I&#x27;m not going to try and fix this, as it&#x27;s not a critical issue, just a visual one, and it seems like this is a bug on Epic&#x27;s side. If it&#x27;s not fixed in 5.3.1/5.4, then I&#x27;ll fix it.</p>
+</li>
+<li><p>The inventory component might be falsely reporting it might be &quot;corrupted&quot; or a custom property list is not initialized correctly. This is happening because when a component is declared in C++ and then the ComponentClass is set to a blueprint, it starts loading everything connected to that blueprint. Some assets seem to be breaking something inside of UE&#x27;s loading process and causing issues. I haven&#x27;t noticed any patterns, but most of the issues seem to occur when a player character is referenced.<br />
+Because of this, you really have to mind your hard references, or go through the process of removing the C++ version, which I do not recommend. You should be minding your hard references, especially when it comes to the inventory component.</p>
 </li>
 </ul>
 <doc-anchor-target id="common-problems">

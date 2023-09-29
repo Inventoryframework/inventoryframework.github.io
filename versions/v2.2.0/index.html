@@ -9,24 +9,24 @@
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>Creating new items</title>
-    <meta name="title" content="Creating new items">
-    <meta name="description" content="Video documentation">
+    <title>2.2.0</title>
+    <meta name="title" content="2.2.0">
+    <meta name="description" content="Engine support: 5.3">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/workinginthesystem/creatingnewitems/">
+    <link rel="canonical" href="/versions/v2.2.0/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/workinginthesystem/creatingnewitems/">
-    <meta property="og:title" content="Creating new items">
-    <meta property="og:description" content="Video documentation">
+    <meta property="og:url" content="/versions/v2.2.0/">
+    <meta property="og:title" content="2.2.0">
+    <meta property="og:description" content="Engine support: 5.3">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/workinginthesystem/creatingnewitems/">
-    <meta property="twitter:title" content="Creating new items">
-    <meta property="twitter:description" content="Video documentation">
+    <meta property="twitter:url" content="/versions/v2.2.0/">
+    <meta property="twitter:title" content="2.2.0">
+    <meta property="twitter:description" content="Engine support: 5.3">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -186,39 +186,54 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="creating-new-items" class="break-words">
+<doc-anchor-target id="220" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#creating-new-items">#</doc-anchor-trigger>
-        <span>Creating new items</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#220">#</doc-anchor-trigger>
+        <span>2.2.0</span>
     </h1>
 </doc-anchor-target>
-<p><a href="https://youtu.be/GzxE6spwgCQ" target="_blank"><strong>Video documentation</strong></a></p>
+<p>Engine support: 5.3</p>
 <hr>
-<p>Creating new items is very simple.<br />
-To start off, you&#x27;ll need to go into the engine and find your content browser, right click and go to <strong>Miscellaneous -&gt; Data Asset</strong> and a pop up will appear asking you what parent your data asset should derive from.<br />
-You might have your own children or have removed some of the children that come with the asset, but whatever asset you choose must derive from <span style="color:violet"><strong>DA_CoreItem</strong></span> at some point in its hierarchy.</p>
-<p>I suggest creating a folder for your item and placing the data asset in there.</p>
-<p>To create a blueprint actor for your item, you will have to create an actor who at some point in its hierarchy is a child of <span style="color:violet"><strong>BP_SM_ItemPhysical</strong></span>, then set that as your <span style="color:Slateblue"><strong>PhysicalActor</strong></span></p>
-<p>The actor will automatically get the blueprint inventory component assigned to it. You will need to go into the component settings and change a few things.</p>
-<ol>
-<li>Set <span style="color:Slateblue"><strong>InventoryType</strong></span> to &quot;<strong>Pickup</strong>&quot;</li>
-<li>Add one index to <span style="color:Slateblue"><strong>ContainerSettings</strong></span> and set the <span style="color:Slateblue"><strong>ContainerType</strong></span> to &quot;<strong>ThisActor</strong>&quot;. This will then hide most of the settings except for the items array.</li>
-<li>Your items array should only have one index, which will be your newly created data asset. All settings can be left to their default.</li>
-<li>(Optional) If your item has containers associated with it, the data asset should have an array of <span style="color:Slateblue"><strong>DefaultContainers</strong></span>. You will want to populate these with your containers and also assign the widget. This variable only exists for weapon and equippable item types. An example can be found in the example project with the gun and backpack item.</li>
-</ol>
-<p>To have the asset manager pick up your data asset, it can not be identical to another data asset. (This includes the base file, so if all your variables are set to default, the asset will not get picked up.) Typically you want to immediately give your item a name and a developer image for the InventoryHelper.</p>
-<hr>
-<doc-anchor-target id="creating-new-c-children-of-da_coreitem">
+<doc-anchor-target id="inventory">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#creating-new-c-children-of-da_coreitem">#</doc-anchor-trigger>
-        <span>Creating new C++ children of DA_CoreItem</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#inventory">#</doc-anchor-trigger>
+        <span>Inventory</span>
     </h2>
 </doc-anchor-target>
-<p>You might want to create your own category of items, and since the engine does not allow you to mix C++ and blueprint children of data assets, you are unfortunately forced to create C++ children.</p>
-<p>I suggest installing the plugin directly to your project, and then creating new children inside the <strong>Items</strong> folder, which is found inside the plugins <strong>Core</strong> folder.</p>
-<p>If you are creating a new category, you will also want to find the EItemType enum inside <span style="color:violet"><strong>IFP_CoreData.h</strong></span> and create a new entry. Then inside your newly created .cpp file, override the constructor and set the type to be equal to this new category.<br />
-This is so functions inside of <span style="color:violet"><strong>DA_CoreItem</strong></span> can perform the correct casts to retrieve data from its children.<br />
-You can find examples of this inside of the children of <span style="color:violet"><strong>DA_CoreItem</strong></span> that come with the plugin.</p>
+<ul>
+<li>Added tag values to component.</li>
+<li>Security around <span style="color:brown"><strong>TryAddNewItem</strong></span> has been loosened slightly to allow server RPC&#x27;s to call the function for player controlled actors. Where as before the caller of the function had to be owned by the server.</li>
+<li>The multithreaded <span style="color:brown"><strong>SortAndMoveItems</strong></span> has been deprecated while a rework is explored.</li>
+<li><span style="color:brown"><strong>SplitItem</strong></span> has been reworked slightly to fix some replication and collision issues.</li>
+</ul>
+<hr>
+<doc-anchor-target id="example-project">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#example-project">#</doc-anchor-trigger>
+        <span>Example Project</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>Added an example of how to have equipped items attachment widget automatically get added to inventory screen.</li>
+</ul>
+<hr>
+<doc-anchor-target id="bug-fixes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bug-fixes">#</doc-anchor-trigger>
+        <span>Bug fixes</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>An items default tags weren&#x27;t being applied in the correct order inside <span style="color:brown"><strong>StartComponent</strong></span> if the item didn&#x27;t have the tag inside the struct, causing <span style="color:brown"><strong>CheckCompatibility</strong></span> to always fail.</li>
+<li><span style="color:brown"><strong>CheckCompatibility</strong></span> was not taking into account if the destination container belonged to an item it was containing, allowing two items to contain each other.</li>
+<li><span style="color:violet"><strong>O_TagValueCalculation</strong></span> was not in the correct folder.</li>
+<li>Custom shaped items where the top left index was hidden (Such as the gear item in the example project) would fail removing its own collision.</li>
+<li><span style="color:brown"><strong>Internal_TryAddNewItem</strong></span> had incorrect object pointers, leading to some scenarios crashing the game.</li>
+<li>ItemUnequipped would pass invalid item location, leading to difficulties managing and wiping the items data.</li>
+<li><span style="color:brown"><strong>CheckAllRotationsForSpace</strong></span> would always start at rotation 0, which could cause issues for save files loading correctly.</li>
+<li><span style="color:brown"><strong>MoveItem</strong></span> was not updating the item data it was using during its logic. So if the item count was updated while dragging an item, the function would undo the count update once it was dropped.</li>
+<li><span style="color:brown"><strong>Internal_TryAddNewItem</strong></span> was not adding default tags and tag values to the created item.</li>
+</ul>
 
                                 
                                 <!-- Required only on API pages -->
@@ -228,20 +243,20 @@ You can find examples of this inside of the children of <span style="color:viole
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/creatingcustomwidgets/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../versions/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Creating custom widgets</span>
+                                                <span class="block mt-1">Versions</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/draganddrop/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../versions/v2.1.0/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Drag and drop</span>
+                                                <span class="block mt-1">2.​1.​0</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -285,6 +300,6 @@ You can find examples of this inside of the children of <span style="color:viole
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Creating new items", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "2.2.0", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
