@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.750088080485">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.750147088714">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.750088080485" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.750147088714" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.750088080485" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.750147088714" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.750088080485" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.750147088714" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -201,6 +201,14 @@ Containers and items can have both. These tags can be updated, removed and added
 <p>Since these tags and values live on the container and item struct, it is very simple to serialize for your save file.</p>
 <hr>
 <p>The add, remove and set functions have the option to &quot;IgnoreNetworkQueue&quot;, if this is check to true, the item will not be added or removed from the network queue. This can be useful for moments where you are fine with server and client data not being in sync for a short moment. If you check this to true, you should NOT rely on that tag for any data validation.</p>
+<hr>
+<doc-anchor-target id="tag-value-calculation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tag-value-calculation">#</doc-anchor-trigger>
+        <span>Tag Value calculation</span>
+    </h2>
+</doc-anchor-target>
+<p>The Setter functions have a class parameter, which allows you to inject your own calculations before the final value is set. This is a prime location for clamping certain values, such a durability value. You might have a CurrentDurability tag value and a MaxDurability tag value, then whenever you modify CurrentDurability, you can pass in a tag value calculation class that will handle the clamping for you.</p>
 
                                 
                                 <!-- Required only on API pages -->
