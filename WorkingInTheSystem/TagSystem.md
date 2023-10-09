@@ -16,3 +16,7 @@ Since these tags and values live on the container and item struct, it is very si
 ---
 
 The add, remove and set functions have the option to "IgnoreNetworkQueue", if this is check to true, the item will not be added or removed from the network queue. This can be useful for moments where you are fine with server and client data not being in sync for a short moment. If you check this to true, you should NOT rely on that tag for any data validation.
+
+---
+## Tag Value calculation
+The Setter functions have a class parameter, which allows you to inject your own calculations before the final value is set. This is a prime location for clamping certain values, such a durability value. You might have a CurrentDurability tag value and a MaxDurability tag value, then whenever you modify CurrentDurability, you can pass in a tag value calculation class that will handle the clamping for you.
