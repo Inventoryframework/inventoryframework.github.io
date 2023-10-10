@@ -35,7 +35,7 @@ These objects can also run functions, but share the same limitations as data ass
 ---
 # Drivers
 These are actor components that are meant to drive any gameplay logic related to an item, such as equipping an item, consuming an item, creating a widget and so forth.
-These can be assigned to an item through any object that is a child of <span style="color:violet">**O_ItemObject.h**</span>. Every driver needs an object to work, but every object does not need a driver to work.
+These can be assigned to an item through any object that is a child of <span style="color:violet">**O_ItemObject.h**</span>. Every driver needs an object to work, hence why there's a documentation page for each individual class, except for this class. Drivers are tied to objects. But every object does not need a driver.
 
 These components can also be viewed as a proxy between the inventory system and any other system. These <span style="color:violet">**ItemObject**</span> and <span style="color:violet">**ItemDrivers**</span> have been designed to be extremely abstract, so you can modify them however you want without it affecting how the inventory works. There's very few aspects of the inventory that depend on this system.
 
