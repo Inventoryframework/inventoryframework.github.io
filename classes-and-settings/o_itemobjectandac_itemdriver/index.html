@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.750147088714">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.750264040738">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -33,11 +33,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.750147088714" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.750264040738" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.750147088714" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.750264040738" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.750147088714" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.750264040738" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -243,7 +243,7 @@ File Location: Source\InventoryFrameworkPlugin\Private\Core\Components\AC_ItemDr
     </h1>
 </doc-anchor-target>
 <p>These are actor components that are meant to drive any gameplay logic related to an item, such as equipping an item, consuming an item, creating a widget and so forth.<br />
-These can be assigned to an item through any object that is a child of <span style="color:violet"><strong>O_ItemObject.h</strong></span>. Every driver needs an object to work, but every object does not need a driver to work.</p>
+These can be assigned to an item through any object that is a child of <span style="color:violet"><strong>O_ItemObject.h</strong></span>. Every driver needs an object to work, hence why there&#x27;s a documentation page for each individual class, except for this class. Drivers are tied to objects. But every object does not need a driver.</p>
 <p>These components can also be viewed as a proxy between the inventory system and any other system. These <span style="color:violet"><strong>ItemObject</strong></span> and <span style="color:violet"><strong>ItemDrivers</strong></span> have been designed to be extremely abstract, so you can modify them however you want without it affecting how the inventory works. There&#x27;s very few aspects of the inventory that depend on this system.</p>
 <p>They work just like any other actor component, they can have delays, timers, RPC&#x27;s and so forth. They also have methods of following the item it is bound to where ever it goes and retrieving the item data.</p>
 <p><span style="color:violet"><strong>ItemDrivers</strong></span> have three replication methods; <span style="color:slateblue"><strong>Server</strong></span>, <span style="color:slateblue"><strong>Client</strong></span> and <span style="color:slateblue"><strong>Both</strong></span>. Server <span style="color:violet"><strong>ItemDriver</strong></span>&#x27;s only exists on the server, client <span style="color:violet"><strong>ItemDriver</strong></span>&#x27;s only exists on the client, and <span style="color:slateblue"><strong>Both</strong></span> are created on the server and replicated to the client. You’ll most likely be using <span style="color:slateblue"><strong>Both</strong></span> most of the time.<br />
