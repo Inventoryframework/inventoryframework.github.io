@@ -26,5 +26,5 @@ You can get blueprint support through <a href="https://github.com/TheEnbyWitch/I
 I sometimes use this plugin to quickly visualize data from a bunch of items while in-game.
 
 ---
-## <a href="https://github.com/Variann/UE4-EditorScriptingToolsPlugin" target="_blank">**EditorScriptingTools**</a>
+## <a href="https://github.com/HoussineMehnik/UE4-EditorScriptingToolsPlugin" target="_blank">**EditorScriptingTools**</a>
 This plugin lets you customize the editor without touching C++. This way you can add UMG widget tools into the item data asset all inside blueprints and without touching the plugin.
