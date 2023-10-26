@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.751612780605">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.751628093537">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -33,11 +33,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon.png" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.751612780605" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.751628093537" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.751612780605" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.751628093537" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.751612780605" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.751628093537" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -245,9 +245,9 @@
 <li>The <span style="color:slateblue"><strong>ContainerSettings</strong></span> variable inside <span style="color:violet"><strong>W_Container</strong></span> has been renamed to <span style="color:slateblue"><strong>TemporaryContainerSettings</strong></span> to reduce confusion around how to get the widgets true container settings.</li>
 <li><span style="color:slateblue"><strong>OwningItem</strong></span> and <span style="color:slateblue"><strong>ParentTile</strong></span> inside <span style="color:violet"><strong>W_Tile</strong></span> have been deprecated. Use <span style="color:brown"><strong>GetOwningItem</strong></span> to retrieve the item widget.</li>
 <li>The quick loot window will now show the root item.</li>
+<li>Quick loot window will now automatically hide and show the expand option if the item can be expanded.</li>
 <li>Context menu has been reworked into an item object. If no context menu object is found, then it&#x27;ll default back to the old method which I won&#x27;t be maintaining and an print string will pop up.</li>
 <li>The InventoryHelper no longer automatically imports the items default containers. It will now import them when the item is opened instead of overriding the default containers by default.</li>
-<li>Context menu system has been reworked to be easier to work with, now uses an object.</li>
 </ul>
 <doc-anchor-target id="bug-fixes">
     <h2>
