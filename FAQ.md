@@ -12,7 +12,7 @@ A: Of course! Containers have styles, and the List style already converts all it
 
 ---
 ### Q: Is there a crafting system implemented?
-A: Right now, no. I am currently experimenting with a crafting system that might be abstract enough to fit into the plugin. It'll most likely get added around 2.3.
+A: Right now, no. I am currently experimenting with a crafting system that might be abstract enough to fit into the plugin. It'll most likely get added around 2.4.
 At the end of the day, crafting systems just require item data and some form of a “recipe”. It should not be difficult to create your crafting system with the item data system this asset uses and the functions the inventory component has. Some people already have added a crafting system, so it is completely possible.
 
 ---
