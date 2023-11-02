@@ -2,12 +2,12 @@
 tags: [item]
 ---
 
-# A_ItemPhysicalRepresentation
-==- Actor Item Physical Representation
-File location: InventoryFrameworkPlugin\Public\Core\Actors\Parents\A_ItemPhysicalRepresentation.h
-File location: InventoryFrameworkPlugin\Private\Core\Actors\Parents\A_ItemPhysicalRepresentation.cpp
-==- Blueprint Child: BP_SM_ItemPhysical
-File location: Content\Core\ActorParents\BP_SM_ItemPhysical.uasset
+# A_ItemActor
+==- C++ Item Actor
+File location: InventoryFrameworkPlugin\Public\Core\Actors\Parents\A_ItemActor.h
+File location: InventoryFrameworkPlugin\Private\Core\Actors\Parents\A_ItemActor.cpp
+==- Blueprint Child: BP_ItemActor
+File location: Content\Core\ActorParents\BP_ItemActor.uasset
 ===
 ---
 
@@ -24,6 +24,6 @@ Containers that might be attached to the pickup are added after and they can hav
 
 ---
 # Custom Blueprint Children
-The BP_SM_ItemPhysical is a optional parent in your hierarchy. It has some code that you will want to copy over to any parents that you have if you wish to make your own, primarily the BeginPlay, Equip and Unequip delegates, and Destroyed event.
+The <span style="color:violet">**BP_ItemActor**</span> is a optional parent in your hierarchy. It has some code that you will want to copy over to any parents that you have if you wish to make your own, primarily the BeginPlay, Equip and Unequip delegates, and Destroyed event.
 
 The C++ inventory compoonent will automatically get added to your actor, but the base C++ version should not be used. You want to click on the InventoryComponent in your components list and set ComponentClass to BP_AC_Inventory (Or your own child of the inventory component if you've made one)

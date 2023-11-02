@@ -3,12 +3,12 @@
 
 ---
 Creating new items is very simple.
-To start off, you'll need to go into the engine and find your content browser, right click and go to **Miscellaneous -> Data Asset** and a pop up will appear asking you what parent your data asset should derive from.
+To start off, you'll need to go into the engine and find your content browser, right click and go to **Inventory Framework -> Inventory Item Asset** and a pop up will appear asking you what parent your data asset should derive from.
 You might have your own children or have removed some of the children that come with the asset, but whatever asset you choose must derive from <span style="color:violet">**DA_CoreItem**</span> at some point in its hierarchy.
 
 I suggest creating a folder for your item and placing the data asset in there.
 
-To create a blueprint actor for your item, you will have to create an actor who at some point in its hierarchy is a child of <span style="color:violet">**BP_SM_ItemPhysical**</span>, then set that as your <span style="color:Slateblue">**PhysicalActor**</span>
+To create a blueprint actor for your item, you will have to create an actor who at some point in its hierarchy is a child of <span style="color:violet">**BP_ItemActor**</span>, then set that as your <span style="color:Slateblue">**ItemActor**</span>
 
 The actor will automatically get the blueprint inventory component assigned to it. You will need to go into the component settings and change a few things.
 1. Set <span style="color:Slateblue">**InventoryType**</span> to "**Pickup**"

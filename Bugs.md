@@ -34,7 +34,7 @@ You might have this problem with scroll bars most of the time. An easy fix for t
 - <span style="color:violet">**BP_PreviewActor**</span>'s automated camera distance is determined by all components which have collision enabled. This means if you have collision hitboxes or something similar on your actors, the camera will try to adjust to fit that in the camera view.
 Remember to use the tag “**DONOTPREVIEW**” on those collision components if the <span style="color:violet">**BP_PreviewActor**</span> is copying them.
 
-- Your item is not showing up in the asset manager or your getting a "Ignoring PrimaryAssetType Items - Conflicts with SOMECLASSNAME - Asset: ITEMNAMEHERE" in your message log. This happens when there are two identical data assets. This will most likely happen when you have two completely blank data assets and/or haven't filled in any of the data yet.
+- Your item is not showing up in the asset manager or your getting a "Ignoring PrimaryAssetType Items - Conflicts with SOMECLASSNAME - Asset: ITEMNAMEHERE" in your message log. This happens when there are two identical data assets. This will most likely happen when you have two completely blank data assets.
 
 - The highlight widget is going outside the boundaries of the container or is getting clipped. This happens if the sizing of the widget does not match the container dimensions. This is most common if the container is slotted into a canvas panel. If that is the case, you can check "Size To Content". For other widgets, you will have to manage the sizing of the container and in some cases, it's handled automatically.
 

@@ -21,16 +21,16 @@ If you are new to C++ or Unreal Engine, I suggest looking <a href="https://benui
 
 ---
 ## Changing the Physical Actor class
-Currently your item actors must be a child of <span style="color:violet">**A_ItemPhysicalPresentation**</span>. If you want to change this, you can change it like so:
+Currently your item actors must be a child of <span style="color:violet">**AA_ItemActor**</span>. If you want to change this, you can change it like so:
 +++ From
 ```
 UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="CoreSettings")
-TSoftClassPtr<AA_ItemPhysicalRepresentation> PhysicalActor = nullptr;
+TSoftClassPtr<AA_ItemActor> ItemActor = nullptr;
 ```
 +++ To
 ```
 UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="CoreSettings")
-TSoftClassPtr<AActor> PhysicalActor = nullptr;
+TSoftClassPtr<AActor> ItemActor = nullptr;
 ```
 AActor can be swapped out for any class, it does not need to be AActor, but it must be a child of AActor.
 +++

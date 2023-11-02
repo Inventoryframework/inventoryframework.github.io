@@ -19,7 +19,7 @@ Only the listen server or dedicated server is allowed to use this function.
 
 This means if you have a quest system or anything of the sort where the player is granted an item, you will have two options:
 1. Pre-store the item in a component and call the <span style="color:brown">**MoveItem**</span> function, but this will permanently remove the item from the old component. Though you could always reset the data after the function is called.
-2. The system which is calling <span style="color:brown">**TryAddNewItem**</span> is already owned by the server, and thus is allowed to call the function legally.
+2. The system which is calling <span style="color:brown">**TryAddNewItem**</span> is already owned by the server, and thus is allowed to call the function.
 
 ---
 ## Example
