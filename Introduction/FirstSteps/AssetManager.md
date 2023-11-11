@@ -8,7 +8,8 @@ order: 90
 For the asset manager to pick up your item data base and for several tools to function correctly, you must set up the asset manager per project.
 1. Go into Projects Settings.
 2. Under the "Game" category, select "Asset Manager".
-3. Add a new index and set "Primary Asset Type" as "Items", the asset base class to <span style="color:violet">**DA_CoreItem**</span>, then go into Directories and add all locations where you might store your items (This also searches sub folders).
+3. Add a new index and set "Primary Asset Type" to "Items", set the asset base class to <span style="color:violet">**DA_CoreItem**</span>, then go into Directories and add all locations where you might store your items (This also searches sub folders).
+4. (Optional) If you are using the crafting system, you will also want to add another index and set "Primary Asset Type" to "CraftingRecipes", set the asset base class to <span style="color:violet">**DA_CoreCraftingRecipe**</span>, then go into Directories and add all locations where you might store your recipe's.
 
 ![](/pictures/AssetManagerAddAssetType.png)
 

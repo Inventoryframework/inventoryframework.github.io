@@ -11,11 +11,6 @@ tags:
 A: Of course! Containers have styles, and the List style already converts all items into 1x1.
 
 ---
-### Q: Is there a crafting system implemented?
-A: Right now, no. I am currently experimenting with a crafting system that might be abstract enough to fit into the plugin. It'll most likely get added around 2.4.
-At the end of the day, crafting systems just require item data and some form of a “recipe”. It should not be difficult to create your crafting system with the item data system this asset uses and the functions the inventory component has. Some people already have added a crafting system, so it is completely possible.
-
----
 ### Q: Will stats/attributes or ability systems of any kind be added?
 A: No. I believe most people should be using the Gameplay Ability System framework as it is becoming the industry standard or something similar (I personally suggest <a href="https://www.unrealengine.com/marketplace/en-US/product/gas-companion" target="_blank">**GAS Companion**</a> from the marketplace). A lot of people also already have a stat/attribute or ability system in place and I do not want to step on their toes.
 The [tag system](https://inventoryframework.github.io/workinginthesystem/tagsystem/) does allow you to create basic stats and attributes for items, but I generally recommend people use GAS or a more fleshed out system designed around that.
@@ -30,4 +25,4 @@ A: This plugin does not provide a fleshed-out interaction system for you, but an
 
 ---
 ### Q: Will I be adding X feature/system?
-A: Only if it’s a highly requested feature, only then will I either implement it into the base asset itself or make a youtube tutorial on how to implement it yourself. You can track what is being worked on and what will be worked on in the future by going to the Trello link at the top of the page.
+A: Only if it’s a highly requested feature, only then will I either implement it into the base asset itself or advise you how to make it yourself. You can track what is being worked on and what will be worked on in the future by going to the Trello link at the top of the page.
