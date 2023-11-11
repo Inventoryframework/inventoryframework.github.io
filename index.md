@@ -1,7 +1,7 @@
 # Inventory Framework Plugin
 
 ---
-#### Last update: 2nd November, 2023
+#### Last update: 11th November, 2023
 #### Latest version: 2.3
 
 ---
