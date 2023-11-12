@@ -19,8 +19,5 @@ links:
 - text: Trello
   link: https://trello.com/b/pE2DJRlb/inventory-framework-plugin
   target: blank
-- text: Survey
-  link: https://forms.gle/Fd91E7nKBttGvhUR6
-  target: blank
 footer:
   copyright: "&copy; Copyright {{ year }}. All rights reserved."
