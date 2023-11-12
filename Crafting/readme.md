@@ -40,7 +40,3 @@ If you are building on top of the example project, you'll want to remove the cra
 Then go into <span style="color:violet">**WBP_Inventory**</span> and remove all the crafting widgets and remove the crafting sub graph.
 2. Go into the plugin folder and into Content and delete the Crafting folder.
 3. Go into the plugin folder and into Source and delete the IFP_Crafting and IFP_Crafting_Editor folders.
-
----
-## Color Sheet:
-<span style="color:brown">**functions**</span> - <span style="color:slateblue">**Variable**</span> - <span style="color:green">**category**</span> - <span style="color:violet">**class**</span>
