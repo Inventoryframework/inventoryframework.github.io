@@ -6,12 +6,12 @@ REVISION NOTES: Paragraph explaining OT_Equipment might be worth explaining in h
 
 # Equipping and unequipping items
 
+[Deep dive video](https://youtu.be/Tb7FwW3ri6k)
+
 ---
 A big problem I try to solve with this system is that I did not want to assume anything about how your actors' meshes are set up, how your equipment setup looked like and I did not want to make a base player or actor blueprint.
 There are two main reasons behind this decision: 
 First is this allows you complete control over what items are attached to (for example if you have a horse and want to give it armor, but the component is only setup on the player) and secondly is that people might already have a player blueprint hierarchy setup and I did not want to mess with that and some people might not want to use my hierarchy setup.
-
-Your container's compatibility settings dictate what is allowed in them. If you only want helmets to go into container X, then your helmet items should use <span style="color:slateblue">**EquipmentSlot**</span> (Rename one of the options to Helmet) and your container should only allow Helmets. You can also of course rename one of the <span style="color:slateblue">**EquipmentType**</span> enum entries to “Head” and make your helmet item be of <span style="color:slateblue">**EquipmentType**</span> “Head” and then all items that might not be a helmet, but are a head item like glasses can go into that container.
 
 The logic that runs the equipping and unequipping logic is stored in a object and item driver called <span style="color:violet">**IO_Equipment**</span> and <span style="color:violet">**ID_Equipment**</span> (if you are unfamiliar with the [item driver system](https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/), I suggest getting familiar with it first) and they use a struct called <span style="color:slateblue">**EquipmentData**</span>, this struct attempts to solve most issues when it comes to having multiple skeletons, meshes or complex equipment logic, such as having a gun attached to a backpack which is attached to the player character and that gun has a sight attached to it or FPS shooter setups where you have a local arms skeleton and then a full body skeleton. This struct also attempts to keep the system away from hard coding any types of “main weapon” and “secondary weapon” or anything of the sort. I’ve found those types of setups  often become cumbersome when a designer wants to add or remove these types of things.
 
