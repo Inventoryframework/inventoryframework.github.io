@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.753303608116">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.755333915503">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Equipping and unequipping items</title>
     <meta name="title" content="Equipping and unequipping items">
-    <meta name="description" content="A big problem I try to solve with this system is that I did not want to assume anything about how your actors' meshes are set up, how your equipment...">
+    <meta name="description" content="Deep dive video">
 
     <!-- Canonical -->
     <link rel="canonical" href="/introduction/firststeps/equippingandunequippingitems/">
@@ -20,22 +20,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/introduction/firststeps/equippingandunequippingitems/">
     <meta property="og:title" content="Equipping and unequipping items">
-    <meta property="og:description" content="A big problem I try to solve with this system is that I did not want to assume anything about how your actors' meshes are set up, how your equipment...">
+    <meta property="og:description" content="Deep dive video">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/introduction/firststeps/equippingandunequippingitems/">
     <meta property="twitter:title" content="Equipping and unequipping items">
-    <meta property="twitter:description" content="A big problem I try to solve with this system is that I did not want to assume anything about how your actors' meshes are set up, how your equipment...">
+    <meta property="twitter:description" content="Deep dive video">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../../resources/css/retype.css?v=3.5.0.753303608116" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.5.0.755333915503" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.753303608116" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.755333915503" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.753303608116" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.755333915503" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -186,11 +186,11 @@
         <span>Equipping and unequipping items</span>
     </h1>
 </doc-anchor-target>
+<p><a href="https://youtu.be/Tb7FwW3ri6k">Deep dive video</a></p>
 <hr>
 <p>A big problem I try to solve with this system is that I did not want to assume anything about how your actors&#x27; meshes are set up, how your equipment setup looked like and I did not want to make a base player or actor blueprint.<br />
 There are two main reasons behind this decision:<br />
 First is this allows you complete control over what items are attached to (for example if you have a horse and want to give it armor, but the component is only setup on the player) and secondly is that people might already have a player blueprint hierarchy setup and I did not want to mess with that and some people might not want to use my hierarchy setup.</p>
-<p>Your container&#x27;s compatibility settings dictate what is allowed in them. If you only want helmets to go into container X, then your helmet items should use <span style="color:slateblue"><strong>EquipmentSlot</strong></span> (Rename one of the options to Helmet) and your container should only allow Helmets. You can also of course rename one of the <span style="color:slateblue"><strong>EquipmentType</strong></span> enum entries to “Head” and make your helmet item be of <span style="color:slateblue"><strong>EquipmentType</strong></span> “Head” and then all items that might not be a helmet, but are a head item like glasses can go into that container.</p>
 <p>The logic that runs the equipping and unequipping logic is stored in a object and item driver called <span style="color:violet"><strong>IO_Equipment</strong></span> and <span style="color:violet"><strong>ID_Equipment</strong></span> (if you are unfamiliar with the <a href="https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/">item driver system</a>, I suggest getting familiar with it first) and they use a struct called <span style="color:slateblue"><strong>EquipmentData</strong></span>, this struct attempts to solve most issues when it comes to having multiple skeletons, meshes or complex equipment logic, such as having a gun attached to a backpack which is attached to the player character and that gun has a sight attached to it or FPS shooter setups where you have a local arms skeleton and then a full body skeleton. This struct also attempts to keep the system away from hard coding any types of “main weapon” and “secondary weapon” or anything of the sort. I’ve found those types of setups  often become cumbersome when a designer wants to add or remove these types of things.</p>
 <p>Keeping the equipping system inside of a item driver provides a modular way for you to allow any item you want to be equippable, or trigger special animations when its added to an items container. It also allows you to easily implement your own system if you want without rewriting C++ code or affecting how the inventory system works at a fundamental level.</p>
 <p>During my research, I found an astonishing amount of different workflows and processes. It was very daunting to try and solve all of them in one go, and maybe my system isn’t perfect, but it tries to solve as many as possible at once, while still being flexible and adjustable.</p>
