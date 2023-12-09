@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.755333915503">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.755426951411">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.755333915503" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.755426951411" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.755333915503" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.755426951411" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.755333915503" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.755426951411" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -278,7 +278,7 @@ There is also another function called <span style="color:brown"><strong>ConvertF
 </doc-anchor-target>
 <p>An important aspect to remember is that whenever you have a item that has a spawned actor to represent it, such as a gun item inside the players equipment container, the inventory component on the spawned item should NOT be used.</p>
 <p>This will mostly happen with the equipment system when using Blueprint items. The reason for this is because spawned blueprints can be deleted and restored over and over, so they are unreliable to store any important data. It would also mean that the blueprint would always have to stay alive if you wanted to explore the items containers while the item isn&#x27;t spawned (In this example, the gun item hasn&#x27;t been equipped). An items containers always live on the component that own the item, (In this example, the gun&#x27;s containers live on the character that is holding the gun).</p>
-<p>To retrieve the items true data, you need to retrieve the UniqueID of the owning item in some way. Generally this means storing the items UniqueID inside your spawned blueprint. <span style="color:violet"><strong>BP_SM_ItemPhysical</strong></span> does this through an interface event called <span style="color:brown"><strong>PassUniqueID</strong></span> and stores the data inside <span style="color:slateblue"><strong>RootItemData</strong></span>.</p>
+<p>To retrieve the items true data, you need to retrieve the UniqueID of the owning item in some way. Generally this means storing the items UniqueID inside your spawned blueprint. <span style="color:violet"><strong>BP_ItemActor</strong></span> does this through an interface event called <span style="color:brown"><strong>PassUniqueID</strong></span> and stores the data inside <span style="color:slateblue"><strong>RootItemData</strong></span>.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
