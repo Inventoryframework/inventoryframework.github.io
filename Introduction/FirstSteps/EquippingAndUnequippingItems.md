@@ -46,6 +46,14 @@ There is always a chance a packet will be dropped, which is again why you should
 ===
 
 ---
+## Events
+There are two events that can activate when equipping and unequipping an item occurs.
+1. The first is the component's <span style="color:brown">**ItemEquipped**</span> and <span style="color:brown">**ItemUnequipped**</span> delegate. This is only called when an item is added or removed from a slot. This is only called on the actor that the inventory component the slot belongs to, so equipping a weapon as a player will have the delegate call on the player, not the weapon.
+2. Two interface functions also called <span style="color:brown">**ItemEquipped**</span> and <span style="color:brown">**ItemUnequipped**</span> from <span style="color:violet">**I_Inventory**</span> are called whenever the equipment system spawns or updates the status of an item. For example, equipping a gun so it spawns, then holstering it and unholstering it.
+    - If your settings have the item set as a blueprint, these events are called on the spawned blueprint. For example, equipping a weapon as the player will have the interface functions called on the weapon, not the player. The inverse of point 1.
+    - If your settings have the item set as a static mesh or skeletal mesh, the interface functions are called on the player.
+
+---
 # Notes on general equipment system design
 - Equipping and unequipping items can get messy, most importantly it can get messy when players start spamming the system with animations, either by quickly equipping and unequipping an item really quickly or equipping multiple items, all trying to activate montages which will interrupt each other.
 In the demo, items do not play an animation when equipped or unequipped. But they do play an animation when you holster or unholster an item. If you're in multiplayer, the item will also be added to the network queue to prevent clients from spamming the server with RPC's.

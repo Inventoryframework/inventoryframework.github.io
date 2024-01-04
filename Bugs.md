@@ -14,10 +14,7 @@ This list is only relevant to the latest version of the plugin, old version of t
 
 - While inside a editor utility widget, the gameplay tags slate widget is not updating properly. The DetailsView widget is riddled with a few bugs as of at least 5.2 when it comes to custom slate struct widgets. The best you can do right now is open the gameplay tag to see what values are inside of it and adding/removing something to update it, then it'll show the values inside the tag correctly.
 
-- In 5.2, saving an icon has a high chance of crashing the editor. This is an engine bug, it seems to happen at random. If anyone knows a fix, let me know.
-
-- The UE "Clamp (Float)" node's behavior has changed between 5.2 and 5.3, causing highlight widget when dragging an item to be able to go outside the boundaries of the container.
-This is fixed in the next update.
+- In 5.2, saving an icon has a chance of crashing the editor. This is happening because Epic modified how this is handled into an async task, but left no delegate for me to bind. For now, a delay is being used instead of a delegate, but on slower computers, the async task might not be finished by the time the delay finishes, causing a crash. If you are crashing, go into <span style="color:violet">**WBP_InspectDebug**</span> and click on B_SaveIcon and find its OnPressed event. You'll find a delay and you'll want to increase it.
 
 - The inventory component might be falsely reporting it might be "corrupted" or a custom property list is not initialized correctly. This is happening because when a component is declared in C++ and then the ComponentClass is set to a blueprint, it starts loading everything connected to that blueprint. Some assets seem to be breaking something inside of UE's loading process and causing issues. I haven't noticed any patterns, but most of the issues seem to occur when a player character is referenced.
 Because of this, you really have to mind your hard references, or go through the process of removing the C++ version, which I do not recommend. You should be minding your hard references, especially when it comes to the inventory component.
