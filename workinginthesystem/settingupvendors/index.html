@@ -9,24 +9,24 @@
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>W_Highlight</title>
-    <meta name="title" content="W_Highlight">
-    <meta name="description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Widgets\\W_Highlight.h File Location:...">
+    <title>Setting up vendors</title>
+    <meta name="title" content="Setting up vendors">
+    <meta name="description" content="To have a inventory component be set to vendor, you will want to go into the component settings and set ">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/classes-and-settings/w_highlight/">
+    <link rel="canonical" href="/workinginthesystem/settingupvendors/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/classes-and-settings/w_highlight/">
-    <meta property="og:title" content="W_Highlight">
-    <meta property="og:description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Widgets\\W_Highlight.h File Location:...">
+    <meta property="og:url" content="/workinginthesystem/settingupvendors/">
+    <meta property="og:title" content="Setting up vendors">
+    <meta property="og:description" content="To have a inventory component be set to vendor, you will want to go into the component settings and set ">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/classes-and-settings/w_highlight/">
-    <meta property="twitter:title" content="W_Highlight">
-    <meta property="twitter:description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Widgets\\W_Highlight.h File Location:...">
+    <meta property="twitter:url" content="/workinginthesystem/settingupvendors/">
+    <meta property="twitter:title" content="Setting up vendors">
+    <meta property="twitter:description" content="To have a inventory component be set to vendor, you will want to go into the component settings and set ">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -180,25 +180,26 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="w_highlight" class="break-words">
+<doc-anchor-target id="setting-up-vendors" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#w_highlight">#</doc-anchor-trigger>
-        <span>W_Highlight</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setting-up-vendors">#</doc-anchor-trigger>
+        <span>Setting up vendors</span>
     </h1>
 </doc-anchor-target>
-<doc-panels>
-   <doc-panel id="widget-highlight" collapsed>
-       <template #title>Widget Highlight</template>
-<p>File Location: Source\InventoryFrameworkPlugin\Public\Core\Widgets\W_Highlight.h<br />
-File Location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_Highlight.cpp</p>
-   </doc-panel>
-   <doc-panel id="blueprint-child-wbp-highlight" collapsed>
-       <template #title>Blueprint Child: WBP_Highlight</template>
-<p>File Location: Content\Core\Widgets\DragAndSplit\WBP_Highlight.uasset</p>
-   </doc-panel>
-</doc-panels>
 <hr>
-<p>This widget is the primary method used for handling the highlight for moving items. An alternative method is used inside the InventoryHelper tool.</p>
+<p>To have a inventory component be set to vendor, you will want to go into the component settings and set <span style="color:slateblue"><strong>InventoryType</strong></span> to <span style="color:slateblue"><strong>Vendor</strong></span>.</p>
+<p>Right now, the system only considers items that are children of <span style="color:violet"><strong>IDA_Currency.h</strong></span> as viable currencies that can be exchanged for a vendor item.<br />
+Prices are calculated inside <span style="color:violet"><strong>FL_InventoryFramework.h</strong></span> -&gt; <span style="color:brown"><strong>GetItemPrice</strong></span>, and the function that evaluates if a player can afford an item is <span style="color:violet"><strong>AC_Inventory.h</strong></span> -&gt; <span style="color:brown"><strong>CanAffordItem</strong></span>. Remember, you can override an items price inside their override settings.</p>
+<p>The system by default has an array of currencies which players can use to buy items, but it does not by default provide a way of allowing the player to select which currency to use to buy or sell an item. It simply uses the first available currency it can find. It&#x27;s up to you to implement that sort of logic.</p>
+<p>Most games tend to have vendors keep track of how much money the vendor has, then when you sell an item to the vendor they spend their own currency and grant it to the player. There are three vendors in the demo, each showing a different way of handling the vendor logic.</p>
+<p>If a logic error occurs, for example trying to give the player currency, but they do not have enough space in their inventory, you can call a delegate called <span style="color:brown"><strong>CurrencyAdditionFailed</strong></span>. This is where you might want to implement some sort of mail system or queue system, as it feels pretty bad for players when they sell an item and they don&#x27;t get their currency for it. The demo does not include any system for handling this problem.</p>
+<p>There are many ways of handling vendor behaviour. Nearly every game handles it slightly differently, which is why the framework does not try to handle any of this logic for you at a C++ level.</p>
+<p>Instead, there are three points in the system where you can inject your own custom logic and rules for handling vendor interactions.</p>
+<ol>
+<li>The function <span style="color:violet"><strong>AC_Inventory.h</strong></span> -&gt; <span style="color:brown"><strong>CanAffordItem</strong></span> will call a interface function <span style="color:violet"><strong>I_Inventory.h</strong></span> -&gt; <span style="color:brown"><strong>MeetsCurrencyCheck</strong></span>, this simply asks the owner  of the component what they value the item as.</li>
+<li>You can make a child of <span style="color:violet"><strong>BP_AC_Inventory</strong></span> and override the <span style="color:brown"><strong>CanAffordItem</strong></span> function to implement your own custom logic.</li>
+<li>The buyer and seller will receive a delegate on both the server and client either after or before the transaction, the notify is handled inside of <span style="color:violet"><strong>WBP_Tile</strong></span> -&gt; <span style="color:brown"><strong>PerformDrop</strong></span> -&gt; MoveItem. The delegate is where you would perform any currency exchange, and since the vendor belongs to the server, it&#x27;s allowed to call <span style="color:brown"><strong>TryAddNewItem</strong></span> if you want to give either the vendor or player currency after the transaction.</li>
+</ol>
 
                                 
                                 <!-- Required only on API pages -->
@@ -208,20 +209,20 @@ File Location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_Highlight.
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/w_drag/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/wbp_split/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">W_​Drag</span>
+                                                <span class="block mt-1">WBP_​Split</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/w_inventoryitem/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/addingnewitemsduringruntime/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">W_​Inventory​Item</span>
+                                                <span class="block mt-1">Adding new items during runtime</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -265,6 +266,6 @@ File Location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_Highlight.
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "W_Highlight", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Setting up vendors", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
