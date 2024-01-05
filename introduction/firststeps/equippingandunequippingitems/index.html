@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.757709066369">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.757760627973">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../../resources/css/retype.css?v=3.5.0.757709066369" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.5.0.757760627973" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.757709066369" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.757760627973" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.757709066369" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.757760627973" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -272,6 +272,14 @@ When the preview system reconstructs the actor, it finds out what component it w
 </doc-anchor-target>
 <p>A separate actor component called <span style="color:violet"><strong>BP_AC_EquipmentManager</strong></span> is created and attached to the owning actor to handle the creation of items. This is handled this way because of replication. Before the system was replicated, this component didn&#x27;t even exist and the system worked just like it does now.</p>
 <p>This component is responsible for ensuring items are replicated in the correct order and attaching things in the correct order, in case an item got replicated before the item it is attached to is replicated.</p>
+<hr>
+<doc-anchor-target id="common-issues">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#common-issues">#</doc-anchor-trigger>
+        <span>Common issues</span>
+    </h1>
+</doc-anchor-target>
+<p>Physics is typically the main culprit for the equipment system breaking. If an item or components have physics on by default, they will instantly detach the moment they are initialized. Breaking the entire equipment system. Physics will also cause issues with generated item icons, as that system relies on the attachment hierarchy being correct and detaching things due to physics will break it.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
