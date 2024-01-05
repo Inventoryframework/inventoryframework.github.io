@@ -73,3 +73,7 @@ But to simplify debugging, only a underscore and a random number is added to the
 A separate actor component called <span style="color:violet">**BP_AC_EquipmentManager**</span> is created and attached to the owning actor to handle the creation of items. This is handled this way because of replication. Before the system was replicated, this component didn't even exist and the system worked just like it does now.
 
 This component is responsible for ensuring items are replicated in the correct order and attaching things in the correct order, in case an item got replicated before the item it is attached to is replicated.
+
+---
+# Common issues
+Physics is typically the main culprit for the equipment system breaking. If an item or components have physics on by default, they will instantly detach the moment they are initialized. Breaking the entire equipment system. Physics will also cause issues with generated item icons, as that system relies on the attachment hierarchy being correct and detaching things due to physics will break it.
