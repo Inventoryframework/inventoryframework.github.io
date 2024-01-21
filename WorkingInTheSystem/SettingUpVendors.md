@@ -1,7 +1,3 @@
----
-order: 20
----
-
 # Setting up vendors
 
 ---
