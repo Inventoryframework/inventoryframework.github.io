@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759159972922">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.759160583288">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.759159972922" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.759160583288" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.759159972922" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.759160583288" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.759159972922" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.759160583288" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -200,6 +200,15 @@ Prices are calculated inside <span style="color:violet"><strong>FL_InventoryFram
 <li>You can make a child of <span style="color:violet"><strong>BP_AC_Inventory</strong></span> and override the <span style="color:brown"><strong>CanAffordItem</strong></span> function to implement your own custom logic.</li>
 <li>The buyer and seller will receive a delegate on both the server and client either after or before the transaction, the notify is handled inside of <span style="color:violet"><strong>WBP_Tile</strong></span> -&gt; <span style="color:brown"><strong>PerformDrop</strong></span> -&gt; MoveItem. The delegate is where you would perform any currency exchange, and since the vendor belongs to the server, it&#x27;s allowed to call <span style="color:brown"><strong>TryAddNewItem</strong></span> if you want to give either the vendor or player currency after the transaction.</li>
 </ol>
+<doc-anchor-target id="using-the-crafting-system-as-a-vendor">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#using-the-crafting-system-as-a-vendor">#</doc-anchor-trigger>
+        <span>Using the crafting system as a vendor</span>
+    </h2>
+</doc-anchor-target>
+<p>A fascinating trick some people have done is using the crafting system as a &quot;vendor&quot;.<br />
+Technically, this is more performant and could potentially be easier to manage. But the vendor will not have a grid of any sorts and will require you to setup most of the logic.</p>
+<p>This simply revolves around creating the illusion to the player that they are &quot;buying&quot; items, where in reality they are crafting them and using currency as the crafting ingredient.</p>
 
                                 
                                 <!-- Required only on API pages -->
