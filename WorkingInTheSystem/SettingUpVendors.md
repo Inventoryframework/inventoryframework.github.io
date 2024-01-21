@@ -18,3 +18,9 @@ Instead, there are three points in the system where you can inject your own cust
 1. The function <span style="color:violet">**AC_Inventory.h**</span> -> <span style="color:brown">**CanAffordItem**</span> will call a interface function <span style="color:violet">**I_Inventory.h**</span> -> <span style="color:brown">**MeetsCurrencyCheck**</span>, this simply asks the owner  of the component what they value the item as.
 2. You can make a child of <span style="color:violet">**BP_AC_Inventory**</span> and override the <span style="color:brown">**CanAffordItem**</span> function to implement your own custom logic.
 3. The buyer and seller will receive a delegate on both the server and client either after or before the transaction, the notify is handled inside of <span style="color:violet">**WBP_Tile**</span> -> <span style="color:brown">**PerformDrop**</span> -> MoveItem. The delegate is where you would perform any currency exchange, and since the vendor belongs to the server, it's allowed to call <span style="color:brown">**TryAddNewItem**</span> if you want to give either the vendor or player currency after the transaction.
+
+## Using the crafting system as a vendor
+A fascinating trick some people have done is using the crafting system as a "vendor".
+Technically, this is more performant and could potentially be easier to manage. But the vendor will not have a grid of any sorts and will require you to setup most of the logic.
+
+This simply revolves around creating the illusion to the player that they are "buying" items, where in reality they are crafting them and using currency as the crafting ingredient.
