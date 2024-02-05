@@ -28,3 +28,8 @@ I sometimes use this plugin to quickly visualize data from a bunch of items whil
 ---
 ## <a href="https://github.com/HoussineMehnik/UE4-EditorScriptingToolsPlugin" target="_blank">**EditorScriptingTools**</a>
 This plugin lets you customize the editor without touching C++. This way you can add UMG widget tools into the item data asset all inside blueprints and without touching the plugin.
+
+---
+## <a href="https://github.com/Variann/ModularityPractice" target="_blank">**My other (free) plugins**</a>
+I make other plugins to solve problems when I'm making games. These are MUCH smaller and simpler plugins compared to IFP.
+Some of them are unfinished, some of them might have bugs, but due to their simplicity and small size, the chances of bugs are low and fixing them quickly is pretty fast.
