@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.760430897713">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.760877689387">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.760430897713" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.760877689387" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.760430897713" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.760877689387" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.760430897713" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.760877689387" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -203,6 +203,15 @@ File Location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_Drag.cpp</
 <p>Both <span style="color:violet"><strong>W_Drag</strong></span> and <span style="color:violet"><strong>W_Highlight</strong></span> are updated inside of <span style="color:violet"><strong>WBP_Tile</strong></span> -&gt;  <span style="color:brown"><strong>PerformDrop</strong></span> and <span style="color:violet"><strong>BP_AC_Inventory</strong></span> -&gt; <span style="color:brown"><strong>UpdateHighlight</strong></span></p>
 <p>The chain of events begin at <span style="color:violet"><strong>WBP_InventoryItem</strong></span> -&gt;  <span style="color:brown"><strong>OnDragDetected</strong></span>. An important note to consider is that Epic, in their ever-ending glorious top tier coding, have a built in interpolation for the drag and drop drag visual that you CAN NOT interact with without modifying the engine.<br />
 But you have to go through a lot of trouble to replace the built-in drag and drop system for Unreal. So I leave the drag visual for the drag/drop operation as empty and allow <span style="color:violet"><strong>WBP_Drag</strong></span> to drive the visuals and most of the logic. The Drag/Drop operation is primarily just used to trigger the &quot;On Drop&quot; events.</p>
+<doc-anchor-target id="rotation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#rotation">#</doc-anchor-trigger>
+        <span>Rotation</span>
+    </h2>
+</doc-anchor-target>
+<p>This widget is the primary handler of certain settings when trying to move an item, such as the rotation.<br />
+You can see an example on EventTick.<br />
+If you wish to permanently change the system to no longer support 180 and 270 rotation, there is a code comment near the end of EventTick explaining how to enforce only 0 and 90 rotation.</p>
 
                                 
                                 <!-- Required only on API pages -->

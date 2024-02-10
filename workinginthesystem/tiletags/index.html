@@ -9,24 +9,24 @@
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>WBP_Drop</title>
-    <meta name="title" content="WBP_Drop">
-    <meta name="description" content="File Location: Content\\Core\\Widgets\\DragAndSplit\\WBP_Drop.uasset">
+    <title>Tile Tags</title>
+    <meta name="title" content="Tile Tags">
+    <meta name="description" content="The tile tag system is a simple way of adding tags to specific tiles inside of a container. In the base plugin, this system doesn't do much of...">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/classes-and-settings/wbp_drop/">
+    <link rel="canonical" href="/workinginthesystem/tiletags/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/classes-and-settings/wbp_drop/">
-    <meta property="og:title" content="WBP_Drop">
-    <meta property="og:description" content="File Location: Content\\Core\\Widgets\\DragAndSplit\\WBP_Drop.uasset">
+    <meta property="og:url" content="/workinginthesystem/tiletags/">
+    <meta property="og:title" content="Tile Tags">
+    <meta property="og:description" content="The tile tag system is a simple way of adding tags to specific tiles inside of a container. In the base plugin, this system doesn't do much of...">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/classes-and-settings/wbp_drop/">
-    <meta property="twitter:title" content="WBP_Drop">
-    <meta property="twitter:description" content="File Location: Content\\Core\\Widgets\\DragAndSplit\\WBP_Drop.uasset">
+    <meta property="twitter:url" content="/workinginthesystem/tiletags/">
+    <meta property="twitter:title" content="Tile Tags">
+    <meta property="twitter:description" content="The tile tag system is a simple way of adding tags to specific tiles inside of a container. In the base plugin, this system doesn't do much of...">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -180,23 +180,42 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="wbp_drop" class="break-words">
+<doc-anchor-target id="tile-tags" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#wbp_drop">#</doc-anchor-trigger>
-        <span>WBP_Drop</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tile-tags">#</doc-anchor-trigger>
+        <span>Tile Tags</span>
     </h1>
 </doc-anchor-target>
-<doc-panel id="widget-blueprint-drop" collapsed>
-    <template #title>Widget Blueprint Drop</template>
-<p>File Location: Content\Core\Widgets\DragAndSplit\WBP_Drop.uasset</p>
-</doc-panel>
-<hr>
-<p>A simple widget that handles dropping an item. There’s nothing special about this, the context menu widget also has a drop function.</p>
-<p>The widget simply sets the drop operation enum to DropItem</p>
-<iframe src="https://blueprintue.com/render/csuvbevb/" scrolling="no" allowfullscreen width="100%" height="700"></iframe>
-<hr>
-<p>This causes DropItem function to get called by the component, which could look something like this</p>
-<iframe src="https://blueprintue.com/render/aozkp4b3/" scrolling="no" allowfullscreen width="100%" height="700"></iframe>
+<p>The tile tag system is a simple way of adding tags to specific tiles inside of a container.<br />
+In the base plugin, this system doesn&#x27;t do much of anything, only being used to hide specific tiles to create custom shaped containers.</p>
+<p>Tags can be added and removed with the <span style="color:brown"><strong>AddTagsToTile</strong></span> and <span style="color:brown"><strong>RemoveTagsFromTile</strong></span> during runtime or edited in the details panel while in the editor.</p>
+<p>Adding and removing tags will call two delegates:</p>
+<ol>
+<li><span style="color:violet"><strong>AC_Inventory</strong></span> -&gt; TileTagsAdded</li>
+<li><span style="color:violet"><strong>AC_Inventory</strong></span> -&gt; TileTagsRemoved</li>
+</ol>
+<p>Binding to these two delegates will let your code respond to any tag updates.<br />
+An example can be found in <span style="color:violet"><strong>WBP_DemoTile</strong></span> -&gt; <span style="color:brown"><strong>Construct</strong></span></p>
+<doc-anchor-target id="networking">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#networking">#</doc-anchor-trigger>
+        <span>Networking</span>
+    </h2>
+</doc-anchor-target>
+<p>Even though the <code v-pre>TileTag</code> system is automatically replicated and can be modified during runtime, it is not recommended to overuse it for multiplayer games. This system can start eating up a lot of bandwidth very quickly, but this of course depends on the scope of your game.</p>
+<doc-anchor-target id="use-case">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#use-case">#</doc-anchor-trigger>
+        <span>Use case</span>
+    </h2>
+</doc-anchor-target>
+<p>Like mentioned above, this is primarily used to create custom shaped containers by hiding specific tiles. But this has more use cases that some people have used it for:</p>
+<ol>
+<li>Locking tiles and unlocking them based on some in game reward or event.</li>
+<li>Empowering items that are in &quot;empowered&quot; tiles.</li>
+<li>Items durability slowly improving while in a specific tile.</li>
+</ol>
+<p>Some have even used the size of an item as a trade-off. Larger items would take more space, leaving the player with less space to carry other items, but the larger items could then occupy more of these beneficial tiles and gain these positive perks.</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -206,20 +225,20 @@
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/wbp_contextmenu/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/tagsystem/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">WBP_​Context​Menu</span>
+                                                <span class="block mt-1">Tag system</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/wbp_split/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../crafting/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">WBP_​Split</span>
+                                                <span class="block mt-1">Crafting</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -263,6 +282,6 @@
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "WBP_Drop", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Tile Tags", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>

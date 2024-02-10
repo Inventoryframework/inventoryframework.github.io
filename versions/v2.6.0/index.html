@@ -9,24 +9,24 @@
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>WBP_Drop</title>
-    <meta name="title" content="WBP_Drop">
-    <meta name="description" content="File Location: Content\\Core\\Widgets\\DragAndSplit\\WBP_Drop.uasset">
+    <title>2.6.0</title>
+    <meta name="title" content="2.6.0">
+    <meta name="description" content="Engine support: 5.3">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/classes-and-settings/wbp_drop/">
+    <link rel="canonical" href="/versions/v2.6.0/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/classes-and-settings/wbp_drop/">
-    <meta property="og:title" content="WBP_Drop">
-    <meta property="og:description" content="File Location: Content\\Core\\Widgets\\DragAndSplit\\WBP_Drop.uasset">
+    <meta property="og:url" content="/versions/v2.6.0/">
+    <meta property="og:title" content="2.6.0">
+    <meta property="og:description" content="Engine support: 5.3">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/classes-and-settings/wbp_drop/">
-    <meta property="twitter:title" content="WBP_Drop">
-    <meta property="twitter:description" content="File Location: Content\\Core\\Widgets\\DragAndSplit\\WBP_Drop.uasset">
+    <meta property="twitter:url" content="/versions/v2.6.0/">
+    <meta property="twitter:title" content="2.6.0">
+    <meta property="twitter:description" content="Engine support: 5.3">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -180,23 +180,92 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="wbp_drop" class="break-words">
+<doc-anchor-target id="260" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#wbp_drop">#</doc-anchor-trigger>
-        <span>WBP_Drop</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#260">#</doc-anchor-trigger>
+        <span>2.6.0</span>
     </h1>
 </doc-anchor-target>
-<doc-panel id="widget-blueprint-drop" collapsed>
-    <template #title>Widget Blueprint Drop</template>
-<p>File Location: Content\Core\Widgets\DragAndSplit\WBP_Drop.uasset</p>
-</doc-panel>
+<p>Engine support: 5.3</p>
+<p>This update focuses on code quality, deprecating unused properties and general performance.</p>
 <hr>
-<p>A simple widget that handles dropping an item. There’s nothing special about this, the context menu widget also has a drop function.</p>
-<p>The widget simply sets the drop operation enum to DropItem</p>
-<iframe src="https://blueprintue.com/render/csuvbevb/" scrolling="no" allowfullscreen width="100%" height="700"></iframe>
+<doc-anchor-target id="inventory">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#inventory">#</doc-anchor-trigger>
+        <span>Inventory</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>Data-Only container style has been added. This container style is highly optimized by not handling collision, dimensions, capacity or anything of the sort. Allowing you to handle the styling of containers purely through widgets, or create a optimized space for hosting item data that the player shouldn&#x27;t see, such as a hidden wallet.
+<ul>
+<li>Example widget has been added (<span style="color:violet"><strong>WBP_DemoDataContainer</strong></span> and <span style="color:violet"><strong>WBP_DemoTileDataContainer</strong></span>)</li>
+</ul>
+</li>
+<li>Added more helper functions:
+<ul>
+<li><span style="color:brown"><strong>IsSpacialContainer</strong></span></li>
+<li><span style="color:brown"><strong>IsSpacialStyle</strong></span></li>
+<li><span style="color:brown"><strong>DoesContainerSupportTileMap</strong></span></li>
+</ul>
+</li>
+<li>FS_InventoryItem -&gt; <span style="color:slateblue"><strong>Item</strong></span> has been renamed to FS_InventoryItem -&gt; <span style="color:slateblue"><strong>ItemAsset</strong></span></li>
+<li>Added <span style="color:brown"><strong>GetLocalInventoryComponent</strong></span> function to help those who want the inventory component to live on something other than the player pawn.</li>
+<li><span style="color:slateblue"><strong>GeneratedItemIcons</strong></span> has been moved to the C++ component.</li>
+<li><span style="color:slateblue"><strong>OldItemData</strong></span> has been removed from ItemEquipped delegate.</li>
+<li>Added &quot;Type&quot; option for sorting items.</li>
+<li>Containers <span style="color:brown"><strong>TileTags</strong></span> can now be modified during runtime and replicate. <a href="https://inventoryframework.github.io/workinginthesystem/tiletags/" target="_blank"><strong>Documentation</strong></a> added.</li>
+</ul>
+<doc-anchor-target id="widgets">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#widgets">#</doc-anchor-trigger>
+        <span>Widgets</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li><span style="color:violet"><strong>W_Tile</strong></span> -&gt; <span style="color:slateblue"><strong>ParentTile</strong></span> has been removed.</li>
+<li><span style="color:violet"><strong>W_Tile</strong></span> -&gt; <span style="color:slateblue"><strong>OwningItem</strong></span> has been removed.
+<ul>
+<li>These two were forcing very heavy math and ForLoops, just to cache tiles that seemingly no one was using. As the codebase has improved, there are better ways of retrieving these values without caching them.</li>
+</ul>
+</li>
+<li>Deprecated <span style="color:violet"><strong>W_Container</strong></span> -&gt; <span style="color:slateblue"><strong>Items</strong></span>
+<ul>
+<li>Added <span style="color:violet"><strong>GetAllItemWidgets</strong></span> to replace deprecated variable.</li>
+</ul>
+</li>
+</ul>
+<doc-anchor-target id="crafting">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#crafting">#</doc-anchor-trigger>
+        <span>Crafting</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>Added <span style="color:brown"><strong>GetRecipesRequiringItem</strong></span> async function.</li>
+<li>Added <span style="color:brown"><strong>GetRecipesForItem</strong></span> async function.</li>
+</ul>
+<doc-anchor-target id="bugs">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bugs">#</doc-anchor-trigger>
+        <span>Bugs</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li><span style="color:slateblue"><strong>UniqueID</strong></span> was not being assigned in some scenarios in <span style="color:brown"><strong>MoveItem</strong></span>.</li>
+<li><span style="color:slateblue"><strong>InteractingWith</strong></span> was visible in the details panel for the inventory component.</li>
+<li>The item count while inside the <span style="color:violet"><strong>InventoryHelper</strong></span> would not display correctly when both values were set to the same amount.</li>
+<li>the cpp file for <span style="color:violet"><strong>A_ItemActor</strong></span> was not named correctly.</li>
+<li>The InventoryHelper would treat the highlight in list containers as if it was a grid container, making moving items around difficult.</li>
+<li>Items moved from a equipment container to a grid container would not have collision.</li>
+</ul>
 <hr>
-<p>This causes DropItem function to get called by the component, which could look something like this</p>
-<iframe src="https://blueprintue.com/render/aozkp4b3/" scrolling="no" allowfullscreen width="100%" height="700"></iframe>
+<doc-anchor-target id="color-sheet">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#color-sheet">#</doc-anchor-trigger>
+        <span>Color Sheet:</span>
+    </h2>
+</doc-anchor-target>
+<p><span style="color:brown"><strong>functions</strong></span> - <span style="color:slateblue"><strong>variable</strong></span> - <span style="color:green"><strong>category</strong></span> - <span style="color:violet"><strong>class</strong></span></p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -206,20 +275,20 @@
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/wbp_contextmenu/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../versions/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">WBP_​Context​Menu</span>
+                                                <span class="block mt-1">Versions</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/wbp_split/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../versions/v2.5.0/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">WBP_​Split</span>
+                                                <span class="block mt-1">2.​5.​1</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -263,6 +332,6 @@
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "WBP_Drop", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "2.6.0", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
