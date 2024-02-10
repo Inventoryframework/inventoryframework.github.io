@@ -1,10 +1,3 @@
----
-<span style="color:brown">**functions**</span>
-<span style="color:slateblue">**Variable**</span>
-<span style="color:green">**category**</span>
-<span style="color:violet">**class**</span>
----
-
 # Adding new items during runtime
 
 ---

@@ -31,4 +31,4 @@ You can look at the FAQ for more info.
 
 ---
 ## Color Sheet:
-<span style="color:brown">**functions**</span> - <span style="color:slateblue">**Variable**</span> - <span style="color:green">**category**</span> - <span style="color:violet">**class**</span>
+<span style="color:brown">**functions**</span> - <span style="color:slateblue">**variable**</span> - <span style="color:green">**category**</span> - <span style="color:violet">**class**</span>

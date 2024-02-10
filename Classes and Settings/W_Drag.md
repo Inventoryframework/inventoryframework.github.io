@@ -17,3 +17,8 @@ Both <span style="color:violet">**W_Drag**</span> and <span style="color:violet"
 
 The chain of events begin at <span style="color:violet">**WBP_InventoryItem**</span> ->  <span style="color:brown">**OnDragDetected**</span>. An important note to consider is that Epic, in their ever-ending glorious top tier coding, have a built in interpolation for the drag and drop drag visual that you CAN NOT interact with without modifying the engine.
 But you have to go through a lot of trouble to replace the built-in drag and drop system for Unreal. So I leave the drag visual for the drag/drop operation as empty and allow <span style="color:violet">**WBP_Drag**</span> to drive the visuals and most of the logic. The Drag/Drop operation is primarily just used to trigger the "On Drop" events.
+
+## Rotation
+This widget is the primary handler of certain settings when trying to move an item, such as the rotation.
+You can see an example on EventTick.
+If you wish to permanently change the system to no longer support 180 and 270 rotation, there is a code comment near the end of EventTick explaining how to enforce only 0 and 90 rotation.
