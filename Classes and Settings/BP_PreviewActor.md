@@ -59,6 +59,10 @@ You can limit it by enabling <span style="color:slateblue">**CaptureEveryFrame**
 
 I have these disabled by default, so if your actor isn’t animating, you need to enable CaptureEveryFrame, or if you're duplicating an item, you can go into its data asset and disable <span style="color:slateblue">**UseStaticCapture**</span>.
 
+Any actor being fed into the preview actor should avoid skeletal meshes as much as possible, as they are approximately 50 TIMES more expensive than most other components to clone.
+
+![](/pictures/Profiler_CloneSkeletalMesh.png)
+
 ---
 # Common issues
 Physics is typically the main culprit for the preview system breaking. If an item or components have physics on by default, they will instantly detach the moment they are initialized. Breaking the entire preview system. Physics will also cause issues with the equipment system, as that system relies on the attachment hierarchy being correct and detaching things due to physics will break it.
