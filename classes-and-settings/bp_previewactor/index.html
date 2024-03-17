@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.761450523270">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.764008589333">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -33,11 +33,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.761450523270" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.764008589333" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.761450523270" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.764008589333" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.761450523270" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.764008589333" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -253,6 +253,12 @@ Ideally, all your meshes should have this socket that you want to use this actor
 Do keep in mind that live captures can get very expensive, very quickly, since they are capturing a new image every frame.</p>
 <p>You can limit it by enabling <span style="color:slateblue"><strong>CaptureEveryFrame</strong></span> and limiting the <span style="color:slateblue"><strong>TickInterval</strong></span> inside of <span style="color:violet"><strong>SceneCaptureComponent2D</strong></span>.</p>
 <p>I have these disabled by default, so if your actor isn’t animating, you need to enable CaptureEveryFrame, or if you&#x27;re duplicating an item, you can go into its data asset and disable <span style="color:slateblue"><strong>UseStaticCapture</strong></span>.</p>
+<p>Any actor being fed into the preview actor should avoid skeletal meshes as much as possible, as they are approximately 50 TIMES more expensive than most other components to clone.</p>
+<p><figure class="content-center">
+    <img src="../../pictures/profiler_cloneskeletalmesh.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 <hr>
 <doc-anchor-target id="common-issues">
     <h1>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.761450523270">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.764008589333">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -21,21 +21,23 @@
     <meta property="og:url" content="/introduction/firststeps/equippingandunequippingitems/">
     <meta property="og:title" content="Equipping and unequipping items">
     <meta property="og:description" content="Deep dive video">
+    <meta property="og:image" content="/pictures/profiler_blueprintequipment.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/introduction/firststeps/equippingandunequippingitems/">
     <meta property="twitter:title" content="Equipping and unequipping items">
     <meta property="twitter:description" content="Deep dive video">
+    <meta property="twitter:image" content="/pictures/profiler_blueprintequipment.png">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../../resources/css/retype.css?v=3.5.0.761450523270" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.5.0.764008589333" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.761450523270" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.764008589333" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.761450523270" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.764008589333" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -215,7 +217,21 @@ This driver attempts to copy the system that is used in GAS with its <span style
 <li>Skeletal mesh</li>
 <li>Static mesh</li>
 </ol>
-<p>Blueprint&#x27;s are obviously the most expensive, but are the most customizable. I recommend staying away from using Blueprint&#x27;s as your item representation whenever possible. For multiplayer, meshes are encouraged even more as they are very cheap to replicate.</p>
+<p>Blueprint&#x27;s are about 11 times more expensive to spawn than meshes, but are the most customizable. I recommend staying away from using Blueprint&#x27;s as your item representation whenever possible. For multiplayer, meshes are encouraged even more as they are very cheap to replicate.</p>
+<doc-panel id="profiler" collapsed>
+    <template #title>Profiler</template>
+<p><figure class="content-center">
+    <img src="../../../pictures/profiler_blueprintequipment.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p><figure class="content-center">
+    <img src="../../../pictures/profiler_staticmeshequipment.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Blueprints took 1.5ms, while static mesh only took 0.131ms</p>
+</doc-panel>
 <p>For skeletal and static meshes, you gain access to most settings you would have in the details panel while editing them in a blueprint</p>
 <doc-panel id="notes-regarding-skeletal-and-static-meshes" collapsed>
     <template #title>Notes regarding Skeletal and Static Meshes</template>
@@ -227,6 +243,7 @@ This driver attempts to copy the system that is used in GAS with its <span style
 <p>This is another reason why it&#x27;s suggested to stay away from blueprints for multiplayer, as with meshes, since they get attached to the actor itself, when it comes time to replicate it theres no snapping or pop-in. All components on an actor are replicated within the same frame.</p>
 <p>There is always a chance a packet will be dropped, which is again why you should refrain from blueprints as the engine does a very good job ensuring every mesh component is replicated. For every blueprint, you&#x27;re adding another actor, and another equipment manager component, and more RPC&#x27;s and more RepNotify&#x27;s and each of those have a chance to get dropped.</p>
 </doc-panel>
+<p>These optimizations of course only matter depending on the scope of your game. This more or less serves as an idea of what to focus on during the optimization phase of your game and what you might have to look for.</p>
 <hr>
 <doc-anchor-target id="events">
     <h2>
