@@ -29,7 +29,15 @@ For weapons and equippables, I've implemented three methods of creating your equ
 2. Skeletal mesh
 3. Static mesh
 
-Blueprint's are obviously the most expensive, but are the most customizable. I recommend staying away from using Blueprint's as your item representation whenever possible. For multiplayer, meshes are encouraged even more as they are very cheap to replicate.
+Blueprint's are about 11 times more expensive to spawn than meshes, but are the most customizable. I recommend staying away from using Blueprint's as your item representation whenever possible. For multiplayer, meshes are encouraged even more as they are very cheap to replicate.
+
+==- Profiler
+![](/pictures/Profiler_BlueprintEquipment.png)
+
+![](/pictures/Profiler_StaticMeshEquipment.png)
+
+Blueprints took 1.5ms, while static mesh only took 0.131ms
+===
 
 For skeletal and static meshes, you gain access to most settings you would have in the details panel while editing them in a blueprint
 
@@ -44,6 +52,8 @@ This is another reason why it's suggested to stay away from blueprints for multi
 
 There is always a chance a packet will be dropped, which is again why you should refrain from blueprints as the engine does a very good job ensuring every mesh component is replicated. For every blueprint, you're adding another actor, and another equipment manager component, and more RPC's and more RepNotify's and each of those have a chance to get dropped.
 ===
+
+These optimizations of course only matter depending on the scope of your game. This more or less serves as an idea of what to focus on during the optimization phase of your game and what you might have to look for.
 
 ---
 ## Events
