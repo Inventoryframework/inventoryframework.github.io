@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.764008589333">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.764513606125">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../../resources/css/retype.css?v=3.5.0.764008589333" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.5.0.764513606125" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.764008589333" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.764513606125" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.764008589333" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.764513606125" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -192,10 +192,24 @@
         <span>Custom Interaction system</span>
     </h1>
 </doc-anchor-target>
-<hr>
 <p>The plugin does come with an extremely basic interaction system, which is designed to be replaced. This page covers how to replace it.</p>
+<hr>
+<doc-anchor-target id="27-and-above">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#27-and-above">#</doc-anchor-trigger>
+        <span>2.7 and above:</span>
+    </h2>
+</doc-anchor-target>
+<p>Simply replace the <span style="color:brown"><strong>PreInteract</strong></span>, <span style="color:brown"><strong>StartInteract</strong></span> and <span style="color:brown"><strong>EndInteract</strong></span> with your own interaction functions inside <span style="color:violet"><strong>BP_ItemActor</strong></span> and <span style="color:violet"><strong>BP_Interactable</strong></span>. All three functions are inside <span style="color:violet"><strong>BPI_Interact</strong></span>, which can be found in the plugins demo folder and removed once these three functions are replaced.</p>
+<hr>
+<doc-anchor-target id="26-and-below">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#26-and-below">#</doc-anchor-trigger>
+        <span>2.6 and below:</span>
+    </h2>
+</doc-anchor-target>
 <ul>
-<li>There are two functions, <span style="color:brown"><strong>StartInteract</strong></span> and <span style="color:brown"><strong>FinishInteract</strong></span>. The first will send an RPC to the server, then the server will send the client any data around the component the client needs, then trigger <span style="color:violet"><strong>AC_Inventory</strong></span> -&gt; <span style="color:brown"><strong>OnDataReceivedFromOtherComponent</strong></span>, which will call FinishInteract.<br />
+<li>There are two functions, <span style="color:brown"><strong>StartInteract</strong></span> and <span style="color:brown"><strong>FinishInteract</strong></span>. The first will send an RPC to the server, then the server will send the client any data around the component the client needs, then trigger <span style="color:violet"><strong>AC_Inventory</strong></span> -&gt; <span style="color:brown"><strong>OnDataReceivedFromOtherComponent</strong></span>, which will call <span style="color:brown"><strong>FinishInteract</strong></span>.<br />
 This is handled in this way because allowing players to interact with the actors component before replication is finished can lead to a lot of bugs. Not because there are issues in the plugin, but because of the nature of clients modifying an actor that isn&#x27;t in sync. Virtually every multiplayer game handles it in this way unless they have client prediction and network rollback.<br />
 This is the only &quot;gotcha&quot; that needs to be kept in mind. In general, you should already not be allowing players to interact with actors that are waiting on an RPC.</li>
 </ul>
