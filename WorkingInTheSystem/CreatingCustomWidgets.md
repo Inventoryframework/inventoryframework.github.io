@@ -13,7 +13,8 @@ All three are abstract, so you must either use the widgets in the demo folder or
 - (Not mandatory, but is recommended) - Scroll box is needed for scrolling (<span style="color:brown">**GetScrollBox**</span>)
 
 ### Tiles
-- Size Box to control the size (<span style="color:brown">**GetSizeBox**</span>)
+- (2.6 and below) Size Box to control the size (<span style="color:brown">**GetSizeBox**</span>)
+- (2.7 and above) There are no requirements in the tiles hierarchy. You don't even need an image! To control the sizing of the widget, a function called <span style="color:brown">**SetWidgetSize**</span> should be overriden and handle the sizing logic from there.
 
 ### Inventory Item
 - size box to control the size (<span style="color:brown">**GetSizeBox**</span>)
