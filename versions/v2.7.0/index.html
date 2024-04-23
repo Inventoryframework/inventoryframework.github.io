@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.766333986638">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.767223343419">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.766333986638" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.767223343419" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.766333986638" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.767223343419" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.766333986638" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.767223343419" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -254,6 +254,22 @@ On top of that, the tile and item widgets have been updated, drastically improvi
 <li>Infinite grids wouldn&#x27;t resize in some scenarios.</li>
 <li><span style="color:brown"><strong>CanSwapLocations</strong></span> could cause a crash for clients and would give false positives in some scenarios.</li>
 <li><span style="color:brown"><strong>IsTileValid</strong></span> would report false positives in some scenarios for infinite containers.</li>
+</ul>
+<doc-anchor-target id="271-bug-fixes-54-only">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#271-bug-fixes-54-only">#</doc-anchor-trigger>
+        <span>2.7.1 bug fixes (5.4 only)</span>
+    </h2>
+</doc-anchor-target>
+<p>All of these fixes are very small and can easily be manually implemented. Reference the <code v-pre>bug-fixes</code> channel on the discord posts between 27th March - 15th April</p>
+<ul>
+<li><span style="color:brown"><strong>GetItemDriver</strong></span> was not returning the correct driver.</li>
+<li><span style="color:brown"><strong>TryAddNewItem</strong></span> Could fail in some scenarios.</li>
+<li>The item data in the quick loot window could become stale in some scenarios, causing the <span style="color:brown"><strong>MoveItem</strong></span> to fail.</li>
+<li>Item icons could squish when re-opening the inventory.</li>
+<li>When revealing hidden equipment, the equipment events were being called with the wrong data.</li>
+<li>Splitting an item would cause the original item widget to behave as if it was item 0 in its container.</li>
+<li><span style="color:slateblue"><strong>DataObject</strong></span> for drivers was not replicated.</li>
 </ul>
 <hr>
 <doc-anchor-target id="color-sheet">
