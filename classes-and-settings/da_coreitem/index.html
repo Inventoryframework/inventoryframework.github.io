@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.767223382607">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.768684387499">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.767223382607" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.768684387499" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.767223382607" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.768684387499" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.767223382607" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.768684387499" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -204,10 +204,10 @@ File Location: Source\InventoryFrameworkPlugin\Private\Core\Items\DA_CoreItem.cp
 One of the most important settings to set up here is <span style="color:slateblue"><strong>EItemType</strong></span> as many functions use this enum to do casts to the proper children of this asset. Whenever you make a new child, remember to go into the .cpp file and set the default value. You can see an example inside all the .cpp children of this.</p>
 <p>If you are new to C++ or Unreal Engine, I suggest looking <a href="https://benui.ca/unreal/uproperty/" target="_blank"><strong>here</strong></a> to find all the specifiers you can give each variable.</p>
 <hr>
-<doc-anchor-target id="changing-the-physical-actor-class">
+<doc-anchor-target id="changing-the-item-actor-class">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#changing-the-physical-actor-class">#</doc-anchor-trigger>
-        <span>Changing the Physical Actor class</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changing-the-item-actor-class">#</doc-anchor-trigger>
+        <span>Changing the Item Actor class</span>
     </h2>
 </doc-anchor-target>
 <p>Currently your item actors must be a child of <span style="color:violet"><strong>AA_ItemActor</strong></span>. If you want to change this, you can change it like so:</p>
@@ -244,14 +244,105 @@ The way you define your shape is by adding the Custom Shape object to your <span
         <span>Asset verification</span>
     </h2>
 </doc-anchor-target>
-<p>To aid quality assurance, the data asset has a &quot;Verify Data&quot; button at the top of the asset.<br />
+<p>To aid quality assurance, the data asset will run custom data verification when the asset is saved.<br />
 The verification validates everything in the following process:</p>
 <ol>
-<li>Use the <span style="color:slateblue"><strong>ValidationClass</strong></span> in the <span style="color:slateblue"><strong>DeveloperSettngs</strong></span> category to execute its <span style="color:brown"><strong>VerifyData</strong></span> function. (Because we can&#x27;t use Blueprint data assets, this step is used to get around that limitation.)</li>
+<li>Use the <span style="color:slateblue"><strong>ValidationClass</strong></span> in the <span style="color:slateblue"><strong>DeveloperSettngs</strong></span> category to execute its <span style="color:brown"><strong>VerifyData</strong></span> function. (Because we can&#x27;t access a blueprint graph in each instance of a data asset, we do this to get around that limitation.)</li>
 <li><span style="color:slateblue"><strong>ValidationClass</strong></span> -&gt; <span style="color:brown"><strong>VerifyData</strong></span> will run some code to check if any mistakes have been made. Since every project is different, it is suggested to create your own child of <span style="color:violet"><strong>O_ItemAssetValidation</strong></span> and write your own code. To validate the data of object references, an interface function from the <span style="color:violet"><strong>I_Validation.h</strong></span> interface also named <span style="color:brown"><strong>VerifyData</strong></span> is called. You can see an example of this inside of <span style="color:violet"><strong>O_BasicItemValidation</strong></span> and <span style="color:violet"><strong>IO_Consumable</strong></span></li>
 <li>If any error messages are created during any of the <span style="color:brown"><strong>VerifyData</strong></span> functions, you&#x27;ll get a message at the bottom right stating the error message. If the <span style="color:slateblue"><strong>ErrorMessages</strong></span> array is empty, the item passes the verification.</li>
 </ol>
 <p>Do note, if an item does not pass the verification, it does NOT prevent you from playing the game.</p>
+<doc-anchor-target id="where-to-store-runtime-logic">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#where-to-store-runtime-logic">#</doc-anchor-trigger>
+        <span>Where to store runtime logic</span>
+    </h2>
+</doc-anchor-target>
+<p>As the plugin has grown, more and more features have been added, blurring the definition of what an &quot;item&quot; is and where any gameplay logic should be stored.</p>
+<p>All items are data assets. Then when the inventory is made, a struct is made, which contains all data that can be modified during runtime and this data is replicated under specific conditions.</p>
+<ul>
+<li>Data inside of data assets should NOT be modified during runtime. If you have 2 guns in your inventory, then change any data inside the asset, it&#x27;ll change for both of the guns. But modifying the struct for a gun will only modify that specific struct.</li>
+</ul>
+<p>The four primary options below leave you with many options to tackle where to store your data and logic. It&#x27;s up to you to resolve which method is best for what you are trying to accomplish.</p>
+<doc-anchor-target id="gas-abilities">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#gas-abilities">#</doc-anchor-trigger>
+        <span>GAS abilities</span>
+    </h3>
+</doc-anchor-target>
+<p>What I, and many others have been doing, is simply constructing one object, a GAS ability, and having that run the logic for, let&#x27;s say, a gun item. Whenever you swap weapons, you&#x27;d just send an event to the ability and it would update what weapon is equipped.<br />
+This has many performance benefits, quality of life benefits, many more features, and much better networking options.<br />
+Overall, I would recommend using GAS over all other options whenever you can, but of course, not all use cases are the same. There is no ultimate solution that covers every scenario.</p>
+<p>I personally recommend using <a href="https://www.unrealengine.com/marketplace/en-US/product/gas-companion" target="_blank"><strong>GAS Companion</strong></a> and/or <a href="https://www.unrealengine.com/marketplace/en-US/product/gameplay-blueprint-attributes" target="_blank"><strong>Gameplay Blueprint Attributes</strong></a> to help with your GAS implementation.</p>
+<doc-anchor-target id="objects-and-drivers">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#objects-and-drivers">#</doc-anchor-trigger>
+        <span>Objects and drivers</span>
+    </h3>
+</doc-anchor-target>
+<p><a href="https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/">https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/</a><br />
+Data assets have &quot;objects&quot; and &quot;drivers&quot;, which I recommend you read the documentation for, but in essence, they are:</p>
+<ul>
+<li>Objects: Extra data you can add to any specific asset without creating a new parent. Essentially giving you &quot;horizontal&quot; hierarchy, just like how interfaces add functions to a class without reparenting it.
+<ul>
+<li>Example: You have a sword and a health potion asset. Both of these can be crafted, but you don&#x27;t want to create a &quot;Craftable&quot; item asset to insert into their hierarchy. Not all swords and not all potions might be craftable. You can now add an object to any asset that has a recipe and have that object link to that recipe data asset. You can now ask your data asset if it is &quot;craftable&quot; without asking your entire recipe data base if it has a recipe for that item.</li>
+</ul>
+</li>
+<li>Drivers: Actor components that can be created during runtime and are attached to the same actor that the inventory component lives on. These can run gameplay logic and destroyed during runtime, just like any other actor component. These are tied to objects so they can also be thought of as &quot;horizontal&quot; hierarchy.</li>
+</ul>
+<doc-anchor-target id="item-actor">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#item-actor">#</doc-anchor-trigger>
+        <span>Item actor</span>
+    </h3>
+</doc-anchor-target>
+<p>Then there&#x27;s the optional actor to spawn when the item is dropped, or in some cases equipped. These can be destroyed and created frequently, so it shouldn&#x27;t really be trusted with a lot of gameplay logic. This should be treated as just the &quot;visual representation&quot; of your item.</p>
+<doc-anchor-target id="item-struct-object">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#item-struct-object">#</doc-anchor-trigger>
+        <span>Item Struct Object</span>
+    </h3>
+</doc-anchor-target>
+<p>Finally, there&#x27;s the &quot;struct object&quot;. This is simply an optional object that is created when the item struct is created and are then tied together. Unlike the actor, this can be trusted with gameplay logic. It is only destroyed when either you explicitly destroy it or when the item itself is destroyed.</p>
+<ul>
+<li>Do note that this class is hard referenced by the item asset. Be mindful of your hard references.</li>
+<li>These are instance editable. Meaning that the same class can be used for each item asset, but you can modify the variables in the item asset. When the struct object is created, it&#x27;ll inherit those settings automatically.</li>
+<li>There&#x27;s two ways to initialize these objects. One is inside the data asset. This is the default object that will be used. But each struct instance can override either what class to use, or change the variables to more suit that specific instance.
+<ul>
+<li>I highly recommend that you do not start mixing the classes used these structs for a specific item. For exameple; two apples using a different object class can lead to a lot of confusion and messy code. I&#x27;m not going to put any restrictions on this, some projects might need this, but it&#x27;s a consideration to keep in mind.</li>
+</ul>
+</li>
+<li>Full replication support.</li>
+<li>Experimental: These objects can be serialized. They will only restore any variables using the <code v-pre>SaveGame</code> flag (in blueprints, it can be found in the <code v-pre>Advanced</code> section in the details panel when you have a variable selected). Since this is experimental, it is not recommended to use for production. The serialization function might change in a future update, leading to old save files not being compatible with the new function. It will also only save the players struct objects, not other actors struct objects, and that will likely stay like that. There are hundreds of more things to consider with serialization than just the inventory and there are better solutions on the marketplace from people who properly understand serialization.</li>
+</ul>
+<doc-anchor-target id="when-are-they-created-and-destroyed">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#when-are-they-created-and-destroyed">#</doc-anchor-trigger>
+        <span>When are they created and destroyed?</span>
+    </h4>
+</doc-anchor-target>
+<p>Struct objects are created during <span style="color:brown"><strong>StartComponent</strong></span> and are tied to the item until the item is destroyed.</p>
+<ul>
+<li>The object will remain alive until the garbage collector kicks in, just like how widgets and many other objects work. You can use <code v-pre>IsDestroyed</code> to check if the object has been destroyed or not.</li>
+</ul>
+<doc-anchor-target id="how-does-the-networking-work">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#how-does-the-networking-work">#</doc-anchor-trigger>
+        <span>How does the networking work?</span>
+    </h4>
+</doc-anchor-target>
+<p>Objects are replicated to all clients that are relevant to the owner of the inventory component. But the item data is not replicated and even if it was, it should NOT be trusted on clients that are neither the owner of the inventory component or the server. This is because of how <code v-pre>IFP</code> optimizes networking, which can be read further about in the <code v-pre>Introduction</code> section.</p>
+<ul>
+<li>Experimental: These objects can declare their own replication condition, giving you a chance for massive networking improvements. This means you can have objects that only replicate to the owner, server only, or you can even disable replication.</li>
+</ul>
+<doc-anchor-target id="performance">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#performance">#</doc-anchor-trigger>
+        <span>Performance</span>
+    </h4>
+</doc-anchor-target>
+<p>Constructing these objects is cheap, but if you plan on using hundreds of these, the small cost can pile up. The main worry you might need to consider is the garbage collector. The developers of Hogwarts Legacy had this problem where they abused instanced objects that the garbage collector would cause hitches, though I am not sure as to how many objects they were making.<br />
+I suggest only making these objects for items that actually need it.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>

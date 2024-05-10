@@ -9,33 +9,35 @@
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>Activating the component</title>
-    <meta name="title" content="Activating the component">
-    <meta name="description" content="Starting the component is very simple, just call AC_Inventory-> StartComponent. The bigger challenge will be deciding when you want to call this...">
+    <title>External Objects</title>
+    <meta name="title" content="External Objects">
+    <meta name="description" content="Both the item struct and container struct has an array of ExternalObjects.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/introduction/firststeps/activatingthecomponent/">
+    <link rel="canonical" href="/workinginthesystem/externalobjects/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/introduction/firststeps/activatingthecomponent/">
-    <meta property="og:title" content="Activating the component">
-    <meta property="og:description" content="Starting the component is very simple, just call AC_Inventory-> StartComponent. The bigger challenge will be deciding when you want to call this...">
+    <meta property="og:url" content="/workinginthesystem/externalobjects/">
+    <meta property="og:title" content="External Objects">
+    <meta property="og:description" content="Both the item struct and container struct has an array of ExternalObjects.">
+    <meta property="og:image" content="/pictures/externalwidgetinterfaceexample.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/introduction/firststeps/activatingthecomponent/">
-    <meta property="twitter:title" content="Activating the component">
-    <meta property="twitter:description" content="Starting the component is very simple, just call AC_Inventory-> StartComponent. The bigger challenge will be deciding when you want to call this...">
+    <meta property="twitter:url" content="/workinginthesystem/externalobjects/">
+    <meta property="twitter:title" content="External Objects">
+    <meta property="twitter:description" content="Both the item struct and container struct has an array of ExternalObjects.">
+    <meta property="twitter:image" content="/pictures/externalwidgetinterfaceexample.png">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../../resources/css/retype.css?v=3.5.0.768684387499" rel="stylesheet">
+    <link href="../../pictures/websiteicon2.jpg" rel="icon">
+    <link href="../../resources/css/retype.css?v=3.5.0.768684387499" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.768684387499" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.768684387499" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.768684387499" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.768684387499" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -50,10 +52,10 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../../../" class="flex items-center leading-snug text-xl">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
                             <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
-                                <img class="max-h-10 dark:hidden md:inline-block" src="../../../pictures/logo.png">
-                                <img class="max-h-10 hidden dark:inline-block" src="../../../pictures/logo.png">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../pictures/logo.png">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../pictures/logo.png">
                             </span>
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Inventory Framework</span>
                         </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
@@ -186,53 +188,36 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="activating-the-component" class="break-words">
+<doc-anchor-target id="external-objects" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#activating-the-component">#</doc-anchor-trigger>
-        <span>Activating the component</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#external-objects">#</doc-anchor-trigger>
+        <span>External Objects</span>
     </h1>
 </doc-anchor-target>
-<hr>
-<doc-anchor-target id="starting-the-component">
+<p>Both the item struct and container struct has an array of <span style="color:slateblue"><strong>ExternalObjects</strong></span>. There are helper functions for both adding and removing widgets from this array.</p>
+<p>What this array allows you to do is have other widgets receive the same update events from the <span style="color:violet"><strong>I_ExternalObjects</strong></span> interface that the item widget and container widget receive without using delegates, which listen to ALL events, where as these events are item and container specific. This can be used for hotbars, ammo counters, quest trackers and more where a specific item needs to be monitored. The example project uses the tooltip widget as an external object, where it is listening to the override settings getting updated so it can update in real time alongside the item widget.</p>
+<p>For your external widgets to receive these updates, you&#x27;ll want to go to your class settings (1) and implement the <span style="color:violet"><strong>I_ExternalObjects</strong></span> interface (2). You&#x27;ll then see a <span style="color:green"><strong>IFP|External Objects</strong></span> category with all the update events. Some of these are limited to just items or containers and some are sent to both.</p>
+<p><figure class="content-center">
+    <img src="../../pictures/externalwidgetinterfaceexample.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>The <span style="color:violet"><strong>I_ExternalObjects</strong></span> interface is designed to be extended for your needs.</p>
+<p>Utilizing external widgets can replace delegate events from the component, but there are still moments where delegates are better, for example a quest tracker keeping track of how much of a specific item data asset you have in your inventory.</p>
+<doc-anchor-target id="adding-custom-events">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#starting-the-component">#</doc-anchor-trigger>
-        <span>Starting the component</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#adding-custom-events">#</doc-anchor-trigger>
+        <span>Adding custom events</span>
     </h2>
 </doc-anchor-target>
-<p>Starting the component is very simple, just call <span style="color:violet"><strong>AC_Inventory</strong></span> -&gt; <span style="color:brown"><strong>StartComponent</strong></span>.<br />
-The bigger challenge will be deciding when you want to call this function. Typically this can be called at <span style="color:brown"><strong>BeginPlay</strong></span> or when the player gets close to the actor. This will depend on some factors, the biggest being if any item inside the component will be visually present AND if they have a spawn chance. For example; a gun with a sight on it and the sight has a spawn chance. The sight&#x27;s spawn chance might fail, and you might want the sight to get removed off the gun. Another example would be an NPC that is wearing some armor that has a spawn chance. If the armor fails its spawn chance, you&#x27;ll probably want to modify some attributes and remove the armor.</p>
-<p>This type of logic is very project dependant and depends on if the inventory component is eating up any impactful performance. I suggest leaving the <span style="color:brown"><strong>StartComponent</strong></span> function on <span style="color:brown"><strong>BeginPlay</strong></span>, and when it&#x27;s time to optimize your games performance, then you start evaluating if calling <span style="color:brown"><strong>StartComponent</strong></span> is more worthwhile being called at different times.</p>
-<p>The order of the items inside every container is very important. If you hover over an items <span style="color:slateblue"><strong>TileIndex</strong></span> you&#x27;ll see your options. If an item is set to finding the first tile available or a random tile, then another item attempts to spawn on top of that item, it&#x27;ll fail. There is a delegate which will fire whenever an item fails to spawn.</p>
-<hr>
-<doc-anchor-target id="stopping-the-component">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#stopping-the-component">#</doc-anchor-trigger>
-        <span>Stopping the component</span>
-    </h2>
-</doc-anchor-target>
-<p>This function will remove all widgets and object references. Under no circumstances should this function be called while the player is actively interacting with the component.<br />
-Here&#x27;s a list of scenarios where you want to refrain from calling <span style="color:brown"><strong>StopComponent</strong></span>.</p>
-<ol>
-<li>The player will be interacting with the component within a short period  of time, perhaps within 10 minutes.</li>
-<li>If the player will be interacting with the component again, if the component has a lot of items or a lot of containers and it causes a noticable hitch when starting the component, it might be more efficient to keep the component active.</li>
-<li>The component has items that have a spawn chance. Every time the component starts, it&#x27;ll roll these spawn chances.</li>
-<li>In a multiplayer scenario, you&#x27;ll be eating a potentially large RPC call every time you start the component. If you stop the component and the player interacts with this component again, the <span style="color:brown"><strong>StartComponent</strong></span> function will call a RPC that might be quite large.</li>
-</ol>
-<p>The component can not be stopped while its <span style="color:slateblue"><strong>Listeners</strong></span> array is not empty, which is used for multiplayer.</p>
-<p>If your games memory usage is tight, it might be worthwhile trying to call <span style="color:brown"><strong>StopComponent</strong></span>, but the above points must be kept in mind.</p>
-<p>What might be worthwhile for you to optimize would be to try and clean up any widgets and object references the component is holding onto. That is most often the root of any performance issues after activating a component with a lot of items.</p>
+<p>The good news is, you don&#x27;t even need to modify the <span style="color:violet"><strong>I_ExternalObjects</strong></span> interface class. Just simply make some interface, create your function and use the <span style="color:violet"><strong>GetObjectsForItemBroadcast</strong></span> to get all the objects that want to listen to the event</p>
+<p><figure class="content-center">
+    <img src="../../pictures/externalobjectsinterfaceexample1.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 
-                                <div class="flex items-center mt-6 mb-6 clear-both">
-                                    <span>
-                                        <a href="../../../tags/">
-                                            <svg class="inline-block -mb-px mr-1.5 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" overflow="visible" fill="currentColor"><g><path d="M21.3 9.88l-8.59-8.59C12.52 1.11 12.27 1 12 1H2c-.55 0-1 .45-1 1v10c0 .27.11.52.29.71l8.59 8.58c.57.57 1.32.88 2.12.88s1.55-.31 2.12-.88l7.17-7.17a3.009 3.009 0 00.01-4.24zm-1.42 2.82l-7.17 7.17c-.39.39-1.02.39-1.42 0L3 11.59V3h8.59l8.29 8.29c.39.39.39 1.03 0 1.41z" /><path d="M7.01 6C6.45 6 6 6.45 6 7s.45 1 1 1 1-.45 1-1-.44-1-.99-1z" /></g></svg>
-                                        </a>
-                                        <span class="mr-2"><a href="../../../tags/inventorycomponent/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>inventorycomponent</span>
-                                </a></span>
-                                    </span>
-                                </div>
-                
+                                
                                 <!-- Required only on API pages -->
                                 <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
                             </div>
@@ -240,20 +225,20 @@ Here&#x27;s a list of scenarios where you want to refrain from calling <span sty
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../introduction/firststeps/addingthecomponentandcontainers/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/draganddrop/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Adding the component and containers</span>
+                                                <span class="block mt-1">Drag and drop</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../introduction/firststeps/equippingandunequippingitems/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/modifyingcriticalfiles/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Equipping and unequipping items</span>
+                                                <span class="block mt-1">Modifying critical files</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -297,6 +282,6 @@ Here&#x27;s a list of scenarios where you want to refrain from calling <span sty
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Activating the component", level: 3, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "External Objects", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
