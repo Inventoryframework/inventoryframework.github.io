@@ -63,6 +63,11 @@ Any actor being fed into the preview actor should avoid skeletal meshes as much 
 
 ![](/pictures/Profiler_CloneSkeletalMesh.png)
 
+## Leader Pose
+To bind two meshes together, you will have to setup their component tags in a specific way.
+The leader must contain some tag, in this example we'll use `PlayerMesh`.
+Skeletal Meshes that now want to assign that mesh as their leader pose will then want to add a tag containing the word: `LeaderPose: PlayerMesh`.
+
 ---
-# Common issues
+## Common issues
 Physics is typically the main culprit for the preview system breaking. If an item or components have physics on by default, they will instantly detach the moment they are initialized. Breaking the entire preview system. Physics will also cause issues with the equipment system, as that system relies on the attachment hierarchy being correct and detaching things due to physics will break it.

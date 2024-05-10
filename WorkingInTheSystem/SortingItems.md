@@ -8,3 +8,4 @@ I've designed the function SortAndMoveItem to only require one change for any cu
 1. In Async_InventoryFunctions.h there is an enum called ESortingType. You will want to add an option in there (I suggest adding your options to the end, the editor does not like it when you re-order or insert enum entries).
 2. I suggest making your own IFP function library or making a IFP section in any of your existing function libraries. This is so if you ever update the plugin, any changes you make to the IFP function library won't be wiped.
 Then make a function that sorts an array of items. An example can be found in FL_InventoryFramework.h -> SortItemStructsAlphabetically
+3. Go into AC_Inventory -> Internal_SortAndMoveItems and you'll find a SortType switch statement. You'll want to add your new sort option enum in there and call the sort function you just made.

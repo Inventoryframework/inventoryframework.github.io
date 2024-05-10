@@ -6,6 +6,10 @@ These three widgets are the ones you'll most likely end up working with the most
 
 All three are abstract, so you must either use the widgets in the demo folder or make your own children.
 
+!!!Important
+Technically, these requirements can be ignored, depending on what features you need and don't need, but you might get some errors. For example; size boxes aren't really required as you can set the sizing on the image, but it requires a bit more work to setup correctly.
+!!!
+
 ### Containers
 - Border is needed for scrolling support and sizing (<span style="color:brown">**GetBorder**</span>)
 - ContainerOverlay holds the item widgets (<span style="color:brown">**GetOverlay**</span>)
