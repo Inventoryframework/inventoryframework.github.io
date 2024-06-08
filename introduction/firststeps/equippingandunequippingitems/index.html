@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.769793604005">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.771126740301">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -11,7 +11,7 @@
     <!-- Primary Meta Tags -->
     <title>Equipping and unequipping items</title>
     <meta name="title" content="Equipping and unequipping items">
-    <meta name="description" content="Deep dive video">
+    <meta name="description" content="This documentation covers the default equipment system.">
 
     <!-- Canonical -->
     <link rel="canonical" href="/introduction/firststeps/equippingandunequippingitems/">
@@ -20,24 +20,24 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/introduction/firststeps/equippingandunequippingitems/">
     <meta property="og:title" content="Equipping and unequipping items">
-    <meta property="og:description" content="Deep dive video">
+    <meta property="og:description" content="This documentation covers the default equipment system.">
     <meta property="og:image" content="/pictures/profiler_blueprintequipment.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/introduction/firststeps/equippingandunequippingitems/">
     <meta property="twitter:title" content="Equipping and unequipping items">
-    <meta property="twitter:description" content="Deep dive video">
+    <meta property="twitter:description" content="This documentation covers the default equipment system.">
     <meta property="twitter:image" content="/pictures/profiler_blueprintequipment.png">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../../resources/css/retype.css?v=3.5.0.769793604005" rel="stylesheet">
+    <link href="../../../resources/css/retype.css?v=3.5.0.771126740301" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.769793604005" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../../resources/js/config.js?v=3.5.0.771126740301" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.769793604005" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../../resources/js/lunr.js?v=3.5.0.771126740301" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -194,6 +194,24 @@
         <span>Equipping and unequipping items</span>
     </h1>
 </doc-anchor-target>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Important</h5>
+<p>This documentation covers the default equipment system. In some cases, you might want to implement your own or use a hybrid solution, which is covered more at the bottom of the page.</p>
+        </div>
+    </div>
+</div>
 <p><a href="https://youtu.be/Tb7FwW3ri6k">Deep dive video</a></p>
 <hr>
 <p>A big problem I try to solve with this system is that I did not want to assume anything about how your actors&#x27; meshes are set up, how your equipment setup looked like and I did not want to make a base player or actor blueprint.<br />
@@ -263,10 +281,10 @@ This driver attempts to copy the system that is used in GAS with its <span style
 </ol>
 <hr>
 <doc-anchor-target id="notes-on-general-equipment-system-design">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#notes-on-general-equipment-system-design">#</doc-anchor-trigger>
         <span>Notes on general equipment system design</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <ul>
 <li><p>Equipping and unequipping items can get messy, most importantly it can get messy when players start spamming the system with animations, either by quickly equipping and unequipping an item really quickly or equipping multiple items, all trying to activate montages which will interrupt each other.<br />
@@ -278,31 +296,42 @@ By default, there is no failsafe if an animation is interrupted as that is somet
 </ul>
 <hr>
 <doc-anchor-target id="why-are-all-my-components-getting-renamed">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#why-are-all-my-components-getting-renamed">#</doc-anchor-trigger>
         <span>Why are all my components getting renamed?</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>The system automatically tries to keep all components attached to an actor with unique names. Including attached actors. This is because of how the  preview system works. The preview system attempts to reconstruct the actor it&#x27;s previewing without fully cloning it. There are ways of perfectly cloning an actor, but those are very expensive and come with their own set of problems. The preview system only looks at the visible components on the actor, including attached actors, and reconstructs it. But problems occur if two components have the same name from 2 different attached actors.<br />
 When the preview system reconstructs the actor, it finds out what component it was attached to, but it needs to know which component that is on itself, it can&#x27;t use the object reference. This means that if two components have the same name, it&#x27;ll mess up which component it should attach to. The simple fix to this is to make sure all components have a unique name. The engine already handles this if you attach a component to an actor and that actor has a component with the same name, but it does not do this for attached actors.</p>
 <p>But to simplify debugging, only a underscore and a random number is added to the end of it. The  rest of the name is untouched.</p>
 <hr>
 <doc-anchor-target id="where-are-the-items-being-created">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#where-are-the-items-being-created">#</doc-anchor-trigger>
         <span>Where are the items being created?</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>A separate actor component called <span style="color:violet"><strong>BP_AC_EquipmentManager</strong></span> is created and attached to the owning actor to handle the creation of items. This is handled this way because of replication. Before the system was replicated, this component didn&#x27;t even exist and the system worked just like it does now.</p>
 <p>This component is responsible for ensuring items are replicated in the correct order and attaching things in the correct order, in case an item got replicated before the item it is attached to is replicated.</p>
 <hr>
 <doc-anchor-target id="common-issues">
-    <h1>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#common-issues">#</doc-anchor-trigger>
         <span>Common issues</span>
-    </h1>
+    </h2>
 </doc-anchor-target>
 <p>Physics is typically the main culprit for the equipment system breaking. If an item or components have physics on by default, they will instantly detach the moment they are initialized. Breaking the entire equipment system. Physics will also cause issues with generated item icons, as that system relies on the attachment hierarchy being correct and detaching things due to physics will break it.</p>
+<hr>
+<doc-anchor-target id="custom-equipment-system">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#custom-equipment-system">#</doc-anchor-trigger>
+        <span>Custom equipment system</span>
+    </h2>
+</doc-anchor-target>
+<p>It&#x27;s fairly simple to completely replace the equipment system or use a hybrid solution.<br />
+To understand the beginning of the chain, the equipment system begins ideally on the actor on the Inventory -&gt; ItemEquipped delegate. This is where you&#x27;d inject any modifications to the base behavior of the equipment system.</p>
+<p>In some cases, it&#x27;s simpler to just swap out a mesh with a new one. For example, the player might have a default jacket if no other jacket is equipped. In this case, it&#x27;s much simpler to just use a custom equipment object which holds that other mesh and swap the default jacket mesh with the new one.</p>
+<p>It all comes down to the complexity of your game. The default equipment system tries to cover <strong>a lot</strong> of different and complex scenarios, thus it has become big and can be overcomplicated depending on the simplicity of your project.</p>
 
                                 <div class="flex items-center mt-6 mb-6 clear-both">
                                     <span>
