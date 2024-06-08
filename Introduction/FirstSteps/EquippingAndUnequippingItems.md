@@ -6,6 +6,10 @@ REVISION NOTES: Paragraph explaining OT_Equipment might be worth explaining in h
 
 # Equipping and unequipping items
 
+!!!Important
+This documentation covers the default equipment system. In some cases, you might want to implement your own or use a hybrid solution, which is covered more at the bottom of the page.
+!!!
+
 [Deep dive video](https://youtu.be/Tb7FwW3ri6k)
 
 ---
@@ -64,7 +68,7 @@ There are two events that can activate when equipping and unequipping an item oc
     - If your settings have the item set as a static mesh or skeletal mesh, the interface functions are called on the player.
 
 ---
-# Notes on general equipment system design
+## Notes on general equipment system design
 - Equipping and unequipping items can get messy, most importantly it can get messy when players start spamming the system with animations, either by quickly equipping and unequipping an item really quickly or equipping multiple items, all trying to activate montages which will interrupt each other.
 In the demo, items do not play an animation when equipped or unequipped. But they do play an animation when you holster or unholster an item. If you're in multiplayer, the item will also be added to the network queue to prevent clients from spamming the server with RPC's.
 By default, there is no failsafe if an animation is interrupted as that is something most designers want to implement their own system into. Some designers might want players to be able to cancel animations or cancel the equip if it was interrupted. It is up to you to implement any sort of failsafe if players are finding ways to manipulate this animation cancelling in ways you don't like.
@@ -72,18 +76,27 @@ By default, there is no failsafe if an animation is interrupted as that is somet
 - If you're going to have items visible on your character, it is recommended to have at least one setup for every item that instantly attaches the item to the desired location and mesh. This is so when you load a save, you won't get several animations playing at the same time and overlapping each other.
 
 ---
-# Why are all my components getting renamed?
+## Why are all my components getting renamed?
 The system automatically tries to keep all components attached to an actor with unique names. Including attached actors. This is because of how the  preview system works. The preview system attempts to reconstruct the actor it's previewing without fully cloning it. There are ways of perfectly cloning an actor, but those are very expensive and come with their own set of problems. The preview system only looks at the visible components on the actor, including attached actors, and reconstructs it. But problems occur if two components have the same name from 2 different attached actors.
 When the preview system reconstructs the actor, it finds out what component it was attached to, but it needs to know which component that is on itself, it can't use the object reference. This means that if two components have the same name, it'll mess up which component it should attach to. The simple fix to this is to make sure all components have a unique name. The engine already handles this if you attach a component to an actor and that actor has a component with the same name, but it does not do this for attached actors.
 
 But to simplify debugging, only a underscore and a random number is added to the end of it. The  rest of the name is untouched.
 
 ---
-# Where are the items being created?
+## Where are the items being created?
 A separate actor component called <span style="color:violet">**BP_AC_EquipmentManager**</span> is created and attached to the owning actor to handle the creation of items. This is handled this way because of replication. Before the system was replicated, this component didn't even exist and the system worked just like it does now.
 
 This component is responsible for ensuring items are replicated in the correct order and attaching things in the correct order, in case an item got replicated before the item it is attached to is replicated.
 
 ---
-# Common issues
+## Common issues
 Physics is typically the main culprit for the equipment system breaking. If an item or components have physics on by default, they will instantly detach the moment they are initialized. Breaking the entire equipment system. Physics will also cause issues with generated item icons, as that system relies on the attachment hierarchy being correct and detaching things due to physics will break it.
+
+---
+## Custom equipment system
+It's fairly simple to completely replace the equipment system or use a hybrid solution.
+To understand the beginning of the chain, the equipment system begins ideally on the actor on the Inventory -> ItemEquipped delegate. This is where you'd inject any modifications to the base behavior of the equipment system.
+
+In some cases, it's simpler to just swap out a mesh with a new one. For example, the player might have a default jacket if no other jacket is equipped. In this case, it's much simpler to just use a custom equipment object which holds that other mesh and swap the default jacket mesh with the new one.
+
+It all comes down to the complexity of your game. The default equipment system tries to cover **a lot** of different and complex scenarios, thus it has become big and can be overcomplicated depending on the simplicity of your project.
