@@ -24,9 +24,9 @@ Technically, these requirements can be ignored, depending on what features you n
 - size box to control the size (<span style="color:brown">**GetSizeBox**</span>)
 - Image for the item icon (<span style="color:brown">**GetImage**</span>)
 - (Not mandatory, but is recommended) - Loading Throbber for indicating the item is loading (<span style="color:brown">**GetLoadingThrobber**</span>)
-This widget is updated through the <span style="color:violet">**I_WidgetUpdates**</span> interface. You can see an example of how these updates are used inside <span style="color:violet">**WBP_DemoInventoryItem**</span>.
+This widget is updated through the <span style="color:violet">**I_ExternalObjects**</span> interface. You can see an example of how these updates are used inside <span style="color:violet">**WBP_DemoInventoryItem**</span>.
 
 The hierarchy inside your custom widget can be structured in whatever way you want, but they must contain the above mentioned widgets inside the hierarchy.
 Nearly every function inside these widgets are designed to be overriden for maximum customization.
 
-It is advised to read the [External widgets](https://inventoryframework.github.io/workinginthesystem/externalwidgets/) page to understand the <span style="color:violet">**I_WidgetUpdates**</span> interface.
+It is advised to read the [External widgets](https://inventoryframework.github.io/workinginthesystem/externalobjects/) page to understand the <span style="color:violet">**I_ExternalObjects**</span> interface.
