@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.774731843295">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.774801563485">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -14,28 +14,28 @@
     <meta name="description" content="The inventory system does come with an optional module for crafting.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/crafting/">
+    <link rel="canonical" href="https://inventoryframework.github.io/crafting/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/crafting/">
+    <meta property="og:url" content="https://inventoryframework.github.io/crafting/">
     <meta property="og:title" content="Crafting">
     <meta property="og:description" content="The inventory system does come with an optional module for crafting.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/crafting/">
+    <meta property="twitter:url" content="https://inventoryframework.github.io/crafting/">
     <meta property="twitter:title" content="Crafting">
     <meta property="twitter:description" content="The inventory system does come with an optional module for crafting.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../resources/css/retype.css?v=3.5.0.774731843295" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.5.0.774801563485" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.5.0.774731843295" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.5.0.774801563485" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.5.0.774731843295" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.5.0.774801563485" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -215,7 +215,6 @@
 </ul>
 </li>
 </ul>
-<p>The plugin itself does NOT come with any widgets to use the system. Only the example project has widgets. These are not needed, they are simply an example of how I would use the component and data asset.</p>
 <hr>
 <doc-anchor-target id="recipe-handling">
     <h2>
@@ -226,6 +225,17 @@
 <p>Many games have recipes bound to things such as a &quot;crafting bench&quot;, which is completely natural. The pain points come when you are deciding where you want to store recipe&#x27;s and finding out what recipe&#x27;s the player can and cannot craft.</p>
 <p>When a player unlocks a recipe, even if it is tied to a unique object such as a crafting bench or area, the player still holds onto the recipe.<br />
 This is so it is much easier to evaluate how far the player is into the game and evaluating whether or not you should grant the player a recipe as the other object might not be loaded. In general, it is much simpler and efficient to just have the player hold a reference to all recipe&#x27;s they have unlocked, then either blocking the craft or preventing it from being displayed (or both) through other means, such as applying a tag on the player when they are near a bench and the recipe requires that tag to be displayed.</p>
+<hr>
+<doc-anchor-target id="widgets">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#widgets">#</doc-anchor-trigger>
+        <span>Widgets</span>
+    </h2>
+</doc-anchor-target>
+<p>The plugin itself does NOT come with any widgets to use the system. Only the example project has widgets and that is the primary learning source for creating custom widgets and UI. These examples are not needed in your project, they are simply an example of how I would use the component and data asset.</p>
+<p>My setup begins inside of <span style="color:violet"><strong>WBP_Inventory</strong></span> -&gt; <span style="color:violet"><strong>Receive External Component</strong></span>, which will lead to a subgraph called CraftingExample. Most of the system runs on delegates (For blueprint users, these are most often called Event Dispatchers, in C++ and C#, they are referred to as Delegates, so I will continue calling Event Dispatchers as Delegates), which can be simply handled since the player is responsible for holding all recipe&#x27;s as mentioned above. I always name any functions related to a delegate with a <strong>D</strong> prefix and most often sort them into their own <strong>Delegates</strong> category.</p>
+<p>Since the system uses soft references for most recipe&#x27;s, you can decide whether or not to instantly or async load your recipe&#x27;s. I&#x27;ve chosen to async load them as that is better for performance.</p>
+<p>There are no rules on how to make your own widgets when using the crafting system, my system primarily uses the recipe requirements, display requirements, craft events and craft data to design how and when recipe&#x27;s should be visualized.</p>
 <hr>
 <doc-anchor-target id="serialization">
     <h2>
@@ -245,7 +255,7 @@ This is so it is much easier to evaluate how far the player is into the game and
 <ol>
 <li>Remove all references in your project from any of the crafting system. (If you have just installed the plugin and aren&#x27;t building on top of the example project, you can skip this step)<br />
 If you are building on top of the example project, you&#x27;ll want to remove the crafting component from <span style="color:violet"><strong>BP_PlayerCharacter</strong></span>.<br />
-Then go into <span style="color:violet"><strong>WBP_Inventory</strong></span> and remove all the crafting widgets and remove the crafting sub graph.</li>
+Then go into <span style="color:violet"><strong>WBP_Inventory</strong></span> and remove all the crafting widgets and remove the crafting sub graph and the crafting delegate functions.</li>
 <li>Go into the plugin folder and into Content and delete the Crafting folder.</li>
 <li>Go into the plugin folder and into Source and delete the IFP_Crafting and IFP_Crafting_Editor folders.</li>
 </ol>
@@ -268,10 +278,10 @@ Then go into <span style="color:violet"><strong>WBP_Inventory</strong></span> an
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../tools/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../loottables/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Tools</span>
+                                                <span class="block mt-1">Loot Tables</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>

@@ -9,24 +9,24 @@
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>A_ItemActor</title>
-    <meta name="title" content="A_ItemActor">
-    <meta name="description" content="File location: InventoryFrameworkPlugin\\Public\\Core\\Actors\\Parents\\A_ItemActor.h File location:...">
+    <title>2.9.0</title>
+    <meta name="title" content="2.9.0">
+    <meta name="description" content="Engine support: 5.4">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://inventoryframework.github.io/classes-and-settings/a_itemactor/">
+    <link rel="canonical" href="https://inventoryframework.github.io/versions/v2.9/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://inventoryframework.github.io/classes-and-settings/a_itemactor/">
-    <meta property="og:title" content="A_ItemActor">
-    <meta property="og:description" content="File location: InventoryFrameworkPlugin\\Public\\Core\\Actors\\Parents\\A_ItemActor.h File location:...">
+    <meta property="og:url" content="https://inventoryframework.github.io/versions/v2.9/">
+    <meta property="og:title" content="2.9.0">
+    <meta property="og:description" content="Engine support: 5.4">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://inventoryframework.github.io/classes-and-settings/a_itemactor/">
-    <meta property="twitter:title" content="A_ItemActor">
-    <meta property="twitter:description" content="File location: InventoryFrameworkPlugin\\Public\\Core\\Actors\\Parents\\A_ItemActor.h File location:...">
+    <meta property="twitter:url" content="https://inventoryframework.github.io/versions/v2.9/">
+    <meta property="twitter:title" content="2.9.0">
+    <meta property="twitter:description" content="Engine support: 5.4">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -186,51 +186,117 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="a_itemactor" class="break-words">
+<doc-anchor-target id="290" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#a_itemactor">#</doc-anchor-trigger>
-        <span>A_ItemActor</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#290">#</doc-anchor-trigger>
+        <span>2.9.0</span>
     </h1>
 </doc-anchor-target>
-<doc-panels>
-   <doc-panel id="c-item-actor" collapsed>
-       <template #title>C++ Item Actor</template>
-<p>File location: InventoryFrameworkPlugin\Public\Core\Actors\Parents\A_ItemActor.h<br />
-File location: InventoryFrameworkPlugin\Private\Core\Actors\Parents\A_ItemActor.cpp</p>
-   </doc-panel>
-   <doc-panel id="blueprint-child-bp-itemactor" collapsed>
-       <template #title>Blueprint Child: BP_ItemActor</template>
-<p>File location: Content\Core\ActorParents\BP_ItemActor.uasset</p>
-   </doc-panel>
-</doc-panels>
-<hr>
-<p>This is your physical representation of the item. If you already have items/weapons of any sorts, you will want to reparent those classes to this.</p>
-<p>This is not supposed to run important logic as these can get destroyed and created by the user. (for example equipping and unequipping)</p>
-<p>In your data asset, you can access this class so whenever you drop the item out of the inventory or want to spawn it in some way, here is how you access the original pickup class.</p>
-<p>It’s very important when making your items that have a physical representation in the world and can be picked up that the component on that actor references the data asset that references this physical actor. Otherwise when you drop the item, it’ll spawn the wrong class.</p>
-<p>The setup for pickups goes like this: In your <span style="color:slateblue"><strong>ContainerSettings</strong></span> index 0, you set <span style="color:slateblue"><strong>ContainerType</strong></span> to <span style="color:slateblue"><strong>ThisActor</strong></span> and item index 0 is the pickup data asset. There should be no other items in this items array.<br />
-Containers that might be attached to the pickup are added after and they can have Inventory or Equipment selected, but never <span style="color:slateblue"><strong>CurrentItem</strong></span>.</p>
-<hr>
-<doc-anchor-target id="custom-blueprint-children">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#custom-blueprint-children">#</doc-anchor-trigger>
-        <span>Custom Blueprint Children</span>
-    </h1>
+<p>Engine support: 5.4</p>
+<doc-anchor-target id="deprecated">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#deprecated">#</doc-anchor-trigger>
+        <span>Deprecated</span>
+    </h2>
 </doc-anchor-target>
-<p>The <span style="color:violet"><strong>BP_ItemActor</strong></span> is a optional parent in your hierarchy. It has some code that you will want to copy over to any parents that you have if you wish to make your own, primarily the BeginPlay, Equip and Unequip delegates, and Destroyed event.</p>
-<p>The C++ inventory compoonent will automatically get added to your actor, but the base C++ version should not be used. You want to click on the InventoryComponent in your components list and set ComponentClass to BP_AC_Inventory (Or your own child of the inventory component if you&#x27;ve made one)</p>
+<ul>
+<li>Both <span style="color:brown"><strong>GetWidgetForItem</strong></span> and <span style="color:brown"><strong>GetWidgetForContainer</strong></span> have been deprecated and replaced with functions with the same name, but are found in the function library.
+<ul>
+<li>This used to have several functions for retrieving the widgets, because in some cases they were more optimal. But now with the ID map system, there is no need to try and optimize this anymore.</li>
+</ul>
+</li>
+<li>The <span style="color:slateblue"><strong>CompatibilitySettings</strong></span> has been updated to use item tag types as the <span style="color:slateblue"><strong>EItemType</strong></span> enum has been deprecated</li>
+<li>Since the <span style="color:slateblue"><strong>EItemType</strong></span> enum has been deprecated, you should use the tag item type version instead.</li>
+<li>The attachment widget variable in the item struct has been deprecated, is now a part of the external objects system. Use the <span style="color:brown"><strong>GetItemsAttachmentWidget</strong></span> function instead.</li>
+</ul>
+<doc-anchor-target id="documentation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#documentation">#</doc-anchor-trigger>
+        <span>Documentation</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>Equipment documentation updated.</li>
+<li><code v-pre>Working in the System</code> -&gt; <code v-pre>Creating New Items</code> has been removed, the contents have been moved to <code v-pre>Classes and Settings</code> -&gt; <code v-pre>DA_CoreItem</code></li>
+<li>A loot table system has been added, documentation can be found <a href="https://inventoryframework.github.io/loottables/" target="_blank"><strong>here</strong></a></li>
+</ul>
+<doc-anchor-target id="inventory">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#inventory">#</doc-anchor-trigger>
+        <span>Inventory</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>Container struct title is now much more readable. Can be configured through config settings.</li>
+<li>A new <code v-pre>SkipValidation</code> system for <span style="color:brown"><strong>StartComponent</strong></span> has been added for both items and containers. This can drastically improve performance (in some cases 40x improvements) when used correctly. <code v-pre>AC_Inventory</code> documentation has been updated. This system is primarily meant for save files.</li>
+<li><span style="color:brown"><strong>StartComponent</strong></span> has been heavily reworked to provide better support for the new loot table system.</li>
+<li>Item Drivers are now included in the <span style="color:brown"><strong>GetObjectsForItemBroadcast</strong></span> function and now inherit the <span style="color:violet"><strong>I_ExternalObjects</strong></span> interface by default.</li>
+<li>The MoveItem server RPC is now almost 4 times cheaper.</li>
+<li><span style="color:brown"><strong>GetComponentByTag</strong></span> has been moved to C++. Added new helper function for getting the visual for an item <span style="color:brown"><strong>GetItemsVisual</strong></span></li>
+<li>The Unequip event has been reworked slightly so it is possible to modify an item when it is unequipped, for example the item tags.</li>
+<li>Added <span style="color:brown"><strong>GetObjectsForItemBroadcastWithInterface</strong></span> and <span style="color:brown"><strong>GetObjectsForItemBroadcastWithInterface</strong></span></li>
+</ul>
+<doc-anchor-target id="items">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#items">#</doc-anchor-trigger>
+        <span>Items</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>Some of the item asset functions have been changed to virtual. People who have made children item assets with default containers will now want to override these functions.</li>
+<li>When moving an item to a new container, the attachment widget is no longer automatically removed off the screen.</li>
+<li>Added non-array version of GetObjectByTag/ByClassForItem</li>
+</ul>
+<doc-anchor-target id="equipment">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#equipment">#</doc-anchor-trigger>
+        <span>Equipment</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>Added a <span style="color:brown"><strong>UpdateItemsEquipStatus</strong></span>, which allows you to manually declare if an item is equipped. This way you do not have to have an item be in an equipment container to be considered as equipped.
+<ul>
+<li>This can accept custom trigger filters to help evaluate what equipment settings to use.</li>
+</ul>
+</li>
+<li>Whenever an item is equipped, a tag is automatically applied, called <span style="color:slateblue"><strong>EquipTag</strong></span>. This can be set in the class defaults for the inventory component</li>
+<li>Equipment driver can now automatically assign leader poses for skeletal equipment.</li>
+</ul>
+<doc-anchor-target id="editor">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#editor">#</doc-anchor-trigger>
+        <span>Editor</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>When hovering over an item asset icon, the in-game tooltip will now show. The in-built tooltip has been reworked to just accept item data, instead of the item widget to allow editor tools like this to use it without creating an item widget.</li>
+</ul>
+<doc-anchor-target id="bug-fixes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bug-fixes">#</doc-anchor-trigger>
+        <span>Bug fixes:</span>
+    </h2>
+</doc-anchor-target>
+<ul>
+<li>The Item actor could cause a crash if the owner did not implement the <span style="color:violet"><strong>I_Inventory</strong></span> interface.</li>
+<li>Tile map for other actors was not being initialized correctly.</li>
+<li>Swapping item locations could break collision in some cases.</li>
+<li>The quick loot window could create 2 instances of the same item in some cases.</li>
+<li>Custom shaped widgets would break without a padding and radius object in the item asset.</li>
+<li>External objects on items would have client-only objects, such as widgets, removed when an item was moved during a multiplayer session.</li>
+<li>Dropped item actors would have some data, such as item count, reset or wiped.</li>
+<li>It was possible to split an item in a location that would overlap the original item.</li>
+</ul>
+<hr>
+<doc-anchor-target id="color-sheet">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#color-sheet">#</doc-anchor-trigger>
+        <span>Color Sheet:</span>
+    </h2>
+</doc-anchor-target>
+<p><span style="color:brown"><strong>functions</strong></span> - <span style="color:slateblue"><strong>variable</strong></span> - <span style="color:green"><strong>category</strong></span> - <span style="color:violet"><strong>class</strong></span></p>
 
-                                <div class="flex items-center mt-6 mb-6 clear-both">
-                                    <span>
-                                        <a href="../../tags/">
-                                            <svg class="inline-block -mb-px mr-1.5 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" overflow="visible" fill="currentColor"><g><path d="M21.3 9.88l-8.59-8.59C12.52 1.11 12.27 1 12 1H2c-.55 0-1 .45-1 1v10c0 .27.11.52.29.71l8.59 8.58c.57.57 1.32.88 2.12.88s1.55-.31 2.12-.88l7.17-7.17a3.009 3.009 0 00.01-4.24zm-1.42 2.82l-7.17 7.17c-.39.39-1.02.39-1.42 0L3 11.59V3h8.59l8.29 8.29c.39.39.39 1.03 0 1.41z" /><path d="M7.01 6C6.45 6 6 6.45 6 7s.45 1 1 1 1-.45 1-1-.44-1-.99-1z" /></g></svg>
-                                        </a>
-                                        <span class="mr-2"><a href="../../tags/item/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>item</span>
-                                </a></span>
-                                    </span>
-                                </div>
-                
+                                
                                 <!-- Required only on API pages -->
                                 <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
                             </div>
@@ -238,20 +304,20 @@ Containers that might be attached to the pickup are added after and they can hav
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../versions/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Classes and Settings</span>
+                                                <span class="block mt-1">Versions</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/ac_inventory/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../versions/v2.8.0/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">AC_​Inventory</span>
+                                                <span class="block mt-1">2.​8.​1</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -295,6 +361,6 @@ Containers that might be attached to the pickup are added after and they can hav
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "A_ItemActor", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "2.9.0", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>

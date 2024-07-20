@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.774731843295">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.774801563485">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -11,31 +11,31 @@
     <!-- Primary Meta Tags -->
     <title>Optimizations</title>
     <meta name="title" content="Optimizations">
-    <meta name="description" content="While IFP is already extremely optimized, there's a few things you can do and keep in mind to make sure you are getting the absolute most out of IFP.">
+    <meta name="description" content="While IFP is already extremely optimized, there's a few things you can do and keep in mind to make sure you are getting the absolute most out of ">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/workinginthesystem/optimizations/">
+    <link rel="canonical" href="https://inventoryframework.github.io/workinginthesystem/optimizations/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/workinginthesystem/optimizations/">
+    <meta property="og:url" content="https://inventoryframework.github.io/workinginthesystem/optimizations/">
     <meta property="og:title" content="Optimizations">
-    <meta property="og:description" content="While IFP is already extremely optimized, there's a few things you can do and keep in mind to make sure you are getting the absolute most out of IFP.">
+    <meta property="og:description" content="While IFP is already extremely optimized, there's a few things you can do and keep in mind to make sure you are getting the absolute most out of ">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/workinginthesystem/optimizations/">
+    <meta property="twitter:url" content="https://inventoryframework.github.io/workinginthesystem/optimizations/">
     <meta property="twitter:title" content="Optimizations">
-    <meta property="twitter:description" content="While IFP is already extremely optimized, there's a few things you can do and keep in mind to make sure you are getting the absolute most out of IFP.">
+    <meta property="twitter:description" content="While IFP is already extremely optimized, there's a few things you can do and keep in mind to make sure you are getting the absolute most out of ">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.774731843295" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.774801563485" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.774731843295" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.774801563485" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.774731843295" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.774801563485" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -192,13 +192,13 @@
         <span>Optimizations</span>
     </h1>
 </doc-anchor-target>
-<p>While IFP is already extremely optimized, there&#x27;s a few things you can do and keep in mind to make sure you are getting the absolute most out of IFP.</p>
+<p>While <code v-pre>IFP</code> is already extremely optimized, there&#x27;s a few things you can do and keep in mind to make sure you are getting the absolute most out of <code v-pre>IFP</code>.</p>
 <p>To start, lets first cover what are the most expensive parts of <code v-pre>IFP</code> (Listed in semi-random pattern. It is not possible to 100% be certain what is the MOST expensive in all projects as there are multiple factors as when some things might become more expensive than others):</p>
 <ul>
 <li>The biggest performance culprit are the item widgets. About 33% of the cost of making a widget for an item just goes into creating the UMG hierarchy inside the widget.</li>
-<li>Finding an available tile during <span style="color:brown"><strong>StartComponent</strong></span>. The more tiles an item occupies, the more calculations are required to find a spot. This is also where the InventoryHelper can improve performance. If a specific tile is provided to an item, it doesn&#x27;t have to scan the entire container to find a free tile.</li>
+<li>Finding an available tile during <span style="color:brown"><strong>StartComponent</strong></span>. The more tiles an item occupies, the more calculations are required to find a spot. This is also where the InventoryHelper can improve performance. If a specific tile is provided to an item, it doesn&#x27;t have to scan the entire container to find a free tile. This can be alleviated with the <code v-pre>SkipValidation</code> system, which can be found in the inventory component documentation.</li>
 <li>Disabling rotation for items through <span style="color:brown"><strong>AC_Inventory</strong></span> -&gt; <span style="color:brown"><strong>CanItemBeRotated</strong></span> will reduce the amount of calculations required during <span style="color:brown"><strong>StartComponent</strong></span>.</li>
-<li>Unfortunately, removing some Blueprint features greatly improves performance. Let&#x27;s take <span style="color:brown"><strong>CheckCompatibility</strong></span> as an example. In a test with 100, this function in total took 1.5ms, but removing the <code v-pre>BlueprintNativeEvent</code> keyword from the UFUNCTION, which is the keyword that allows the function to be overriden at a Blueprint level, reduced the total time down to 0.090ms. Removing Blueprint support improved the performance by about 16 times. The same can be done to <span style="color:brown"><strong>GetFirstAvailableTile</strong></span>, which will gain you the most performance gains.</li>
+<li>Unfortunately, removing some Blueprint features greatly improves performance. Let&#x27;s take <span style="color:brown"><strong>CheckCompatibility</strong></span> as an example. In a test with 100 items, this function in total took 1.5ms, but removing the <code v-pre>BlueprintNativeEvent</code> keyword from the UFUNCTION, which is the keyword that allows the function to be overriden at a Blueprint level, reduced the total time down to 0.090ms. Removing Blueprint support improved the performance by about 16 times.</li>
 </ul>
 <doc-anchor-target id="separating-lag-spikes">
     <h2>
@@ -213,6 +213,9 @@
 <li>Binding the containers with the widgets inside of the inventory screen.</li>
 <li>Adding the inventory screen widget to the viewport.</li>
 </ol>
+<ul>
+<li>The function <code v-pre>GetDynamicMaterial</code> is surprisingly expensive the first time it is called and can cause a noticable spike. If possible, you should try to trigger this function during your loading screen or staggering these function calls</li>
+</ul>
 <p>Doing all of these at the same time will in some scenarios create a spike that is noticable to players. But separating them will make it (hopefully) invisible to players.</p>
 <doc-anchor-target id="widgets">
     <h2>
@@ -228,7 +231,7 @@
 <ul>
 <li>Generated item icons are and always will be much more expensive than just disabling it and using a texture. The <code v-pre>ItemEditor</code> tool can take the generated item icons and save them to disk as a texture to assign in the data asset. Getting the best of both worlds, though this will remove any features where the icon updates depending on what is attached to an item, for example attaching a silencer on a gun and having the icon update accordingly.</li>
 <li>Staggering out the generated item icons. This is actually a default feature that can easily be enabled in <span style="color:violet"><strong>WBP_InventoryItem</strong></span>.</li>
-<li>Depending on the simplicity of your equipment, you might want to do what some of the Resident Evil games do. They have a texture for each gun and every combination of it with attachments. Of course, they had very few weapons and very few combinations of equipments.</li>
+<li>Depending on the simplicity of your equipment, you might want to do what some of the Resident Evil games do. They have a texture for each gun and every combination of it with attachments. Of course, they had very few weapons and very few combinations of equipments. So again, depending on the simplicity of your project, you might want to consider this technique.</li>
 <li>Create some of the widget components during runtime. For example, the ItemCount text. If the majority of your items can&#x27;t be stacked, you are then creating a text widget that will never be shown for a lot of items. By default, <code v-pre>IFP</code> does not do this as this is generally a more annoying workflow. This really comes down to per projects needs.</li>
 </ul>
 <doc-anchor-target id="networking">

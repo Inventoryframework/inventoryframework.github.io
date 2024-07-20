@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.774731843295">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.774801563485">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -14,28 +14,28 @@
     <meta name="description" content="This plugin was created for an open-world game that has very strict performance requirements. Because of this, some logic is handled in C">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/introduction/">
+    <link rel="canonical" href="https://inventoryframework.github.io/introduction/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/introduction/">
+    <meta property="og:url" content="https://inventoryframework.github.io/introduction/">
     <meta property="og:title" content="Introduction">
     <meta property="og:description" content="This plugin was created for an open-world game that has very strict performance requirements. Because of this, some logic is handled in C">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/introduction/">
+    <meta property="twitter:url" content="https://inventoryframework.github.io/introduction/">
     <meta property="twitter:title" content="Introduction">
     <meta property="twitter:description" content="This plugin was created for an open-world game that has very strict performance requirements. Because of this, some logic is handled in C">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../resources/css/retype.css?v=3.5.0.774731843295" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.5.0.774801563485" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.5.0.774731843295" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.5.0.774801563485" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.5.0.774731843295" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.5.0.774801563485" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -203,7 +203,7 @@ If you can&#x27;t write in C++ or don&#x27;t have access to anyone who can write
 <li><p>Data Assets are being used instead of Data Tables for a few reasons:</p>
 <ol>
 <li>You can create children of the item data asset to create a brand new type of item with its own unique settings and not have those settings clutter the items that aren&#x27;t relevant to those settings.</li>
-<li>You can control their loading and unloading in the Asset Manager.</li>
+<li>You can control their loading and unloading, greatly improving memory usage. With data tables, all rows are always initialized, even if you aren&#x27;t using the other rows.</li>
 <li>Easier to create Utility Widgets and automating tests.</li>
 <li>It&#x27;s easier to find out what assets are referencing which data asset, while with Data Tables, it can get messy to find out what asset is referencing a specific row.</li>
 <li>Data tables are not ideal for managing massive databases. Anyone who has had to deal with source-control while working on an item will know the pains data tables can bring for a system like this.</li>

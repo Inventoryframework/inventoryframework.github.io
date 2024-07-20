@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.774731843295">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.774801563485">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -14,28 +14,28 @@
     <meta name="description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Components\\AC_Inventory.h File Location:...">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/classes-and-settings/ac_inventory/">
+    <link rel="canonical" href="https://inventoryframework.github.io/classes-and-settings/ac_inventory/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/classes-and-settings/ac_inventory/">
+    <meta property="og:url" content="https://inventoryframework.github.io/classes-and-settings/ac_inventory/">
     <meta property="og:title" content="AC_Inventory">
     <meta property="og:description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Components\\AC_Inventory.h File Location:...">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/classes-and-settings/ac_inventory/">
+    <meta property="twitter:url" content="https://inventoryframework.github.io/classes-and-settings/ac_inventory/">
     <meta property="twitter:title" content="AC_Inventory">
     <meta property="twitter:description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Components\\AC_Inventory.h File Location:...">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.774731843295" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.774801563485" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.774731843295" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.774801563485" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.774731843295" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.774801563485" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -229,6 +229,26 @@ The item might also have items attached to it and be visible, such as a sight on
 The input system is extremely basic and is meant to be replaced. They are never used at a C++ level, so your designers can replace it easily.<br />
 <span style="color:slateblue"><strong>RotateKey</strong></span> : While dragging an item, the player might want to rotate an item. When they press this key, it’ll rotate.<br />
 <span style="color:slateblue"><strong>SplitKey</strong></span> : While dragging a stackable item, when they drop the item onto a valid tile, they can split an item into two stacks.</p>
+<hr>
+<doc-anchor-target id="optimizing-startcomponent">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#optimizing-startcomponent">#</doc-anchor-trigger>
+        <span>Optimizing StartComponent</span>
+    </h2>
+</doc-anchor-target>
+<p>When the component starts, a bunch of calculations, compatibility checks and validation occurs. This can be expensive if you initialize hundreds to thousands of items or containers.<br />
+If you apply the <code v-pre>IFP.Optimization.SkipValidation</code> tag, these steps are mostly skipped. You are now telling the system that YOU have validated the position, compatibility and so forth. Without this tag, items can take anywhere from 1 microsecond, to 100 microseconds or more, depending on the quantity, size, shape and so forth. With this tag, items consistently take anywhere from 100 nanoseconds to 2 microseconds.</p>
+<ul>
+<li>This tag is automatically applied to any save files, since it makes sense to assume that the containers you are trying to save have already been validated in some way.
+<ul>
+<li>It is recommended whenever loading a save from a previous version of your game to remove this tag. In this case, you&#x27;d want to add some version number to your save files and enabling the <span style="color:Slateblue"><strong>Remove SkipValidation tags</strong></span> option on <span style="color:brown"><strong>StartComponent</strong></span> if the save files version number does not match the games current version.</li>
+</ul>
+</li>
+<li>Do keep in mind that this has no failsafes. If you apply this tag on an item and odd behavior occurs, you have either found a bug or the tag was applied when it shouldn&#x27;t have been.</li>
+<li>The <code v-pre>InventoryHelper</code> tool automatically applies this tag to items whenever possible.</li>
+<li>The main performance benefits come from applying this tag to items. Very little performance gain happens when applying this to containers. This tag should only be applied to containers in save systems. <code v-pre>IFP</code> already handles this automatically.</li>
+<li>In a few runs of a simple A-B test with 18 items; without this tag it would take on average 340 microseconds to initialize quite complex items in a large grid container. With the tag, this number dropped to 8 microseconds.</li>
+</ul>
 <hr>
 <doc-anchor-target id="color-settings">
     <h2>

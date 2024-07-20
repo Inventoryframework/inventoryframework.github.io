@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.774731843295">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.774801563485">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -14,28 +14,28 @@
     <meta name="description" content="File location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Items\\DA_CoreItem.h File Location:...">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/classes-and-settings/da_coreitem/">
+    <link rel="canonical" href="https://inventoryframework.github.io/classes-and-settings/da_coreitem/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/classes-and-settings/da_coreitem/">
+    <meta property="og:url" content="https://inventoryframework.github.io/classes-and-settings/da_coreitem/">
     <meta property="og:title" content="DA_CoreItem">
     <meta property="og:description" content="File location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Items\\DA_CoreItem.h File Location:...">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/classes-and-settings/da_coreitem/">
+    <meta property="twitter:url" content="https://inventoryframework.github.io/classes-and-settings/da_coreitem/">
     <meta property="twitter:title" content="DA_CoreItem">
     <meta property="twitter:description" content="File location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Items\\DA_CoreItem.h File Location:...">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.774731843295" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.774801563485" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.774731843295" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.774801563485" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.774731843295" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.774801563485" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -204,6 +204,39 @@ File Location: Source\InventoryFrameworkPlugin\Private\Core\Items\DA_CoreItem.cp
 One of the most important settings to set up here is <span style="color:slateblue"><strong>EItemType</strong></span> as many functions use this enum to do casts to the proper children of this asset. Whenever you make a new child, remember to go into the .cpp file and set the default value. You can see an example inside all the .cpp children of this.</p>
 <p>If you are new to C++ or Unreal Engine, I suggest looking <a href="https://benui.ca/unreal/uproperty/" target="_blank"><strong>here</strong></a> to find all the specifiers you can give each variable.</p>
 <hr>
+<doc-anchor-target id="creating-new-items">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#creating-new-items">#</doc-anchor-trigger>
+        <span>Creating new items</span>
+    </h2>
+</doc-anchor-target>
+<p><a href="https://youtu.be/GzxE6spwgCQ" target="_blank"><strong>Video documentation</strong></a> (slightly outdated, for  example the content browser and item actor name have been changed, but majority of it is still relevant. The only thing that should be ignored is around <code v-pre>06:23</code>, I state that you should import the containers from the data asset into the item actor. This is no longer needed, only the first index needs to be setup.)</p>
+<p>Creating new items is very simple.<br />
+To start off, you&#x27;ll need to go into the engine and find your content browser, right click and go to <strong>Inventory Framework -&gt; Inventory Item Asset</strong> and a pop up will appear asking you what parent your data asset should derive from.<br />
+You might have your own children or have removed some of the children that come with the asset, but whatever asset you choose must derive from <span style="color:violet"><strong>DA_CoreItem</strong></span> at some point in its hierarchy.</p>
+<p>I suggest creating a folder for your item and placing the data asset in there.</p>
+<p>To create a blueprint actor for your item, you will have to create an actor who at some point in its hierarchy is a child of <span style="color:violet"><strong>A_ItemActor</strong></span> (The blueprint child is called <span style="color:violet"><strong>BP_ItemActor</strong></span>), then set that as your <span style="color:Slateblue"><strong>ItemActor</strong></span></p>
+<p>The actor will automatically get the blueprint inventory component assigned to it. You will need to go into the component settings and change a few things.</p>
+<ol>
+<li>Set <span style="color:Slateblue"><strong>InventoryType</strong></span> to &quot;<strong>Pickup</strong>&quot;</li>
+<li>Add one index to <span style="color:Slateblue"><strong>ContainerSettings</strong></span> and set the <span style="color:Slateblue"><strong>ContainerType</strong></span> to &quot;<strong>ThisActor</strong>&quot;. This will then hide most of the settings except for the items array.</li>
+<li>Your items array should only have one index, which will be your newly created data asset. All settings can be left to their default.</li>
+<li>(Optional) If your item has containers associated with it, the data asset should have an array of <span style="color:Slateblue"><strong>DefaultContainers</strong></span>. You will want to populate these with your containers and also assign the widget. Only available to supported data assets, such as <span style="color:violet"><strong>IDA_Equippable</strong></span> and <span style="color:violet"><strong>IDA_Weapon</strong></span>, reference them to create your own with container support. An example can be found in the example project with the gun and backpack item.</li>
+</ol>
+<p>To have the asset manager pick up your data asset, it can not be identical to another data asset. (This includes the base file, so if all your variables are set to default, the asset will not get picked up.) Typically you want to immediately give your item a name and a developer image for the InventoryHelper.</p>
+<hr>
+<doc-anchor-target id="creating-new-c-children-of-da_coreitem">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#creating-new-c-children-of-da_coreitem">#</doc-anchor-trigger>
+        <span>Creating new C++ children of DA_CoreItem</span>
+    </h3>
+</doc-anchor-target>
+<p>You might want to create your own category of items, and since the engine does not allow you to mix C++ and blueprint children of data assets, you are unfortunately forced to create C++ children.</p>
+<p>I suggest installing the plugin directly to your project, and then creating new children inside the <strong>Items</strong> folder, which is found inside the plugins <strong>Core</strong> folder.</p>
+<p>If you are creating a new category, you will also want to find the EItemType enum inside <span style="color:violet"><strong>IFP_CoreData.h</strong></span> and create a new entry. Then inside your newly created .cpp file, override the constructor and set the type to be equal to this new category.<br />
+This is so functions inside of <span style="color:violet"><strong>DA_CoreItem</strong></span> can perform the correct casts to retrieve data from its children.<br />
+You can find examples of this inside of the children of <span style="color:violet"><strong>DA_CoreItem</strong></span> that come with the plugin.</p>
+<hr>
 <doc-anchor-target id="changing-the-item-actor-class">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#changing-the-item-actor-class">#</doc-anchor-trigger>
@@ -333,7 +366,10 @@ Data assets have &quot;objects&quot; and &quot;drivers&quot;, which I recommend 
 </doc-anchor-target>
 <p>Objects are replicated to all clients that are relevant to the owner of the inventory component. But the item data is not replicated and even if it was, it should NOT be trusted on clients that are neither the owner of the inventory component or the server. This is because of how <code v-pre>IFP</code> optimizes networking, which can be read further about in the <code v-pre>Introduction</code> section.</p>
 <ul>
-<li>Experimental: These objects can declare their own replication condition, giving you a chance for massive networking improvements. This means you can have objects that only replicate to the owner, server only, or you can even disable replication.</li>
+<li><p>Experimental: These objects can declare their own replication condition, giving you a chance for massive networking improvements. This means you can have objects that only replicate to the owner, server only, or you can even disable replication.</p>
+</li>
+<li><p>Keep in mind, if you move your inventory component to the player state for better seamless travel support, these struct objects will start replicating to every client, no matter the relevancy rules you apply. Because of this, it&#x27;s suggested to either declare replication conditions to resolve this for all struct objects or not use struct objects at all. This of course comes down to the context of the game and how many networking optimizations have to be applied.</p>
+</li>
 </ul>
 <doc-anchor-target id="performance">
     <h4>
