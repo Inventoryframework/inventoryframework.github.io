@@ -60,6 +60,15 @@ There is always a chance a packet will be dropped, which is again why you should
 These optimizations of course only matter depending on the scope of your game. This more or less serves as an idea of what to focus on during the optimization phase of your game and what you might have to look for.
 
 ---
+## Manually labelling items as equipped/unequipped
+By default, IFP will label an item as equipped or unequipped when an item is added or removed from an equipment container. But in some cases, you want to manually handle this, for example labelling an item that is in a normal grid as equipped.
+
+This can be handled through the <span style="color:brown">**UpdateItemsEquipStatus**</span> function. This can accept custom trigger filters to allow for you to filter out what equipment settings to use in the in-built equipment system or to use in your own custom equipment system.
+- Whenever an item is equipped, a tag is automatically applied, called <span style="color:slateblue">**EquipTag**</span>. This can be set in the class defaults for the inventory component.
+
+This function is never used in base `IFP`, so it is expected for you to handle when and how it is called to equip and unequip an item.
+
+---
 ## Events
 There are two events that can activate when equipping and unequipping an item occurs.
 1. The first is the component's <span style="color:brown">**ItemEquipped**</span> and <span style="color:brown">**ItemUnequipped**</span> delegate. This is only called when an item is added or removed from a slot. This is only called on the actor that the inventory component the slot belongs to, so equipping a weapon as a player will have the delegate call on the player, not the weapon.
@@ -77,8 +86,10 @@ By default, there is no failsafe if an animation is interrupted as that is somet
 
 ---
 ## Why are all my components getting renamed?
-The system automatically tries to keep all components attached to an actor with unique names. Including attached actors. This is because of how the  preview system works. The preview system attempts to reconstruct the actor it's previewing without fully cloning it. There are ways of perfectly cloning an actor, but those are very expensive and come with their own set of problems. The preview system only looks at the visible components on the actor, including attached actors, and reconstructs it. But problems occur if two components have the same name from 2 different attached actors.
+The system automatically tries to keep all components attached to an actor with unique names - including attached actors. This is for 2 reasons:
+1. Because of how the  preview system works. The preview system attempts to reconstruct the actor it's previewing without fully cloning it. There are ways of perfectly cloning an actor, but those are very expensive and come with their own set of problems. The preview system only looks at the visible components on the actor, including attached actors, and reconstructs it. But problems occur if two components have the same name from 2 different attached actors.
 When the preview system reconstructs the actor, it finds out what component it was attached to, but it needs to know which component that is on itself, it can't use the object reference. This means that if two components have the same name, it'll mess up which component it should attach to. The simple fix to this is to make sure all components have a unique name. The engine already handles this if you attach a component to an actor and that actor has a component with the same name, but it does not do this for attached actors.
+2. The engine does not have failsafes when two components on the same actor have the same name and will crash.
 
 But to simplify debugging, only a underscore and a random number is added to the end of it. The  rest of the name is untouched.
 
@@ -95,7 +106,7 @@ Physics is typically the main culprit for the equipment system breaking. If an i
 ---
 ## Custom equipment system
 It's fairly simple to completely replace the equipment system or use a hybrid solution.
-To understand the beginning of the chain, the equipment system begins ideally on the actor on the Inventory -> ItemEquipped delegate. This is where you'd inject any modifications to the base behavior of the equipment system.
+To understand the beginning of the chain, the equipment system begins on the actor's Inventory -> ItemEquipped delegate event. This is where you'd inject any modifications to the base behavior of the equipment system.
 
 In some cases, it's simpler to just swap out a mesh with a new one. For example, the player might have a default jacket if no other jacket is equipped. In this case, it's much simpler to just use a custom equipment object which holds that other mesh and swap the default jacket mesh with the new one.
 

@@ -9,7 +9,7 @@ If you can't write in C++ or don't have access to anyone who can write C++ code 
 
 - Data Assets are being used instead of Data Tables for a few reasons:
     1. You can create children of the item data asset to create a brand new type of item with its own unique settings and not have those settings clutter the items that aren't relevant to those settings.
-	2. You can control their loading and unloading in the Asset Manager.
+	2. You can control their loading and unloading, greatly improving memory usage. With data tables, all rows are always initialized, even if you aren't using the other rows.
 	3. Easier to create Utility Widgets and automating tests.
 	4. It's easier to find out what assets are referencing which data asset, while with Data Tables, it can get messy to find out what asset is referencing a specific row.
     5. Data tables are not ideal for managing massive databases. Anyone who has had to deal with source-control while working on an item will know the pains data tables can bring for a system like this.

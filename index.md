@@ -2,7 +2,7 @@
 
 ---
 #### Last update: 19th May, 2024
-#### Latest version: 2.8.1
+#### Latest version: 2.9
 
 ---
 Links can be found at the top of the page.

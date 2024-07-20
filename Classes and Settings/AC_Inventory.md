@@ -33,6 +33,17 @@ The input system is extremely basic and is meant to be replaced. They are never 
 <span style="color:slateblue">**SplitKey**</span> : While dragging a stackable item, when they drop the item onto a valid tile, they can split an item into two stacks.
 
 ---
+## Optimizing StartComponent
+When the component starts, a bunch of calculations, compatibility checks and validation occurs. This can be expensive if you initialize hundreds to thousands of items or containers.
+If you apply the `IFP.Optimization.SkipValidation` tag, these steps are mostly skipped. You are now telling the system that YOU have validated the position, compatibility and so forth. Without this tag, items can take anywhere from 1 microsecond, to 100 microseconds or more, depending on the quantity, size, shape and so forth. With this tag, items consistently take anywhere from 100 nanoseconds to 2 microseconds.
+- This tag is automatically applied to any save files, since it makes sense to assume that the containers you are trying to save have already been validated in some way.
+    - It is recommended whenever loading a save from a previous version of your game to remove this tag. In this case, you'd want to add some version number to your save files and enabling the <span style="color:Slateblue">**Remove SkipValidation tags**</span> option on <span style="color:brown">**StartComponent**</span> if the save files version number does not match the games current version.
+- Do keep in mind that this has no failsafes. If you apply this tag on an item and odd behavior occurs, you have either found a bug or the tag was applied when it shouldn't have been.
+- The `InventoryHelper` tool automatically applies this tag to items whenever possible.
+- The main performance benefits come from applying this tag to items. Very little performance gain happens when applying this to containers. This tag should only be applied to containers in save systems. `IFP` already handles this automatically.
+- In a few runs of a simple A-B test with 18 items; without this tag it would take on average 340 microseconds to initialize quite complex items in a large grid container. With the tag, this number dropped to 8 microseconds.
+
+---
 ## Color settings
 Third category is <span style="color:Slateblue">**ColorSettings**</span>  and this is where most of the colors used by the system are dictated. This is set in here so all the widgets can fetch colors easily and so designers can extend any color settings (for example color blind settings) to the user settings. If you want to add any color settings, this place is the preferred place. Item rarity colors are handled in here.
 

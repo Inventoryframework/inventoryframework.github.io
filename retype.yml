@@ -1,7 +1,7 @@
 input: .
 favicon: pictures/websiteicon2.jpg
 output: .retype
-url: # Add your website address here
+url: inventoryframework.github.io/
 branding:
   title: Inventory Framework
   label: Docs

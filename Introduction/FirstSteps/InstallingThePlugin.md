@@ -32,7 +32,7 @@ There are also a few demo files that you’ll want to replace and enum entries y
 Everything in the demo folder is designed to be replaced by your assets/Blueprints. It is only there so you don’t get any errors on startup.
 
 ---
-# Finding the plugin content in your content browser
+## Finding the plugin content in your content browser
 
 To find the blueprints, you will want to start the engine, go into your content browser and make sure that in your settings (1) and make sure "Show Plugin Content" (2) is checked. Once that is checked, you will find a "Plugins" folder and in there you will find "InventoryFrameworkPlugin content" (3)
 
