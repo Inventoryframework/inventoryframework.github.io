@@ -41,7 +41,7 @@ If you apply the `IFP.Optimization.SkipValidation` tag, these steps are mostly s
 - Do keep in mind that this has no failsafes. If you apply this tag on an item and odd behavior occurs, you have either found a bug or the tag was applied when it shouldn't have been.
 - The `InventoryHelper` tool automatically applies this tag to items whenever possible.
 - The main performance benefits come from applying this tag to items. Very little performance gain happens when applying this to containers. This tag should only be applied to containers in save systems. `IFP` already handles this automatically.
-- In a few runs of a simple A-B test with 18 items; without this tag it would take on average 340 microseconds to initialize quite complex items in a large grid container. With the tag, this number dropped to 8 microseconds.
+- In a few runs of a simple A-B test with 18 items; without this tag it would take on average 340 (total time for all items) microseconds to initialize quite complex items in a large grid container. With the tag, this number dropped to 8 microseconds.
 
 ---
 ## Color settings
