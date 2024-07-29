@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.775119227252">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.775546082915">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.775119227252" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.775546082915" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.775119227252" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.775546082915" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.775119227252" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.775546082915" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -208,6 +208,7 @@
 <li>The <span style="color:slateblue"><strong>CompatibilitySettings</strong></span> has been updated to use item tag types as the <span style="color:slateblue"><strong>EItemType</strong></span> enum has been deprecated</li>
 <li>Since the <span style="color:slateblue"><strong>EItemType</strong></span> enum has been deprecated, you should use the tag item type version instead.</li>
 <li>The attachment widget variable in the item struct has been deprecated, is now a part of the external objects system. Use the <span style="color:brown"><strong>GetItemsAttachmentWidget</strong></span> function instead.</li>
+<li>Override settings Price and SpawnChance have been deprecated. Spawn chance has bee replaced with a tag value while overriding the price is no longer supported.</li>
 </ul>
 <doc-anchor-target id="documentation">
     <h2>
@@ -236,6 +237,7 @@
 <li>The Unequip event has been reworked slightly so it is possible to modify an item when it is unequipped, for example the item tags.</li>
 <li>Added <span style="color:brown"><strong>GetObjectsForItemBroadcastWithInterface</strong></span> and <span style="color:brown"><strong>GetObjectsForItemBroadcastWithInterface</strong></span></li>
 <li>Added <span style="color:brown"><strong>MassSplitItem</strong></span></li>
+<li>The <span style="color:slateblue"><strong>Rotation</strong></span>, <span style="color:slateblue"><strong>RandomMinMaxCount</strong></span> and <span style="color:slateblue"><strong>OverrideSettings</strong></span> are now hidden in the item settings depending on settings that would make them irrelevant, such as the container not supporting rotation and item type not being stackable.</li>
 </ul>
 <doc-anchor-target id="items">
     <h2>
