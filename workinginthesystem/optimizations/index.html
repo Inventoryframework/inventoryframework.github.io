@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.775546082915">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.775653125927">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -21,21 +21,23 @@
     <meta property="og:url" content="https://inventoryframework.github.io/workinginthesystem/optimizations/">
     <meta property="og:title" content="Optimizations">
     <meta property="og:description" content="While IFP is already extremely optimized, there's a few things you can do and keep in mind to make sure you are getting the absolute most out of ">
+    <meta property="og:image" content="https://inventoryframework.github.io/pictures/setenableworldrendering1.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://inventoryframework.github.io/workinginthesystem/optimizations/">
     <meta property="twitter:title" content="Optimizations">
     <meta property="twitter:description" content="While IFP is already extremely optimized, there's a few things you can do and keep in mind to make sure you are getting the absolute most out of ">
+    <meta property="twitter:image" content="https://inventoryframework.github.io/pictures/setenableworldrendering1.png">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.775546082915" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.775653125927" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.775546082915" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.775653125927" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.775546082915" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.775653125927" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -233,6 +235,27 @@
 <li>Staggering out the generated item icons. This is actually a default feature that can easily be enabled in <span style="color:violet"><strong>WBP_InventoryItem</strong></span>.</li>
 <li>Depending on the simplicity of your equipment, you might want to do what some of the Resident Evil games do. They have a texture for each gun and every combination of it with attachments. Of course, they had very few weapons and very few combinations of equipments. So again, depending on the simplicity of your project, you might want to consider this technique.</li>
 <li>Create some of the widget components during runtime. For example, the ItemCount text. If the majority of your items can&#x27;t be stacked, you are then creating a text widget that will never be shown for a lot of items. By default, <code v-pre>IFP</code> does not do this as this is generally a more annoying workflow. This really comes down to per projects needs.</li>
+</ul>
+<doc-anchor-target id="other-notes">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#other-notes">#</doc-anchor-trigger>
+        <span>Other notes</span>
+    </h3>
+</doc-anchor-target>
+<p>These are notes that aren&#x27;t directly around <code v-pre>IFP</code>, but are still useful for all UI design.</p>
+<ul>
+<li>If the player can not see the world while looking at the inventory or in an escape menu or something else, you can implement and call this function to completely disable world rendering and gain tremendous frame rate gains:<br />
+<figure class="content-center">
+    <img src="../../pictures/setenableworldrendering1.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+<br />
+<figure class="content-center">
+    <img src="../../pictures/setenableworldrendering2.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</li>
+<li>Epic&#x27;s <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/optimization-guidelines-for-umg-in-unreal-engine?application_version=5.2" target="_blank"><strong>documentation for optimizing</strong></a> everything related to UMG:</li>
 </ul>
 <doc-anchor-target id="networking">
     <h2>
