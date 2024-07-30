@@ -29,6 +29,14 @@ The item widget will be going under a few optimizations throughout the next upda
 - Depending on the simplicity of your equipment, you might want to do what some of the Resident Evil games do. They have a texture for each gun and every combination of it with attachments. Of course, they had very few weapons and very few combinations of equipments. So again, depending on the simplicity of your project, you might want to consider this technique.
 - Create some of the widget components during runtime. For example, the ItemCount text. If the majority of your items can't be stacked, you are then creating a text widget that will never be shown for a lot of items. By default, `IFP` does not do this as this is generally a more annoying workflow. This really comes down to per projects needs.
 
+### Other notes
+These are notes that aren't directly around `IFP`, but are still useful for all UI design.
+- If the player can not see the world while looking at the inventory or in an escape menu or something else, you can implement and call this function to completely disable world rendering and gain tremendous frame rate gains:
+![](/pictures/SetEnableWorldRendering1.png)
+![](/pictures/SetEnableWorldRendering2.png)
+- Epic's <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/optimization-guidelines-for-umg-in-unreal-engine?application_version=5.2" target="_blank">**documentation for optimizing**</a> everything related to UMG: 
+
+
 ## Networking
 The only real meaningful thing you can do about network performance is trimming down the `FS_ContainerSettings` and `FS_InventoryItem struct`. For example; if you don't need the overwrite settings for items, you can remove it to reduce the RPC size of all items.
 
