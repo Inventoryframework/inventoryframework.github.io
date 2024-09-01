@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.775653125927">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.778519044325">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>Loot Tables</title>
-    <meta name="title" content="Loot Tables">
-    <meta name="description" content="There are tons of ways to handle loot tables, but ultimately all they do is add and/or remove items from an array.">
+    <title>Item Sockets</title>
+    <meta name="title" content="Item Sockets">
+    <meta name="description" content="ItemSockets is a system that allows you to assign a socket to an item, similar to a static or skeletal mesh.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://inventoryframework.github.io/loottables/">
+    <link rel="canonical" href="https://inventoryframework.github.io/systems/itemsockets/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://inventoryframework.github.io/loottables/">
-    <meta property="og:title" content="Loot Tables">
-    <meta property="og:description" content="There are tons of ways to handle loot tables, but ultimately all they do is add and/or remove items from an array.">
+    <meta property="og:url" content="https://inventoryframework.github.io/systems/itemsockets/">
+    <meta property="og:title" content="Item Sockets">
+    <meta property="og:description" content="ItemSockets is a system that allows you to assign a socket to an item, similar to a static or skeletal mesh.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://inventoryframework.github.io/loottables/">
-    <meta property="twitter:title" content="Loot Tables">
-    <meta property="twitter:description" content="There are tons of ways to handle loot tables, but ultimately all they do is add and/or remove items from an array.">
+    <meta property="twitter:url" content="https://inventoryframework.github.io/systems/itemsockets/">
+    <meta property="twitter:title" content="Item Sockets">
+    <meta property="twitter:description" content="ItemSockets is a system that allows you to assign a socket to an item, similar to a static or skeletal mesh.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../resources/css/retype.css?v=3.5.0.775653125927" rel="stylesheet">
+    <link href="../../pictures/websiteicon2.jpg" rel="icon">
+    <link href="../../resources/css/retype.css?v=3.5.0.778519044325" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.5.0.775653125927" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.5.0.775653125927" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.778519044325" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.778519044325" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -50,10 +50,10 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="docs-site-logo" href="../" class="flex items-center leading-snug text-xl">
+                        <a id="docs-site-logo" href="../../" class="flex items-center leading-snug text-xl">
                             <span class="w-10 mr-2 grow-0 shrink-0 overflow-hidden">
-                                <img class="max-h-10 dark:hidden md:inline-block" src="../pictures/logo.png">
-                                <img class="max-h-10 hidden dark:inline-block" src="../pictures/logo.png">
+                                <img class="max-h-10 dark:hidden md:inline-block" src="../../pictures/logo.png">
+                                <img class="max-h-10 hidden dark:inline-block" src="../../pictures/logo.png">
                             </span>
                             <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Inventory Framework</span>
                         </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
@@ -186,128 +186,15 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="loot-tables" class="break-words">
+<doc-anchor-target id="item-sockets" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#loot-tables">#</doc-anchor-trigger>
-        <span>Loot Tables</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#item-sockets">#</doc-anchor-trigger>
+        <span>Item Sockets</span>
     </h1>
 </doc-anchor-target>
-<hr>
-<p>There are tons of ways to handle loot tables, but ultimately all they do is add and/or remove items from an array. The abstract design of this system does try to provide you with an interface that allows you to create any type of loot table system, but that does mean that the loot table is slightly more complicated than some other loot table systems. Here are the design parameters that the loot table system follows:</p>
-<ul>
-<li>Handled through a actor component and instanced objects. This means you can create custom loot table systems and even mix multiple types of loot tables.</li>
-<li>Usable on any actor with a inventory component, including item actors, interactables, player character, etc. This includes allowing item data assets to declare default loot tables.</li>
-<li>Items added through loot tables should also have their loot tables imported, meaning recursive loot tables.</li>
-<li><code v-pre>Modular Game Feature</code> (<code v-pre>MGF</code>) support. This means that loot tables should be extendable through content updates/DLC/expansions.</li>
-</ul>
-<p>The loot table system comprises of 2 parts; A component (loot table) and an array of instanced objects (loot pools) that live inside the component.</p>
-<div class="flex mb-6">
-    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
-    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
-        <div class="flex items-center ml-4 h-7">
-            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
-                <g fill="currentColor"><g>
-                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
-                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                </g></g>
-            </svg>
-        </div>
-        <div class="pr-5 ml-3 w-full">
-<p>Game features are still labeled as &quot;Beta&quot;, so do expect some bugs around <code v-pre>MGF</code>&#x27;s. But they have been battle tested extensively through Fortnite, last time I heard they had over 200+ <code v-pre>MGF</code>&#x27;s.<br />
-This system does not rely on <code v-pre>MGF</code>&#x27;s, it&#x27;s simply meant to be utilized by them</p>
-        </div>
-    </div>
-</div>
-<hr>
-<doc-anchor-target id="loot-table-component">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#loot-table-component">#</doc-anchor-trigger>
-        <span>Loot table component</span>
-    </h2>
-</doc-anchor-target>
-<p>The loot table component is the heart of the loot table system.<br />
-When the inventory component calls <span style="color:brown"><strong>StartComponent</strong></span>, it will first try and find any loot table components and run <span style="color:brown"><strong>PreInventoryInitialized</strong></span> and forward that to the <code v-pre>Loot Pool Object</code>&#x27;s. Most functions will not work as expected, because this is before anything is initialized. You are just expected to manually modify the <span style="color:slateblue"><strong>ContainerSetting</strong></span>&#x27;s array as if you were modifying it yourself by hand. Most changes will be done here.<br />
-Once <span style="color:brown"><strong>StartComponent</strong></span> is finished, it&#x27;ll call <span style="color:brown"><strong>PostInventoryInitialized</strong></span>. All functions will now work just as normal, but you are expected to add most items during the pre-initialization phase.</p>
-<ul>
-<li>You can have as many loot table components on an actor as you want. This is primarily used for better <code v-pre>MGF</code> support.
-<ul>
-<li>Loot table components are sorted by their <span style="color:slateblue"><strong>Priority</strong></span>. Higher priority components are ran first. This is to allow future components added through <code v-pre>MGF</code>&#x27;s to increase the chances of new content being prioritized. But keep in mind, this gives some loot tables a slight bias over others.</li>
-</ul>
-</li>
-<li>Loot table components are automatically destroyed on clients. They are only utilized by the server.</li>
-<li>The <span style="color:brown"><strong>PostInventoryInitialized</strong></span> function does open up the possibility of doing async loot tables or spacing out loot additions. This should really only be considered if you are doing hundreds of items. It is of course up to you to handle when you start this async operation and implementing it.</li>
-</ul>
-<hr>
-<doc-anchor-target id="loot-pool-object">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#loot-pool-object">#</doc-anchor-trigger>
-        <span>Loot Pool object</span>
-    </h2>
-</doc-anchor-target>
-<p>These objects are what actually try to modify the inventory components <span style="color:slateblue"><strong>ContainerSetting</strong></span>&#x27;s, store any data and run any meaningful functions. These are stored in the loot table components <span style="color:slateblue"><strong>LootPools</strong></span> array. By default, this has nearly nothing inside of it.</p>
-<p>The plugin comes with 2 examples, a simple loot pool and a advanced loot pool.</p>
-<ul>
-<li>Simple example: Contains an array of items, each has a percentage to spawn and the order is then randomized.</li>
-<li>Advanced example: This loot pool object has the ability to be globally modified during runtime through <code v-pre>MGF</code>&#x27;s. This system utilizes a world subsystem that only exists on the server and <code v-pre>MGF</code>&#x27;s can dynamically add and remove items from the subsystem. The subsystem has a map of tags and this object fetches the items to use through this tag.<br />
-This means that these advanced loot pools can be expanded on in future updates very easily, without referencing any assets and allowing the loot to have the same probability as other items in the pool, where as the simple example will always have some bias as one loot pool has to be executed before the new ones added through <code v-pre>MGF</code>&#x27;s are executed. Remember, <code v-pre>MGF</code>&#x27;s are one-way referencable only, in your base game, you shouldn&#x27;t reference content inside of <code v-pre>MGF</code>&#x27;s.
-<ul>
-<li>This system also has the ability to dynamically add/remove items from loot pools during runtime, so you could for example have a chest that has more items inside of it, depending on if the player has defeated a specific boss.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<doc-anchor-target id="modular-game-features">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#modular-game-features">#</doc-anchor-trigger>
-        <span>Modular Game Features</span>
-    </h2>
-</doc-anchor-target>
-<p>Some games using IFP might get content updates, DLC, expansions, something that adds content to the game, such as items. Loot tables is the primary way that most games handle additional content post-release.</p>
-<ul>
-<li>It&#x27;s not recommended to put item assets into MGF&#x27;s because it highly complicates how the inventory of all actors is managed. What if the player is wielding a weapon added through a MGF and the MGF gets disabled? Do you delete the item? When it&#x27;s enabled again, how would you restore it? If you do decide to add item assets through MGF&#x27;s, then you are responsible for managing inventories if it&#x27;s ever disabled. The only exception to this is if you are permanently enabling this MGF, like an expansion. Then this scenario won&#x27;t ever happen.</li>
-<li>By default, there are 2 ways to add new content to loot tables. One is to add another loot table component to actors. This follows the same procedure as the standard <code v-pre>Add Components</code> action MGF&#x27;s come with. The other is used by the advanced example loot pool object and that is registering more items to the subsystem. If you don&#x27;t like either option, then you can always implement more methods by creating new loot table objects.</li>
-</ul>
-<hr>
-<doc-anchor-target id="overriding-the-loot-table-system">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#overriding-the-loot-table-system">#</doc-anchor-trigger>
-        <span>Overriding the loot table system</span>
-    </h2>
-</doc-anchor-target>
-<p>If you want to completely override, customize or even implement your own entire custom loot table system, that is also quite easy to do. Just simply override the <span style="color:brown"><strong>ProcessLootTablesPreInitialized</strong></span> and <span style="color:brown"><strong>ProcessLootTablesPostInitialized</strong></span> functions in your inventory component.</p>
-<hr>
-<doc-anchor-target id="pre-loading-assets">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#pre-loading-assets">#</doc-anchor-trigger>
-        <span>Pre-loading assets</span>
-    </h2>
-</doc-anchor-target>
-<p>Loot pools have the ability to start loading any assets before the loot table is processed by calling <span style="color:brown"><strong>PreLoadAssets</strong></span>.<br />
-It is recommended to roll your spawn chances here, then only load the assets that succeeded their spawn chance and populate a second array with these items. This way you don&#x27;t uneccessary load any assets that would have failed their spawn chance.</p>
-<ul>
-<li>By default, there is nothing calling this function. It is up to you to decide when and how this is called.</li>
-</ul>
-<hr>
-<doc-anchor-target id="item-asset-loot-tables">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#item-asset-loot-tables">#</doc-anchor-trigger>
-        <span>Item Asset Loot Tables</span>
-    </h2>
-</doc-anchor-target>
-<p>To have item assets have loot tables, you must override the <span style="color:brown"><strong>GetLootTables</strong></span> function and pass in an array of loot tables. An example can be found in the <code v-pre>DA_Equippable</code> and <code v-pre>DA_Weapon</code> item assets that come with the plugin.</p>
-<p>When <span style="color:brown"><strong>StartComponent</strong></span> is called, it&#x27;ll check any item that has the <code v-pre>IFP.Initialization.IncludeLootTables</code> tag and then create loot table components with the same settings as the ones declared in the item asset and attach them to the same actor that the inventory component belongs to. This tag is then removed afterwards.</p>
-<p>Loot tables can get the item they were created from and its containers through the <span style="color:brown"><strong>GetParentItem</strong></span> and <span style="color:brown"><strong>GetParentItemsContainers</strong></span> functions. Loot pools have a <span style="color:brown"><strong>GetLootTable</strong></span>  function, so loot pools also have access to this data through this function.</p>
-<hr>
-<doc-anchor-target id="data-registry">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#data-registry">#</doc-anchor-trigger>
-        <span>Data Registry</span>
-    </h2>
-</doc-anchor-target>
-<p><code v-pre>MGF</code>&#x27;s reference a &quot;data registry&quot; which seem to have been introduced around 4.26, but at the time of writing, there is very little documentation and examples of how it works or how best to utilize it, but the lead engine programmer at Epic did discuss it in this video and he even refences a loot table system.<br />
-<a href="https://www.youtube.com/live/7F28p564kuY?si=xX839PLPJHtXyZjN&amp;t=5027">https://www.youtube.com/live/7F28p564kuY?si=xX839PLPJHtXyZjN&amp;t=5027</a></p>
-<p>I won&#x27;t be using data registries in the example project for now, because some of the functions around it are still labelled as experimental and due to the lack of documentation or any sources of how to best utilize it, but it might be worthwhile to some to investigate data registries for their loot table systems.</p>
+<p><code v-pre>ItemSockets</code> is a system that allows you to assign a socket to an item, similar to a static or skeletal mesh. This socket contains a name, a local position, a tag, and a rotation. Then using helper functions to get the tile index of that socket (<span style="color:brown"><strong>GetTileForSocket</strong></span>), with another function allowing you to provide an offset to the sockets tile (<span style="color:brown"><strong>GetTileForSocketWithOffset</strong></span>).</p>
+<p>The <code v-pre>ItemSocket</code> system can be enabled for items by opening the item asset and adding the <code v-pre>Socket Manager</code> object.</p>
+<p>It is recommended to open the <code v-pre>ItemEditor</code> tool as that will provide you with a editor utility widget to visually assign your sockets.</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -317,20 +204,20 @@ It is recommended to roll your spawn chances here, then only load the assets tha
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../crafting/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../systems/externalobjects/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Crafting</span>
+                                                <span class="block mt-1">External Objects</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../tools/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../systems/loottables/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Tools</span>
+                                                <span class="block mt-1">Loot Tables</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -374,6 +261,6 @@ It is recommended to roll your spawn chances here, then only load the assets tha
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Loot Tables", level: 1, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Item Sockets", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>

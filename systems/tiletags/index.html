@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.775653125927">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.778519044325">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>Tag system</title>
-    <meta name="title" content="Tag system">
-    <meta name="description" content="Gameplay tags are extremely powerful and this system attempts to allow itself to expand to various needs using not just gameplay tags, but also a...">
+    <title>Tile Tags</title>
+    <meta name="title" content="Tile Tags">
+    <meta name="description" content="The tile tag system is a simple way of adding tags to specific tiles inside of a container. In the base plugin, this system doesn't do much of...">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://inventoryframework.github.io/workinginthesystem/tagsystem/">
+    <link rel="canonical" href="https://inventoryframework.github.io/systems/tiletags/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://inventoryframework.github.io/workinginthesystem/tagsystem/">
-    <meta property="og:title" content="Tag system">
-    <meta property="og:description" content="Gameplay tags are extremely powerful and this system attempts to allow itself to expand to various needs using not just gameplay tags, but also a...">
+    <meta property="og:url" content="https://inventoryframework.github.io/systems/tiletags/">
+    <meta property="og:title" content="Tile Tags">
+    <meta property="og:description" content="The tile tag system is a simple way of adding tags to specific tiles inside of a container. In the base plugin, this system doesn't do much of...">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://inventoryframework.github.io/workinginthesystem/tagsystem/">
-    <meta property="twitter:title" content="Tag system">
-    <meta property="twitter:description" content="Gameplay tags are extremely powerful and this system attempts to allow itself to expand to various needs using not just gameplay tags, but also a...">
+    <meta property="twitter:url" content="https://inventoryframework.github.io/systems/tiletags/">
+    <meta property="twitter:title" content="Tile Tags">
+    <meta property="twitter:description" content="The tile tag system is a simple way of adding tags to specific tiles inside of a container. In the base plugin, this system doesn't do much of...">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.775653125927" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.778519044325" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.775653125927" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.778519044325" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.775653125927" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.778519044325" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -186,29 +186,42 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="tag-system" class="break-words">
+<doc-anchor-target id="tile-tags" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#tag-system">#</doc-anchor-trigger>
-        <span>Tag system</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tile-tags">#</doc-anchor-trigger>
+        <span>Tile Tags</span>
     </h1>
 </doc-anchor-target>
-<p><a href="https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/Tags/" target="_blank"><strong>Gameplay tags</strong></a> are extremely powerful and this system attempts to allow itself to expand to various needs using not just gameplay tags, but also a value associated with tags.</p>
-<p>There are two systems, a regular gameplay tag and the second being a tag value system.<br />
-Containers and items can have both. These tags can be updated, removed and added during runtime and are fully replicated.</p>
-<p>For example; The system does not by default have a durability system. But with the tag value system, you can add a tag Item.Stat.Durability and give it a value, and voila! You now have a durability system! (Of course you have to implement the background logic that would reduce or increase this value).</p>
-<p>The tag system is fairly simple, containers could use them as labels, for example Container.Type.Fridge and now any food items could have a tag value such as Item.Food.Quality which would slowly go down over time, but while in a container with a Container.Type.Fridge tag, it would decay much slower.</p>
-<p>There are helper functions for resolving the value of specific tags, finding items or containers with specific tags and more.</p>
-<p>Since these tags and values live on the container and item struct, it is very simple to serialize for your save file.</p>
-<hr>
-<p>The add, remove and set functions have the option to &quot;IgnoreNetworkQueue&quot;, if this is check to true, the item will not be added or removed from the network queue. This can be useful for moments where you are fine with server and client data not being in sync for a short moment. If you check this to true, you should NOT rely on that tag for any data validation.</p>
-<hr>
-<doc-anchor-target id="tag-value-calculation">
+<p>The tile tag system is a simple way of adding tags to specific tiles inside of a container.<br />
+In the base plugin, this system doesn&#x27;t do much of anything, only being used to hide specific tiles to create custom shaped containers.</p>
+<p>Tags can be added and removed with the <span style="color:brown"><strong>AddTagsToTile</strong></span> and <span style="color:brown"><strong>RemoveTagsFromTile</strong></span> during runtime or edited in the details panel while in the editor.</p>
+<p>Adding and removing tags will call two delegates:</p>
+<ol>
+<li><span style="color:violet"><strong>AC_Inventory</strong></span> -&gt; TileTagsAdded</li>
+<li><span style="color:violet"><strong>AC_Inventory</strong></span> -&gt; TileTagsRemoved</li>
+</ol>
+<p>Binding to these two delegates will let your code respond to any tag updates.<br />
+An example can be found in <span style="color:violet"><strong>WBP_DemoTile</strong></span> -&gt; <span style="color:brown"><strong>Construct</strong></span></p>
+<doc-anchor-target id="networking">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#tag-value-calculation">#</doc-anchor-trigger>
-        <span>Tag Value calculation</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#networking">#</doc-anchor-trigger>
+        <span>Networking</span>
     </h2>
 </doc-anchor-target>
-<p>The Setter functions have a class parameter, which allows you to inject your own calculations before the final value is set. This is a prime location for clamping certain values, such a durability value. You might have a CurrentDurability tag value and a MaxDurability tag value, then whenever you modify CurrentDurability, you can pass in a tag value calculation class that will handle the clamping for you.</p>
+<p>Even though the <code v-pre>TileTag</code> system is automatically replicated and can be modified during runtime, it is not recommended to overuse it for multiplayer games. This system can start eating up a lot of bandwidth very quickly, but this of course depends on the scope of your game.</p>
+<doc-anchor-target id="use-case">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#use-case">#</doc-anchor-trigger>
+        <span>Use case</span>
+    </h2>
+</doc-anchor-target>
+<p>Like mentioned above, this is primarily used to create custom shaped containers by hiding specific tiles. But this has more use cases that some people have used it for:</p>
+<ol>
+<li>Locking tiles and unlocking them based on some in game reward or event.</li>
+<li>Empowering items that are in &quot;empowered&quot; tiles.</li>
+<li>Items durability slowly improving while in a specific tile.</li>
+</ol>
+<p>Some have even used the size of an item as a trade-off. Larger items would take more space, leaving the player with less space to carry other items, but the larger items could then occupy more of these beneficial tiles and gain these positive perks.</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -218,20 +231,20 @@ Containers and items can have both. These tags can be updated, removed and added
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/sortingitems/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../systems/tagsystem/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Sorting items</span>
+                                                <span class="block mt-1">Tag system</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/tiletags/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/addingnewitemsduringruntime/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Tile Tags</span>
+                                                <span class="block mt-1">Adding new items during runtime</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -275,6 +288,6 @@ Containers and items can have both. These tags can be updated, removed and added
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Tag system", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Tile Tags", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>

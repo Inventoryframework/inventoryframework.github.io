@@ -9,24 +9,24 @@
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>A_ItemActor</title>
-    <meta name="title" content="A_ItemActor">
-    <meta name="description" content="File location: InventoryFrameworkPlugin\\Public\\Core\\Actors\\Parents\\A_ItemActor.h File location:...">
+    <title>Tag system</title>
+    <meta name="title" content="Tag system">
+    <meta name="description" content="Gameplay tags are extremely powerful and this system attempts to allow itself to expand to various needs using not just gameplay tags, but also a...">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://inventoryframework.github.io/classes-and-settings/a_itemactor/">
+    <link rel="canonical" href="https://inventoryframework.github.io/systems/tagsystem/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://inventoryframework.github.io/classes-and-settings/a_itemactor/">
-    <meta property="og:title" content="A_ItemActor">
-    <meta property="og:description" content="File location: InventoryFrameworkPlugin\\Public\\Core\\Actors\\Parents\\A_ItemActor.h File location:...">
+    <meta property="og:url" content="https://inventoryframework.github.io/systems/tagsystem/">
+    <meta property="og:title" content="Tag system">
+    <meta property="og:description" content="Gameplay tags are extremely powerful and this system attempts to allow itself to expand to various needs using not just gameplay tags, but also a...">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://inventoryframework.github.io/classes-and-settings/a_itemactor/">
-    <meta property="twitter:title" content="A_ItemActor">
-    <meta property="twitter:description" content="File location: InventoryFrameworkPlugin\\Public\\Core\\Actors\\Parents\\A_ItemActor.h File location:...">
+    <meta property="twitter:url" content="https://inventoryframework.github.io/systems/tagsystem/">
+    <meta property="twitter:title" content="Tag system">
+    <meta property="twitter:description" content="Gameplay tags are extremely powerful and this system attempts to allow itself to expand to various needs using not just gameplay tags, but also a...">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -186,51 +186,31 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="a_itemactor" class="break-words">
+<doc-anchor-target id="tag-system" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#a_itemactor">#</doc-anchor-trigger>
-        <span>A_ItemActor</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tag-system">#</doc-anchor-trigger>
+        <span>Tag system</span>
     </h1>
 </doc-anchor-target>
-<doc-panels>
-   <doc-panel id="c-item-actor" collapsed>
-       <template #title>C++ Item Actor</template>
-<p>File location: InventoryFrameworkPlugin\Public\Core\Actors\Parents\A_ItemActor.h<br />
-File location: InventoryFrameworkPlugin\Private\Core\Actors\Parents\A_ItemActor.cpp</p>
-   </doc-panel>
-   <doc-panel id="blueprint-child-bp-itemactor" collapsed>
-       <template #title>Blueprint Child: BP_ItemActor</template>
-<p>File location: Content\Core\ActorParents\BP_ItemActor.uasset</p>
-   </doc-panel>
-</doc-panels>
+<p><a href="https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/Tags/" target="_blank"><strong>Gameplay tags</strong></a> are extremely powerful and this system attempts to allow itself to expand to various needs using not just gameplay tags, but also a value associated with tags.</p>
+<p>There are two systems, a regular gameplay tag and the second being a tag value system.<br />
+The component, containers and items can have both. These tags can be updated, removed and added during runtime and are fully replicated.</p>
+<p>For example; The system does not by default have a durability system. But with the tag value system, you can add a tag Item.Stat.Durability and give it a value, and voila! You now have a durability system! (Of course you have to implement the background logic that would reduce or increase this value).</p>
+<p>The tag system is fairly simple, containers could use them as labels, for example Container.Type.Fridge and now any food items could have a tag value such as Item.Food.Quality which would slowly go down over time, but while in a container with a Container.Type.Fridge tag, it would decay much slower.</p>
+<p>There are helper functions for resolving the value of specific tags, finding items or containers with specific tags and more.</p>
+<p>Since these tags and values live on the container and item struct, it is very simple to serialize for your save file.</p>
 <hr>
-<p>This is your physical representation of the item. If you already have items/weapons of any sorts, you will want to reparent those classes to this.</p>
-<p>This is not supposed to run important logic as these can get destroyed and created by the user. (for example equipping and unequipping)</p>
-<p>In your data asset, you can access this class so whenever you drop the item out of the inventory or want to spawn it in some way, here is how you access the original pickup class.</p>
-<p>It’s very important when making your items that have a physical representation in the world and can be picked up that the component on that actor references the data asset that references this physical actor. Otherwise when you drop the item, it’ll spawn the wrong class.</p>
-<p>The setup for pickups goes like this: In your <span style="color:slateblue"><strong>ContainerSettings</strong></span> index 0, you set <span style="color:slateblue"><strong>ContainerType</strong></span> to <span style="color:slateblue"><strong>ThisActor</strong></span> and item index 0 is the pickup data asset. There should be no other items in this items array.<br />
-Containers that might be attached to the pickup are added after and they can have Inventory or Equipment selected, but never <span style="color:slateblue"><strong>CurrentItem</strong></span>.</p>
+<p>The add, remove and set functions have the option to &quot;IgnoreNetworkQueue&quot;, if this is check to true, the item will not be added or removed from the network queue. This can be useful for moments where you are fine with server and client data not being in sync for a short moment. If you check this to true, you should NOT rely on that tag for any data validation.</p>
 <hr>
-<doc-anchor-target id="custom-blueprint-children">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#custom-blueprint-children">#</doc-anchor-trigger>
-        <span>Custom Blueprint Children</span>
-    </h1>
+<doc-anchor-target id="tag-value-calculation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tag-value-calculation">#</doc-anchor-trigger>
+        <span>Tag Value calculation</span>
+    </h2>
 </doc-anchor-target>
-<p>The <span style="color:violet"><strong>BP_ItemActor</strong></span> is a optional parent in your hierarchy. It has some code that you will want to copy over to any parents that you have if you wish to make your own, primarily the BeginPlay, Equip and Unequip delegates, and Destroyed event.</p>
-<p>The C++ inventory compoonent will automatically get added to your actor, but the base C++ version should not be used. You want to click on the InventoryComponent in your components list and set ComponentClass to BP_AC_Inventory (Or your own child of the inventory component if you&#x27;ve made one)</p>
+<p>The Setter functions have a class parameter, which allows you to inject your own calculations before the final value is set. This is a prime location for clamping certain values, such a durability value. You might have a CurrentDurability tag value and a MaxDurability tag value, then whenever you modify CurrentDurability, you can pass in a tag value calculation class that will handle the clamping for you.</p>
 
-                                <div class="flex items-center mt-6 mb-6 clear-both">
-                                    <span>
-                                        <a href="../../tags/">
-                                            <svg class="inline-block -mb-px mr-1.5 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" overflow="visible" fill="currentColor"><g><path d="M21.3 9.88l-8.59-8.59C12.52 1.11 12.27 1 12 1H2c-.55 0-1 .45-1 1v10c0 .27.11.52.29.71l8.59 8.58c.57.57 1.32.88 2.12.88s1.55-.31 2.12-.88l7.17-7.17a3.009 3.009 0 00.01-4.24zm-1.42 2.82l-7.17 7.17c-.39.39-1.02.39-1.42 0L3 11.59V3h8.59l8.29 8.29c.39.39.39 1.03 0 1.41z" /><path d="M7.01 6C6.45 6 6 6.45 6 7s.45 1 1 1 1-.45 1-1-.44-1-.99-1z" /></g></svg>
-                                        </a>
-                                        <span class="mr-2"><a href="../../tags/item/" class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-blue-500 dark:text-blue-400 border border-blue-500 dark:border-blue-400 hover:bg-blue-100 dark:hover:bg-transparent dark:hover:border-blue-200 dark:hover:text-blue-200 transition-colors duration-200 ease-out h-6 px-2 text-xs rounded-md">
-                                    <span>item</span>
-                                </a></span>
-                                    </span>
-                                </div>
-                
+                                
                                 <!-- Required only on API pages -->
                                 <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
                             </div>
@@ -238,20 +218,20 @@ Containers that might be attached to the pickup are added after and they can hav
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../systems/savingandloading/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Classes and Settings</span>
+                                                <span class="block mt-1">Saving and loading</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/ac_inventory/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../systems/tiletags/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">AC_​Inventory</span>
+                                                <span class="block mt-1">Tile Tags</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -295,6 +275,6 @@ Containers that might be attached to the pickup are added after and they can hav
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "A_ItemActor", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Tag system", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
