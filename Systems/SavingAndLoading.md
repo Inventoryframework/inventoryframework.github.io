@@ -8,7 +8,7 @@ The demo includes an extremely basic save and load system. I will not be impleme
 
 Everything is saved in structs, so it should be compatible with your save system. It’s up to your save and load system to manage this, but if you need an example, the demo project has an example of a simple save and load system.
 
-But let’s be honest, Unreal Engine’s blueprint save system is not very good and lacks too many fundamental features. I recommend a plugin from the marketplace called <a href="https://www.unrealengine.com/marketplace/en-US/product/savior" target="_blank">**Saviour**</a>.
+But let’s be honest, Unreal Engine’s blueprint save system is not very good and lacks too many fundamental features.
 
 If you are going to make your own save and load system, I suggest using C++ as the current Blueprint functionality of Unreal's save and load system is really bad.
 There are a few C++ saving and loading system tutorials on Youtube which cover how to serialize nearly any data you want, all of which should be compatible with this system.

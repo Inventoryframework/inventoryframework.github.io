@@ -15,7 +15,7 @@ One of the great benefits of IFP's structure is that it doesn't require widgets 
 2. Creating the inventory screen widget.
 3. Binding the containers with the widgets inside of the inventory screen.
 4. Adding the inventory screen widget to the viewport.
-- The function `GetDynamicMaterial` is surprisingly expensive the first time it is called and can cause a noticable spike. If possible, you should try to trigger this function during your loading screen or staggering these function calls
+- The function `GetDynamicMaterial` is surprisingly expensive the first time it is called and can cause a noticable spike. This is used by the item widgets. If possible, you should try to trigger this function during your loading screen or staggering these function calls, for example creating the inventory screen during the loading screen.
 
 Doing all of these at the same time will in some scenarios create a spike that is noticable to players. But separating them will make it (hopefully) invisible to players.
 
@@ -38,12 +38,8 @@ These are notes that aren't directly around `IFP`, but are still useful for all 
 
 
 ## Networking
-The only real meaningful thing you can do about network performance is trimming down the `FS_ContainerSettings` and `FS_InventoryItem struct`. For example; if you don't need the overwrite settings for items, you can remove it to reduce the RPC size of all items.
+The only real meaningful thing you can do about network performance is trimming down the `FS_ContainerSettings` and `FS_InventoryItem` struct. For example; if you don't need the overwrite settings for items, you can remove it to reduce the RPC size of all items.
 
 ## Equipment
 - Do not use Blueprint Actors for your equipment. They are in some cases 11 times more expensive than skeletal/static meshes. Many people have proven that it is possible to do complex logic, like guns with animations and so forth without using Actor equipments. I personally suggest using GAS and whenever an item is equipped/unequipped, you fetch the mesh and let the GAS ability animate it and so forth.
 - Equipment easily take up 70%+ of the lag spike caused by <span style="color:brown">**StartComponent**</span>. If you want to keep using lots of equipment, you need to start calling <span style="color:brown">**StartComponent**</span> during your loading screens or managing equipment better. In reality, only the player character should be spawning equipment meshes.
-
----
-## Color Sheet:
-<span style="color:brown">**functions**</span> - <span style="color:slateblue">**variable**</span> - <span style="color:green">**category**</span> - <span style="color:violet">**class**</span>

@@ -3,7 +3,7 @@
 <a href="https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/Tags/" target="_blank">**Gameplay tags**</a> are extremely powerful and this system attempts to allow itself to expand to various needs using not just gameplay tags, but also a value associated with tags.
 
 There are two systems, a regular gameplay tag and the second being a tag value system.
-Containers and items can have both. These tags can be updated, removed and added during runtime and are fully replicated.
+The component, containers and items can have both. These tags can be updated, removed and added during runtime and are fully replicated.
 
 For example; The system does not by default have a durability system. But with the tag value system, you can add a tag Item.Stat.Durability and give it a value, and voila! You now have a durability system! (Of course you have to implement the background logic that would reduce or increase this value).
 

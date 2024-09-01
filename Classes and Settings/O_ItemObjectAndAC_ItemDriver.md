@@ -16,10 +16,9 @@ File Location: Source\InventoryFrameworkPlugin\Private\Core\Components\AC_ItemDr
 ==- Blueprint Child: BP_AC_ItemDriver
 File Location: Content\Core\ActorParents\BP_AC_ItemDriver.uasset
 ==-
-
 ---
 
-# Objects
+## Objects
 These are pure <span style="color:violet">**UObjects**</span> which are accessible from the items data asset. Each object's variables can be modified per data asset, allowing you to add any variables or functions to any data asset, regardless of their parent data asset.
 
 You can then retrieve this data by using the <span style="color:brown">**GetObjectsByTag**</span>/<span style="color:brown">**GetObjectsByClass**</span>. The class version will automatically cast to the correct blueprint. For the tag version, you manually have to cast to the object.
@@ -32,8 +31,12 @@ While you can add those variables to the data asset itself, some people do not w
 
 These objects can also run functions, but share the same limitations as data assets functions. These functions can not have delays, timers, async tasks or RPC’s. Do not write any data to any variables belonging to the Object as every item with the same data asset shares the same Object. A unique Object is NOT created per item.
 
+!!!Important
+- Whenever possible, use soft references and try to avoid hard references. Item data bases are one of the fastest ways of creating a nasty web of hard references and before you know it, the majority of your game is loaded at times where you don't want it to be. These objects are potentially the biggest culprit in this system to create that kind of nasty web of hard references.
+!!!
+
 ---
-# Drivers
+## Drivers
 These are actor components that are meant to drive any gameplay logic related to an item, such as equipping an item, consuming an item, creating a widget and so forth.
 These can be assigned to an item through any object that is a child of <span style="color:violet">**O_ItemObject.h**</span>. Every driver needs an object to work, hence why there's a documentation page for each individual class, except for this class. Drivers are tied to objects. But every object does not need a driver.
 
@@ -46,12 +49,12 @@ Clients are able to request the creation of an <span style="color:violet">**Item
 The function <span style="color:brown">**GetItemDriver**</span> will create the driver for you, but if you are on the client and trying to create an <span style="color:violet">**ItemDriver**</span> set to <span style="color:slateblue">**Both**</span>, the function won’t be able to return it, because it has to send an RPC to the server which is not instant. 
 
 This function allows you to pass in a <span style="color:slateblue">**tag**</span> which will trigger any function you have associated with the tag once the <span style="color:violet">**ItemDriver**</span> is replicated. Look at the code comment for <span style="color:violet">**AC_ItemDriver.h**</span> -> <span style="color:brown">**ActivateEvent**</span>.
-If you are unfamiliar with GameplayTags, I highly recommend you start using them as they are extremely useful.
 
----
-!!!Important
-- Whenever possible, use soft references and try to avoid hard references. Item data bases are one of the fastest ways of creating a nasty web of hard references and before you know it, the majority of your game is loaded at times where you don't want it to be. These objects are potentially the biggest culprit in this system to create that kind of nasty web of hard references.
-!!!
+### Notes:
+
+- Item drivers should be destroyed after their logic is complete, especially if it’s from a stackable item. The reason being that it’s really hard or almost impossible to keep track of the stack it came from as that stack can be put into other stacks, split or fully used.
+
+- You must always keep in mind if the item driver is running logic that’s on a timer,  you need to be aware that the item the driver belongs to might become invalid at any point. There is always the chance the item that owns the driver might get destroyed during the timer logic. I also recommend “locking” the player from interacting with the item during this timer or having some sort of failsafe if the player manipulates the item in some way while the timer is still running (For example; a gun playing its pickup animation and the player drops it mid-animation)
 
 ---
 ## Tips and tricks

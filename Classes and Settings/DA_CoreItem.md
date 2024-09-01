@@ -99,6 +99,8 @@ Overall, I would recommend using GAS over all other options whenever you can, bu
 
 I personally recommend using <a href="https://www.unrealengine.com/marketplace/en-US/product/gas-companion" target="_blank">**GAS Companion**</a> and/or <a href="https://www.unrealengine.com/marketplace/en-US/product/gameplay-blueprint-attributes" target="_blank">**Gameplay Blueprint Attributes**</a> to help with your GAS implementation.
 
+- The only downside of GAS that I've found is that it is extremely difficult to have abilities be "instanced per item". As in, a new ability instance is created for each item instance without overriding a lot of C++ code and having a really good understanding of how GAS works under the hood.
+
 ### Objects and drivers
 
 https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/

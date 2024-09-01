@@ -17,7 +17,7 @@ In the base plugin there are a lot of children of this class as examples. All of
 ---
 # FS_InventoryItem
 This struct will eat up most of your network bandwidth, so adding anything to it can be dangerous.
-Anything being removed from this struct will might require a decent amount of reworking some functions.
+Anything being removed from this struct might require a decent amount of reworking some functions.
 
 ---
 # FS_ContainerSettings
