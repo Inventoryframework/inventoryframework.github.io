@@ -11,6 +11,11 @@ This is a list of plugins that I personally suggest you use alongside this plugi
 Unreal Engine's built-in Gameplay Ability System (GAS) is extremely powerful and is becoming an industry standard. There is a problem with it though; it's very beginner-unfriendly. It's annoying to make attributes and can take a long time to set it up. The plugin GASCompanion does all the heavy lifting for you, has good documentation and good Discord support. I am not implementing a attribute or ability system with this system because I believe you should be using GAS (Either a plugin or your own implementation).
 
 ---
+## <a href="https://github.com/MothCocoon/FlowGraph" target="_blank">**Flow Graph**</a>
+Made by one of the developers of Witcher 2 and 3 and is being backed by Riot Games, this plugin has revolutionized how I make things like quests, dialogues and much more. A tool that I truly think should be introduced to Unreal's base toolset.
+
+
+---
 ## <a href="https://github.com/IDI-Systems/UnrealImGui" target="_blank">**UnrealImGui**</a>
 DearImGui is a great tool used in tons of game engines and is amazing for debugging your game.
 You can get blueprint support through <a href="https://github.com/TheEnbyWitch/ImGuiBlueprint" target="_blank">**ImGuiBlueprint**</a> (I have a <a href="https://github.com/Variann/ImGuiBlueprint" target="_blank">**personal repo**</a> where I've added more widget support)
