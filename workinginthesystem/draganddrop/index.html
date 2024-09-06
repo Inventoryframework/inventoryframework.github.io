@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.778765355772">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.778955287094">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.778765355772" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.778955287094" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.778765355772" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.778955287094" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.778765355772" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.778955287094" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -195,6 +195,18 @@
 <hr>
 <p>A lot of the information <span style="color:brown"><strong>PerformDrop</strong></span> function needs to do its calculations and logic should be stored in <span style="color:violet"><strong>W_Drag</strong></span>.<br />
 This is because setting and resetting all that information for all the tiles to optimize memory is simply just so much hassle compared to just putting your stuff in the drag widget, which is always just 1 of so it’s always optimized for memory and no hassle in managing it.</p>
+<hr>
+<p><code v-pre>IFP</code> takes a similar approach to the default drag and drop operation, but slightly modified to get around 2 hard coded practices in the engine:</p>
+<ol>
+<li>Drag and drop visual has interpolation that can not be overriden.</li>
+<li>Drag and Drop operations will only work while holding the drag button, then attempt to drop it the moment that key is released. Where as in some cases, like with gamepad navigation, you want to fully press and release the drag button, move the cursor to its destination, then press and release the button again to perform the drop operation.</li>
+</ol>
+<blockquote>
+<p>It is not possible to completely abandon the engines drag and drop system, because the editor tools get a custom viewport that does not play well with the drag widget that comes with the plugin, so editor tools will not support the custom <code v-pre>IFP</code> solution.</p>
+</blockquote>
+<p>Inside the inventory components class defaults, there is a setting to toggle point 2 from the default behavior and to <code v-pre>IFP</code>&#x27;s custom implementation. If you want to change this behavior during runtime, you&#x27;d want to call <span style="color:brown"><strong>GetLocalInventoryComponent</strong></span> -&gt; <span style="color:slateblue"><strong>UseDefaultDragBehavior</strong></span></p>
+<p>To achieve this, item widgets have a <span style="color:brown"><strong>StartItemDrag</strong></span> and <span style="color:brown"><strong>StopItemDrag</strong></span> functions, which will handle either the custom implementation or default. Then a custom set of delegates will be called over the default OnDrop and OnDropCancelled.</p>
+<p>The widget that is now responsible for handling navigation and input handling is the container widget.</p>
 
                                 
                                 <!-- Required only on API pages -->

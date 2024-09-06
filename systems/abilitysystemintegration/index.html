@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.778765355772">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.5.0.778955287094">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.5.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.5.0.778765355772" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.5.0.778955287094" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.778765355772" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.5.0.778955287094" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.5.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.778765355772" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.5.0.778955287094" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -246,7 +246,7 @@
 </doc-anchor-target>
 <ul>
 <li>This system does not keep track of duplicate items. For example, the player can equip 2 rings sharing the same item asset. When they unequip Ring1, then it will try and remove anything the asset wants removed, even though Ring2 should still grant them the asset wants them to have. To get around this, I&#x27;d recommend overriding the <span style="color:brown"><strong>BindDefaultDelegates</strong></span> and do not call the parent, so it stops handling the <code v-pre>ItemEquipped</code> and <code v-pre>ItemUnequipped</code> event and you would now either make your own delegate that tries to accomodate this, or improve the code behind these two delegates, or handle this through some other code somewhere else.</li>
-<li>For effects, it is recommended to use <code v-pre>Infinite</code> effects. If you use <code v-pre>Instant</code> or <code v-pre>HasDuration</code>, the effect might not be reversable. For example, modifying an attribute with <code v-pre>Instant</code> will just modify the attribute and when we try to remove the effect, nothing will happen. If it has <code v-pre>Infinite</code> duration, then the modification made to the attribute will be reversed.</li>
+<li>For effects, it is recommended to use <code v-pre>Infinite</code> effects. If you use <code v-pre>Instant</code> or <code v-pre>HasDuration</code>, the effect might not be reversable. For example, modifying an attribute with <code v-pre>Instant</code> will just modify the attribute and when we try to remove the effect, nothing will happen. If it has <code v-pre>Infinite</code> duration, then the modification made to the attribute will be reversed when you remove the effect.</li>
 </ul>
 <hr>
 <doc-anchor-target id="item-ability-driver">
@@ -255,7 +255,7 @@
         <span>Item Ability driver</span>
     </h2>
 </doc-anchor-target>
-<p><code v-pre>IFP</code> includes a driver, which is not related to <code v-pre>GAS</code> or any other ability system, but is designed to look and behave very similar to <code v-pre>GAS</code> abilities (This is the closest <code v-pre>IFP</code> has to an &quot;ability system&quot;). While you should continue to use <code v-pre>GAS</code> abilities whenever possible, due to the levels of networking optimizations that Epic have provided for <code v-pre>GAS</code>, there are a few limitations to <code v-pre>GAS</code>, which includes:</p>
+<p><code v-pre>IFP</code> includes a driver, which is not related to <code v-pre>GAS</code> or any other ability system, but is designed to look and behave very similar to <code v-pre>GAS</code> abilities (This is the closest <code v-pre>IFP</code> has to an &quot;ability system&quot;). While you should continue to use <code v-pre>GAS</code> abilities whenever possible. But due to the levels of networking optimizations that Epic have provided for <code v-pre>GAS</code>, there are a few limitations to <code v-pre>GAS</code>, which includes:</p>
 <ol>
 <li><code v-pre>Instanced Per Execution</code> does not seem to have replication support anymore.</li>
 <li>Changing ownership of an instanced ability does not seem to be supported.</li>

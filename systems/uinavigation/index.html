@@ -9,24 +9,26 @@
     <meta name="generator" content="Retype 3.5.0">
 
     <!-- Primary Meta Tags -->
-    <title>W_Drag</title>
-    <meta name="title" content="W_Drag">
-    <meta name="description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Widgets\\W_Drag.h File Location: Source\\InventoryFrameworkPlugin\\Private\\Core\\Widgets\\W_Drag.">
+    <title>UI Navigation</title>
+    <meta name="title" content="UI Navigation">
+    <meta name="description" content="UI Navigation refers to an input such as a controller joystick, gamepad or arrow keys to attempt to navigate tiles and items inside of a container.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://inventoryframework.github.io/classes-and-settings/w_drag/">
+    <link rel="canonical" href="https://inventoryframework.github.io/systems/uinavigation/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://inventoryframework.github.io/classes-and-settings/w_drag/">
-    <meta property="og:title" content="W_Drag">
-    <meta property="og:description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Widgets\\W_Drag.h File Location: Source\\InventoryFrameworkPlugin\\Private\\Core\\Widgets\\W_Drag.">
+    <meta property="og:url" content="https://inventoryframework.github.io/systems/uinavigation/">
+    <meta property="og:title" content="UI Navigation">
+    <meta property="og:description" content="UI Navigation refers to an input such as a controller joystick, gamepad or arrow keys to attempt to navigate tiles and items inside of a container.">
+    <meta property="og:image" content="https://inventoryframework.github.io/pictures/navigationdetailspanel.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://inventoryframework.github.io/classes-and-settings/w_drag/">
-    <meta property="twitter:title" content="W_Drag">
-    <meta property="twitter:description" content="File Location: Source\\InventoryFrameworkPlugin\\Public\\Core\\Widgets\\W_Drag.h File Location: Source\\InventoryFrameworkPlugin\\Private\\Core\\Widgets\\W_Drag.">
+    <meta property="twitter:url" content="https://inventoryframework.github.io/systems/uinavigation/">
+    <meta property="twitter:title" content="UI Navigation">
+    <meta property="twitter:description" content="UI Navigation refers to an input such as a controller joystick, gamepad or arrow keys to attempt to navigate tiles and items inside of a container.">
+    <meta property="twitter:image" content="https://inventoryframework.github.io/pictures/navigationdetailspanel.png">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -186,38 +188,127 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="w_drag" class="break-words">
+<doc-anchor-target id="ui-navigation" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#w_drag">#</doc-anchor-trigger>
-        <span>W_Drag</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ui-navigation">#</doc-anchor-trigger>
+        <span>UI Navigation</span>
     </h1>
 </doc-anchor-target>
-<doc-panels>
-   <doc-panel id="widget-drag" collapsed>
-       <template #title>Widget Drag</template>
-<p>File Location: Source\InventoryFrameworkPlugin\Public\Core\Widgets\W_Drag.h<br />
-File Location: Source\InventoryFrameworkPlugin\Private\Core\Widgets\W_Drag.cpp</p>
-   </doc-panel>
-   <doc-panel id="blueprint-child-wbp-drag" collapsed>
-       <template #title>Blueprint Child: WBP_Drag</template>
-<p>File Location: Content\Core\Widgets\DragAndSplit\WBP_Drag.uasset</p>
-   </doc-panel>
-</doc-panels>
+<p>UI Navigation refers to an input such as a controller joystick, gamepad or arrow keys to attempt to navigate tiles and items inside of a container. This is handled through <code v-pre>EnhancedInput</code> and the <code v-pre>Container</code> widget.</p>
+<blockquote>
+<p>This documentation covers just container and item navigation. Things like context menu&#x27;s and so forth fall under common navigation, which has a mariad of ways to handle and there are plenty of resources on how to handle common UI nagivation.</p>
+</blockquote>
+<p>To handle navigation between multiple containers, either fill out the <code v-pre>Navigation</code> settings in the container widget instance or handle it through the <code v-pre>NavigatedOutOfBounds</code> delegate which will let you know which direction the user last tried to navigate. For example, if they tried to go down, but no valid tile was found, this delegate will go off and say they tried to navigate downwards. You could now grant focus to the container below the container that currently has focus.</p>
+<p><figure class="content-center">
+    <img src="../../pictures/navigationdetailspanel.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<blockquote>
+<p>Input action and mapping context references are automatically assigned to the ones that come with <code v-pre>IFP</code>. The navigation system fetches the class defaults to know what action and context to use. To customize them, go into <code v-pre>BP_AC_Inventory</code> and change the settings inside of the <code v-pre>Settings -&gt; Input Settings</code> category.</p>
+</blockquote>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Important</h5>
+<p>As of 5.4, there is a bug with all the properties in the <code v-pre>Navigation</code> category. Whenever you assign new values, you must recompile and resave the asset yourself. The bug is that the asset is not being marked as dirty and in need of recompilation.</p>
+        </div>
+    </div>
+</div>
 <hr>
-<p>Visual representation of the item you are dragging, but also provides updates to <span style="color:violet"><strong>W_Highlight</strong></span> whenever you hover over a tile so the highlight widget knows where to move.</p>
-<p>All data you need when dragging and dropping an item should be stored in this widget.</p>
-<p>Both <span style="color:violet"><strong>W_Drag</strong></span> and <span style="color:violet"><strong>W_Highlight</strong></span> are updated inside of <span style="color:violet"><strong>WBP_Tile</strong></span> -&gt;  <span style="color:brown"><strong>PerformDrop</strong></span> and <span style="color:violet"><strong>BP_AC_Inventory</strong></span> -&gt; <span style="color:brown"><strong>UpdateHighlight</strong></span></p>
-<p>The chain of events begin at <span style="color:violet"><strong>WBP_InventoryItem</strong></span> -&gt;  <span style="color:brown"><strong>OnDragDetected</strong></span>. An important note to consider is that Epic, in their ever-ending glorious top tier coding, have a built in interpolation for the drag and drop drag visual that you CAN NOT interact with without modifying the engine.<br />
-But you have to go through a lot of trouble to replace the built-in drag and drop system for Unreal. So I leave the drag visual for the drag/drop operation as empty and allow <span style="color:violet"><strong>WBP_Drag</strong></span> to drive the visuals and most of the logic. The Drag/Drop operation is primarily just used to trigger the &quot;On Drop&quot; events.</p>
-<doc-anchor-target id="rotation">
+<doc-anchor-target id="virtual-cursor">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#rotation">#</doc-anchor-trigger>
-        <span>Rotation</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#virtual-cursor">#</doc-anchor-trigger>
+        <span>&quot;Virtual&quot; cursor</span>
     </h2>
 </doc-anchor-target>
-<p>This widget is the primary handler of certain settings when trying to move an item, such as the rotation.<br />
-You can see an example on EventTick.<br />
-If you wish to permanently change the system to no longer support 180 and 270 rotation, there is a code comment near the end of EventTick explaining how to enforce only 0 and 90 rotation.</p>
+<p>To simplify a lot of the logic, the container widget will take control of the cursor to act as a &quot;virtual&quot; cursor (Handled in <span style="color:brown"><strong>NativePaint</strong></span>). <code v-pre>CommonUI</code> does the same, although they seem to have a &quot;synthetic&quot; cursor. As of writing, I am not able to find any sources, other than reverse engineering <code v-pre>CommonUI</code>, on how to make your own virtual cursor. The container will return control to the cursor if any movement is detected (<span style="color:brown"><strong>OnMouseMove</strong></span>)</p>
+<hr>
+<doc-anchor-target id="dynamic-navigation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#dynamic-navigation">#</doc-anchor-trigger>
+        <span>Dynamic navigation</span>
+    </h2>
+</doc-anchor-target>
+<p>In some cases, containers are added to the screen during runtime, like opening a chest. In this case, the navigation panel above won&#x27;t work.<br />
+To override the above settings, you can assign override containers for each direction (for example, NavigateRightContainerOverride variable will override the right input navigation).<br />
+Here is an example of how that would work:<br />
+<figure class="content-center">
+    <img src="../../pictures/navigationoverrideexample.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<hr>
+<doc-anchor-target id="customizing-navigation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#customizing-navigation">#</doc-anchor-trigger>
+        <span>Customizing Navigation</span>
+    </h2>
+</doc-anchor-target>
+<p>If you wish to completely override the navigation system for <code v-pre>IFP</code> or customize it, there&#x27;s a small list of functions you can override.</p>
+<p>Container widget functions:</p>
+<ul>
+<li><span style="color:brown"><strong>OnKeyDown</strong></span> (All logic starts here)</li>
+<li><span style="color:brown"><strong>GetNextItemToNavigateTo</strong></span></li>
+<li><span style="color:brown"><strong>GetNextContainerToNavigateTo</strong></span></li>
+<li><span style="color:brown"><strong>NavigationFocusUpdated</strong></span></li>
+<li><span style="color:brown"><strong>ItemNavigationFocusUpdated</strong></span></li>
+<li><span style="color:brown"><strong>SetCurrentNavigatedItem</strong></span></li>
+</ul>
+<p>Item widget:</p>
+<ul>
+<li><span style="color:brown"><strong>ItemHighlightUpdated</strong></span></li>
+<li><span style="color:brown"><strong>StartDragItem</strong></span></li>
+<li><span style="color:brown"><strong>StopDragItem</strong></span></li>
+<li><span style="color:brown"><strong>CancelDragItem</strong></span></li>
+</ul>
+<hr>
+<doc-anchor-target id="scroll-boxes">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#scroll-boxes">#</doc-anchor-trigger>
+        <span>Scroll Boxes</span>
+    </h2>
+</doc-anchor-target>
+<p>By default, containers will keep the currently navigated tile in view within the scrollbox inside that container. But if you navigate to a new container inside your inventory UI that is not in view, you need to handle that, since that is outside of the containers code.<br />
+Here is a basic example from the example projects inventory UI widget:<br />
+<figure class="content-center">
+    <img src="../../pictures/scrollboxnavigationexample.png" alt="">
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<hr>
+<doc-anchor-target id="commonui">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#commonui">#</doc-anchor-trigger>
+        <span>CommonUI</span>
+    </h2>
+</doc-anchor-target>
+<p><code v-pre>CommonUI</code> is not utilized by the plugin due a few reasons, but the primary reason is the lack of easy customizing the navigation around containers. For example, snapping to nearby items rather than navigating tile by tile.<br />
+The true questions around <code v-pre>CommonUI</code> that have to be asked is: What does it provide to <code v-pre>IFP</code> that justifies <code v-pre>IFP</code> having a dependency on it? Truly, <code v-pre>CommonUI</code> just provides 2 things: Reworked navigation and new widgets that handle common things. The reworked navigation is great, but lacks customization. The widgets provided by <code v-pre>CommonUI</code> are not beneficial to <code v-pre>IFP</code>. Maybe the example project, but not the base plugin.</p>
+<p><code v-pre>IFP</code> can be utilized by <code v-pre>CommonUI</code>. Many people have designed their inventory screen made out of <code v-pre>CommonUI</code> panel widgets.</p>
+<p>But as of writing, <code v-pre>CommonUI</code> is too complex for beginners, lacks debugging tools and doesn&#x27;t provide enough to <code v-pre>IFP</code> to justify being dependend on it. Many people do not want or like <code v-pre>CommonUI</code> and I dont want to force people to use it.</p>
+<doc-anchor-target id="commonui-integration">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#commonui-integration">#</doc-anchor-trigger>
+        <span>CommonUI integration</span>
+    </h3>
+</doc-anchor-target>
+<blockquote>
+<p>This section is a work-in-progress. I personally do not use <code v-pre>CommonUI</code> and very few people seem to be using <code v-pre>CommonUI</code> so some details and steps might be missing.</p>
+</blockquote>
+<ul>
+<li>As pointed above, the only thing <code v-pre>CommonUI</code> provides to <code v-pre>IFP</code> is the reworked navigation. But their navigation only searches for <code v-pre>CommonActivatableWidget</code>&#x27;s. Depending on how you want to control your navigation, you might want to reparent <span style="color:violet"><strong>W_Container</strong></span>, <span style="color:violet"><strong>W_Tile</strong></span>, or <span style="color:violet"><strong>W_InventoryItem</strong></span> to <span style="color:violet"><strong>UCommonActivatableWidget</strong></span> so <code v-pre>CommonUI</code>&#x27;s navigation can detect those widgets.</li>
+</ul>
 
                                 
                                 <!-- Required only on API pages -->
@@ -227,20 +318,20 @@ If you wish to permanently change the system to no longer support 180 and 270 ro
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/w_container/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../systems/tiletags/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">W_​Container</span>
+                                                <span class="block mt-1">Tile Tags</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../classes-and-settings/w_highlight/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../workinginthesystem/addingnewitemsduringruntime/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">W_​Highlight</span>
+                                                <span class="block mt-1">Adding new items during runtime</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -284,6 +375,6 @@ If you wish to permanently change the system to no longer support 180 and 270 ro
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "W_Drag", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "UI Navigation", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
