@@ -41,6 +41,13 @@ There are no rules on how to make your own widgets when using the crafting syste
 To save the players recipe's, the crafting component has an array of "Recipes" which you will want to save and then restore when loading a save.
 
 ---
+## Timed Crafts
+When doing a timed craft, there's a few things to consider. First, you'll want to add the <span style="color:violet">**RD_TimeToCraft**</span> recipe data to your recipe asset. Then when you are about to perform a craft, you will want to call <span style="color:brown">**GetUniqueCraftHandle**</span> and pass that into <span style="color:brown">**S_CraftRecipe**</span> and save the value on the client. If you now wish to cancel the craft, for example if the player dies, then you can call <span style="color:brown">**S_CancelCraft**</span> and pass in the handle.
+
+By default, clients do not get any kind of callback for when a craft is starting to handle something like a craft bar. Most games simply do not handle it this way. One way to handle this is to simply start the visual timer - for example a progress bar - instantly. Then retrieve the <span style="color:violet">**RD_TimeToCraft**</span> data to get the timer length, but then add the players ping on top of that. Other methods would include simply allowing the progress bar to reach the end, but not actually vanish until the server says the craft is finished.
+The majority of players pings are low enough to not notice most methods. It's up to your code to handle how the visuals are displayed, what events cancel these crafts and for you to store and retrieve these handles.
+
+---
 ## Removing the crafting system
 To remove the crafting system from the plugin, follow these steps:
 1. Remove all references in your project from any of the crafting system. (If you have just installed the plugin and aren't building on top of the example project, you can skip this step)
