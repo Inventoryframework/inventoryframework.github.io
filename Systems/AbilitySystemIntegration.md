@@ -1,5 +1,7 @@
 # Ability System Integration
 
+Video tour: https://youtu.be/rvd6SbspA9E
+
 An important note around `IFP`'s design is that it was NOT built with any specific ability system in mind, but rather have good extension points to allow for it to interact with any ability system and for any ability system to interact with `IFP`. This design philosophy has led to `IFP` being extremely easy to integrate with any ability system.
 
 This page will mostly cover `GAS`, since that is the most popular ability used with `IFP`. But concepts can still be adapted to any type of ability system.
