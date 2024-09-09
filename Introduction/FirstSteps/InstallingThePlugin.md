@@ -31,6 +31,10 @@ There are also a few demo files that you’ll want to replace and enum entries y
 
 Everything in the demo folder is designed to be replaced by your assets/Blueprints. It is only there so you don’t get any errors on startup.
 
+!!! Important
+It is highly recommended to start making children of any classes you plan on using or modifying -like the inventory component - immediately. Blueprints especially, since revision control is very difficult to handle with Blueprints. Doing this early will save you a lot of headaches.
+!!!
+
 ---
 ## Finding the plugin content in your content browser
 
@@ -43,3 +47,7 @@ If you decide to NOT install the plugin locally, you will also have to check "Sh
 ---
 
 It is highly recommended to head over to the [How does the system work?](https://inventoryframework.github.io/introduction/howdoesthesystemwork/) page and giving a read before proceeding.
+
+---
+## Github repository access
+To access the example projects repository and the associated example plugins plugins, you will need to verify your purchase by forwarding your Epic Games receipt to my email (Varianprofessional@gmail.com) with your Github username
