@@ -9,26 +9,24 @@
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>Asset Manager</title>
-    <meta name="title" content="Asset Manager">
-    <meta name="description" content="For the asset manager to pick up your item data base and for several tools to function correctly, you must set up the asset manager per project.">
+    <title>Example Project</title>
+    <meta name="title" content="Example Project">
+    <meta name="description" content="This documentation only covers the new example project that is currently labelled as an \"alpha\" release.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://inventoryframework.github.io/introduction/firststeps/assetmanager/">
+    <link rel="canonical" href="https://inventoryframework.github.io/introduction/firststeps/exampleproject/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://inventoryframework.github.io/introduction/firststeps/assetmanager/">
-    <meta property="og:title" content="Asset Manager">
-    <meta property="og:description" content="For the asset manager to pick up your item data base and for several tools to function correctly, you must set up the asset manager per project.">
-    <meta property="og:image" content="https://inventoryframework.github.io/pictures/assetmanageraddassettype.png">
+    <meta property="og:url" content="https://inventoryframework.github.io/introduction/firststeps/exampleproject/">
+    <meta property="og:title" content="Example Project">
+    <meta property="og:description" content="This documentation only covers the new example project that is currently labelled as an \"alpha\" release.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://inventoryframework.github.io/introduction/firststeps/assetmanager/">
-    <meta property="twitter:title" content="Asset Manager">
-    <meta property="twitter:description" content="For the asset manager to pick up your item data base and for several tools to function correctly, you must set up the asset manager per project.">
-    <meta property="twitter:image" content="https://inventoryframework.github.io/pictures/assetmanageraddassettype.png">
+    <meta property="twitter:url" content="https://inventoryframework.github.io/introduction/firststeps/exampleproject/">
+    <meta property="twitter:title" content="Example Project">
+    <meta property="twitter:description" content="This documentation only covers the new example project that is currently labelled as an \"alpha\" release.">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -188,63 +186,125 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="asset-manager" class="break-words">
+<doc-anchor-target id="example-project" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#asset-manager">#</doc-anchor-trigger>
-        <span>Asset Manager</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#example-project">#</doc-anchor-trigger>
+        <span>Example Project</span>
     </h1>
 </doc-anchor-target>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Important</h5>
+<p>This documentation only covers the new example project that is currently labelled as an &quot;alpha&quot; release. The old example project does not have any documentation</p>
+        </div>
+    </div>
+</div>
+<p>The example project can be downloaded from the marketplace linked at the top of the site. This document will cover how the example project works and how best to utilize it.</p>
+<ul>
+<li>First, I never recommend people build ON TOP of any example projects from any asset, including <code v-pre>IFP</code>. You should always create a fresh project and use the example project as either inspiration, or get access to the Github repo and start forking the example projects.</li>
+<li>The example project does not contain anything by itself. It is rather a host for 1 plugin (<code v-pre>IFP_CommonAssets</code>) which hosts common assets and classes, and then all example projects are their own plugins utilizing this plugin. This way, it is extremely simple for people to get going with a basic example with simple integration into YOUR project, while having Github submodule support.</li>
+</ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1 rounded-tl rounded-bl bg-blue-500 dark:bg-blue-400"></div>
+    <div class="flex w-full py-4 border border-l-0 border-gray-300 rounded-tr rounded-br doc-alert bg-white dark:bg-dark-700 dark:border-dark-700" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-blue-500 dark:text-blue-400" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Important</h5>
+<p>If you install any of the example plugins, remember to:<br />
+1. Update your asset manager to include their <code v-pre>Items</code> folder inside the <code v-pre>Directories</code> array. If you are using <code v-pre>IFP</code>&#x27;s crafting system, you will also want to include the <code v-pre>Crafting -&gt; Recipes</code> folder.<br />
+2. Go into your project settings -&gt; GameplayTags and add the plugins tag table into the <code v-pre>Gameplay Tag Table List</code>.</p>
+        </div>
+    </div>
+</div>
 <hr>
-<p>For the asset manager to pick up your item data base and for several tools to function correctly, you must set up the asset manager per project.</p>
+<doc-anchor-target id="scope">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#scope">#</doc-anchor-trigger>
+        <span>Scope</span>
+    </h2>
+</doc-anchor-target>
+<p>The scope of example projects are very small, for a few reasons:</p>
 <ol>
-<li>Go into Projects Settings.</li>
-<li>Under the &quot;Game&quot; category, select &quot;Asset Manager&quot;.</li>
-<li>Add a new index and set &quot;Primary Asset Type&quot; to &quot;Items&quot;, set the asset base class to <span style="color:violet"><strong>DA_CoreItem</strong></span>, then go into Directories and add all locations where you might store your items (This also searches sub folders).</li>
-<li>(Optional) If you are using the crafting system, you will also want to add another index and set &quot;Primary Asset Type&quot; to &quot;CraftingRecipes&quot;, set the asset base class to <span style="color:violet"><strong>DA_CoreCraftingRecipe</strong></span>, then go into Directories and add all locations where you might store your recipe&#x27;s.</li>
+<li>I do not have infinite time on my hands. I&#x27;d rather improve the base plugin rather than spend too much time on the examples.</li>
+<li>To keep them as simple as possible with as few classes as possible. You are already diving into a pretty large framework, I do not want to create example projects that may be too complicated for some.</li>
+<li>With point 2 in mind, replication is NOT kept in mind for the example projects in some cases, for example playing a montage and ensuring its playing on all clients. <code v-pre>IFP</code> is already replicated and it already automatically handles the majority of replication for you and many projects built with <code v-pre>IFP</code> are being built with replication in mind, but not everyone is making a multiplayer game. So I would just be making more complicated code and taking up more of my time to test things that should be replaced with your systems or customized to fit your project anyways. This trade-off is necessary for allowing me to continue creating example projects, developing <code v-pre>IFP</code> and still work on my personal projects and game.</li>
+<li>Extremely few assets, such as models, textures and so forth. These projects are meant to be as small as possible in not just assets, but also disk size.</li>
 </ol>
-<p><figure class="content-center">
-    <img src="../../../pictures/assetmanageraddassettype.png" alt="">
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
 <hr>
-<doc-anchor-target id="adding-custom-asset-types">
+<doc-anchor-target id="project-structures">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#adding-custom-asset-types">#</doc-anchor-trigger>
-        <span>Adding custom asset types</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#project-structures">#</doc-anchor-trigger>
+        <span>Project structures</span>
     </h2>
 </doc-anchor-target>
-<p>Inside your item data assets, you can see in the <span style="color:green"><strong>Developer Settings</strong></span> there&#x27;s a &quot;<span style="color:slateblue"><strong>Asset Registry Category</strong></span>&quot; variable. The default is &quot;Items&quot;, just like the asset type we just set up in the asset manager.</p>
-<p>You are able to either change the default for children of <span style="color:violet"><strong>DA_CoreItem</strong></span> to be something unique, or change it per-item. If you have massive item data bases (500+ items), it is recommended to organize your data base using custom asset types.</p>
-<p>Whatever you fill in inside of <span style="color:slateblue"><strong>Asset Registry Category</strong></span>, you will need to follow the above steps, but replacing the Primary Asset Type with whatever you put into <span style="color:slateblue"><strong>Asset Registry Category</strong></span>. You also must save the data asset manually after the change.</p>
+<p>Each example project is built with a dependency on <code v-pre>IFP_CommonAssets</code>, so no matter what project you pick, that plugin also has to be installed. This section covers how each project is structured and handled.</p>
+<ul>
+<li>Hierarchy between classes is kept to a minimum and the character blueprint only handles the bare minimum, such as adding the HUD and handling common inputs. Rather, much of the code is handled through actor components, which allows you to quickly get started and you do not have to worry about hierarchy-hell. Most components have a comment box at the top of the event graph explaining their purpose. If you wish to use any of these components in your project, I suggest making a child of each so any updates won&#x27;t override your changes.
+<ul>
+<li><span style="color:violet"><strong>AC_QuickStartHelper_IFP</strong></span> - Handles common delegates and inputs based around inventories, such as adding the inventory to the screen and starting the inventory component. This is simply to quickly get you started to make sure <code v-pre>IFP</code> is working correctly in your project or act as a wrapper to contain all code based around <code v-pre>IFP</code> without modifying your character blueprint.</li>
+<li><span style="color:violet"><strong>AC_BasicInteraction_IFP</strong></span> - Enables the basic interaction system that comes with IFP (This system is designed to be replaced, which this documentation covers) TODO: Add link</li>
+<li><span style="color:violet"><strong>AC_QuickLootHelper_IFP</strong></span> - Handles the quick loot example system.</li>
+<li><span style="color:violet"><strong>BP_AC_EquipmentHelper</strong></span> - Handles <code v-pre>IFP</code>&#x27;s default equipment system, which can be modified or completely replaced.</li>
+<li><span style="color:violet"><strong>BP_AC_Interactable</strong></span> - Enables the actor to be treated as an interactable. Such as a chest or a vendor.</li>
+</ul>
+</li>
+<li>Each plugin gets its own gameplay tags table.</li>
+</ul>
 <hr>
-<doc-anchor-target id="validating">
+<doc-anchor-target id="examples">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#validating">#</doc-anchor-trigger>
-        <span>Validating</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#examples">#</doc-anchor-trigger>
+        <span>Examples</span>
     </h2>
 </doc-anchor-target>
-<p>To validate your items are being discovered correctly, I suggest going into the <strong><a href="https://inventoryframework.github.io/tools/inventoryhelper/">InventoryHelper</a></strong> and hitting Refresh near the bottom right. You can also search for your item.</p>
-<p>If an item is not appearing there, either the above steps were not followed correctly or the asset manager is ignoring it for some reason.<br />
-If you go into &quot;Windows&quot; and open the output log and find any &quot;Ignoring PrimaryAssetType Items - Conflicts with SOMECLASSNAME - Asset: ITEMNAMEHERE&quot; in your message log, it means no data has been changed inside of your data asset or it is identical to another data asset.</p>
+<ul>
+<li><strong>Showcase</strong>: This example is simply trying to fit in all features of <code v-pre>IFP</code> into one showcase.</li>
+<li><strong>RPG</strong>: Example of a traditional inventory, with a quick slot system and a upgrade station.</li>
+<li><strong>Survival</strong>: Example of a survival game with grid inventories, with drag and drop hotbar.</li>
+</ul>
 <hr>
-<doc-anchor-target id="limitations">
+<doc-anchor-target id="github-repository-access">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#limitations">#</doc-anchor-trigger>
-        <span>Limitations</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#github-repository-access">#</doc-anchor-trigger>
+        <span>Github repository access</span>
     </h2>
 </doc-anchor-target>
-<p>As of 5.1, there is still no way of mixing normal and blueprint data assets, for now you can only have normal data assets, and you can&#x27;t do a lot of hierarchy setups. All of your parent files must live at a C++ level.<br />
-Because the item data asset variable inside <span style="color:slateblue"><strong>FS_InventoryItem</strong></span> lives in C++, there is no way to reference blueprint data assets. If you check &quot;Has Blueprint Classes&quot; the system will not work.</p>
+<p>To access the plugins repository and the associated example plugins plugins, you will need to verify your purchase by forwarding your Epic Games receipt to my email (<a href="mailto:Varianprofessional@gmail.com">Varianprofessional@gmail.com</a>) with your Github username</p>
 <hr>
-<doc-anchor-target id="bulk-editing">
+<doc-anchor-target id="old-example-project-differences">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#bulk-editing">#</doc-anchor-trigger>
-        <span>Bulk Editing</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#old-example-project-differences">#</doc-anchor-trigger>
+        <span>Old example project differences</span>
     </h2>
 </doc-anchor-target>
-<p>You&#x27;ll sometimes find yourself with tons of items and need to modify a large amount of items. This is where a good folder hierarchy setup is essential. In the demo project, every item is in its own folder, but all of those folders are inside <strong>DemoShowcase -&gt; Items</strong>, if you go into the Items folder, find the filter on the left of the search bar and go into <strong>Miscellaneous -&gt; Data Asset</strong> you will see every item inside the demo. If you select multiple, then right click and go into <strong>Asset Actions -&gt; Bulk Edit Via Property Matrix</strong>, you&#x27;ll find the property matrix editor.</p>
-<p><a href="https://docs.unrealengine.com/4.27/en-US/Basics/UI/PropertyMatrix/" target="_blank"><strong>Unreal&#x27;s docs for the Property Matrix</strong></a></p>
+<p>The primary way that the old example project and the new one are different is how the player character is setup. Both in my personal project and in <code v-pre>IFP</code>, I am trying to de-bloat the player character as much as possible. All the components listed above contain the vast majority of the logic that used to be in the player character.</p>
+<hr>
+<doc-anchor-target id="color-sheet">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#color-sheet">#</doc-anchor-trigger>
+        <span>Color Sheet:</span>
+    </h2>
+</doc-anchor-target>
+<p><span style="color:brown"><strong>functions</strong></span> - <span style="color:slateblue"><strong>variable</strong></span> - <span style="color:green"><strong>category</strong></span> - <span style="color:violet"><strong>class</strong></span></p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -254,20 +314,20 @@ Because the item data asset variable inside <span style="color:slateblue"><stron
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../introduction/firststeps/installingtheplugin/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../../introduction/firststeps/assetmanager/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Installing the plugin</span>
+                                                <span class="block mt-1">Asset Manager</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../introduction/firststeps/exampleproject/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../../introduction/firststeps/addingthecomponentandcontainers/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Example Project</span>
+                                                <span class="block mt-1">Adding the component and containers</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -311,6 +371,6 @@ Because the item data asset variable inside <span style="color:slateblue"><stron
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Asset Manager", level: 3, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Example Project", level: 3, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
