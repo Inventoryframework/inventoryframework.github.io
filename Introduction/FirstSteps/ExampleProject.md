@@ -6,7 +6,7 @@ order: 85
 # Example Project
 
 !!! Important
-This documentation only covers the new example project that is currently labelled as an "alpha" release. The old example project does not have any documentation
+This documentation only covers the new example project. The old example project does not have any documentation
 !!! 
 
 The example project can be downloaded from the marketplace linked at the top of the site. This document will cover how the example project works and how best to utilize it.
