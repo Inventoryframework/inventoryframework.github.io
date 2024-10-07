@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.781630178956">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.781630248627">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -31,11 +31,11 @@
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="../../pictures/websiteicon2.jpg" rel="icon">
-    <link href="../../resources/css/retype.css?v=3.6.0.781630178956" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.6.0.781630248627" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.781630178956" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.6.0.781630248627" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.781630178956" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.6.0.781630248627" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -205,7 +205,7 @@
         <span>Connecting IFP with your ability system</span>
     </h2>
 </doc-anchor-target>
-<p>The primary way <code v-pre>IFP</code> is meant to connect to your ability system is through the <code v-pre>Objects and Drivers</code> system that can be found in item assets, or by either modifying the item asset or creating specialized children who then contain references to classes, such as an ability class. Then through code, you&#x27;d fetch these references and either grant, remove or activate them. The other method would be through the various delegates that come with the inventory component, such as the ItemEquipped delegate is a good candidate to grant the player abilities.</p>
+<p>The primary way <code v-pre>IFP</code> is meant to connect to your ability system is through the <code v-pre>Traits and Components</code> system that can be found in item assets, or by either modifying the item asset or creating specialized children who then contain references to classes, such as an ability class. Then through code, you&#x27;d fetch these references and either grant, remove or activate them. The other method would be through the various delegates that come with the inventory component, such as the ItemEquipped delegate is a good candidate to grant the player abilities.</p>
 <p>Then the primary way of your ability system interacting with <code v-pre>IFP</code> is through some type of reference to a specific item or a group of items. For example, a gun firing ability could fetch what is currently equipped in a specific container and use data stored on that item to run its logic, such as fire rate. In this case, the ability could remain active for the entire lifetime of the actor and simply continue using data from equipped items to run its logic. This is one of the most performant and perhaps most scalable solution. This also means you are only creating one object to handle this logic rather than creating a new one for each item.</p>
 <ul>
 <li>This topic is covered more in <a href="https://inventoryframework.github.io/classes-and-settings/da_coreitem/#gas-abilities" target="_blank"><strong>here</strong></a></li>
@@ -223,7 +223,7 @@
 <p>Remember, this is just one way of implementing <code v-pre>GAS</code>. Many projects might have different requirements or different needs. Hence why I made the native <code v-pre>GAS</code> implementation simple to remove. This is just one way for <code v-pre>GAS</code> to be implemented with <code v-pre>IFP</code></p>
 </blockquote>
 <ul>
-<li><span style="color:violet"><strong>IO_GameplayAbilityReferences</strong></span>, <span style="color:violet"><strong>IO_GameplayEffectReferences</strong></span> and <span style="color:violet"><strong>IO_AttributeSetReferences</strong></span> are data-only objects that can be added to item assets, which stores references and include events for granting and removing their respective system.</li>
+<li><span style="color:violet"><strong>IT_GameplayAbilityReferences</strong></span>, <span style="color:violet"><strong>IT_GameplayEffectReferences</strong></span> and <span style="color:violet"><strong>IT_AttributeSetReferences</strong></span> are item traits which stores class references and include events for granting and removing their respective system.</li>
 <li>The actor component <code v-pre>AC_GASHelper</code> will handle all items containing these data-only objects and handling the events that grant and remove them. You will want to add this component to the same actor that the inventory component is on.
 <ul>
 <li>This component has a simple &quot;Tag Event&quot; system. This is meant to help filter out when to grant and remove abilities and attributes for specific events. These events can be called from anywhere by simply broadcasting the <code v-pre>TagEventActivated</code> delegate with a tag event. The component will now automatically get all items for that event and attempt to either grant or remove abilities, attributes and effects.</li>
@@ -250,21 +250,21 @@
 <li>For effects, it is recommended to use <code v-pre>Infinite</code> effects. If you use <code v-pre>Instant</code> or <code v-pre>HasDuration</code>, the effect might not be reversable. For example, modifying an attribute with <code v-pre>Instant</code> will just modify the attribute and when we try to remove the effect, nothing will happen. If it has <code v-pre>Infinite</code> duration, then the modification made to the attribute will be reversed when you remove the effect.</li>
 </ul>
 <hr>
-<doc-anchor-target id="item-ability-driver">
+<doc-anchor-target id="item-component-ability">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#item-ability-driver">#</doc-anchor-trigger>
-        <span>Item Ability driver</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#item-component-ability">#</doc-anchor-trigger>
+        <span>Item Component Ability</span>
     </h2>
 </doc-anchor-target>
-<p><code v-pre>IFP</code> includes a driver, which is not related to <code v-pre>GAS</code> or any other ability system, but is designed to look and behave very similar to <code v-pre>GAS</code> abilities (This is the closest <code v-pre>IFP</code> has to an &quot;ability system&quot;). While you should continue to use <code v-pre>GAS</code> abilities whenever possible. But due to the levels of networking optimizations that Epic have provided for <code v-pre>GAS</code>, there are a few limitations to <code v-pre>GAS</code>, which includes:</p>
+<p><code v-pre>IFP</code> includes a &quot;ItemAbility&quot; <code v-pre>ItemComponent</code>, which is not related to <code v-pre>GAS</code> or any other ability system, but is designed to look and behave very similar to <code v-pre>GAS</code> abilities (This is the closest <code v-pre>IFP</code> has to an &quot;ability system&quot;). While you should continue to use <code v-pre>GAS</code> abilities whenever possible, the levels of networking optimizations that Epic have provided for <code v-pre>GAS</code> has created a few limitations to <code v-pre>GAS</code>, which includes:</p>
 <ol>
 <li><code v-pre>Instanced Per Execution</code> does not seem to have replication support anymore.</li>
 <li>Changing ownership of an instanced ability does not seem to be supported.</li>
 <li>Having a <code v-pre>GAS</code> ability treat an item as its owner requires a lot of work (as in, an ability that would use <code v-pre>Instanced Per Actor</code> would only ever have 1 instance created for the owner of the inventory component, but you might want it to be something like <code v-pre>Instanced Per Item</code>, so you could have an instance made for an item, but only 1 per item).</li>
 </ol>
-<p>This ability driver is designed to get around these limitations. So again, use <code v-pre>GAS</code> abilities whenever you can, and only use this driver if the above limitations are preventing you from making your ability.</p>
+<p>This ability component is designed to get around these limitations. So again, use <code v-pre>GAS</code> abilities whenever you can, and only use this component if the above limitations are preventing you from making your ability.</p>
 <p>To activate an item ability, you can call <span style="color:brown"><strong>TryActivateItemAbility</strong></span> or <span style="color:brown"><strong>TryActivateEquippedItemAbility</strong></span></p>
-<p>The scope for this ability driver is very small to try and reduce complexity and just provide the basic interface of an ability system. Drivers already have networking support, but you will have to implement any RPC&#x27;s to communicate to clients. By default, item abilities are completely server authoritative.</p>
+<p>The scope for this ability component is very small to try and reduce complexity and just provide the basic interface of an ability system. Item Components already have networking support, but you will have to implement any RPC&#x27;s to communicate to clients. By default, item abilities are completely server authoritative.</p>
 <doc-anchor-target id="creating-a-new-item-ability">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#creating-a-new-item-ability">#</doc-anchor-trigger>
@@ -293,7 +293,7 @@
 <ul>
 <li>Optional: You can also create a item ability object if you want to expose more variables to the item asset or override some functions. For example, you can override <span style="color:brown"><strong>AllowNewInstance</strong></span> to customize the &quot;instancing policy&quot; for the ability or the <span style="color:brown"><strong>LooselyCheckCanActivateAbility</strong></span> function to minimize failed activations.</li>
 </ul>
-<p>You will now want to open your item asset and add an item ability object to your <span style="color:slateblue"><strong>Objects and Drivers</strong></span> array and assign the <span style="color:brown"><strong>Item Driver</strong></span> to your new item ability</p>
+<p>You will now want to open your item asset and add an item ability object to your <span style="color:slateblue"><strong>Traits and Components</strong></span> array and assign the <span style="color:brown"><strong>Item Component</strong></span> to your new item ability</p>
 
                                 
                                 <!-- Required only on API pages -->
