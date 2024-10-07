@@ -8,7 +8,7 @@ tags:
 
 ---
 ### Q: Can the system be used for a more traditional inventory system where all items are 1x1?
-A: Of course! Containers have styles, and the List style already converts all items into 1x1.
+A: Of course! Containers have styles, and the `Traditional` style converts all items into 1x1.
 
 ---
 ### Q: Will stats/attributes or ability systems of any kind be added?

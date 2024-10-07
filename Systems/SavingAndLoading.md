@@ -22,5 +22,5 @@ When a client connects, it's up to your save system to assign them the appropria
 ## Equipment
 When you load a save, you might want some equipment the player has to become visible.
 You have two options:
-1. The component has a delegate for when it is started, from which you can assign a Trigger Filter inside of the Equipment Item Driver. These should be instantaneous attachments and no animations should occur at the same time as they can cancel each other before any critical notifies occur.
+1. The component has a delegate for when it is started, from which you can assign a Trigger Filter inside of the Equipment Item Component. These should be instantaneous attachments and no animations should occur at the same time as they can cancel each other before any critical notifies occur.
 2. Your save and load system has the ability to restore actors. From here you must ensure the restored actor gets the owning items UniqueID as a tag, unless you've also implemented a way to save the owning items UniqueID.

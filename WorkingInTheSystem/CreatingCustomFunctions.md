@@ -14,7 +14,7 @@ The container's <span style="color:slateblue">**TileMap**</span> combined with a
 
 The component includes a function to get an item at item at a specific index of a container called <span style="color:brown">**GetItemAtSpecificIndex**</span>.
 
-- The <span style="color:slateblue">**UniqueID**</span> is the most reliable method of finding a very specific item, container or item driver, other than a direct reference to the item, container or item driver, but even then a direct reference might get outdated if the player moves the item or modifies it in some way. The <span style="color:slateblue">**UniqueID**</span> is only updated for containers and items if they are moved to a new component. You can update a outdated item struct by calling <span style="color:brown">**UpdateItemStruct**</span>
+- The <span style="color:slateblue">**UniqueID**</span> is the most reliable method of finding a very specific item, container or item component, other than a direct reference to the item, container or item component, but even then a direct reference might get outdated if the player moves the item or modifies it in some way. The <span style="color:slateblue">**UniqueID**</span> is only updated for containers and items if they are moved to a new component. You can update a outdated item struct by calling <span style="color:brown">**UpdateItemStruct**</span>
 
 ---
 

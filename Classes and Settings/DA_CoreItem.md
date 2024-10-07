@@ -70,7 +70,7 @@ AActor can be swapped out for any class, it does not need to be AActor, but it m
 ## Custom shapes
 
 This inventory system features container styles where items can be different lengths and different heights.
-The way you define your shape is by adding the Custom Shape object to your <span style="color:slateblue">**ObjectsAndDrivers**</span> array and using the <span style="color:slateblue">**DisabledTiles**</span> array. Though this is not very pleasant to work with in its raw array format. It is recommended to use the [ItemEditor](https://inventoryframework.github.io/tools/itemeditor/), where you'll find a toolbox with a few tools inside of it, one being the shape editor. Which gives you a much better UI to work with.
+The way you define your shape is by adding the Custom Shape trait to your <span style="color:slateblue">**TraitsAndComponents**</span> array and using the <span style="color:slateblue">**DisabledTiles**</span> array. Though this is not very pleasant to work with in its raw array format. It is recommended to use the [ItemEditor](https://inventoryframework.github.io/tools/itemeditor/), where you'll find a toolbox with a few tools inside of it, one being the shape editor. Which gives you a much better UI to work with.
 
 ---
 ## Asset verification
@@ -78,7 +78,7 @@ The way you define your shape is by adding the Custom Shape object to your <span
 To aid quality assurance, the data asset will run custom data verification when the asset is saved.
 The verification validates everything in the following process:
 1. Use the <span style="color:slateblue">**ValidationClass**</span> in the <span style="color:slateblue">**DeveloperSettngs**</span> category to execute its <span style="color:brown">**VerifyData**</span> function. (Because we can't access a blueprint graph in each instance of a data asset, we do this to get around that limitation.)
-2. <span style="color:slateblue">**ValidationClass**</span> -> <span style="color:brown">**VerifyData**</span> will run some code to check if any mistakes have been made. Since every project is different, it is suggested to create your own child of <span style="color:violet">**O_ItemAssetValidation**</span> and write your own code. To validate the data of object references, an interface function from the <span style="color:violet">**I_Validation.h**</span> interface also named <span style="color:brown">**VerifyData**</span> is called. You can see an example of this inside of <span style="color:violet">**O_BasicItemValidation**</span> and <span style="color:violet">**IO_Consumable**</span>
+2. <span style="color:slateblue">**ValidationClass**</span> -> <span style="color:brown">**VerifyData**</span> will run some code to check if any mistakes have been made. Since every project is different, it is suggested to create your own child of <span style="color:violet">**O_ItemAssetValidation**</span> and write your own code. To validate the data of trait references, an interface function from the <span style="color:violet">**I_Validation.h**</span> interface also named <span style="color:brown">**VerifyData**</span> is called. You can see an example of this inside of <span style="color:violet">**O_BasicItemValidation**</span> and <span style="color:violet">**IT_Consumable**</span>
 3. If any error messages are created during any of the <span style="color:brown">**VerifyData**</span> functions, you'll get a message at the bottom right stating the error message. If the <span style="color:slateblue">**ErrorMessages**</span> array is empty, the item passes the verification.
 
 Do note, if an item does not pass the verification, it does NOT prevent you from playing the game.
@@ -99,40 +99,57 @@ Overall, I would recommend using GAS over all other options whenever you can, bu
 
 I personally recommend using <a href="https://www.unrealengine.com/marketplace/en-US/product/gas-companion" target="_blank">**GAS Companion**</a> and/or <a href="https://www.unrealengine.com/marketplace/en-US/product/gameplay-blueprint-attributes" target="_blank">**Gameplay Blueprint Attributes**</a> to help with your GAS implementation.
 
-- The only downside of GAS that I've found is that it is extremely difficult to have abilities be "instanced per item". As in, a new ability instance is created for each item instance without overriding a lot of C++ code and having a really good understanding of how GAS works under the hood.
+- The only downside of GAS that I've found is that it is extremely difficult to have abilities be "instanced per item". As in, a new ability instance is created for each item instance without overriding a lot of C++ code and having a really good understanding of how GAS works under the hood. This type of logic can be achieved with the `ItemAbility` item component.
 
-### Objects and drivers
+### Traits and Components
 
 https://inventoryframework.github.io/classes-and-settings/o_itemobjectandac_itemdriver/
-Data assets have "objects" and "drivers", which I recommend you read the documentation for, but in essence, they are:
-- Objects: Extra data you can add to any specific asset without creating a new parent. Essentially giving you "horizontal" hierarchy, just like how interfaces add functions to a class without reparenting it.
-    - Example: You have a sword and a health potion asset. Both of these can be crafted, but you don't want to create a "Craftable" item asset to insert into their hierarchy. Not all swords and not all potions might be craftable. You can now add an object to any asset that has a recipe and have that object link to that recipe data asset. You can now ask your data asset if it is "craftable" without asking your entire recipe data base if it has a recipe for that item.
-- Drivers: Actor components that can be created during runtime and are attached to the same actor that the inventory component lives on. These can run gameplay logic and destroyed during runtime, just like any other actor component. These are tied to objects so they can also be thought of as "horizontal" hierarchy.
+Data assets have "traits" and "components", which I recommend you read the documentation for, but in essence, they are:
+- Traits: Extra data you can add to any specific asset without creating a new parent. Essentially giving you "horizontal" hierarchy, just like how interfaces add functions to a class without reparenting it.
+    - Example: You have a sword and a health potion asset. Both of these can be crafted, but you don't want to create a "Craftable" item asset to insert into their hierarchy. Not all swords and not all potions might be craftable. You can now add an trait to any asset that has a recipe and have that trait link to that recipe data asset. You can now ask your data asset if it is "craftable" without asking your entire recipe data base if it has a recipe for that item.
+- Components: Actor components that can be created during runtime and are attached to the same actor that the inventory component lives on. These can run gameplay logic and destroyed during runtime, just like any other actor component. These are tied to traits so they can also be thought of as "horizontal" hierarchy.
 
 ### Item actor
 
 Then there's the optional actor to spawn when the item is dropped, or in some cases equipped. These can be destroyed and created frequently, so it shouldn't really be trusted with a lot of gameplay logic. This should be treated as just the "visual representation" of your item.
 
-### Item Struct Object
+### Item Instance
 
-Finally, there's the "struct object". This is simply an optional object that is created when the item struct is created and are then tied together. Unlike the actor, this can be trusted with gameplay logic. It is only destroyed when either you explicitly destroy it or when the item itself is destroyed.
-- Do note that this class is hard referenced by the item asset. Be mindful of your hard references.
-- These are instance editable. Meaning that the same class can be used for each item asset, but you can modify the variables in the item asset. When the struct object is created, it'll inherit those settings automatically.
-- There's two ways to initialize these objects. One is inside the data asset. This is the default object that will be used. But each struct instance can override either what class to use, or change the variables to more suit that specific instance.
-    - I highly recommend that you do not start mixing the classes used these structs for a specific item. For exameple; two apples using a different object class can lead to a lot of confusion and messy code. I'm not going to put any restrictions on this, some projects might need this, but it's a consideration to keep in mind.
-- Full replication support.
-- Experimental: These objects can be serialized. They will only restore any variables using the `SaveGame` flag (in blueprints, it can be found in the `Advanced` section in the details panel when you have a variable selected). Since this is experimental, it is not recommended to use for production. The serialization function might change in a future update, leading to old save files not being compatible with the new function. It will also only save the players struct objects, not other actors struct objects, and that will likely stay like that. There are hundreds of more things to consider with serialization than just the inventory and there are better solutions on the marketplace from people who properly understand serialization.
+`ItemInstance`'s are optional objects created when an item struct is created, and they're tied together. Unlike actors, `ItemInstance`'s can be trusted to handle gameplay logic.
 
-#### When are they created and destroyed?
-Struct objects are created during <span style="color:brown">**StartComponent**</span> and are tied to the item until the item is destroyed.
-- The object will remain alive until the garbage collector kicks in, just like how widgets and many other objects work. You can use `IsDestroyed` to check if the object has been destroyed or not.
+- **Assigning an instance with an item**: There are two ways to assign an `ItemInstance`'s with an `ItemAsset`:
+  1. **Data Asset Default**: The default instance is set in the data asset. This is the recommended way.
+  2. **Override per Struct**: Individual struct instances can override variables for more customization. 
+    - **Recommendation**: I highly recommend using the first method as that is soft-referenced.
+  
+- **Replication**: Fully supported and can be optimized with custom replication conditions.
+- **Restrictions**: By default, assigning an `ItemInstance` in the item struct has 2 rules:
+     1. "Wild" `ItemInstance`'s are not allowed. This refers to items which have no default `ItemInstance` assigned in the item asset, but you still want to add one to the item struct. It is highly advised to keep this rule enabled to prevent random items having random item instances as keeping track of this is extremely difficult in medium to large projects.
 
-#### How does the networking work?
-Objects are replicated to all clients that are relevant to the owner of the inventory component. But the item data is not replicated and even if it was, it should NOT be trusted on clients that are neither the owner of the inventory component or the server. This is because of how `IFP` optimizes networking, which can be read further about in the `Introduction` section.
-- Experimental: These objects can declare their own replication condition, giving you a chance for massive networking improvements. This means you can have objects that only replicate to the owner, server only, or you can even disable replication.
+	 2. You are not allowed to select `ItemInstance`'s that do not match the same class that was assigned in the item asset. This is to prevent two identical items having two different ItemInstance classes, leading to odd behavior.*/
 
-- Keep in mind, if you move your inventory component to the player state for better seamless travel support, these struct objects will start replicating to every client, no matter the relevancy rules you apply. Because of this, it's suggested to either declare replication conditions to resolve this for all struct objects or not use struct objects at all. This of course comes down to the context of the game and how many networking optimizations have to be applied.
+     - To disable either or both of these restrictions, modify <span style="color:violet">**FL_InventoryFramework**</span> -> <span style="color:brown">**ProcessContainerAndItemCustomizations**</span>
+- **Serialization (Experimental)**: Item Instances can be serialized, saving only variables marked with the `SaveGame` flag. This feature is experimental and may change in future updates, so it's not recommended for production. I recommend going with a much more robust serialization system that covers much more than just the inventory.
+
+---
+
+#### Creation & Destruction
+
+- **Creation**: Item Instances are created during `StartComponent` and remain tied to the item until the item is destroyed, unless you enable <span style="color:slateblue">**ConstructOnRequest**</span>. Then it will only be constructed when you call <span style="color:brown">**GetItemsInstance**</span>.
+- **Destruction**: They stay alive until garbage collection activates, just like widgets. Use `IsDestroyed` to check their status.
+
+---
+
+#### Networking
+
+- `ItemInstances`'s replicate to all clients relevant to the inventory owner. However, the item struct data itself isn't replicated and shouldn't be trusted on non-owner clients due to networking optimizations `IFP` enforces.
+- `ItemInstances`'s can declare their own replication conditions, allowing for optimized network performance (e.g., replicating only to the owner or server-only).
+
+- **Important**: If you move the inventory component to the player state for seamless travel, `ItemInstance`'s will replicate to every client. To avoid this, use replication conditions or consider not using `ItemInstance`'s, depending on your game's needs.
+
 
 #### Performance
-Constructing these objects is cheap, but if you plan on using hundreds of these, the small cost can pile up. The main worry you might need to consider is the garbage collector. The developers of Hogwarts Legacy had this problem where they abused instanced objects that the garbage collector would cause hitches, though I am not sure as to how many objects they were making.
-I suggest only making these objects for items that actually need it.
+- Constructing these `ItemInstance`'s is cheap, but if you plan on using hundreds of these, the small cost can pile up. I highly recommend leaving the <span style="color:slateblue">**ConstructOnRequest**</span> option set to true. The main worry you might need to consider is the garbage collector. The developers of Hogwarts Legacy had this problem where they abused instanced objects that the garbage collector would cause hitches, though I am not sure as to how many objects they were making.
+I suggest only making these instances for items that actually need it.
+
+- If you have a pooling system, then I will continue recommending having <span style="color:slateblue">**ConstructOnRequest**</span> enabled, then overriding the <span style="color:brown">**RemoveObject**</span> function to no longer mark the object as garbage and move the `ItemInstance` into your pooling system, then modifying <span style="color:brown">**GetItemsInstance**</span> to access your pooling system.
