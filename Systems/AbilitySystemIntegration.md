@@ -53,7 +53,7 @@ The scope for this ability component is very small to try and reduce complexity 
 ### Creating a new item ability
 
 !!! Important
-First, I advice you make your own item ability parent and ability object parent, then have all your item abilities be children of your parent and override some functions to fit your project, for example <span style="color:brown">**GetOwnersTags**</span>
+First, I advice you make your own item ability parent and ability trait parent, then have all your item abilities be children of your parent and override some functions to fit your project, for example <span style="color:brown">**GetOwnersTags**</span>
 !!!
 
 To create a new ability, create a new child of <span style="color:violet">**ID_ItemAbility**</span>, or of your item ability parent.
