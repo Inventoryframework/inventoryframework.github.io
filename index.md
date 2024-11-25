@@ -1,8 +1,10 @@
 # Inventory Framework Plugin
 
 ---
-#### Last update: 6th October, 2024
-#### Latest version: 2.11
+
+!!!Danger
+Documentation for IFP has been moved to a  <a href="https://varian.gitbook.io/varian-docs" target="_blank">**new website**</a>
+!!!
 
 ---
 Links can be found at the top of the page.
